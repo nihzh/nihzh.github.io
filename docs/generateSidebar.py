@@ -27,14 +27,16 @@ def readDictFile(dirItem, dirList):
         if listNotEmpty:
             dirList.pop()
     elif isinstance(dirItem, list):
-        fileName = dirList.pop().replace(" ", "_")
+        file = dirList.pop()
+        pathName = file.replace(" ", "%20")
+        fileName = file.replace(" ", "_")
         toWrite = ""
         for i in range(len(dirList)):
             toWrite += "  "
         toWrite += f"* [{str(fileName)}]({dirList[0]}"
         for i in dirList[1:]:
             toWrite += f"/{i}"
-        toWrite += f"/{str(fileName)})\n"
+        toWrite += f"/{str(pathName)})\n"
         #print(toWrite)
         f.write(toWrite)
         return
@@ -68,7 +70,7 @@ if __name__=='__main__':
                 dirDict[folderName][fileName] = []
             else:
                 dirDict[folderName][subFolderName][fileName] = []
-    print(dirDict)
+    # print(dirDict)
 
     # os.popen("rename d:\\文档\\nihzh.github.io\\docs\\_sidebar.md _sidebar.md.old")
     with open("_sidebar.md", "w", encoding="utf-8") as f:
