@@ -1,0 +1,41 @@
+:root {
+    --font-size-normal: 19px;
+    --font-size-code: 16px;
+    --font-size-side-dock: 16px;
+    --font-size-side-dock-title: 18px;
+    --font-size-status-bar: 16px;
+    --font-size-h1: 24px;
+    --font-size-h2: 23px;
+    --font-size-h3: 22px;
+    --font-size-h4: 21px;
+    --font-size-h5: 20px;
+    --font-size-h6: 19px;
+    --font-family-editor: "LXGW WenKai", Avenir, Avenir Next, sans-serif !important;
+    --font-family-preview: "LXGW WenKai", Avenir, Avenir Next, sans-serif !important;
+}
+
+:root {
+    --h1: 2em;
+    --h2: 1.7em;
+    --h3: 1.5em;
+    --h4: 1.3em;
+    --h5: 1.16em;
+    --h6: 1.16em;
+}
+
+em, .cm-em, .cm-line {
+    font-family: var(--font-family-preview);
+}
+
+em, .cm-em {
+    color: #f4fa93;
+    font-style: italic;
+}
+
+.cm-header {
+    font-weight: 800 !important;
+}
+
+.cm-strong {
+    color: #f4fa93
+}

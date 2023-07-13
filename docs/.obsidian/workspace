@@ -1,0 +1,114 @@
+{
+  "main": {
+    "id": "03a2f392882363ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "d1a35c10c6592314",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "计算机基础/Python/基本语法.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "851ec030ffe35ba9",
+    "type": "split",
+    "children": [
+      {
+        "id": "81320010102cd716",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bafa335216136642",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "87536496e7a98d23",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "参数",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "cd468627435ae787",
+    "type": "split",
+    "children": [
+      {
+        "id": "cf9040f8949e61be",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "40f5fd50f0bac6a4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "计算机基础/Python/基本语法.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7ae1736339fd337a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "计算机基础/Python/基本语法.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "bafa335216136642",
+  "lastOpenFiles": [
+    "网安/蚁景网安夏令营/7.20 SQL注入基础.md",
+    "网安/蚁景网安夏令营/7.18 靶场搭建.md",
+    "计算机基础/Python/命名空间和作用域.md",
+    "计算机基础/Python/数据类型.md",
+    "计算机基础/Python/基本语法.md",
+    "网安/蚁景-渗透测试/网络协议基础.md",
+    "网安/蚁景-渗透测试/信息收集.md",
+    "网安/蚁景网安夏令营/7.19 Burp Suite.md",
+    "网安/蚁景-渗透测试/工具环境配置.md",
+    "网安/蚁景网安夏令营/8.1 网络基础协议.md"
+  ]
+}

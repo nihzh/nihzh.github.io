@@ -1,0 +1,22 @@
+{
+  "legacyEditor": false,
+  "livePreview": true,
+  "attachmentFolderPath": "img",
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "fileSortOrder": "byCreatedTimeReverse",
+  "readableLineLength": true,
+  "showFrontmatter": false,
+  "newFileLocation": "current",
+  "vimMode": false,
+  "showLineNumber": false,
+  "strictLineBreaks": false,
+  "useMarkdownLinks": false,
+  "foldIndent": true,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}

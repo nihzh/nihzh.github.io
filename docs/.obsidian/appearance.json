@@ -1,0 +1,12 @@
+{
+  "baseFontSize": 21,
+  "translucency": false,
+  "cssTheme": "Dracula for Obsidian",
+  "enabledCssSnippets": [
+    "obsidian"
+  ],
+  "baseFontSizeAction": true,
+  "theme": "obsidian",
+  "textFontFamily": "LXGW WenKai",
+  "accentColor": ""
+}

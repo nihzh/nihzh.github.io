@@ -1,0 +1,164 @@
+{
+  "main": {
+    "id": "03a2f392882363ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "0e415c041c48f6a1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2e86ee88ace04536",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/开班典礼.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "851ec030ffe35ba9",
+    "type": "split",
+    "children": [
+      {
+        "id": "81320010102cd716",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bafa335216136642",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "byModifiedTimeReverse"
+              }
+            }
+          },
+          {
+            "id": "87536496e7a98d23",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "38d77e1ac7e4134c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "cd468627435ae787",
+    "type": "split",
+    "children": [
+      {
+        "id": "cf9040f8949e61be",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "40f5fd50f0bac6a4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "网安/蚁景-渗透测试/开班典礼.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7ae1736339fd337a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "网安/蚁景-渗透测试/开班典礼.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "canvas:新建白板": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "templates:插入模板": false,
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "random-note:开始漫游笔记": false
+    }
+  },
+  "active": "2e86ee88ace04536",
+  "lastOpenFiles": [
+    "gitCommit.py",
+    "tree.txt",
+    "_sidebar.md",
+    "_sidebar.md.old",
+    "img/DVWA教程.png",
+    "网安/蚁景网安夏令营/7.18 靶场搭建.md",
+    "网安/蚁景网安夏令营/8.11 Metasploit Framework实战.md",
+    "网安/蚁景网安夏令营/8.3 Redis未授权访问漏洞.md",
+    "网安/蚁景-渗透测试/工具环境配置.md",
+    "tempCodeRunnerFile.py",
+    "img/Pasted image 20230712201604.png",
+    "img/Pasted image 20230712201544.png",
+    "1234.md",
+    "计算机基础/Linux/基本规则.md",
+    "网安/蚁景网安夏令营/8.9 Linux权限提升.md",
+    "网安/蚁景网安夏令营/8.2 漏洞环境搭建.md",
+    "网安/蚁景-渗透测试/信息收集.md",
+    "网安/蚁景-渗透测试/开班典礼.md",
+    "网安/蚁景-渗透测试/网络协议基础.md",
+    "img/Pasted image 20230702220713.png",
+    "计算机基础/正则表达式(菜鸟).md",
+    "网安/蚁景网安夏令营/8.1 网络基础协议.md",
+    "网安/蚁景网安夏令营/7.29 文件上传实战.md",
+    "img/Pasted image 20230626154148.png",
+    "img/Pasted image 20230626153838.png",
+    "计算机基础/未命名.md",
+    "README.md",
+    "网安/蚁景网安夏令营/8.8 Springboot漏洞.md",
+    "网安/蚁景-渗透测试/未命名.md",
+    "未命名",
+    "计算机基础/Linux/REST风格.md",
+    "Troubleshooting/Problems when configuring Git.md",
+    "网安/蚁景网安夏令营/8.4 向日葵远程rce漏洞.md",
+    "网安/蚁景网安夏令营/8.5 THINKPHP漏洞.md"
+  ]
+}
