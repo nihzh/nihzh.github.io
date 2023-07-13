@@ -5,7 +5,8 @@ import datetime
 if __name__ == '__main__':
     comment = ""
     try:
-        comment = sys.argv[1]
+        for i in sys.argv:
+            comment += i
     except Exception as e:
         comment = str(datetime.datetime.now().strftime('%Y%m%d-%H:%M:%S'))
         print(f'No argument, the comment will be "{comment}"')

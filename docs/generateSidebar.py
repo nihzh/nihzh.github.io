@@ -71,6 +71,6 @@ if __name__=='__main__':
     print(dirDict)
 
     # os.popen("rename d:\\文档\\nihzh.github.io\\docs\\_sidebar.md _sidebar.md.old")
-    with open("_sidebar.md", "w") as f:
+    with open("_sidebar.md", "w", encoding="utf-8") as f:
         readDictFile(dirDict, [])
         f.close()
