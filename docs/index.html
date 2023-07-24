@@ -14,14 +14,27 @@
     window.$docsify = {
       name: "nihzh's blog",
       repo: 'nihzh',
+      coverpage: true,
       loadSidebar: true,
-      subMaxLevel: 2,
+      loadNavbar: true,
+      subMaxLevel: 3,
+      auto2top: true,
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
-      }
+      },
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+        crossChapter: true,
+        crossChapterText: true,
+      },
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 </html>
