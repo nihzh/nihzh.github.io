@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "0e415c041c48f6a1",
+        "id": "7b5d2e95ec883fc8",
         "type": "tabs",
         "children": [
           {
-            "id": "2e86ee88ace04536",
+            "id": "4fa5f26e09f3e808",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "网安/蚁景-渗透测试/信息收集.md",
+                "file": "网安/蚁景-渗透测试/工具环境配置.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "nmap",
+                "query": "vulfocus",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网安/蚁景-渗透测试/信息收集.md",
+                "file": "网安/蚁景-渗透测试/工具环境配置.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网安/蚁景-渗透测试/信息收集.md"
+                "file": "网安/蚁景-渗透测试/工具环境配置.md"
               }
             }
           }
@@ -126,22 +125,29 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "2e86ee88ace04536",
+  "active": "4fa5f26e09f3e808",
   "lastOpenFiles": [
-    "网安/蚁景网安夏令营/8.3 Redis未授权访问漏洞.md",
+    "Troubleshooting/Vulfocus漏洞靶场镜像无法拉取.md",
+    "网安/蚁景-渗透测试/工具环境配置.md",
+    "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
+    "网安/蚁景网安夏令营/7.18 靶场搭建.md",
+    "Troubleshooting/[.md",
+    "Troubleshooting/Problems when configuring Git.md",
+    "未命名",
     "网安/蚁景-渗透测试/信息收集.md",
+    "网安/蚁景-渗透测试/未命名.md",
+    "网安/蚁景网安夏令营/8.2 漏洞环境搭建.md",
+    "网安/蚁景-渗透测试/开班典礼.md",
+    "网安/蚁景-渗透测试/网络协议基础.md",
+    "img/Pasted image 20230726015250.png",
+    "网安/蚁景网安夏令营/8.3 Redis未授权访问漏洞.md",
     "img/e9d16d413abb1e0fbc94df4ddeb9215.jpg",
     "网安/蚁景网安夏令营/7.22 Sqlmap自动化注入.md",
-    "网安/蚁景-渗透测试/网络协议基础.md",
     "网安/蚁景网安夏令营/8.1 网络基础协议.md",
     "网安/蚁景网安夏令营/7.19 Burp Suite.md",
     "img/Pasted image 20230719201724.png",
     "img/Pasted image 20230719201628.png",
-    "网安/蚁景-渗透测试/工具环境配置.md",
-    "网安/蚁景网安夏令营/7.18 靶场搭建.md",
-    "网安/蚁景网安夏令营/8.2 漏洞环境搭建.md",
     "网安/蚁景网安夏令营/8.10 Metasploit基础.md",
-    "网安/蚁景-渗透测试/开班典礼.md",
     "_coverpage.md",
     "tempCodeRunnerFile.py",
     "gitCommit.py",
@@ -161,11 +167,6 @@
     "img/Pasted image 20230626154148.png",
     "img/Pasted image 20230626153838.png",
     "计算机基础/未命名.md",
-    "README.md",
-    "网安/蚁景网安夏令营/8.8 Springboot漏洞.md",
-    "网安/蚁景-渗透测试/未命名.md",
-    "未命名",
-    "计算机基础/Linux/REST风格.md",
-    "Troubleshooting/Problems when configuring Git.md"
+    "README.md"
   ]
 }
