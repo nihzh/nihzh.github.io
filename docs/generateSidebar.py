@@ -13,7 +13,7 @@ folderName = ""
 subFolderName = ""
 flag = False
 
-def readDictFile(dirItem, dirList):
+def readDictFile(dirItem, dirList, f):
     if isinstance(dirItem, dict):
         if (listNotEmpty:=len(dirList)) > 0:
             toWritef = ""
@@ -23,7 +23,7 @@ def readDictFile(dirItem, dirList):
             f.write(toWritef)
         for keys in dirItem.keys():
             dirList.append(keys)
-            readDictFile(dirItem[keys], dirList)
+            readDictFile(dirItem[keys], dirList, f)
         if listNotEmpty:
             dirList.pop()
     elif isinstance(dirItem, list):
@@ -37,7 +37,7 @@ def readDictFile(dirItem, dirList):
         for i in dirList[1:]:
             toWrite += f"/{i}"
         toWrite += f"/{str(pathName)})\n"
-        #print(toWrite)
+        print(toWrite)
         f.write(toWrite)
         return
 
@@ -74,5 +74,6 @@ if __name__=='__main__':
 
     # os.popen("rename d:\\文档\\nihzh.github.io\\docs\\_sidebar.md _sidebar.md.old")
     with open("_sidebar.md", "w", encoding="utf-8") as f:
-        readDictFile(dirDict, [])
+        readDictFile(dirDict, [], f)
         f.close()
+    print("Generate successfully.")

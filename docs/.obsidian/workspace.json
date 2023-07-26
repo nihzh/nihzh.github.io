@@ -127,6 +127,11 @@
   },
   "active": "4fa5f26e09f3e808",
   "lastOpenFiles": [
+    "refreshGithub.bat",
+    "refreshGithub.txt",
+    "_sidebar.md",
+    "新建 Markdown.md",
+    "新建文本文档.txt",
     "Troubleshooting/Vulfocus漏洞靶场镜像无法拉取.md",
     "网安/蚁景-渗透测试/工具环境配置.md",
     "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
@@ -152,7 +157,6 @@
     "tempCodeRunnerFile.py",
     "gitCommit.py",
     "tree.txt",
-    "_sidebar.md",
     "_sidebar.md.old",
     "img/DVWA教程.png",
     "网安/蚁景网安夏令营/8.11 Metasploit Framework实战.md",
@@ -165,8 +169,6 @@
     "计算机基础/正则表达式(菜鸟).md",
     "网安/蚁景网安夏令营/7.29 文件上传实战.md",
     "img/Pasted image 20230626154148.png",
-    "img/Pasted image 20230626153838.png",
-    "计算机基础/未命名.md",
-    "README.md"
+    "img/Pasted image 20230626153838.png"
   ]
 }
