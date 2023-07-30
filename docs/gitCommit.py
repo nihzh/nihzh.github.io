@@ -3,7 +3,7 @@ import os
 import datetime
 
 if __name__ == '__main__':
-    # os.system("python3 d:\\文档\\nihzh.github.io\\docs\\generateSidebar.py")
+    os.system("python d:\\文档\\nihzh.github.io\\docs\\generateSidebar.py")
     comment = ""
     if len(sys.argv) > 1:
         for i in sys.argv[1:]:

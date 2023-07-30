@@ -8,12 +8,24 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4fa5f26e09f3e808",
+            "id": "0d0c4cf9ca4b4b93",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "网安/蚁景-渗透测试/工具环境配置.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "189d668f96ea264f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/信息收集.md",
                 "mode": "source",
                 "source": false
               }
@@ -96,7 +108,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "注入",
+                "query": "phpst",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -174,16 +186,18 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "4fa5f26e09f3e808",
+  "active": "0d0c4cf9ca4b4b93",
   "lastOpenFiles": [
-    "新建 RTF 文档.rtf",
     "网安/蚁景网安夏令营/7.20 SQL注入基础.md",
+    "网安/蚁景-渗透测试/工具环境配置.md",
+    "网安/蚁景-渗透测试/信息收集.md",
     "网安/蚁景-渗透测试/SQL注入.md",
+    "网安/蚁景-渗透测试/开班典礼.md",
+    "新建 RTF 文档.rtf",
     "网安/蚁景网安夏令营/7.22 Sqlmap自动化注入.md",
     "网安/蚁景网安夏令营/7.21 SQL盲注.md",
     "img/Pasted image 20230728211108.png",
     "img/Pasted image 20230728200405.png",
-    "网安/蚁景-渗透测试/工具环境配置.md",
     "refreshGithub.bat",
     "refreshGithub.txt",
     "_sidebar.md",
@@ -195,9 +209,7 @@
     "Troubleshooting/[.md",
     "Troubleshooting/Problems when configuring Git.md",
     "未命名",
-    "网安/蚁景-渗透测试/信息收集.md",
     "网安/蚁景网安夏令营/8.2 漏洞环境搭建.md",
-    "网安/蚁景-渗透测试/开班典礼.md",
     "网安/蚁景-渗透测试/网络协议基础.md",
     "img/Pasted image 20230726015250.png",
     "网安/蚁景网安夏令营/8.3 Redis未授权访问漏洞.md",
