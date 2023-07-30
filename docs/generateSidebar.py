@@ -50,6 +50,11 @@ def generateDictFile(dirDict):
         # 读到目录
         if trimRow.startswith("+---") or (isLast:=trimRow.startswith("\\---")) :
             folder = re.sub(ptnFolderFilter, "", trimRow)
+            # 不是总最后一个文件夹（返回上一级）
+            if flag or row.startswith("+---"):
+                folderName = ""
+                subFolderName = ""
+                flag = False
             # 当前目录最后一个文件夹，且不是总目录最后一个，下次读到目录时返回上一级
             if trimRow.startswith("\\---") and folder != lastFolder:
                 flag = True
@@ -57,11 +62,6 @@ def generateDictFile(dirDict):
             if folder in folderFilter or folder.startswith("."):
                 isToFilt = True
                 continue
-            # 不是总最后一个文件夹（返回上一级）
-            if flag or row.startswith("+---"):
-                folderName = ""
-                subFolderName = ""
-                flag = False
             # 当前文件夹为空，填入当前文件夹
             if folderName == "":
                 folderName = folder
