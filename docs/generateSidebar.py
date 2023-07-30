@@ -50,6 +50,9 @@ def generateDictFile(dirDict):
         # 读到目录
         if trimRow.startswith("+---") or (isLast:=trimRow.startswith("\\---")) :
             folder = re.sub(ptnFolderFilter, "", trimRow)
+            # 当前目录最后一个文件夹，且不是总目录最后一个，下次读到目录时返回上一级
+            if trimRow.startswith("\\---") and folder != lastFolder:
+                flag = True
             # 需要过滤的文件夹
             if folder in folderFilter or folder.startswith("."):
                 isToFilt = True
@@ -70,9 +73,6 @@ def generateDictFile(dirDict):
                 dirDict[folderName][subFolderName] = dict()
             # 读取过文件夹，即不需要过滤
             isToFilt = False
-            # 当前目录最后一个文件夹，且不是总目录最后一个，下次读到目录时返回上一级
-            if trimRow.startswith("\\---") and folder != lastFolder:
-                flag = True
         # 读到文件
         elif folderName != "" and not folderName.endswith(extentFilter):
             if isToFilt:
