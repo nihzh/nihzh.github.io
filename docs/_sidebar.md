@@ -1,4 +1,5 @@
 * **Troubleshooting**
+  * [docsify代码块闭合问题](Troubleshooting/docsify代码块闭合问题)
   * [Problems_when_configuring_Git](Troubleshooting/Problems%20when%20configuring%20Git)
   * [Vulfocus漏洞靶场镜像无法拉取](Troubleshooting/Vulfocus漏洞靶场镜像无法拉取)
   * [灯塔（ARL）报错_timeout_of_12000ms_exceeded](Troubleshooting/灯塔（ARL）报错%20timeout%20of%2012000ms%20exceeded)
@@ -8,6 +9,8 @@
     * [信息收集](网安/蚁景-渗透测试/信息收集)
     * [工具环境配置](网安/蚁景-渗透测试/工具环境配置)
     * [开班典礼](网安/蚁景-渗透测试/开班典礼)
+    * [文件上传](网安/蚁景-渗透测试/文件上传)
+    * [漏洞扫描](网安/蚁景-渗透测试/漏洞扫描)
     * [网络协议基础](网安/蚁景-渗透测试/网络协议基础)
 * **计算机基础**
   * [未命名](计算机基础/未命名)

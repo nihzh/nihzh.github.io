@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4e6517aef5005912",
+            "id": "904641b3ec6a050e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "网安/蚁景-渗透测试/工具环境配置.md",
+                "file": "网安/蚁景-渗透测试/文件上传.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "burp",
+                "query": "MIME",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网安/蚁景-渗透测试/工具环境配置.md",
+                "file": "网安/蚁景-渗透测试/文件上传.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网安/蚁景-渗透测试/工具环境配置.md"
+                "file": "网安/蚁景-渗透测试/文件上传.md"
               }
             }
           }
@@ -125,13 +125,17 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "4e6517aef5005912",
+  "active": "904641b3ec6a050e",
   "lastOpenFiles": [
     "网安/蚁景-渗透测试/SQL注入.md",
-    "网安/蚁景-渗透测试/网络协议基础.md",
-    "网安/蚁景网安夏令营/7.19 Burp Suite.md",
+    "网安/蚁景-渗透测试/漏洞扫描.md",
+    "网安/蚁景-渗透测试/文件上传.md",
     "网安/蚁景-渗透测试/工具环境配置.md",
+    "网安/蚁景-渗透测试/网络协议基础.md",
+    "img/Pasted image 20230802205956.png",
     "网安/蚁景-渗透测试/信息收集.md",
+    "Troubleshooting/docsify代码块闭合问题.md",
+    "网安/蚁景网安夏令营/7.19 Burp Suite.md",
     "网安/蚁景网安夏令营/7.22 Sqlmap自动化注入.md",
     "网安/蚁景-渗透测试/开班典礼.md",
     "网安/蚁景网安夏令营/7.21 SQL盲注.md",
@@ -167,9 +171,6 @@
     "网安/蚁景网安夏令营/8.11 Metasploit Framework实战.md",
     "img/Pasted image 20230712201604.png",
     "img/Pasted image 20230712201544.png",
-    "1234.md",
-    "计算机基础/Linux/基本规则.md",
-    "网安/蚁景网安夏令营/8.9 Linux权限提升.md",
-    "img/Pasted image 20230702220713.png"
+    "1234.md"
   ]
 }

