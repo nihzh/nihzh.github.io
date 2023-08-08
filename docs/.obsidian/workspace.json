@@ -18,6 +18,18 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "9d96664a2fa8a59f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/信息收集.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ]
       }
@@ -127,13 +139,15 @@
   },
   "active": "904641b3ec6a050e",
   "lastOpenFiles": [
+    "网安/蚁景-渗透测试/信息收集.md",
+    "网安/蚁景-渗透测试/Web漏洞扫描器.md",
     "网安/蚁景-渗透测试/SQL注入.md",
-    "网安/蚁景-渗透测试/漏洞扫描.md",
+    "未命名",
     "网安/蚁景-渗透测试/文件上传.md",
+    "网安/蚁景-渗透测试/漏洞扫描.md",
     "网安/蚁景-渗透测试/工具环境配置.md",
     "网安/蚁景-渗透测试/网络协议基础.md",
     "img/Pasted image 20230802205956.png",
-    "网安/蚁景-渗透测试/信息收集.md",
     "Troubleshooting/docsify代码块闭合问题.md",
     "网安/蚁景网安夏令营/7.19 Burp Suite.md",
     "网安/蚁景网安夏令营/7.22 Sqlmap自动化注入.md",
@@ -153,7 +167,6 @@
     "网安/蚁景网安夏令营/7.18 靶场搭建.md",
     "Troubleshooting/[.md",
     "Troubleshooting/Problems when configuring Git.md",
-    "未命名",
     "网安/蚁景网安夏令营/8.2 漏洞环境搭建.md",
     "img/Pasted image 20230726015250.png",
     "网安/蚁景网安夏令营/8.3 Redis未授权访问漏洞.md",
@@ -170,7 +183,6 @@
     "img/DVWA教程.png",
     "网安/蚁景网安夏令营/8.11 Metasploit Framework实战.md",
     "img/Pasted image 20230712201604.png",
-    "img/Pasted image 20230712201544.png",
-    "1234.md"
+    "img/Pasted image 20230712201544.png"
   ]
 }
