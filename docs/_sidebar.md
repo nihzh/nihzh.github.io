@@ -2,6 +2,8 @@
   * [docsify代码块闭合问题](Troubleshooting/docsify代码块闭合问题)
   * [Problems_when_configuring_Git](Troubleshooting/Problems%20when%20configuring%20Git)
   * [Vulfocus漏洞靶场镜像无法拉取](Troubleshooting/Vulfocus漏洞靶场镜像无法拉取)
+  * [wsl下载后报错问题](Troubleshooting/wsl下载后报错问题)
+  * [关于nc无法使用-e参数的问题](Troubleshooting/关于nc无法使用-e参数的问题)
   * [灯塔（ARL）报错_timeout_of_12000ms_exceeded](Troubleshooting/灯塔（ARL）报错%20timeout%20of%2012000ms%20exceeded)
 * **网安**
   * **蚁景-渗透测试**
@@ -11,14 +13,17 @@
     * [信息收集](网安/蚁景-渗透测试/信息收集)
     * [工具环境配置](网安/蚁景-渗透测试/工具环境配置)
     * [开班典礼](网安/蚁景-渗透测试/开班典礼)
+    * [弱口令密码破解](网安/蚁景-渗透测试/弱口令密码破解)
     * [文件上传](网安/蚁景-渗透测试/文件上传)
     * [网络协议基础](网安/蚁景-渗透测试/网络协议基础)
 * **计算机基础**
-  * [未命名](计算机基础/未命名)
+  * [Flash_script](计算机基础/Flash%20script)
+  * [Magic_Number_幻数](计算机基础/Magic%20Number%20幻数)
+  * [REST风格](计算机基础/REST风格)
   * [正则表达式(菜鸟)](计算机基础/正则表达式(菜鸟))
   * **Linux**
     * [$的用法](计算机基础/Linux/$的用法)
-    * [REST风格](计算机基础/Linux/REST风格)
+    * [Linux中Shell的几种类型](计算机基础/Linux/Linux中Shell的几种类型)
     * [基本规则](计算机基础/Linux/基本规则)
   * **Python**
     * [函数](计算机基础/Python/函数)

