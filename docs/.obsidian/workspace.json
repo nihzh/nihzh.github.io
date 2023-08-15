@@ -13,7 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "网安/蚁景-渗透测试/1.0 信息收集.md",
+                "file": "网安/蚁景-渗透测试/0.1 工具环境配置.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2b453d7d32cc4fda",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/1.7 未授权访问.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "release",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +77,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网安/蚁景-渗透测试/1.0 信息收集.md",
+                "file": "网安/蚁景-渗透测试/0.1 工具环境配置.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网安/蚁景-渗透测试/1.0 信息收集.md"
+                "file": "网安/蚁景-渗透测试/0.1 工具环境配置.md"
               }
             }
           }
@@ -126,15 +139,18 @@
   },
   "active": "b7f71832057c337b",
   "lastOpenFiles": [
-    "网安/蚁景-渗透测试/1.2 文件上传.md",
+    "网安/蚁景-渗透测试/1.4 Linux反弹Shell.md",
     "网安/蚁景-渗透测试/1.7 未授权访问.md",
+    "网安/蚁景-渗透测试/Linux定时任务.md",
+    "计算机基础/Linux/未命名.md",
+    "网安/蚁景-渗透测试/1.0 信息收集.md",
+    "网安/蚁景-渗透测试/1.2 文件上传.md",
     "网安/蚁景-渗透测试/1.6 Web漏洞扫描.md",
     "网安/蚁景-渗透测试/1.3 命令执行.md",
     "网安/蚁景-渗透测试/0.2 网络协议基础.md",
     "Troubleshooting/wsl下载后报错问题.md",
     "网安/蚁景-渗透测试/0.1 工具环境配置.md",
     "计算机基础/Magic Number 幻数.md",
-    "网安/蚁景-渗透测试/1.4 Linux反弹Shell.md",
     "网安/蚁景-渗透测试/1.5 弱口令密码破解.md",
     "网安/蚁景网安夏令营/7.25 暴力破解.md",
     "网安/蚁景网安夏令营/7.19 Burp Suite.md",
@@ -142,7 +158,6 @@
     "img/Pasted image 20230811213404.png",
     "Troubleshooting/关于nc无法使用-e参数的问题.md",
     "计算机基础/Linux/Linux中Shell的几种类型.md",
-    "网安/蚁景-渗透测试/1.0 信息收集.md",
     "计算机基础/Flash script.md",
     "img/Pasted image 20230810005019.png",
     "img/Pasted image 20230810005003.png",
@@ -165,8 +180,6 @@
     "img/Pasted image 20230728200405.png",
     "refreshGithub.bat",
     "refreshGithub.txt",
-    "_sidebar.md",
-    "新建 Markdown.md",
     "新建文本文档.txt",
     "img/Pasted image 20230726015250.png",
     "img/e9d16d413abb1e0fbc94df4ddeb9215.jpg",
