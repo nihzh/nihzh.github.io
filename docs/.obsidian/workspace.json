@@ -8,24 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "2b453d7d32cc4fda",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "网安/蚁景-渗透测试/2.1 Weblogic漏洞.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "23dc07ed3397a3ac",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "网安/蚁景-渗透测试/1.1 SQL注入.md",
+                "file": "网安/蚁景-渗透测试/1.2 文件上传.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网安/蚁景-渗透测试/2.1 Weblogic漏洞.md",
+                "file": "网安/蚁景-渗透测试/1.2 文件上传.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +103,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网安/蚁景-渗透测试/2.1 Weblogic漏洞.md"
+                "file": "网安/蚁景-渗透测试/1.2 文件上传.md"
               }
             }
           }
@@ -137,16 +125,23 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "2b453d7d32cc4fda",
+  "active": "23dc07ed3397a3ac",
   "lastOpenFiles": [
+    "img/Pasted image 20230819023917.png",
+    "img/Pasted image 20230819023913.png",
     "网安/蚁景-渗透测试/1.1 SQL注入.md",
+    "计算机基础/Linux/Linux定时任务.md",
+    "img/Pasted image 20230819014346.png",
+    "网安/蚁景-渗透测试/2.5 其它中间件漏洞.md",
+    "img/Pasted image 20230819012036.png",
     "网安/蚁景-渗透测试/2.1 Weblogic漏洞.md",
+    "网安/蚁景-渗透测试/2.2 JBoss漏洞.md",
+    "img/Pasted image 20230818210313.png",
     "网安/蚁景-渗透测试/0.2 网络协议基础.md",
     "网安/蚁景-渗透测试/1.2 文件上传.md",
     "网安/蚁景-渗透测试/1.7 未授权访问.md",
     "网安/蚁景-渗透测试/1.4 Linux反弹Shell.md",
     "网安/蚁景-渗透测试/0.1 工具环境配置.md",
-    "计算机基础/Linux/Linux定时任务.md",
     "计算机基础/Linux/未命名.md",
     "网安/蚁景-渗透测试/1.0 信息收集.md",
     "网安/蚁景-渗透测试/1.6 Web漏洞扫描.md",
@@ -172,18 +167,11 @@
     "未命名",
     "img/Pasted image 20230802205956.png",
     "Troubleshooting/docsify代码块闭合问题.md",
-    "网安/蚁景网安夏令营/7.22 Sqlmap自动化注入.md",
-    "网安/蚁景-渗透测试/0.0 开班典礼.md",
-    "网安/蚁景网安夏令营/7.21 SQL盲注.md",
     "新建 RTF 文档.rtf",
     "img/Pasted image 20230728211108.png",
-    "img/Pasted image 20230728200405.png",
     "refreshGithub.bat",
     "refreshGithub.txt",
     "新建文本文档.txt",
-    "img/Pasted image 20230726015250.png",
-    "img/e9d16d413abb1e0fbc94df4ddeb9215.jpg",
-    "img/Pasted image 20230719201724.png",
     "tempCodeRunnerFile.py"
   ]
 }
