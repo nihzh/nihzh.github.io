@@ -2,6 +2,7 @@
   * [docsify代码块闭合问题](Troubleshooting/docsify代码块闭合问题)
   * [Problems_when_configuring_Git](Troubleshooting/Problems%20when%20configuring%20Git)
   * [Vulfocus漏洞靶场镜像无法拉取](Troubleshooting/Vulfocus漏洞靶场镜像无法拉取)
+  * [WindTerm锁屏主密码问题](Troubleshooting/WindTerm锁屏主密码问题)
   * [wsl下载后报错问题](Troubleshooting/wsl下载后报错问题)
   * [关于nc无法使用-e参数的问题](Troubleshooting/关于nc无法使用-e参数的问题)
   * [灯塔（ARL）报错_timeout_of_12000ms_exceeded](Troubleshooting/灯塔（ARL）报错%20timeout%20of%2012000ms%20exceeded)
@@ -20,6 +21,8 @@
     * [1.7_未授权访问](网安/蚁景-渗透测试/1.7%20未授权访问)
     * [2.1_Weblogic漏洞](网安/蚁景-渗透测试/2.1%20Weblogic漏洞)
     * [2.2_JBoss漏洞](网安/蚁景-渗透测试/2.2%20JBoss漏洞)
+    * [2.3_FastJson漏洞](网安/蚁景-渗透测试/2.3%20FastJson漏洞)
+    * [2.4_Shiro漏洞](网安/蚁景-渗透测试/2.4%20Shiro漏洞)
     * [2.5_其它中间件漏洞](网安/蚁景-渗透测试/2.5%20其它中间件漏洞)
 * **计算机基础**
   * [Flash_script](计算机基础/Flash%20script)
