@@ -18,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "6a239569d9bc85b3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "网安/蚁景-渗透测试/2.4 Shiro漏洞.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网安/蚁景-渗透测试/2.4 Shiro漏洞.md",
+                "file": "网安/蚁景-渗透测试/1.2 文件上传.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +103,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网安/蚁景-渗透测试/2.4 Shiro漏洞.md"
+                "file": "网安/蚁景-渗透测试/1.2 文件上传.md"
               }
             }
           }
@@ -138,8 +125,10 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "6a239569d9bc85b3",
+  "active": "23dc07ed3397a3ac",
   "lastOpenFiles": [
+    "网安/蚁景-渗透测试/2.5 Log4j2 漏洞.md",
+    "网安/蚁景-渗透测试/1.1 SQL注入.md",
     "网安/蚁景-渗透测试/1.2 文件上传.md",
     "网安/蚁景-渗透测试/2.4 Shiro漏洞.md",
     "网安/蚁景-渗透测试/2.3 FastJson漏洞.md",
@@ -148,7 +137,6 @@
     "网安/蚁景-渗透测试/1.4 Linux反弹Shell.md",
     "Troubleshooting/WindTerm锁屏主密码问题.md",
     "img/Pasted image 20230820004454.png",
-    "网安/蚁景-渗透测试/1.1 SQL注入.md",
     "计算机基础/Magic Number 幻数.md",
     "网安/蚁景-渗透测试/0.2 网络协议基础.md",
     "计算机基础/Linux/Linux定时任务.md",
@@ -179,7 +167,6 @@
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 2.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 1.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64.zip",
-    "计算机基础/Linux/$的用法.md",
     "未命名",
     "新建 RTF 文档.rtf",
     "refreshGithub.bat",
