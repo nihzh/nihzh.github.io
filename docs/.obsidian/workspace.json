@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "bea0d80b24a3f68c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "C2",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,8 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "cd468627435ae787",
@@ -86,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网安/蚁景-渗透测试/1.2 文件上传.md",
+                "file": "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网安/蚁景-渗透测试/1.2 文件上传.md"
+                "file": "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md"
               }
             }
           }
@@ -125,11 +137,14 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "23dc07ed3397a3ac",
+  "active": "bea0d80b24a3f68c",
   "lastOpenFiles": [
+    "网安/蚁景-渗透测试/3.2 Viper渗透框架.md",
+    "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
+    "网安/蚁景网安夏令营/8.5 THINKPHP漏洞.md",
+    "网安/蚁景-渗透测试/1.2 文件上传.md",
     "网安/蚁景-渗透测试/2.5 Log4j2 漏洞.md",
     "网安/蚁景-渗透测试/1.1 SQL注入.md",
-    "网安/蚁景-渗透测试/1.2 文件上传.md",
     "网安/蚁景-渗透测试/2.4 Shiro漏洞.md",
     "网安/蚁景-渗透测试/2.3 FastJson漏洞.md",
     "网安/蚁景-渗透测试/2.5 其它中间件漏洞.md",
@@ -158,9 +173,6 @@
     "网安/蚁景网安夏令营/7.19 Burp Suite.md",
     "img/腾讯课堂20230811213414.png",
     "img/Pasted image 20230811213404.png",
-    "Troubleshooting/关于nc无法使用-e参数的问题.md",
-    "计算机基础/Linux/Linux中Shell的几种类型.md",
-    "计算机基础/Flash script.md",
     "img/Pasted image 20230810005019.png",
     "img/Pasted image 20230810005003.png",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip",
