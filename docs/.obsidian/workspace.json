@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "a9def4de637ce2a2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Troubleshooting/sed unknown option to `s'报错.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -82,8 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "cd468627435ae787",
@@ -99,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
+                "file": "Troubleshooting/sed unknown option to `s'报错.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md"
+                "file": "Troubleshooting/sed unknown option to `s'报错.md"
               }
             }
           }
@@ -138,12 +149,12 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "62097375d7bab4a7",
+  "active": "a9def4de637ce2a2",
   "lastOpenFiles": [
+    "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
     "网安/蚁景-渗透测试/1.2 文件上传.md",
     "Troubleshooting/sed unknown option to `s'报错.md",
     "网安/蚁景-渗透测试/3.2 Viper渗透框架.md",
-    "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
     "网安/蚁景网安夏令营/8.5 THINKPHP漏洞.md",
     "网安/蚁景-渗透测试/2.5 Log4j2 漏洞.md",
     "网安/蚁景-渗透测试/1.1 SQL注入.md",

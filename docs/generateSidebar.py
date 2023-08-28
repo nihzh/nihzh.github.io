@@ -24,7 +24,7 @@ def readDictFile(dirItem, dirList, f):
     elif isinstance(dirItem, list):
         file = dirList.pop()
         pathName = file.replace(" ", "%20")
-        fileName = file.replace(" ", "_")
+        fileName = file.replace(" ", "_").replace("`", "\`")
         toWrite = ""
         for i in range(len(dirList)):
             toWrite += "  "
