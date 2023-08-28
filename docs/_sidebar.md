@@ -1,6 +1,7 @@
 * **Troubleshooting**
   * [docsify代码块闭合问题](Troubleshooting/docsify代码块闭合问题)
   * [Problems_when_configuring_Git](Troubleshooting/Problems%20when%20configuring%20Git)
+  * [sed_unknown_option_to_`s'报错](Troubleshooting/sed%20unknown%20option%20to%20`s'报错)
   * [Vulfocus漏洞靶场镜像无法拉取](Troubleshooting/Vulfocus漏洞靶场镜像无法拉取)
   * [WindTerm锁屏主密码问题](Troubleshooting/WindTerm锁屏主密码问题)
   * [wsl下载后报错问题](Troubleshooting/wsl下载后报错问题)
