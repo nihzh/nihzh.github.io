@@ -1,9 +1,9 @@
-# **Nihzha's blog <small>7</small>**
+# **Nihzh's blog <small>7</small>**
 
 > **守正出奇。**
 
 [GitHub](https://github.com/nihzh)
-[About Me](/Readme)
+[About Me](#Nihzh)
 
 <!-- 背景图片 -->
 <!-- ![](_media/bg.png) -->
