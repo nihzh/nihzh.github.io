@@ -1,6 +1,6 @@
 * **Troubleshooting**
   * [docsify代码块闭合问题](Troubleshooting/docsify代码块闭合问题)
-  * [docsify的homepage问题](Troubleshooting/docsify的homepage问题)
+  * [docsify的homepage问题(未解决)](Troubleshooting/docsify的homepage问题(未解决))
   * [Problems_when_configuring_Git](Troubleshooting/Problems%20when%20configuring%20Git)
   * [sed_unknown_option_to_\`s'报错](Troubleshooting/sed%20unknown%20option%20to%20`s'报错)
   * [Vulfocus漏洞靶场镜像无法拉取](Troubleshooting/Vulfocus漏洞靶场镜像无法拉取)

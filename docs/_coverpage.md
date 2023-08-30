@@ -3,6 +3,7 @@
 > **守正出奇。**
 
 [GitHub](https://github.com/nihzh)
+[Catalog](/_sidebar.md)
 [About Me](#nihzh)
 
 <!-- 背景图片 -->
