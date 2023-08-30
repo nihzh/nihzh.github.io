@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+   <meta name="description" content="">
+   <title>Nihzh's blog</title>
+
+   <!-- Themes (light + dark) -->
+   <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+   <link rel="stylesheet" media="(prefers-color-scheme: light)" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+
+   <!-- Custom Styles -->
+   <style>
+    :root{
+      --base-font-family: -apple-system, BlinkMacSystemFont, "LXGW Wenkai", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+      --theme-color: #4776fc;
+
+      --heading-h1-color: #e378b6;
+      --heading-h2-color: #b293f6;
+      --heading-h3-color: #df5555;
+      --heading-h4-color: #eeb86a;
+      --heading-h5-color: #9bfa84;
+      --heading-h6-color: #ade9fc;
+
+      --heading-h4-font-size: var(--font-size-m) * (var(--modular-scale) - 0.1);
+      --heading-h5-font-size: var(--font-size-m) * (var(--modular-scale) - 0.2);
+      --heading-h6-font-size: var(--font-size-m);
+    }
+   </style>
+</head>
+<body>
+   <div id="app"></div>
+
+   <script>
+     // Docsify Configuration
+     window.$docsify = {
+      name: "Nihzh's blog",
+      repo: 'nihzh',
+      coverpage: true,
+      loadSidebar: true,
+      loadNavbar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      homepage: '_sidebar.md',
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+    }
+   </script>
+
+   <!-- Required -->
+   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+
+   <!-- Recommended -->
+   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+   <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+</body>
+</html>

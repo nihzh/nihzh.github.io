@@ -13,6 +13,6 @@
 > 所有内容都来自个人思考，所以如有缺误，欢迎斧正。
 
 ### 使用的技术
-- 基于Github的page服务搭建
+- 基于Github的pages服务搭建
 - 网站引擎使用Docsify，在运行时将md文件直接渲染为网页，不生成`.html`文件，其本质为在线JS渲染
 - 主题为Docsify-themable+魔改
