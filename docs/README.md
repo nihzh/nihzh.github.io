@@ -1,5 +1,18 @@
-# Headline
+# Nihzh
 
-> An awesome project.
-## [Troubleshooting](localhost:3000/#/Obsidian/计算机基础/正则表达式(菜鸟))
-`a little variation`
+> **一个普通大学生。**
+
+> **一个曲线救国的网络安全爱好者。**
+
+> **一个理想主义者。**
+
+---
+# 关于这个网站
+> 我的个人知识仓库，会记录我所有按体系学习的内容，和解决过的较复杂问题。
+> 
+> 所有内容都来自个人思考，所以如有缺误，欢迎斧正。
+
+### 使用的技术
+- 基于Github的page服务搭建
+- 网站引擎使用Docsify，在运行时将md文件直接渲染为网页，不生成`.html`文件，其本质为在线JS渲染
+- 主题为Docsify-themable+魔改
