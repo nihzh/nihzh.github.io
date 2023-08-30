@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Troubleshooting/docsify的homepage问题(未解决).md",
+                "file": "Troubleshooting/docsify的homepage问题.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Troubleshooting/docsify的homepage问题(未解决).md",
+                "file": "Troubleshooting/docsify的homepage问题.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Troubleshooting/docsify的homepage问题(未解决).md"
+                "file": "Troubleshooting/docsify的homepage问题.md"
               }
             }
           }
@@ -152,7 +152,7 @@
   "active": "5ac72ff4a599af0c",
   "lastOpenFiles": [
     "网安/蚁景-渗透测试/3.3 CobaltStrike渗透框架.md",
-    "Troubleshooting/docsify的homepage问题(未解决).md",
+    "Troubleshooting/docsify的homepage问题.md",
     "index.html",
     "index-notthemable.html",
     "indexthemeable.html",
