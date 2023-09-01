@@ -20,18 +20,6 @@
             }
           },
           {
-            "id": "62097375d7bab4a7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "网安/蚁景-渗透测试/3.4 渗透框架流量隐藏.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "092d4fcae97fbcfa",
             "type": "leaf",
             "state": {
@@ -44,7 +32,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -94,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "cd468627435ae787",
@@ -149,10 +138,11 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "bafa335216136642",
+  "active": "092d4fcae97fbcfa",
   "lastOpenFiles": [
-    "网安/蚁景-渗透测试/1.0 信息收集.md",
+    "网安/蚁景-渗透测试/1.2 文件上传.md",
     "网安/蚁景-渗透测试/3.4 渗透框架流量隐藏.md",
+    "网安/蚁景-渗透测试/1.0 信息收集.md",
     "网安/蚁景-渗透测试/CDN.md",
     "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
     "网安/蚁景-渗透测试/3.3 CobaltStrike渗透框架.md",
@@ -168,7 +158,6 @@
     "index - 副本.html",
     "网安/蚁景网安夏令营/8.12 Colbaltstrike自解压木马钓鱼.md",
     "Troubleshooting/sed unknown option to `s'报错.md",
-    "网安/蚁景-渗透测试/1.2 文件上传.md",
     "网安/蚁景-渗透测试/3.2 Viper渗透框架.md",
     "网安/蚁景网安夏令营/8.5 THINKPHP漏洞.md",
     "网安/蚁景-渗透测试/2.5 Log4j2 漏洞.md",
