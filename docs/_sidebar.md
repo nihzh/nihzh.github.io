@@ -30,6 +30,7 @@
     * [3.1_Matasploit渗透框架](网安/蚁景-渗透测试/3.1%20Matasploit渗透框架)
     * [3.2_Viper渗透框架](网安/蚁景-渗透测试/3.2%20Viper渗透框架)
     * [3.3_CobaltStrike渗透框架](网安/蚁景-渗透测试/3.3%20CobaltStrike渗透框架)
+    * [3.4_渗透框架流量隐藏](网安/蚁景-渗透测试/3.4%20渗透框架流量隐藏)
 * **计算机基础**
   * [Flash_script](计算机基础/Flash%20script)
   * [Magic_Number_幻数](计算机基础/Magic%20Number%20幻数)
