@@ -1,0 +1,38 @@
+# 09/28/2023
+- Imperative programming language
+	- C, C++, Java, Python, PHP......
+	- A list of instructions to the computer
+- Functional programming language
+	- *Haskell*, a pure functional language
+	- More **methemetical**
+	- Functional programming is **a style of programming**
+	- No variables, No loops, No excplict idea of a sequence of instructions, Uses recursion
+- A fectorial question:
+	- Imperative: declare variables, around a loop, execute one each time.
+	- Functional: no variables, no explicit looping (using recursion)
+- complex algorithms are mostly functional
+- function is a balckbox, put few falues in and
+- Pure functions **only** influence the world through **return values** -- No changes global state, printing, connect netwoks.....
+- Pure functions must be **deterministic**, no random contents
+- same input, always same output.
+- one function do one thing only.
+- No control flow, everything is juct function application
+- IO function has side-effect, call by pure functions
+
+# 09/29/2023
+- Interpreter "ghci"
+- True False, Capital sensitive
+- Boolean expressions: && || not
+- Equalities: == /=(not equal)
+- Inequalities: < > <= >=
+- Brackets: () bind the elements
+- Evaluating: min, max
+- div: integer; /: float; mod
+- commas-->spaces `<function_name>[<space><attr1>[<space><attr2>]]`
+- \`\` infix operator
+- () outfix operator
+- -- comment; {- multiple line comment -}
+- `:load func.hs` load the module
+- `:r` read the module loaded
+- Camel case usually
+- the default module name: Main, use `module <name> where` at the beginning of the file to define it.

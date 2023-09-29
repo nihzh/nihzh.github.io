@@ -8,19 +8,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "23dc07ed3397a3ac",
+            "id": "2b8578883a5ea83a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "网安/蚁景-渗透测试/1.2 文件上传.md",
+                "file": "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "092d4fcae97fbcfa",
+            "id": "7a97ea1294573a99",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -30,9 +30,93 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "ad5cd1d757d843e9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/3.5 渗透框架扩展应用.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4ea3477aaae6fa34",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/3.6 Powershell渗透框架.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "41c5231f23d68025",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/3.7 Windows反弹shell.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "dcb95c6fe6623f22",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/4.1 内网环境分析.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "259918a6595c9081",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/4.2 内网信息收集.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a09d79b25753e012",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/4.3 Windows密码凭证获取.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5a43cba70954563a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "网安/蚁景-渗透测试/4.4 域环境密码凭证获取.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -61,7 +145,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "cdn",
+                "query": "MIME",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -82,8 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "cd468627435ae787",
@@ -99,7 +182,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网安/蚁景-渗透测试/3.4 渗透框架流量隐藏.md",
+                "file": "网安/蚁景-渗透测试/4.4 域环境密码凭证获取.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +199,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网安/蚁景-渗透测试/3.4 渗透框架流量隐藏.md"
+                "file": "网安/蚁景-渗透测试/4.4 域环境密码凭证获取.md"
               }
             }
           }
@@ -134,57 +217,100 @@
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "templates:插入模板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false,
-      "random-note:开始漫游笔记": false
+      "random-note:开始漫游笔记": false,
+      "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "092d4fcae97fbcfa",
+  "floating": {
+    "id": "f07ce8dfa46a8938",
+    "type": "floating",
+    "children": [
+      {
+        "id": "b5f433a1dd38f84d",
+        "type": "window",
+        "children": [
+          {
+            "id": "9ae5455accb447d4",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "14d501e46d9669c0",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Liverpool/201-Software Engineering.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 39,
+        "y": 36,
+        "width": 715,
+        "height": 768,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "5a43cba70954563a",
   "lastOpenFiles": [
-    "网安/蚁景-渗透测试/1.0 信息收集.md",
-    "网安/蚁景-渗透测试/3.4 渗透框架流量隐藏.md",
-    "网安/蚁景-渗透测试/1.2 文件上传.md",
-    "网安/蚁景-渗透测试/CDN.md",
+    "Liverpool/207-Database Development.md",
+    "Liverpool/105-Programming Paradigms.md",
+    "Liverpool/211-Computer Networks.md",
+    "105-Programming Paradigms.md",
+    "207-Database Development.md",
+    "网安/蚁景-渗透测试/4.4 域环境密码凭证获取.md",
+    "211-Computer Networks.md",
+    "Liverpool/201-Software Engineering.md",
+    "img/Pasted image 20230928102845.png",
+    "img/Pasted image 20230928102650.png",
+    "img/Pasted image 20230926162722.png",
+    "img/Pasted image 20230926152931.png",
+    "Liverpool",
+    "网安/蚁景-渗透测试/4.3 Windows密码凭证获取.md",
     "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
+    "网安/蚁景-渗透测试/().md",
+    "网安/蚁景-渗透测试/1.2 文件上传.md",
+    "网安/蚁景-渗透测试/0.2 网络协议基础.md",
+    "网安/蚁景-渗透测试/4.2 内网信息收集.md",
+    "网安/蚁景-渗透测试/4.1 内网环境分析.md",
+    "网安/蚁景-渗透测试/3.7 Windows反弹shell.md",
+    "网安/蚁景-渗透测试/0.2.md",
+    "网安/蚁景-渗透测试/3.5 渗透框架扩展应用.md",
+    "网安/蚁景-渗透测试/3.6 Powershell渗透框架.md",
+    "网安/蚁景-渗透测试/3.4 渗透框架流量隐藏.md",
     "网安/蚁景-渗透测试/3.3 CobaltStrike渗透框架.md",
+    "计算机基础/Magic Number 幻数.md",
+    "12.md",
+    "未命名 1.canvas",
+    "13.md",
+    "未命名 5.canvas",
+    "未命名 4.canvas",
+    "未命名 3.canvas",
+    "未命名 2.canvas",
+    "未命名.canvas",
+    "网安/蚁景网安夏令营/8.4 向日葵远程rce漏洞.md",
+    "网安/蚁景-渗透测试/2.2 JBoss漏洞.md",
     "img/Pasted image 20230902010220.png",
-    "未命名.md",
-    "Troubleshooting/docsify的homepage问题.md",
     "index.html",
     "index-notthemable.html",
     "indexthemeable.html",
-    "网安/蚁景-渗透测试/0.2 网络协议基础.md",
-    "网安/蚁景-渗透测试/0.0 开班典礼.md",
     "index - not themeable.html",
     "index - 副本.html",
-    "网安/蚁景网安夏令营/8.12 Colbaltstrike自解压木马钓鱼.md",
-    "Troubleshooting/sed unknown option to `s'报错.md",
-    "网安/蚁景-渗透测试/3.2 Viper渗透框架.md",
-    "网安/蚁景网安夏令营/8.5 THINKPHP漏洞.md",
-    "网安/蚁景-渗透测试/2.5 Log4j2 漏洞.md",
-    "网安/蚁景-渗透测试/1.1 SQL注入.md",
-    "网安/蚁景-渗透测试/2.4 Shiro漏洞.md",
-    "网安/蚁景-渗透测试/2.3 FastJson漏洞.md",
-    "网安/蚁景-渗透测试/2.5 其它中间件漏洞.md",
-    "网安/蚁景-渗透测试/0.1 工具环境配置.md",
-    "网安/蚁景-渗透测试/1.4 Linux反弹Shell.md",
-    "Troubleshooting/WindTerm锁屏主密码问题.md",
     "img/Pasted image 20230820004454.png",
-    "计算机基础/Magic Number 幻数.md",
-    "计算机基础/Linux/Linux定时任务.md",
     "img/Pasted image 20230819023917.png",
     "img/Pasted image 20230819023913.png",
     "img/Pasted image 20230819014346.png",
     "img/Pasted image 20230819012036.png",
-    "网安/蚁景-渗透测试/2.1 Weblogic漏洞.md",
-    "网安/蚁景-渗透测试/2.2 JBoss漏洞.md",
-    "img/Pasted image 20230818210313.png",
-    "img/腾讯课堂20230811213414.png",
-    "img/Pasted image 20230811213404.png",
-    "img/Pasted image 20230810005019.png",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 2.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 1.zip",
-    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64.zip",
-    "未命名"
+    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64.zip"
   ]
 }
