@@ -11,9 +11,10 @@
 	- Imperative: declare variables, around a loop, execute one each time.
 	- Functional: no variables, no explicit looping (using recursion)
 - complex algorithms are mostly functional
-- function is a balckbox, put few falues in and
+- A pure function is a balckbox
 - Pure functions **only** influence the world through **return values** -- No changes global state, printing, connect netwoks.....
 - Pure functions must be **deterministic**, no random contents
+- *Side-effect* is anything changes global state, printing, connect netwoks which cannot **export same output when have same input**.
 - same input, always same output.
 - one function do one thing only.
 - No control flow, everything is juct function application
@@ -21,6 +22,8 @@
 
 # 09/29/2023
 - Interpreter "ghci"
+
+#### Basic use of Haskell
 - True False, Capital sensitive
 - Boolean expressions: && || not
 - Equalities: == /=(not equal)
@@ -33,6 +36,15 @@
 - () outfix operator
 - -- comment; {- multiple line comment -}
 - `:load func.hs` load the module
-- `:r` read the module loaded
+- `:reload` relade the module
 - Camel case usually
-- the default module name: Main, use `module <name> where` at the beginning of the file to define it.
+- the default module name: Main, use `module <name> where` at the beginning of the file to define it. The name has to be capitaled.
+
+#### IO
+- `putStrLn`: to print sth, the displaying form of string is to be surronded by "". **Has side effect!!**
+	- It is not pure function so is part of IO in Haskell
+- `show`: could show anything, turns its input into a string
+
+#### Compiling run
+- `ghc <filename>` to compile the program/module, then execute it directly to run it
+- If adding the module name declaration on the top, then a module be compiled; otherwise, a program will be compiled
