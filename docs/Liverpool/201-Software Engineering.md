@@ -79,3 +79,30 @@ TODO: learn about
 - sub-system testing
 	- integrate modules into sub-system
 	- organised as package or JAR library
+
+# 10/02/2023
+- Requirements: ensure a software solution correctly coves a particular problem, it may range from a high-level abstract statement or a system constraint to a detailed methematical finctional specification
+	- User requirements: natural language, the services of the system provides and its operational constrains, for customers
+	- System requirements: details descriptions of the system services.
+	- Software requirements: description of the system on designing and implementation
+	- Functional requirements: statements of services the system should provide, what should it react and behave in particular situations.
+	- Non-functional requirements: process, standars, timing constrains, system properties and constraints, 
+		- Organisation: consequence of organisational policies and procedures
+		- External requirements: external the system
+	- Domain requirements: from application domain of the system, reflect characteristics of the domain.
+- Problem arise when requirements are not precisely stated.
+- Goas of requirements: 
+	- A general intention of the user such as ease of use. are helpfu t developers as they convey the intentions of the system users.
+- Conflicts between different non-functional requirements are common in complex systems
+
+# 10/03/2023
+- Use cases: Is a task which the actor needs to perform with the help of the system
+- Use: how to use the system
+- Case: an example
+- Use case diagram, an actor is a user of the system, acting in a particular role
+- The actor can be human or non-human
+- A big rectangle represents a system, all use-cases inside and actors outside, linking the use-cases
+- *Inheritance* can be used between actors
+- *Include relations*: use `<<includes>>` arrow to point including use-case
+- *Extends*: `<<extents>>` arrow, if a use-case has more significantly different outcomes, to re-use the use-case
+- don’t describe the internal behaviour; must describe behaviour with external actors

@@ -115,8 +115,7 @@
               }
             }
           }
-        ],
-        "currentTab": 8
+        ]
       }
     ],
     "direction": "vertical"
@@ -200,6 +199,16 @@
               "type": "outline",
               "state": {
                 "file": "Liverpool/105-Programming Paradigms.md"
+              }
+            }
+          },
+          {
+            "id": "ef212dc015c9b1b0",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
               }
             }
           }
@@ -286,21 +295,23 @@
           }
         ],
         "direction": "vertical",
-        "x": 1604,
-        "y": 1024,
-        "width": 716,
-        "height": 526,
-        "maximize": false,
+        "x": 3584,
+        "y": 0,
+        "width": 432,
+        "height": 748,
+        "maximize": true,
         "zoom": 0
       }
     ]
   },
   "active": "bc8a1e8767f951e4",
   "lastOpenFiles": [
-    "Liverpool/201-Software Engineering.md",
     "Liverpool/207-Database Development.md",
     "Liverpool/105-Programming Paradigms.md",
     "Liverpool/211-Computer Networks.md",
+    "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
+    "img/Pasted image 20231004232729.png",
+    "Liverpool/201-Software Engineering.md",
     "网安/蚁景-渗透测试/4.4 域环境密码凭证获取.md",
     "105-Programming Paradigms.md",
     "207-Database Development.md",
@@ -311,7 +322,6 @@
     "img/Pasted image 20230926152931.png",
     "Liverpool",
     "网安/蚁景-渗透测试/4.3 Windows密码凭证获取.md",
-    "网安/蚁景-渗透测试/3.1 Matasploit渗透框架.md",
     "网安/蚁景-渗透测试/().md",
     "网安/蚁景-渗透测试/1.2 文件上传.md",
     "网安/蚁景-渗透测试/0.2 网络协议基础.md",
@@ -333,7 +343,6 @@
     "未命名 2.canvas",
     "未命名.canvas",
     "网安/蚁景网安夏令营/8.4 向日葵远程rce漏洞.md",
-    "网安/蚁景-渗透测试/2.2 JBoss漏洞.md",
     "img/Pasted image 20230902010220.png",
     "index.html",
     "index-notthemable.html",
@@ -344,7 +353,6 @@
     "img/Pasted image 20230819023917.png",
     "img/Pasted image 20230819023913.png",
     "img/Pasted image 20230819014346.png",
-    "img/Pasted image 20230819012036.png",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 2.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 1.zip",

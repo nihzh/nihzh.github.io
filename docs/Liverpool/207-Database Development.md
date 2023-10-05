@@ -28,3 +28,18 @@ Rational databases are accessed using *SQL* (Standard Query Language), it's **a 
 - Modify table: 
 	- change the datatype of a column`ALTER TABLE <table_name> MODIFY <attribute_name> <datatype>` (MySQL and Oracle only)
 	- removes a column `ALTER TABLE <table_name> DROP COLUMN <attribute_name>`
+
+
+# 10/03/2023
+- UPDATE R SET a=a+1 WHERE a=3;
+![[Pasted image 20231004232729.png]]
+
+# 10/05/2023
+- Projection(Π): to extract values by given column name
+- DISTINCT: removing duplicated rows
+- Renaming(ρ): writing `AS` and type new name after the attribute
+- Creating new columns: `a + b AS total`
+	- `COUNT()`, `AVG()`, `MIN()`, `MAX()`, `SUM()`
+- Cross product(Х): from two or more different tabel directly, multiple result
+- Natural join(ΔΔ): To match values in the column with same name (overlap). Same effect with Х and where constrain. Only displays the matching values.
+- Never use same column name in different table
