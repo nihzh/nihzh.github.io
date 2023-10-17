@@ -76,3 +76,59 @@
 - Uses TCP
 - HTTP: pull, each object encapsulated in tis own response message
 - SMTP: push, multiple objects sent in multipart messages persistent connections, uses CRLF to determine end of message
+- Status code: 
+	- 220: STMP Service ready
+	- 221: Service closing
+	- 250: Requested action taken and completed
+	- 354: Start message input and end with `.`
+	- 421: The servece is not available and the connection will be closed
+	- 450: The requested command failed because the user's mailbax was unavailable (such as locked) try again later.
+		- verify teh email account; check mail server's blacklist
+
+# 10/06/2023
+#### DNS
+- The Domain Name System \[RFC 2136\]
+- Translate the IP address with the host name
+- host, mail server aliasing
+- load distribution
+- important in internet function
+- Top-Level Domain (TLD) servers: .com, .org, .net…
+- Authoritative DNNS servers providing authoritative host name to IP mappings for organization’s named hosts
+- Query the host name mapping through hierarchy
+- Resource records(RR): A, NS, CNAME, MX
+
+#### P2P applications
+- no always-on server
+- Peers communicate with each other directly
+![[b5acfc6ceb32d0993810caa1951e9d5.jpg]]
+- BitTorrent: requesting, sending file chunks (tit-for-tat )
+
+# 10/10/2023
+### Socket programming
+Socket: door between application process and end-end-transport protocol
+#### UDP
+- unreliable data gram: no “connection” between client&server, which may be lost or received out-of-order
+- Application: UDP provides **unreliable** transfer of groups of bytes (datagrams) between client and server
+- `DatagramSocket()`, `DatagramPacket()`
+
+#### TCP
+- client must contact server by TCP socket, specifying IP address, port number of server process. Once client creates socket, client TCP establishes and connection to server TCP
+- Application TCP provides **reliable, in-order type-stream** transfer(pipe) between client and server
+- `Socket()`, `DataOutputStream()`
+
+# 10/12/2023
+### Transport layer
+- logical communication between application processes running on different hosts
+- Network layer: logical communication between hosts
+- processes the header value beyond the application layer package
+- segment
+- Transmission Control Protocol
+	- reliable in-order delivery
+- User Datagram Protocol
+	- unreliable
+
+# 10/13/2023
+- TCP: demultiplexing 
+- `DatagramSocket(<local—host-port>)`
+- same IP address and destport 80, are demultiplexed to different sockets
+- UDP: no handshakes, connectless, no congestion control, small header

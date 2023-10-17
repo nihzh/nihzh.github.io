@@ -24,19 +24,21 @@
 - Interpreter "ghci"
 
 #### Basic use of Haskell
-- True False, Capital sensitive
-- Boolean expressions: && || not
-- Equalities: == /=(not equal)
-- Inequalities: < > <= >=fffffff
+- `True` `False`, Capital sensitive
+- Boolean expressions: `&&` `||` `not`
+- Equalities: `==` `/=`(not equal)
+- Inequalities: `<` `>` `<=` `>=`
 - Brackets: () bind the elements
 - Evaluating: min, max
-- div: integer; /: float; mod
+- `div`: integer; `/`: float
+- `^`: integer; `**`: float
+- mod
 - commas-->spaces `<function_name>[<space><attr1>[<space><attr2>]]`
 - \`\` infix operator
 - () outfix operator
 - -- comment; {- multiple line comment -}
-- `:load func.hs` load the module
-- `:reload` relade the module
+- `:load func.hs` load the module, initial as `:l`
+- `:reload` relade the module, initial as `:r`
 - Camel case usually
 - the default module name: Main, use `module <name> where` at the beginning of the file to define it. The name has to be capitaled.
 
@@ -110,3 +112,36 @@ Cylinder r h=
 	- *x* matching the *head*; the *xs* matching the *tail*
 	- First_two (x:y:xs) = x * y: y is bound to the second element
 	- Double_second(\_:y:\_) = 2 * y
+
+# 10/06/2023
+#### List functions
+- `length` displays the number of element in the list
+- `reverse`
+- `sum` for integer list only, calculate the summary
+- `product` for integer list only, calculate the product
+- `take` returns the first x elements of the list
+- `drop` returns the rest but first x elements
+- `elem` returns True if the specified element is in the list
+
+##### Ranges
+- `[1..20]` number between 1 to 20, including the start and the end
+- `[‘a’..’z’]`, `[‘A’..’Z’]`
+- `[1, 3..10]` == [1, 3, 5, 7, 9]
+- `[1..]` infinite list
+- `take 5 [1..]` == [1, 2, 3, 4, 5]
+- `head (tail [1..])` == 2
+
+- `repeat 5` == [5, 5, 5, 5, 5, 5, ……]
+- `take 10 (cycle “abc”)` == “abcabcabca”
+
+#### List comprehension
+- `[x*x | x <- [1..10]]` == [1,4,9,16,25,…….]
+- could be seen as “for-each”
+- `[x*x | x <- [1..10], x*x > 40, x*x < 80]`
+- `[x | x <- “hello”, x /= ‘l’]` == “heo”
+- `lt10 xs = [if x < 10 then “Yes” else “No” | x <- xs]`
+	- `lt10 [8..11]` == [“Yes”, “Yes”, “No”, “No”] 
+- `[x*y | x <- [2,5,10], y <- [8,10,11]]` == [16, 20, 22,…110]
+- length’ xs = sum [1 | _ <- xs]
+- `factors n = [x | x <- [1..n], n `mod` x == 0]`
+- `primes n = [x | x <- [1..n], length factors x == 2]
