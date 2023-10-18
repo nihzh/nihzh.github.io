@@ -91,26 +91,36 @@ DROP VIEW Employee_transaction_count;
 - Transaction: a serious of queries, single and complete
 	- Concurrency: serialisable behaviour
 	- Partial execution
-- Two SQL Statements will produces three transaction operationsm, to three simplified transaction operations
+- The "transaction" in MySQL below are under the InnoDB engine; MyISAM did not support transactions
+- A basic transaction, start with command `BEGIN` or `START TRANSACTION`; end with `COMMIT` or `ROLLBACK`.
+```mysql
+[START TRANSACTION | BEGIN];
+<SQL-STATEMENTS>
+ROLLBACK;
+COMMIT;
+```
+- The taransaction starts since the first line execute, rather than "begin"
+- To check the count of transactions opertating
+```mysql
+SELECT * FROM information_schema.innodb_trx;
+```
 
+These two SQL Statements will produces three transaction operationsm, to three simplified transaction operations
 ```sql
 SELECT salary FROM Employees WHERE e_id = 1234;
 UPDATE Employees SET salary = salary * 1.1 WHERE e_id = 1234;
 
-TO
-
--- abstraction at a low level
+-- abstraction at a lower level
 read(e_id=1234, salary);
 salary = salary * 1.1;
 write(e_id = 1234, salary);
-
-TO
 
 -- X in this case is "e_id 1234's salary"
 read(X);
 X = X * 1.1;
 write(X);
 ```
+
 - Basic operations: consentrate at lower-level details (reads and writes) and their interaction over high-level (queries)
 	- read(X): reads a database item X into a program variable
 	- write(X): writes the value of program variable X into the database item named X
@@ -121,30 +131,50 @@ write(X);
 	- write(insert, update, delete)
 	- other non-database operations
 
-- ACID: 
-	- *Atomicity*: either do the full transaction or nothing
-	- *Consistency*: definitions range form must satisfy constrains to must match a real-world event
-	- *Isolation*: the transactions should operate as if no other transactions are running at the same time
-	- *Durability*: after commit has been done, things that happen later should not undo that..
-- SEARIALIZABLE
-- READ UNCOMMITTED
-- READ COMMITTED
-- REPEATABLE READS
-```sql
-START TRANSACTION
-INSERT INTO R VALUES (3);
-SELECT * FROM R;
-ROLLBACK;
-COMMIT;
 
-SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+#### ACID: 
+- *Atomicity*: either do the full transaction or nothing, A transaction is an indivisible unit of prosessing, deals with failure aborts, we should **undo** the previous work
+- *Consistency*: may not violate constrains, It should correctly transform the database state to reflect of a real-world event
+	- serial schedules are consistent
+- *Isolation*: the transactions should operate as if no other transactions are running at the same time
+	- A schedule satisfies isolation if it is serializable
+- *Durability*: after commit has been done, things that happen later should not undo that
+
+#### Isolation levels
+Default transaction isolation level for InnoDB is *REPEATABLE READ*
+- Read phenomena: 
+	- *Dirty read*: A transaction reads the uncommitted data from other transaction, which meas the data may not be stored to the database finally.
+	- *Unrepeatable read*: In same transaction, same data reads in different time are inconsistant (structure). Normally deal with *UPDATE*
+	- *Phantom read*: A transaction reads the unconsistant data which committed by another transaction. Normally deal with *INSERT*
+
+Read and alter transaction isolation level
+```mysql
+-- after version 5.7.20
+show variables like 'transaction_isolation';
+SELECT @@transaction_isolation;
+
+-- before 5.7.20
+show variables like 'tx_isolation';
+SELECT @@tx_isolation;
+
+-- set
+SET <scope> TRANSACTION ISOLATION LEVEL <level-name>
 ```
+The corresponding isolation strategy only activate on the new session which establish after setting the isolation level.
+- scope:
+	- `SESSION`: only for current session window
+	- `GLOBAL`: for all sessions
+- Transaction isolation levels: 
+	- *READ UNCOMMITTED*: All the operation done (not commited) are exposed to other transactions immediately. **Will lead to all three** phenomena
+	- *READ COMMITTED*: The transaction can only reads data that already committed by other transaction. Can **cover the problem of Dirty read**. Is default isolation level of *Oracle*.
+	- *REPEATABLE READ*: The data updated by other transaction after current transaction established is not accessable, the reading data is consistancy throughout the transaction, but new records inserted by others during current transaction cannot be coverd (**cannot cover phantom read**). (MySQL is fixed phantom read problem in repeatable read level)
+	- *SEARIALIZABLE*: A new transaction can only be execute when the previous transaction commit. **Solves all three** phenomena.
 
 ### Schedules
-- hold many transactions for execution, in the right order
-- two types
-	- Serial Schedules: executes the transactions one after anothery
-	- Concurrent Schedules: can interleave operations from the trans actions (still preserving the right order, serial also concurrent)
+- Hold many transactions for execution, in the right order
+- Two types
+	- *Serial Schedules*: executes the transactions one after another, can maintain correctly and consistency of the database
+	- *Concurrent Schedules*: can interleave operations from many transactions, not guarantee consistency of the database or isolation (still preserving the right order, serial also concurrent)
 - `Sid`: schedule (id is the schedule ID)
 - `ri(X)`: read(X) in transaction i
 - `wi(X)`: write(X) in transaction i
