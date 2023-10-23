@@ -132,3 +132,29 @@ Socket: door between application process and end-end-transport protocol
 - `DatagramSocket(<local—host-port>)`
 - same IP address and destport 80, are demultiplexed to different sockets
 - UDP: no handshakes, connectless, no congestion control, small header
+
+# 10/16/2023
+- rdt1.0: reliable transfer over a reliable channel
+```sender
+rdt_send(data)
+packet = make_pkt(data)
+udt_send(packet)
+```
+```receiver
+rdt_rcv(packet)
+extract(packet, data)
+deliver_data(data)
+```
+- 2.0: channel bit error
+	- acknowledgements & negative acknowledgements
+	- sender sends one packet, then waits for receiver response
+- 2.1: FSM specifications
+- 2.1: sender, handling garbled acts
+- 2.2: nak-free protocol
+- 3.0: channels with errors and lost, timeout figured
+
+# 10/19/2023
+- rdt3.0: stop and wait operation
+- pipelining
+- Round Trip Time
+- Selective repeat 

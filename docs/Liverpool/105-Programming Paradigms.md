@@ -145,3 +145,186 @@ Cylinder r h=
 - length’ xs = sum [1 | _ <- xs]
 - `factors n = [x | x <- [1..n], n `mod` x == 0]`
 - `primes n = [x | x <- [1..n], length factors x == 2]
+
+
+# 10/11/2023
+- nested list: `f xxs [ [ x | x <- xs, even x ] | xs <- xxs]`
+
+#### Recursive
+- Recursive: a function calls the function it self
+	- A base case
+	- One or more rules moves the program closer to the base case
+```haskell
+factorial n = 
+	if n > 1
+	then n * factorial (n-1)
+	else 1
+```
+- *Pattern matching*: Haskell will processes from top to bottom
+```haskell
+factorial 1 = 1
+factorial n = n * factorial (n-1)
+```
+- each recursive rule makes progress towards the base case, otherwise, it will never terminate
+- Every recursive function must have a base case, it will never terminate if no base case
+```haskell
+fibonacci 0 = 0
+fibonacci 1 = 1
+fibonacci n = fibonacci (n-1) + fibonacci (n—2)
+```
+- multiple recursive rules: comprehensive
+```haskell
+even_sum 0 = 0
+even_sum x = 
+	if x `mod` 2 == 0
+	then x + even_sum (x - 1)
+	else even_sum (x - 1)
+```
+*Guards*: `| <test> = <expression>` which \<test> evaluates True or False; \<expression>can be anything. Good alternative to a load of nested ifs.
+```haskell
+even_sum x
+	| (x == 0) = 0
+	| (x `mod` 2 == 0) = x + even_sum (x—1)
+	| otherwise = even_sum (x-1)
+```
+
+# 10/12/2023
+### Recursion on lists
+```haskell
+sum’ (x:xs) = x + sum’ xs
+
+length’ (_:xs) = 1 + length’ xs
+
+square_list [] = []
+square_list (x:xs) = x*x : square_list xs
+
+take’ 0 list = []
+take’ n [] = []
+take’ n (x:xs) = x : take’ (n-1) xs
+
+elem’ e [] = False
+elem’ e (x:xs)
+	| e == x =True
+	| otherwise = elem’ e xs
+
+maximum’ [] = error “Called with empty list”
+maximum’ [x] = x
+maximum’ (x:xs) = 
+	let
+		max_tail = maximum’ xs
+	in
+		if (x > maxtail) then x else max_tail
+
+add_adjacent [] = []
+add_adjacent [x] = error “Odd number of elements”
+add_adjacent (x:y:xs) = x + y :add:adjacent xs
+
+group n [] = []
+group n list = 
+	let
+		first = take n list
+		rest = drop n list
+	in
+		first : group n rest
+```
+
+# 10/13/2023
+- `where`: bind names across a whole function.
+```haskell
+remove_twos [] = []
+remove_twos (x:xs)
+	| x == 2 = rest
+	| otherwise x : rest
+	where rest = remove_twos xs
+```
+```haskell
+initials first last = [f] ++ “. “ ++ [l] ++ “.”
+	where (f:_) = first
+		  (l:_) = last
+```
+#### multiple lists recursion
+```haskell
+add_lists _ [] = []
+add_lists [] _ = []
+add_lists (x:xs) (y:ys) = x+y : add_lists xs yes
+
+gt_10 [] = ([], [])
+gt_10 (x:xs)
+	| x > 10 = (x:gt, lt)
+	| otherwise = (gt, x:lt)
+	where (gt, lt) = gt_10 xs
+```
+`zip`: takes two lists and returns a list of pairs, shorter one determines the length
+#### mutual recursion
+```
+events [] = []
+events (x:xs) = x : odds xs
+
+odds [] = []
+odds (x:xs) = events xs
+```
+#### multiple recursion
+```haskell
+fib 0 = 0
+fib 1 = 1
+fib n = fib(n-1) + fib(n-2)
+
+fast_fib_help 1 = [1, 0]
+fast_fib_help n = x + y : (x:y:xs)
+	where (x:y:xs) = fast_fib_help (n-1)
+
+> fast_fib n = head (fast_fifb_help n)
+```
+#### quick sort
+```haskell
+qs’ [] = []
+qs’ (x:xs) = qs’ lower ++ [x] ++ qs’ upper
+	where lower = [e | e <- xs, e < x]
+		  upper = [e | e <- xs, e >= x]
+```
+
+# 10/18/2023
+- Caesar Cipher: shift every letter forward a fixed count
+- `ord`: returns an integer of a character (ascii)
+- `chr`: returns a character of an integer
+- `import Data.Char`
+
+# 10/20/2023
+### Type of Haskell
+- `:type x` returns the type of element x
+	- Int: 64 bits integer
+	- Integer: arbitrary size integers
+	- Float: 32 bit floating point
+	- Double: 64 bit floating point
+	- Bool: True or False
+	- Char: single character, using ‘’
+- Tuple will have various types, separate by comma
+- List have just a single type
+- Function type is `[input type] -> [output type]`
+- Function with multiple argument: `[First input] -> [Second argument] -> [output type]`
+
+### Partial application
+- fix some of the arguments; leave other arguments unfixed
+- calling the function with fewer arguments
+
+```haskell
+func a b c = “Arguments: ” ++ [a,b,c]
+func :: Char -> Char -> Char -> [Char]
+
+func2 = func ‘x’
+func2 :: Char -> Char -> [Char]
+
+func3 = func ‘x’ ‘y’
+func3 :: Char -> [Char]
+
+pow2 = (^) 2
+```
+infix operators
+```haskell
+f = (/2)
+g = (1/)
+```
+- function application should be thought of multiple partial applications
+	- `multThree x y z = x * y * z`
+	- `((multThree 2) 3) 4`
+- use a tuple to carry arguments rather than by listed multiple arguments

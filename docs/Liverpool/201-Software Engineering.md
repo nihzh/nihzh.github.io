@@ -190,138 +190,30 @@ TODO: learn about
 	- an input alphabet
 	- a transition function that maps input symbols and current states to a next state
 
-# 10/11/2023
-- nested list: `f xxs [ [ x | x <- xs, even x ] | xs <- xxs]`
+# 10/16/2023
+- Finite State Machines
+	- *states* define behaviour and may produce actions
+	- *state transitions*: movement from one state to another
+	- *rules or conditions*
+	- *input events*: may trigger rules and lead to state transitions
+- Moore Machine
+	- two alphabets: input and output
+	- has an output letter associated with each state
+- Petri Net Models
+	- directed arcs connecting places and transitions
+	- place may hold tokens
+	- capacity: 
+		- arcs: 1
+		- places: infinite by default
+		- transitions: no capacity, cannot store tokens
+	- non-deterministic, used to *model* discrete distributed systems
+- Semantic Data models: describe the logical structure of data, entity-relation-attribute model
+- Object Models: reflecting the real-world entities; more abstract entities are more difficult to model
+- The Unified Modelling Language: object-oriented modelling
 
-#### Recursive
-- Recursive: a function calls the function it self
-	- A base case
-	- One or more rules moves the program closer to the base case
-```haskell
-factorial n = 
-	if n > 1
-	then n * factorial (n-1)
-	else 1
-```
-- *Pattern matching*: Haskell will processes from top to bottom
-```haskell
-factorial 1 = 1
-factorial n = n * factorial (n-1)
-```
-- each recursive rule makes progress towards the base case, otherwise, it will never terminate
-- Every recursive function must have a base case, it will never terminate if no base case
-```haskell
-fibonacci 0 = 0
-fibonacci 1 = 1
-fibonacci n = fibonacci (n-1) + fibonacci (n—2)
-```
-- multiple recursive rules: comprehensive
-```haskell
-even_sum 0 = 0
-even_sum x = 
-	if x `mod` 2 == 0
-	then x + even_sum (x - 1)
-	else even_sum (x - 1)
-```
-*Guards*: `| <test> = <expression>` which \<test> evaluates True or False; \<expression>can be anything. Good alternative to a load of nested ifs.
-```haskell
-even_sum x
-	| (x == 0) = 0
-	| (x `mod` 2 == 0) = x + even_sum (x—1)
-	| otherwise = even_sum (x-1)
-```
-
-# 10/12/2023
-### Recursion on lists
-```haskell
-sum’ (x:xs) = x + sum’ xs
-
-length’ (_:xs) = 1 + length’ xs
-
-square_list [] = []
-square_list (x:xs) = x*x : square_list xs
-
-take’ 0 list = []
-take’ n [] = []
-take’ n (x:xs) = x : take’ (n-1) xs
-
-elem’ e [] = False
-elem’ e (x:xs)
-	| e == x =True
-	| otherwise = elem’ e xs
-
-maximum’ [] = error “Called with empty list”
-maximum’ [x] = x
-maximum’ (x:xs) = 
-	let
-		max_tail = maximum’ xs
-	in
-		if (x > maxtail) then x else max_tail
-
-add_adjacent [] = []
-add_adjacent [x] = error “Odd number of elements”
-add_adjacent (x:y:xs) = x + y :add:adjacent xs
-
-group n [] = []
-group n list = 
-	let
-		first = take n list
-		rest = drop n list
-	in
-		first : group n rest
-```
-
-# 10/13/2023
-- `where`: bind names across a whole function.
-```haskell
-remove_twos [] = []
-remove_twos (x:xs)
-	| x == 2 = rest
-	| otherwise x : rest
-	where rest = remove_twos xs
-```
-```haskell
-initials first last = [f] ++ “. “ ++ [l] ++ “.”
-	where (f:_) = first
-		  (l:_) = last
-```
-#### multiple lists recursion
-```haskell
-add_lists _ [] = []
-add_lists [] _ = []
-add_lists (x:xs) (y:ys) = x+y : add_lists xs yes
-
-gt_10 [] = ([], [])
-gt_10 (x:xs)
-	| x > 10 = (x:gt, lt)
-	| otherwise = (gt, x:lt)
-	where (gt, lt) = gt_10 xs
-```
-`zip`: takes two lists and returns a list of pairs, shorter one determines the length
-#### mutual recursion
-```
-events [] = []
-events (x:xs) = x : odds xs
-
-odds [] = []
-odds (x:xs) = events xs
-```
-#### multiple recursion
-```haskell
-fib 0 = 0
-fib 1 = 1
-fib n = fib(n-1) + fib(n-2)
-
-fast_fib_help 1 = [1, 0]
-fast_fib_help n = x + y : (x:y:xs)
-	where (x:y:xs) = fast_fib_help (n-1)
-
-> fast_fib n = head (fast_fifb_help n)
-```
-#### quick sort
-```haskell
-qs’ [] = []
-qs’ (x:xs) = qs’ lower ++ [x] ++ qs’ upper
-	where lower = [e | e <- xs, e < x]
-		  upper = [e | e <- xs, e >= x]
-```
+# 10/17/2023
+- High-Level Petri Net Model
+- *Tokens* can represent resources, information, conditions or states of objects
+- *Places* represent buffers, channels, geographical locations, conditions or states
+	- *Transitions* represent events, transformations or transportations.
+- Current state

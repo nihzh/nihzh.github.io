@@ -122,8 +122,10 @@ write(X);
 ```
 
 - Basic operations: consentrate at lower-level details (reads and writes) and their interaction over high-level (queries)
-	- read(X): reads a database item X into a program variable
-	- write(X): writes the value of program variable X into the database item named X
+	- `read(X)`: reads a database item X into a program variable
+	- `write(X)`: writes the value of program variable X into the database item named X
+	- `output(X)`: copy database item X from buffer to database
+	- `flush_log`: wuite log intries that are currently residing in main memory (buffer) to log
 - logical unit of procdessing using access operations
 	- Begin
 	- End
@@ -174,9 +176,111 @@ The corresponding isolation strategy only activate on the new session which esta
 - Hold many transactions for execution, in the right order
 - Two types
 	- *Serial Schedules*: executes the transactions one after another, can maintain correctly and consistency of the database
-	- *Concurrent Schedules*: can interleave operations from many transactions, not guarantee consistency of the database or isolation (still preserving the right order, serial also concurrent)
+	- *Concurrent Schedules*: can interleave operations from many transactions, not guarantee consistency or isolation of the database (still preserving the right order, serial also concurrent). More efficiency
 - `Sid`: schedule (id is the schedule ID)
 - `ri(X)`: read(X) in transaction i
 - `wi(X)`: write(X) in transaction i
 - `ci`: commit in transaction i
 - `ai`: abort ("rollback") in transaction i
+
+#### Serializable Schedules
+- A schedule S is *serializable* if there is a serical schedule S' that has the same effect as S on every initial database state.
+- Guarantee the correctness and consistency, but not satisfy isolation.
+- Serializability is difficult to test, not only depend on reads, writes and commits, also on the non-database operations, which canbe complex
+
+#### Conflict serializable schedules
+- Stronger form of serializability based on the notion of a conflict
+- A conflict in a schedule is a pair of operations from different transactions that cannot be swapped without changing the behaviour of at least one of the transactions.
+- A conflict:
+	- from different transactions
+	- access the same item
+	- at least one of them is a write operation
+- Conflicts: 
+	- *write-write conflict*: may lead to dirty write
+	- *write-read conflict*: may lead to dirty read
+	- *read-write conflict*: may lead to unrepeatable read
+- *Conflict-serializable*: If S' can be optained from S by swapping any number of consecutive non-conflict operations
+	- "access different item" / "read" (non-conflicting)
+	- from different transactions
+- A schedule is *conflict-serializable* if it is conflict-equivalent to a serial schedule.
+- *Precedence graph*: directed graph, nodes are the transactions in S
+	- edge: a conflicting pair op1(Ti) --> op2(Tj), only the operation from tarnsaction 1 being the first occourring one in the schedule
+	- If the graph is no cycle, the S is conflict-serializable, otherwise not.
+	- All conflict-equivalent schedulers: operation in T1 is before operation in T2
+
+
+# 10/17/2023
+- `SET tx_isolationn = ‘Serializable’`
+
+# 10/19/2023
+### Locks
+- each item has a padlock
+- read/write to the item by getting the padlock, ask the schedule for it.
+- *Shared and exclusive locks*
+- *Update locks*:
+- *Multiple granularity*
+#### Two-phase Locking (2PL)
+- A simple locking mechanism that guarantees conflick-serializability
+- In each **transaction**, all lock operations precede all unlocks
+	- Phase 1: request locks + possibly other read/write operations
+	- Phase 2: unlock + posibly other read/write operations
+- If S is a chedule containing only 2PL transactions, then S is conflict-serializable
+- Might lead to *Deadlock*, transactions be forces to wait forever
+	- Two transactions request for lock a item simultaneously which locked by counterpart, are all waiting for releasement (unlock)
+
+#### Shared & Exclusive locks
+- *Shared lock* (read lock)
+	- requested by transactions to read an item X `s-lock(X)/sli(X)`
+	- granted **to several transactions at the same time**
+	- granted only no **other transactions** holds **a exclusive** lock on X
+- *Exclusive lock* (write lock)
+	- requested by transactions to wirte an item X `x-lock(X)/xli(X)`
+	- granted to **at most one transaction** at a time
+	- granted only no **other transactions** holds **a lock** on X
+- A individual transaction may hold both a shared lock and an exclusive lock for the same item X. Can be upgrade from a shared lock to an exclusive lock, it is rick to deadlock.
+- *Update lock*: 
+	- requested by transactions to read (not write) an item
+	- **can be upgraded** later to an exclusive lock (shared lock cant upgrade)
+	- granted to **at most one transaction** at a time
+- Granularity
+	- relations
+	- disk blocks
+	- tuples
+- *Intension locks*: If a transaction wants to lock a item X, must first put an intention lock on the super-items of X
+	- *IS*: intension to request a shared lock on a sub-item
+	- *IX*: intension to request a exclusive lock on a sub-item
+
+### Relational DBMS Components
+1. User/application
+2. Transaction manager
+3. Logging and recovery / concurrency control
+4. Buffers
+5. Storage
+- Transaction abort: 
+	- violation of integrity constrains, other run-time errors
+	- deadlocks: concurrency control requests
+	- explict request, `ROLLBACK`
+
+### Loggings
+#### Undo logging (Atomicity)
+- Log records:
+- `<START T>` Transaction T has started.
+- `<COMMIT T>` Transaction T has committed, must be written to disk as soon as all database elements changed.
+- `<ABOUT T>` Transaction T was aborted
+- `<T,X,v>` Transaction T has updated the value of database item X, and **the old value was v**. 
+	- **Must be written to the log on disk before X is written to disk**
+	- direct response to `write(X)`
+- undo procedure: traverse the undo log from the last to the first item
+
+#### Redo logging (Durability)
+- `<T,X,v>`: Transaction T has updated the value of database item X and **the new value is v**
+- haven't changed X on disk yet.
+- procedure (Transaction T): 
+	1. Identify all the transactions with a COMMIT log record
+	2. Traberse the log from first to the last item: If see `<T,X,v>` and T has a COMMIT log record then change the value of X on disk to v
+	3. For each incomplete transaction T, write \<ABORT T\> into the log on disk
+
+#### Undo/Redo logging (DBMS using)
+- `<T,X,v,w>`: Transaction T has updated teh vcalue of database item X, adn **the old/new value of X is v/w**
+- Write all log records for all updates to databse items first
+- Ensure Atomicity and Durability without log using No Steal/Force
