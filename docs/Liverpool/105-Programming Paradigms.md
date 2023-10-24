@@ -39,8 +39,9 @@
 - -- comment; {- multiple line comment -}
 - `:load func.hs` load the module, initial as `:l`
 - `:reload` relade the module, initial as `:r`
+- `:module [+/-] M1..[Mn]` load and unload modules
 - Camel case usually
-- the default module name: Main, use `module <name> where` at the beginning of the file to define it. The name has to be capitaled.
+- the default module name: Main, use `module <name> where` at the beginning of the file to define it. The name has to be capitalized.
 
 #### IO
 - `putStrLn`: to print sth, the displaying form of string is to be surronded by "". **Has side effect!!**
@@ -285,9 +286,15 @@ qs’ (x:xs) = qs’ lower ++ [x] ++ qs’ upper
 
 # 10/18/2023
 - Caesar Cipher: shift every letter forward a fixed count
+- `import Data.Char`
 - `ord`: returns an integer of a character (ascii)
 - `chr`: returns a character of an integer
-- `import Data.Char`
+- `fromIntegral`: recieve an `Integral` instance and produce a `Num`
+	- convets a value of type a (Integral) to type b (Num), which switch to a larger type could help the calculation operations (different type is not compatible on calculating) 
+- chi-squared: distributed similay of two sets
+- 尝试所有的密钥（26个），对每一个可能性（解密结果）进行卡方分布运算并于English的标准分布值进行对比，最后选出差异最小的一个结果
+- Try all the keys (26), for each possibility (decryption result) perform the chi-square distribution operation and compare it with English's standard distribution value, and finally choose the one with the smallest difference.
+
 
 # 10/20/2023
 ### Type of Haskell
