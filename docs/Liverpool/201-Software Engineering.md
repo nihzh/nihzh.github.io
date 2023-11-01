@@ -217,3 +217,64 @@ TODO: learn about
 - *Places* represent buffers, channels, geographical locations, conditions or states
 	- *Transitions* represent events, transformations or transportations.
 - Current state
+
+# 10/24/2023
+- Design mixed with implementation 
+- states
+	1. Problem understanding
+	2. Identify one or more solutions
+	3. Describe solution abstractions
+	4. Repeat process for each identified abstraction
+- phases
+	- architectural design
+	- abstract specification
+	- interface design
+	- component design
+	- data structure design
+	- algorithm design
+- top-down design 
+- repository models: share data
+	- shared data in a central databse
+	- each sub system or component maintains its own database
+
+# 10/26/2023
+- a good system
+	- useful and useable
+	- reliable
+	- flexible
+	- affordable
+	- available
+- common TODO
+- module interfaces: abstraction of the module
+	- any assumptions should be documented in the interface
+- princciples
+	- linguistic modular units
+	- few interfaces: low coupling 
+	- small interfaces
+	- explicit interfaces
+	- information hiding
+- communication cohesion
+- functional cohesion
+- object cohesion: each operation provides functionality which allows object attributes to be modified or inspected
+
+# 10/30/2023
+- Architectural design process
+	- system structuring
+	- control modelling
+	- modular decomposition
+- each model resents different perspectives on the architecture 
+	- static structural model: major system components
+	- dynamic process model: process structure of the system
+	- interface model: sub-system interfaces
+	- relationships model: data-flow model
+
+# 10/31/2023
+### Distributed System
+- Information  processing is distributed over several computers rather than confined to a single machine
+- Middleware
+- layered application architecture
+	- presentation layer: presenting the results to users and collecting user inputs
+	- application processing layer: specific functionality
+	- data management layer: managing the system databases
+-  Three-Tier architectures
+- client—server systems

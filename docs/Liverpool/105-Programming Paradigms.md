@@ -109,7 +109,7 @@ Cylinder r h=
 - *head* is its first element; *tail* is everything but the first element
 - *last* is its last element; *init* is everything but the last element
 - 1 : [2, 3, 4, 5] == [1,2,3,4,5]
-- *pattern matching*: triple_head (x:xs) = 3 * x
+- *pattern matching*: `triple_head (x:xs) = 3 * x`
 	- *x* matching the *head*; the *xs* matching the *tail*
 	- First_two (x:y:xs) = x * y: y is bound to the second element
 	- Double_second(\_:y:\_) = 2 * y
@@ -295,10 +295,8 @@ qs’ (x:xs) = qs’ lower ++ [x] ++ qs’ upper
 - 尝试所有的密钥（26个），对每一个可能性（解密结果）进行卡方分布运算并于English的标准分布值进行对比，最后选出差异最小的一个结果
 - Try all the keys (26), for each possibility (decryption result) perform the chi-square distribution operation and compare it with English's standard distribution value, and finally choose the one with the smallest difference.
 
-
 # 10/20/2023
 ### Type of Haskell
-- `:type x` returns the type of element x
 	- Int: 64 bits integer
 	- Integer: arbitrary size integers
 	- Float: 32 bit floating point
@@ -335,3 +333,132 @@ g = (1/)
 	- `multThree x y z = x * y * z`
 	- `((multThree 2) 3) 4`
 - use a tuple to carry arguments rather than by listed multiple arguments
+
+# 10/25/2023
+### Type polymorphism
+- The function can be applied to any list
+- a will represent the type of the list elements
+- Type variable
+```haskell
+# :type
+head :: [a] -> a
+tail :: [a] -> [a]
+zip :: [a] -> [b] -> [(a,b)]
+
+third_head list = head (head (head list))
+third_head :: [[[a]]] -> a
+
+(+) :: Num a => a -> a —> a
+(==) :: Eq a => a -> a -> -> Bool
+```
+- Type annotations
+```
+<function_name> :: <type>
+```
+- `Num`
+	- `Integral`: whole numbers (Int, Inteer)
+	- `Fractional`: rationals (Float, Double, Rational)
+
+# 10/26/2023
+- `show`: converts other types to strings
+	- `Show`: type class contains types that can be shown
+- `read`: converts strings to other types
+	- `Read`: type class contains all types that can be read
+- `Ord`: type class, all types that can be compared
+	- tuples and lists are compared lexicographically, corresponding in sequence, following the shortest item
+- higher order function: takes another function as an argument and returns a function
+```haskell
+apply_twice :: (a -> a) -> a -> a
+apply_twice f input = f (f input)
+```
+- `composition`: applies one function to the output of another
+```haskell
+compose :: (b -> c) -> (a -> b) —> a -> c
+compose f g input = f (g input)
+
+compose (+1) (*2) 4 == 9
+compose head head [[1,2], [3,4]]
+```
+- `.` operator removes the need for nested brackets
+```haskell
+f list = (length . double . drop_events. tail) list
+```
+- `$` operator evaluates its input, lowest precedence of all operators
+```haskell
+(length . tail) [1,2,3,4]
+length . tail $ [1,2,3,4]
+```
+- *Anonymous functions*: define a function inline, also return other functions
+	- `\` lambda-functions
+
+```haskell
+(\x -> x + 1)
+
+\ [arg1] [arg2] … —> [expression]
+
+—- higher order functions can take and return functions
+swap :: (a -> b -> c) -> (b -> a -> c)
+swap f = \ x y -> f y x
+
+—-nicker syntax for partically apply a function
+drop_six’ = (\ x -> drop 6 x)
+```
+
+# 10/27/2023
+### Map
+- applies a function f to every element in a list
+```haskell
+map’ :: (a -> b) -> [a] -> [b]
+map’ _ [] = []
+map’ f (x:xs) = f x : map’ f xs
+
+map (*2) [1..5] == [2,4,6,8,10]
+map (\(_:y:_)->y) [“the”, “quick”, “brown]
+
+
+```
+
+### Filter
+- keeps only the element for which f returns True
+```haskell
+filter’ :: (a -> Bool) -> [a] -> [a]
+filter’ _ [] = []
+filter’ f (x:xs)
+	| f x = x : rest
+	| otherwise = rest
+```
+
+### Higher order programming
+- map&filter
+- de-emphasizes recursion
+- focuses on applying functions to lists
+- available in imperative languages
+
+# 11/01/2023
+### Fold
+```haskell
+foldr’ :: (a —> b -> b) -> b -> [a] -> b
+foldr’ _ init [] = init
+foldr’ f init (x:xs) = f x (foldr’ f init xs)
+
+sum’’ list = foldr (\ x acc -> acc + x) 0 list
+
+
+foldr1’ :: (a -> a -> a) -> [a] -> a
+foldr1’ _ [] = error “empty list”
+foldr1’ _ [x] = x
+foldr1’ f (x:xs) = f x (foldr1’ f xs)
+
+sum’ list = foldr1 (+) list
+concat’ list = foldr1 (++) list
+maximum’ list = folder (\ x acc -> if x > acc then x else acc) list
+
+—- have to define a return value or default in statement
+
+
+foldr: processes list from the right
+foldl: processes list from the left
+foldl :: (b -> a -> b) -> b -> [a] -> b
+
+reverse_list list = foldl (\ acc x -> x : acc) [] list
+```

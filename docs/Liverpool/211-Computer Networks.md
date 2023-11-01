@@ -158,3 +158,70 @@ deliver_data(data)
 - pipelining
 - Round Trip Time
 - Selective repeat 
+
+# 10/23/2023
+#### Congestion control
+- inferred from observed loss
+- routers feedback directly to sending/receiving hosts with flows passing through congested router
+- Additive Increase, Multiplicative Decrease
+- slow start: 
+	- `ssthresh`: on loss event, ssthresh is set to 1/2 of cwnd jest before loss event
+	- `cwnd`: 1 MSS initially, double every RTT, switch to linear increase when achieve `ssthresh`
+- QUIC: Quick UDP Internet Connections
+	- app-layer protocol, on top of udp
+	- increase performance, deployed on many google servers and apps
+	- error and congestion control: a algorithms parallel TCP ones
+	- connection establishment: reliability, congestion control, authentication, encryption, state established in one RTT
+	- one handshake: reliability, congestion control, authentication, crypto state
+
+# 10/26/2023
+### Network Layer
+- transport segment from sending to receiving host
+- network layer protocols in every Internet device :hosts, routers
+- routers: examines header fields in all IP data grams passing through it
+- functions:
+	- **forwarding**: move packets from a router’s input link to appropriate rout output link
+	- **routing**: determine route taken by packets form source to destination, by algorithms
+- **Data plane**: local, per-router function
+- **Control plane**: network-wide logic, how datagram routed along end-end path
+	- *traditional routing alogrithms*
+	- *software-defined networking (SDN)*
+
+#### Router
+- *routing, management control plane* (software): millisecond
+	- routing processor
+- high-speed switching fabric
+- *forwarding data plane* (hardware): in nanosecond
+	- line termination (physical layer)
+	- link layer protocol
+	- lookup, forwarding queueing: using header field values, using forwarding table in input port memory (match plus action)
+		- *destination-based forwarding*: only on destination IP address
+		- *generalized forwarding*: any set of header field values
+- destination-based forwarding
+- longest prefix matching
+
+### IP datagram & fragmentation
+- options: timestamp, record route taken
+- overhead: 40 bytes + app layer overhead for TCP+IP
+	- 20 bytes of TCP
+	- 20 bytes of IP
+- MTU: max. transfer size
+
+# 10/30/2023
+### IP addressing
+- IP address: 32-bit identifier associated with each host or router interface
+- *interface*: connection between host/router and physical link
+- *CIDR*: Classes InterDomain Routing: slash
+- Where to get: hard-corded by sysadmin in config file / DHCP
+- *DHCP*: Dynamic Host Configuration Protocol
+	- broadcasts DHCP discover msg
+	- response DHCP offer msg
+	- DHCP request from hosts
+	- DHCP ack, send address
+- *NAT*: network address translation: defines in local network share 1 IPv4 address, mirror sub-net address to the port number
+- *IPv6*: 128-bits
+	- 40-byte fixed length header
+	- flows treatment
+![[9b0f489416fd9b94f26efb80f82733b.jpg]]
+![[IMG_1314.jpeg]]
+- *tunneling*: IPv6 datagram carried as payload in IPv4 datagram among IPv4 routers (packet within a packet)
