@@ -283,4 +283,26 @@ The corresponding isolation strategy only activate on the new session which esta
 #### Undo/Redo logging (DBMS using)
 - `<T,X,v,w>`: Transaction T has updated teh vcalue of database item X, adn **the old/new value of X is v/w**
 - Write all log records for all updates to databse items first
-- Ensure Atomicity and Durability without log using No Steal/Force
+- Ensure Atomicity and Durability without log using No Steal/Force;
+
+### Checkpoints
+- ARIES:
+	- Undo/Redo logging
+	- Transactions do not write to buffers before they are sure they want to commit
+	- Write `<CHECKPOINT(T1, T2)>` at first; write `<END CHECKPOINT>` after moved the content of the buffer to the disk.
+- recovery:
+	- find a `<CHECKPOINT(T1,T2)>` with corresponding `<END CHECKPOINT>` and `<START Ti>` for *all mentioned transactions* that are **uncommitted**.
+	- only redo part of **committed** transactions in mentioned transaction after `<CHECKPOINT(T1,T2)>`; then undo all of uncommitted transactions in mentioned transaction before `<CHECKPOINT(T1,T2)>`
+- Robust: works even after system failures
+
+### Recoverable Schedules
+- *Cascading Rollback*: If a transaction T aborts: Recursively abort all transactions that have read items written by an aborted transaction.
+	- abort: break isolation
+	- not abort: break durability
+- A schedule S is recoverable if the following is true:
+	- if a transaction T1 commits and has read an item X that was written before by a different transaction T2
+	- then T2 must commit before T1 commits
+- Additional implicit requirement
+	- All log records have to reach disk in the order in which they are written
+	- could in principle abort -> cascading rollback
+- *Recoverable schedules*: T commits only if all transactions that T has read from have commited

@@ -462,3 +462,62 @@ foldl :: (b -> a -> b) -> b -> [a] -> b
 
 reverse_list list = foldl (\ acc x -> x : acc) [] list
 ```
+
+# 11/02/2023
+`scan`: like fold, outputs the accumulator at each step
+```haskell
+scanr (+) 0 [1,2,3,4] == [10,9,7,4,0]
+scanl (+) 0 [1..10] == [0,1,3,6,10,15,21,28,36,45,55]
+
+scanr’ :: (a -> b -> b) -> b -> [a] -> [b]
+scanr’ _ init [] = [init]
+scanr’ f init (x:xs) = 
+	let
+		recursed = scanr’ f init xs
+		new = f x (head recursed)
+	in
+		new: recursed
+
+scanl1: useint the first element in the list to be initial value
+```
+
+`takeWhile`: takes from a list while a condition is true
+```haskell
+takeWhile’ :: (a -> Bool) -> [a] -> [a]
+takeWhile’ _ [] = []
+takeWhile’ f (x:xs)
+	| f x = x : takeWhile’ f xs
+	| otherwise = []
+```
+
+`dropWhile`: drops from a list while a condition is true
+```haskell
+dropWhile’ :: (a -> Bool) -> [a] -> [a]
+dropWhile’ _ [] = []
+dropWhile’ f (x:xs)
+	| f x = dropWhile’ f xs
+	| otherwise = x:xs
+```
+
+`words`: converts a String to a list, elements are words separated by spaces
+`unwords`: converts a list to a String that separate elements by a space
+
+`zipWith`: zips two lists together using a function
+```haskell
+zipWith’ :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith’ _ [] _ = []
+zipWith’ _ _ [] = []
+zipWith’ f (x:xs) (y:ys) = f x y : zipWith’ f xs ys
+
+m5 str1 str2 = [head str1] ++ show (length str2)
+m6 list = zipWith m5 list list
+```
+
+
+# 11/03/2023
+`x <- readFile “marks.csv”`
+`lines`: split a String to a list by ‘\\n’
+`unlines`: combine a list to a string that separate by ‘\\n’
+```haskell
+map words $ lines x
+```

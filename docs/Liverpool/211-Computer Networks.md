@@ -223,5 +223,58 @@ deliver_data(data)
 	- 40-byte fixed length header
 	- flows treatment
 ![[9b0f489416fd9b94f26efb80f82733b.jpg]]
-![[IMG_1314.jpeg]]
 - *tunneling*: IPv6 datagram carried as payload in IPv4 datagram among IPv4 routers (packet within a packet)
+
+# 11/02/2023
+### Generalized Forwarding, SDN
+- *Flow table* abstraction: define router’s match+action rules
+- *flow*: defined by header field values (link-, network-, transport-layer fields)
+- *generalized forwarding*: 
+	- match: pattern values in packet header fields
+	- actions: for matched packet: drop, forward, modify, send to controller
+	- priority: disambiguate overlapping patterns
+	- counters: #bytes and #packets
+- Router
+	- match: longest destination IP
+	- forward
+- Switch
+	- destination MAC address
+	- forward or flood
+- Firewall
+	- IP address and TCP/UDP port number
+	- permit or deny
+- NAT
+	- IP address and port
+	- rewrite address and port
+
+## Network Layer: Control Plane
+Control plane: routing: determine route taken by packets from source to destination
+- per-router control (traditional): individual routing algorithm components in each and every router, interact in the control plane
+- logically centralized control (software defined networking): remote controller computes, installs forwarding tables in routers
+
+### Routing Algorithms
+Determine good paths (equivalently routes)
+- path: sequence of routers packets traverse from given initial source host to final destination host
+- good: least cost, fastest, least congested
+
+# 11/03/2023
+#### Intra-AS Routing in the Internet: OSPF
+- inter-AS: gateways 
+	- RIP: Routing Information Protocol
+	- EIGRP: Enhanced Interior Gateway Routing Protocol
+	- OSFP: Open Shortest Path First \[RFC 2328\], *IS-IS* is a same protocol from ISO
+	- BGP: Border Gateway Protocol: glue that holds the Internet together
+		- eBGP
+		- iBGP
+- intra-AS: same AS must run same intro-AS protocol, *gateway router* at edge of its own AS, link to other ASs
+
+# 11/07/2023
+- Software-Defined Networking: logically centralized
+- controller (network os)
+## Link Layer
+- broatcast channel shearing
+- local area networks: etheret, wlan
+- error detection, correction
+- transferring datagram from the node to physically adjacent node over a link , using different lik protocol
+- frame, encapsulates datagram(network layer)
+- implemented in netork interface card（NIC）， combination of software， hardwre and firmware 
