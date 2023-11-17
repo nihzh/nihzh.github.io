@@ -278,3 +278,62 @@ Determine good paths (equivalently routes)
 - transferring datagram from the node to physically adjacent node over a link , using different lik protocol
 - frame, encapsulates datagram(network layer)
 - implemented in netork interface card（NIC）， combination of software， hardwre and firmware 
+
+# 11/09/2023
+### Error detection, correction
+- EDC: error detection and correction bits
+- D: data protected, may include header fields
+- two-dimensional bit parity
+- *Cyclic Redundancy Check (CRC)*
+- D: data bits as binary number
+- G: bit pattern, of r+1 , predefined
+- `r`CRC bits, R, `<D,R>` exactly divisible by G (mod 2)
+- complete the divide number for polynomial G to no remainder
+
+### Multiple access protocols 
+- point-to-point
+- broadcast
+- *MAC protocols*
+- ALOHA
+- CSMA (carrier sense multiple access)
+
+# 11/10/2023
+#### CSMA/CD
+- carrier sense multiple access with collision detection
+	- channel idle: transmit entire frame
+	- channel busy: defer
+- “Taking turns” MAC protocols
+
+# 11/13/2023
+#### Ethernet
+- dominant wired LAN technology
+- *switched*: active link-layer switch in center
+- frame structure:
+	- preamble
+	- addresses: 6 byte, dest. MAC address
+	- type: indicates hire layer protocol
+	- CRC: cyclic redundancy check at receiver
+- connectionless
+- unreliable
+- Ethernet standards: copper physical layer
+
+#### Wireless and Mobile Networks
+- wireless
+- mobility: handling the mobile user who changes point of attachment to network
+
+# 17/11/2023
+## Physical Layer
+### Time domain concepts
+- Analog signal: varies in a smooth way over time
+- Digital signal: Maintains a constant level then changes to another constant level
+- Periodic signal: Pattern repeated over time
+- A periodic signal: Pattern not repeated over time
+- `s(t) = A * sin(2πft + Φ)`
+
+- data, signals and transmission
+
+- B: bandwidth
+- M: number of signal states
+- S/N: signal-to-noise ratio
+Noise free channel (Nyquist): `Max data rate = 2 * B * log[base2] M`
+Shannon’s law: `Max data rate = B * log[base2] (1 + S/N)`

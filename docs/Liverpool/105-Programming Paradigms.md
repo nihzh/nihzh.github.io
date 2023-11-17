@@ -521,3 +521,283 @@ m6 list = zipWith m5 list list
 ```haskell
 map words $ lines x
 ```
+
+# 11/08/2023
+#### Custom Types
+- New name of existing type
+- All types must start with capital letters, meaningful
+
+```haskell
+type VoteResults = [(Int, String)]
+```
+
+`data`: create an entirely new type, is not part of any type class
+- `|` should be read as “or”
+- each value is a constructor
+- ordering by the order (Ord)
+```haskell
+data Bool’ = True | False
+data Number = Three | Two | One deriving (Eq, Ord, Show, Read)
+```
+- Type classes
+	- `Show`: print out the type as it is in the code
+	- `Read`: parse the type as it is in the code
+	- `Eq`: the natural definition of equality
+	- `Ord`: constructors that come first are smaller
+
+```haskell
+data Point = Point Int Int deriving (Show, Read, Eq)
+shift_up (Point x y) = Point x (y+1)
+
+move :: Point -> Direction -> Point
+```
+
+custom `records`: can be created out of order
+```haskell
+data Person = Person String String Int String
+
+get_first_name (Person x _ _ _) = x
+get_second_name (Person _ x _ _) = x
+get_age (Person _ _ x _) = x
+get_nationality (Person _ _ _ x) = x
+```
+Haskell automatically creates getter for each parameter
+```haskell
+data Person = Person {first name :: String,
+						secondName :: String,
+						age :: Int
+						nationality :: String}
+							deriving(Show)
+Person “joe” “bloggs” 25 “UK”
+```
+
+- `fromIntegral` can specialize the type from and to
+
+# 11/10/2023
+#### Parameterised Custom Types
+```haskell
+data Point a = Point a a
+:t Point (1::Int) (2::Int) == Point Int
+```
+
+`maybe` type: save version for functional code that might fail.
+```haskell
+data Maybe a = Just a | Nothing
+```
+
+`case` expression: write all patterns on one line
+```haskell
+case [expression] of [pattern1] -> [expression]
+```
+
+`exceptions`: is not pure functional, only be used in IO code
+- the `Maybe` type provides exemption-like behavior in pure functional code
+
+`Either` type: useful to store different types in the same list
+```haskell
+data Eigher’ a b = Left a | Right b
+
+let list = [Left “One”, Right 2, Left “three”, Right 4]
+is_left (Left _) = True
+is_left _ = False
+
+map is_left list == [True, False, True, False]
+```
+
+Detailed errors: 
+```haskell
+safe_head_either [] = Right “empty list”
+safe_head_either (x:_) = Left x
+```
+
+# 11/15/2023
+Recursive custom types
+```haskell
+data IntList Empty | Cons Int IntList deriving(Show)
+
+data List a = Empty | Cons a (List a) deriving(Show)
+
+our_head :: List a -> a
+our_head Empty = error “Empty list”
+our_head (Cons x _) = x
+
+data TwoList a b = TwoEmpty
+				| ACons a (TwoList a b)
+				| BCons b (TwoList a b)
+							deriving (Show)
+```
+
+Trees
+```haskell
+data Tree = Leaf | Branch Tree Tree deriving (Show)
+
+size :: Tree -> Int
+size (Leaf) = 1
+size (Branch x y) = 1 + size x + size y
+```
+
+Trees with data
+```haskell
+data DTree a = DLeaf a
+			| DBranch a (DTree a) (DTree a)
+							deriving (Show)
+
+— Recursion on trees with data
+tree_sum :: Num a => DTree a -> a
+tree_sum (DLeaf x) = x
+tree_sum (DBranch x l r) = x + tree_sum l + tree_sum r
+```
+
+# 11/16/2023
+### IO
+Non-pure programming
+- Print, read/write a file, communicate over network, create GUI
+- IO code can call pure functions
+`getLine`: reads a line of input from the console
+	`getLine :: IO String`, is not a String type
+`getChar`: `getchar :: IO Char`
+- If a function returns an IO type than it is impure
+	- may have side effects
+	- may return different values for the same inputs
+- IO type should be through of as a **box**
+	- holds a value from an impure computation
+	- use `<—` to get the value out, will be convert to normal type
+```
+x <- getLine
+hello
+x == “hello”
+:t x == x :: String
+```
+The values must be **unboxed** before that are used in pure functions
+```
+x <- getLine
+head x
+```
+
+`putStrLn`: prints a string into the console
+```haskell
+putStrLn :: String -> IO ()
+
+() Unit
+```
+
+The return type of a function can be `IO ()`
+The `do` syntax allows us to combine multiple IO actions, the final IO action is the return value
+- will not work in pure function code
+- works with IO actions
+
+```haskell
+get_and_print :: IO ()
+get_and_print =
+	do
+		x <- getLine
+		y <- getLine
+		putStrLn (x ++ “ “ ++ y)
+```
+
+`if` expression can be used inside do blocks
+`let` expression can be used inside do blocks
+```haskell
+add_one :: IO ()
+add_one = 
+	do
+		n <- getLine
+		let num = (read n) :: Int
+			out = show (num + 1)
+		if out == “42”
+			then putStrLn “correct!”
+			else putStrLn “wrong!”
+```
+
+`return`: put a pure value into IO
+```haskell
+:t return “hello”
+IO [Char]
+
+return ()   —print nothing
+```
+- just converts pure values to IO values
+- not like return in imperative language
+
+```haskell
+:t return
+return :: Monad m => a -> m a
+```
+
+# 17/11/2023
+ghc
+```haskell
+ghc code.hs
+code
+```
+
+`getArgs :: IO [String]` returns arguments by a list, in `System.Environment`
+loop in IO code
+```haskell
+printN :: String -> Int -> IO ()
+printN _ 0 = return ()
+printN str n = 
+	do
+		putStrLn str
+		printN str (n-1)
+
+main :: IO ()
+main = do
+	args <- getArgs
+	let n = read (args !! 0) :: Int
+	printN (args !! 1) n
+```
+
+`read file :: String -> IO String`
+```haskell
+readFile “example.txt”
+```
+
+`write file :: String -> String —> IO ()`, the file will be **overwritten**.
+```haskell
+writeFile “output.txt” “hello\nthere\n”
+```
+
+report function
+```haskell
+main :: IO ()
+main = do
+	args <- getArgs
+	let infile = args !! 0
+		outfile = args !! 1
+	input <- read file infile
+	writeFile outfile (report input)
+```
+
+`print`: same as (putStrLn . show), print every characters
+`putStr`: print a string without a new line
+`readLn`: gets a line of input and calls read
+`forever`: repeats an IO action forever, in `Control.Monad.package`
+```haskell
+process :: IO ()
+process = do
+	putStr “input: ”
+	l <- getLine
+	putStrLn (map toUpper l)
+```
+
+`sequence` performs a list of IO actions
+```haskell
+sequence :: [IO a] -> IO [a]
+sequence [getLine, getLine, getLine]
+
+sequence (map print [1,2,3])
+1
+2
+3
+[(),(),()]
+```
+
+`mapM :: (a -> IO b) -> [a] -> IO [b]`: same as `sequence (map print [])`
+
+`when :: Bool -> IO () -> IO ()`
+```haskell
+when True (print “hi”)
+```
+
+`unless`: executes an IO action of a condition is false

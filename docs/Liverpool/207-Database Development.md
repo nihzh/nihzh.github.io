@@ -214,11 +214,6 @@ The corresponding isolation strategy only activate on the new session which esta
 
 # 10/19/2023
 ### Locks
-- each item has a padlock
-- read/write to the item by getting the padlock, ask the schedule for it.
-- *Shared and exclusive locks*
-- *Update locks*:
-- *Multiple granularity*
 #### Two-phase Locking (2PL)
 - A simple locking mechanism that guarantees conflick-serializability
 - In each **transaction**, all lock operations precede all unlocks
@@ -295,7 +290,7 @@ The corresponding isolation strategy only activate on the new session which esta
 	- only redo part of **committed** transactions in mentioned transaction after `<CHECKPOINT(T1,T2)>`; then undo all of uncommitted transactions in mentioned transaction before `<CHECKPOINT(T1,T2)>`
 - Robust: works even after system failures
 
-### Recoverable Schedules
+### Recoverable schedules
 - *Cascading Rollback*: If a transaction T aborts: Recursively abort all transactions that have read items written by an aborted transaction.
 	- abort: break isolation
 	- not abort: break durability
@@ -305,4 +300,41 @@ The corresponding isolation strategy only activate on the new session which esta
 - Additional implicit requirement
 	- All log records have to reach disk in the order in which they are written
 	- could in principle abort -> cascading rollback
-- *Recoverable schedules*: T commits only if all transactions that T has read from have commited
+- *Recoverable schedules*: T **commits** only if all transactions that T has read from have commited
+
+### Cascadeless schedules
+- Each transaction in it **reads** only values that were written by transactions that have already committed
+	- no dirty data
+	- no cascading rollback
+	- Log records have to reach disk in the right order
+- Cascadeless schedules are *recoverable*
+- Cascadeless schedules are in general **not serialisable**
+
+### Strict schedules
+- Each transaction in it **reads and writes** only values that were written by transactons that have already committed
+- *Strict Two-Phase Locking* (Strict 2PL)
+	- Enforces *conflict-serialisability* and *strict schedules*
+	- A transaction T **must not release any lock** (allows T to write data, e.g. *exclusive locks*) until: **T has committed or aborted** AND the commit/abort log recored has been written to disk
+- Strict 2PL and deadlocks: two transactions hold the lock that each others requesting, waiting peer for release the lock.
+
+### Timestamp based schedules
+- Schedule transactions so that the effect is the same as executing wach transaction instantaneously when it is started
+- The scheduler processing request (`read(X)`, `write(X)`) from transactions in the transaction manager queue, the scheduler can only:
+	- Grant request
+	- Abort transaction
+	- Delay transaction
+- *Timestamps*: Each transaction T is assigned a unique integer `TS(T)` when it starts (The timestamp of T)
+- T1 started earlier than T2, then TS(T1) < TS(T2)
+- Assign a **new timestamp** after a restart
+- For each database item X
+	- Read Time of X: `RT(X)`: timestamp of **youngest transaction** that read X
+	- Write Time of X: `WT(X)`: timestamp of **youngetst transaction** that wrote X
+- If T1 requests to **read X**: Abort & restart T1 if **WT(X) > TS(T1)**, grand request otherwise
+- If T1 requests to **write X**: Abort & restart T1 if **RT(X) > TS(T1)** OR **WT(X) > TS(T1)**, grand request otherwise
+- Schedules enforced by timestamp based schedulers are not strict, additional condition: **Delay read or write** reqeusts until the youngest transaction who **wrote** X before has committed or aborted
+- *Multiversion concurrency control* (MVCC): 
+	- write operations do not overwrite each other, but instead Wi(X) creates makes a new version X at time TS(Ti)
+	- The transaction always reads the latest version before its timestamp
+	- which means that a transaction only need to restart if it tries to **write** AND the **read timestamp** is later than its timestamp
+	- Only **abort & restart T1** if **RT(X) > TS(T1)** when writes; reads are always granted
+		- may let later transaction phantom reads
