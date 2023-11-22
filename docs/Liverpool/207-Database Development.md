@@ -87,6 +87,7 @@ DROP VIEW Employee_transaction_count;
 ```
 
 # 10/12/2023
+## Transaction Management
 ### Transactions
 - Transaction: a serious of queries, single and complete
 	- Concurrency: serialisable behaviour
@@ -169,7 +170,7 @@ The corresponding isolation strategy only activate on the new session which esta
 - Transaction isolation levels: 
 	- *READ UNCOMMITTED*: All the operation done (not commited) are exposed to other transactions immediately. **Will lead to all three** phenomena
 	- *READ COMMITTED*: The transaction can only reads data that already committed by other transaction. Can **cover the problem of Dirty read**. Is default isolation level of *Oracle*.
-	- *REPEATABLE READ*: The data updated by other transaction after current transaction established is not accessable, the reading data is consistancy throughout the transaction, but new records inserted by others during current transaction cannot be coverd (**cannot cover phantom read**). (MySQL is fixed phantom read problem in repeatable read level)
+	- *REPEATABLE READ*: The data updated by other transaction after current transaction established is not accessable (gap lock), the reading data is consistancy throughout the transaction, but **new records inserted** by others during current transaction cannot be coverd (**cannot cover phantom read**). (MySQL is fixed phantom read problem in repeatable read level)
 	- *SEARIALIZABLE*: A new transaction can only be execute when the previous transaction commit. **Solves all three** phenomena.
 
 ### Schedules
@@ -280,7 +281,7 @@ The corresponding isolation strategy only activate on the new session which esta
 - Write all log records for all updates to databse items first
 - Ensure Atomicity and Durability without log using No Steal/Force;
 
-### Checkpoints
+#### Checkpoints
 - ARIES:
 	- Undo/Redo logging
 	- Transactions do not write to buffers before they are sure they want to commit
@@ -290,7 +291,8 @@ The corresponding isolation strategy only activate on the new session which esta
 	- only redo part of **committed** transactions in mentioned transaction after `<CHECKPOINT(T1,T2)>`; then undo all of uncommitted transactions in mentioned transaction before `<CHECKPOINT(T1,T2)>`
 - Robust: works even after system failures
 
-### Recoverable schedules
+### Concurrency control
+#### Recoverable schedules
 - *Cascading Rollback*: If a transaction T aborts: Recursively abort all transactions that have read items written by an aborted transaction.
 	- abort: break isolation
 	- not abort: break durability
@@ -302,7 +304,7 @@ The corresponding isolation strategy only activate on the new session which esta
 	- could in principle abort -> cascading rollback
 - *Recoverable schedules*: T **commits** only if all transactions that T has read from have commited
 
-### Cascadeless schedules
+#### Cascadeless schedules
 - Each transaction in it **reads** only values that were written by transactions that have already committed
 	- no dirty data
 	- no cascading rollback
@@ -310,15 +312,24 @@ The corresponding isolation strategy only activate on the new session which esta
 - Cascadeless schedules are *recoverable*
 - Cascadeless schedules are in general **not serialisable**
 
-### Strict schedules
+#### Strict schedules
 - Each transaction in it **reads and writes** only values that were written by transactons that have already committed
 - *Strict Two-Phase Locking* (Strict 2PL)
 	- Enforces *conflict-serialisability* and *strict schedules*
 	- A transaction T **must not release any lock** (allows T to write data, e.g. *exclusive locks*) until: **T has committed or aborted** AND the commit/abort log recored has been written to disk
 - Strict 2PL and deadlocks: two transactions hold the lock that each others requesting, waiting peer for release the lock.
 
-### Timestamp based schedules
-- Schedule transactions so that the effect is the same as executing wach transaction instantaneously when it is started
+#### Wound-Wait Scheme
+- Use timestamp to decide which transaction can wait further and which must abort to prevent deadlock.
+- older transactions **never** wait for unlocks, only younger transactions allowed to wait, so no cyclic dependencies created.
+- For two transactions T1 and T2, T1 is current transaction
+- If T1 is older than T2
+	- T2 is rolled back unless it has finished
+- If T1 is younger than T2
+	- T1 is allowed to wait further for T2 to unlock
+
+#### Timestamp based schedules
+- Schedule transactions so that the effect is the same as executing wach transaction instantaneously when it is started.
 - The scheduler processing request (`read(X)`, `write(X)`) from transactions in the transaction manager queue, the scheduler can only:
 	- Grant request
 	- Abort transaction
@@ -338,3 +349,120 @@ The corresponding isolation strategy only activate on the new session which esta
 	- which means that a transaction only need to restart if it tries to **write** AND the **read timestamp** is later than its timestamp
 	- Only **abort & restart T1** if **RT(X) > TS(T1)** when writes; reads are always granted
 		- may let later transaction phantom reads
+
+#### MySQL/InnoDB
+- Partly ACID compliant (fully requires additional engines like InnoDB)
+- strict 2PL at serialisable isolation level
+- MVCC on lower isolatoin levels
+
+
+## Query Processing
+- Query compiler --> Execution Engine
+- Responsible for
+	- transforming SQL quries into sequences of databse operations
+	- executing these operations
+
+1. SQL query
+2. Parse query & preprocess
+	- Logical query plan (relational algebra)
+3. Optimise logical qurey plan
+	- Optimised logical query plan
+4. Select physical query plan
+	- Physical query plan
+5. Query Execution
+
+### Relational Algebra
+Set of **operations** that can be applied to **relations** to **compute new relations**
+- *Selection* (𝜎)
+- *Projection* (𝜋)
+- *Cartesian product* (×)
+- *Union* (∪)
+- *Renaming* (𝜌)
+- *Natural join* (⋈)
+- *Semijoin* (⋉)
+
+### Query Plans
+- A **relational algebra expression** that is obtained from an SQL query is called a *logical query plan*
+- Query plans are typically represented as trees, **evaluate from the leaves to the root**
+	- Leaves: input relations
+	- Inner nodes: operations
+- DBMSs aim to select a beset possible query plan from many different query plans
+	- `𝜎condition(R1 ⋈ R2)` = `𝜎condition(R1) ⋈ 𝜎condition(R2)`
+
+#### Executing Query Plans
+Proceed a *query plan* from bottom to top
+- Compute an intermediate result for each node
+- For a **leaf**  relation R, the intermediate result is R
+- For an **inner node** operator **op**, get the intermediate result by applying op to the childrens' intermediate results
+- Result of the query = intermediate result of the **root**
+
+SELECT AND WHERE
+```
+𝜎 condition(R) have to read entire file
+for each tuple t in R:
+	if t satisfies condition:
+		output t
+
+𝜋 attribute list(R)
+for each tuple t in R:
+	output the restriction of t to the attribute in attribute list
+```
+
+### Joins
+*Natural join* ⋈ for R ⋈ S: Nested loop join algorithm, for each tuple r in R reads entire relation S. Running time: `O(|R| * |S|)`
+```
+for each tuple r in R:
+	for each tuple s in S:
+		if r and s have the same values for all common sttributes
+			output r ⋈ s
+```
+
+*Equijoins*:  On `R ⋈A=B S is defined as 𝜎A=B(R × S)`, If R is sorted on A and S is sorted on B, then R ⋈A=B S can ge computed with one pass over R and S + runtime equal to the size of the output
+- For duplicates value in target column, uses `×` to join all records
+- Typical running time: `𝑂(|R|log2|R| + |S|log2|S|)`
+
+Join algorithms in practice
+- Index joins
+- Hash joins
+- Multipay joins: join more than two relations at once
+
+### Index
+Given the values for one or more attributes of a relation R, provides quick access to the tuples with these values
+- Secondary: points to locatoin of records on disk
+- Primary: in addition, defines how data is sorted on disk
+- Forms on indexes
+	- *B+ Trees*: Good for selection dondition specifies a range
+	- *Hash tables*: Good for selection involves equality only
+
+### B+ Trees
+Multi-level index: distributed across different layers
+- *Leaves*:  a1... an, Fields are filled from left to right
+	- Line 1: sorted in increasing order `a1... ai` + unused
+	- Line 2: Points to tuples with value `a1... ai` + unused pointer + next leaf (pointer)
+	- n: at least `(n+1)/2` pointers are used, unless this is the only leaf
+- *Inner Nodes*: a1... an
+	- Line 1: a1... ai number which is **smallest number in childs-subtree** on the **right** + unused
+	- Line 2: a1... ai+1, points to node for values between two (one) numbers on top-left and top-right. for first point, values < a1; last point, values >= ai + null point
+	- n: at least `(n+1)/2` pointers are used, unless root, which must use >= 2 pointers
+
+#### Looking Up a Value
+Find pointer to the rows with value v
+1. Start at the root
+2. While current node is not leaf node
+	1. Find the largest i with ai <= v and proceed to the associated child node
+3. If current node is a leaf
+	1. if v occours in the leaf, follow the associated pointer
+	2. otherwise, return "v does not exist in index"
+- `O(h × log2 n)`, h: height of the B+ tree
+
+#### Inserts value/pointer pairs
+1. Find the leaf that should contain the value
+2. If the leaf is not full, insert the value/pointer pair
+3. If the leaf is full
+	1. Split the peaf to make space for the new value/pointer pair and move **half of the pointers** to the new node
+	2. Insert the value/pointer pair
+	3. Connect the leaf to parent node, split still needed if the parent node is full
+- B+ Tree must remains balanced
+- `O(h × log2 n)`
+
+#### Value Deletion

@@ -104,6 +104,8 @@ Cylinder r h=
 	- "Hello" ++ “ world!” == “Hello world!”
 - `!!` operator gets the specified element from the list, **zero-indexed**
 	- `[1, 2, 3, 4] !! 1` == 2
+- `:` add a element to the head of the list
+	- `1 : [2, 3, 4, 5]` = \[1, 2, 3, 4, 5]
 - Internally Haskell will walk the entire list to get the last element
 - Character ‘e’ have not same type with a String “e”
 - *head* is its first element; *tail* is everything but the first element
@@ -297,12 +299,12 @@ qs’ (x:xs) = qs’ lower ++ [x] ++ qs’ upper
 
 # 10/20/2023
 ### Type of Haskell
-	- Int: 64 bits integer
-	- Integer: arbitrary size integers
-	- Float: 32 bit floating point
-	- Double: 64 bit floating point
-	- Bool: True or False
-	- Char: single character, using ‘’
+- Int: 64 bits integer
+- Integer: arbitrary size integers
+- Float: 32 bit floating point
+- Double: 64 bit floating point
+- Bool: True or False
+- Char: single character, using ‘’
 - Tuple will have various types, separate by comma
 - List have just a single type
 - Function type is `[input type] -> [output type]`
@@ -499,8 +501,8 @@ dropWhile’ f (x:xs)
 	| otherwise = x:xs
 ```
 
-`words`: converts a String to a list, elements are words separated by spaces
-`unwords`: converts a list to a String that separate elements by a space
+`words`: converts a String to a list, elements are words separated by **spaces**
+`unwords`: converts a list to a String that separate elements by a **space**
 
 `zipWith`: zips two lists together using a function
 ```haskell
@@ -524,9 +526,8 @@ map words $ lines x
 
 # 11/08/2023
 #### Custom Types
-- New name of existing type
+- `type`: New name of existing type
 - All types must start with capital letters, meaningful
-
 ```haskell
 type VoteResults = [(Int, String)]
 ```
@@ -568,7 +569,7 @@ data Person = Person {first name :: String,
 						age :: Int
 						nationality :: String}
 							deriving(Show)
-Person “joe” “bloggs” 25 “UK”
+Person "joe" "blogs" 25 "UK"
 ```
 
 - `fromIntegral` can specialize the type from and to
