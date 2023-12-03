@@ -802,3 +802,122 @@ when True (print “hi”)
 ```
 
 `unless`: executes an IO action of a condition is false
+
+# 11/22/2023
+IO action can return any type, complex types
+have to unbox and rebox the output of the recursion
+```haskell
+get_lines :: IO [String]
+get_lines = do
+	x <- getLine
+	if x == “”
+		then return []
+		else do
+			xx <- get_lines
+			return (x : xs)
+```
+
+```haskell
+print_screen :: [String] -> IO ()
+print_screen [] = return ()
+print_screen (x:xs) =
+	do
+		putStrLn x
+		print_screen xs
+
+make_screen :: Int -> Int -> [String]
+make_screen x y = [replicate x ‘ ‘ | _ <- [1..y]]
+```
+
+```haskell
+modify_list :: [a] -> Int a -> [a]
+modify_list list pos new = 
+	let
+		before = take pos list
+		after  = drop (pos + 1) list
+	in
+		before ++ [new] ++ after
+
+
+set :: [String] -> Int -> Int -> Char -> [String]
+set screen x y char =
+	let
+		line = screen !! y
+		new_line = modify_list line x char
+		new_screen = modify_list screen y new_line
+	in 
+		new_screen
+
+
+set_list :: [String] -> [(Int, Int, Char)] -> [String]
+set_list screen [] = screen
+set_list screen ((x,y,c) : xs) = 
+	set (set_list screen xs) x y c
+
+
+letter_a :: [(Int, Int, Char)]
+letter_a = map (\ (x, y) -> (x, y ‘#’)) [
+   …
+]
+
+—shift letter to the right
+shift_letter :: [(Int, Int, Char)] -> Int -> [(Int, Int, Char)]
+shift_letter letter shift = 
+	map (\ (x, y, c) -> (x + shift, y, c)) letter
+
+
+big_letters :: [String] -> Int -> IO ()
+big_letters screem cursor = 
+	do
+		c <- getLine
+		let lett = case head c of
+				‘a’ -> letter_a
+				‘b’ -> letter_b
+				otherwise -> []
+			new _screen = set_list screen (shift_letter lett cursor)
+		print_screen new_screen
+		big_letters new_screen (cursor + 6)
+
+
+main :: IO ()
+main = big_letters blank_screen 0
+```
+
+# 11/23/2023
+- *Strict evaluation*: always apply the innermost functions first, Imperative languages are always strict
+- *Lazy evaluation*: always apply the outermost functions first
+	- if value is never used, it is never computed
+```haskell
+let f x = 1
+f undefined == 1
+```
+- For pure functions the order of evaluation is irrelevant, Haskell are lazy by default
+- Laziness allow us to do infinite computations on infinite lists
+```haskell
+all_1s = 1 : all_1s
+all_2s = zipWith (+) all_1s all_1s
+```
+
+-  `$` operator evaluates a function
+- `$!` operator does strict evaluation
+
+# 11/24/2023
+- *Tail recursion*: nothing left to do after the recursive call
+```haskell
+is_even 0 = True
+is_even 1 = False
+is_even n = is_even(n - 2)
+```
+- No call stack is built up
+- Less memory is used
+```haskell
+fact_tail 1 acc = acc
+fact_tail n acc = fact_tail (n-1) $! (acc*n)
+factorial n = fact_tail n 1
+```
+
+```haskell
+-- evedn
+foldl f acc [] = acc
+foldl f acc (x:xs) = foldl f (f acc x) xs
+```

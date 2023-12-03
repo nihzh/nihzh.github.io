@@ -466,3 +466,120 @@ Find pointer to the rows with value v
 - `O(h × log2 n)`
 
 #### Value Deletion
+1. Find the value
+2. Remove the value
+3. Let `x` be  
+	| 2	    𝑖𝑓 𝐶 𝑖𝑠 𝑟𝑜𝑜𝑡  
+	| 𝑛+1/2  𝑖𝑓 𝐶 𝑖𝑠 𝑖𝑛𝑡𝑒𝑟𝑛𝑎𝑙 𝑛𝑜𝑑𝑒  
+	| 𝑛+1/2  𝑖𝑓 𝑐 𝑖𝑠 𝑙𝑒𝑎𝑓
+4. Let `C` be current node
+5. If `C` has above x pointers: fix ancestors and done
+6. If `C` is the root: remove it and let its child be the new root
+7. If `C` empty after deletion: 
+	1. If *adjacent node* has more than `x + 1`
+		1. steal a pointer to the empty leaf
+		2. fix ancestors and done
+	2. If *adjacent node* has no more than `x + 1`
+		1. pick an adjacent node and merge together
+		2. `C` == parent node
+- B+ Tree must remains balanced
+- `O(h × log2 n)`
+
+##### Adjacent node
+- *Non-leaf nodes*: the immediate preceding and succeeding siblings at the **same parent node level**.
+- *Leaf nodes*: the immediate preceding and succeeding **leaf nodes** at the same level
+
+
+### Optimise logical qurey plan
+- Bottom-up
+- Efficiency depends on size of intermediate results
+- Equivalence laws of relational algebra, examples:
+	- 𝜎A=a AND B=b(R) = 𝜎A=a(𝜎B=b(R))
+	- 𝜎A=a(R × S) = 𝜎A=a(R) × S
+	- 𝜎A=B(R × S) = R ⋈A=B S
+
+1. Push **selections** as far down the tree as possible
+2. "Push" **projections** as for down the tree as possible, or insert projections where appropriate
+3. If possible, introduce equijoins (`⋈`) for `𝜎` followed by `×`
+
+### Physical query plan
+- Algorithm: index, join
+- Pass information: disk/memory, piplining operators
+- Order for computing joins, unions, etc.
+- Additional operations: sorting, etc.
+
+1. Generate many different phpysical query plans
+2. Estimate cost of execution for each plan
+	- time
+	- Disk accesses: selection algorithm, passing method, size of intermediate results; Size of relations, distinct items per attribute per relation; statistics gathering
+	- Memory
+	- communication
+3. Select physical phan with lowest cost estimate
+	- Estimate for the size of `𝜎A=a(R)`: `|R| / number of distinct values in column A of relation R`
+	- Estimate for the # of blocks required to store `𝜎A=a(R)`: `|R| / nbumber of distinct values in column A of relation R`
+	- Estimate `R ⋈ S` (assume A is the only common attribute): `|R| × |S| / max.number of distinct values for A in R or S`
+- Generate physical query plans: top-down/bottom-up
+- Algorithm for each operator / join order: based on size of intermediate result
+- *Pipelining "stream-based processing"*
+	- passes the tuples of one operation directly to the next operation without using disk
+	- Extra buffer for each pair of adjacent operations to hold tuples passing from one relation to the other
+
+## Distributed databases
+- Collection of multiple logically interrelated databses
+- Distributed over a computer network
+- *Distributed DBMS (DDBMS)*: manages a distributed database
+- *Node/site*: a database computer in the network
+
+### Fragmentation
+- split database into divfferent parts that can then be stored at different nodes
+	- Horizontal (sharding): may overlap, each site stores a relation that contains a subsut of the tuples, **Entire relation = union of relations at the different sites**
+	- Vertical: typically should overlap, tuples stored at different sites can be distinguished by the value of one or few attributes, or other conditions
+- *Fragmentation transparency*: Users dont see fragmetns, just the full relations
+- *Redundancy*: When a site failed, other site stores the copy are allow to answer queries without establishing a connection to the central office
+- *Replication*: Wide spectrum of partial replication: limit number of copies of each fragment, replicate only some fragments
+- *Transparency*: 
+	- *Fragmentation transparency*: 
+		- transparent to users, queries for entire database
+		- DDBMS translates this into a query plan that fetches the required information from appropriate nodes
+	- *Replication transparency*:
+		- transparent to users
+		- store copies of data items / fragments at different sites
+	- *Loacation transparency*:
+		- the location where data is stored is transparent to the user
+	- *Naming transparency*:
+		- a given name has the same meaning everywhere in the system
+
+### Transaction management in DDBMS
+- *Concurrency control*: each site with a copy of an item has a local lock that it cal grant transactions for that item, if a transaction gets **over half** the lcoal locks for an item, it has a **global lock** on the item, if so, it must tell the sites with a copy that it has the lock, if it takes too long time, must stop getting the lock.
+- Global transaction `T`:
+	1. Starts local transaction `T0` at site1
+	2. `T0` instructs other sites to start local transactions `T1`, `T2`, `T3`
+	3.  `T1`, `T2`, `T3` find out inventory for product X at sites & send it back to `T0`
+	4. `T0` determines how to move product X between sites
+	5. `T0` instructs `T1`, `T2`, `T3` to move product X accordingly
+
+#### Two-Phase Commit Protocol
+- *Coordinator*: executed at some node & decides if and when local transactions can commit, could run at any other node
+- *Logging*: each node locally and send to & received from other
+- *Phase 1*: Decide when to commit or abor
+	1. Coordinator logging `<PREPARE T>`, send `prepare T` if they want to commit
+	2. Each node: decide whether to commit or abort, must decide
+		- **Commit**: go into *precommitted state* & logging `<READY T>` and send back `ready T`
+		- **Abort**: logging `<DON'T COMMIT T>` and send back `don't commit T` and abort local transction
+		- *precommitted state*: only the coordinator is allowed to abort the transaction now
+- *Phase 2*: Commit or abort
+	 - If all nodes responde `ready T`: logging `<COMMIT T>` and send `commit T` to all nodes, all nodes commit
+	 - If some node respondes `don't commit T`: logging `<ABORT T>` send `abort T` to all nodes, all nodes abort
+
+- *Three-Phase Commit Protocol*: divide phase 2 into two parts
+	- Phase 2(a): "prepare to commit", send the decision (commit/abort) to all nodes, nodes go into *prepare-to-commit state*
+	- Phase 2(b): "commit"
+
+### Query for DDBMS
+- Joins `R ⋈ S` at site B: asks site A to send R, A only send data that is actually required, B compute.
+- `R ⋉ S := R ⋈ 𝜋common attributes of R and S(S)` on site B: 
+	1. site B sends S' := `𝜋common attributes of R and S(S)` to site A
+	2. site A sends R' := `R ⋉ S` (= `R ⋈ S’`) to site B
+	3. site B outputs `R' ⋈ S`
+	- communication cost ≈ |S'| * (size of tuple in S') + |R'|
+- In general: |𝜋common attributes(S)| + |R ⋉ S| should be smaller than |R|

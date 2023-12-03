@@ -337,3 +337,25 @@ Determine good paths (equivalently routes)
 - S/N: signal-to-noise ratio
 Noise free channel (Nyquist): `Max data rate = 2 * B * log[base2] M`
 Shannon’s law: `Max data rate = B * log[base2] (1 + S/N)`
+
+# 11/23/2023
+## Network Security
+- eavesdrop
+- impersonation
+- man-in-the-middle attacks
+- hijacking
+- denial of servicce
+
+- *confidentiality*: only sender, intended receiver should understand message contents
+- *authentication*: sender and receiver confirm identity of each other
+- *message integrity*: sender, receiver ensure message not altered without detection
+- *access and availability*: services must be accessible and available to users
+
+### Cryptography
+- Symmetric key cryptography
+	- Caesar
+	- Poly alphabetic encryption
+	- Block ciphers
+![[c28a299f31f7d5a7323ce36158b2a1f.jpg]]
+
+![[b05cc94894e188baaced867f918d43d.jpg]]

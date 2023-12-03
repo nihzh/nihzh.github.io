@@ -169,7 +169,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Liverpool/207-Database Development.md",
+                "file": "Liverpool/211-Computer Networks.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -186,7 +186,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Liverpool/207-Database Development.md"
+                "file": "Liverpool/211-Computer Networks.md"
               }
             }
           },
@@ -279,21 +279,23 @@
                 }
               }
             ],
-            "currentTab": 2
+            "currentTab": 3
           }
         ],
         "direction": "vertical",
-        "x": 2467,
-        "y": 1008,
-        "width": 87,
-        "height": 203,
+        "x": 2564,
+        "y": 839,
+        "width": 217,
+        "height": 413,
         "maximize": true,
         "zoom": 0
       }
     ]
   },
-  "active": "f0e56644f831df6a",
+  "active": "965599440d868482",
   "lastOpenFiles": [
+    "img/b05cc94894e188baaced867f918d43d.jpg",
+    "img/c28a299f31f7d5a7323ce36158b2a1f.jpg",
     "Liverpool/105-Programming Paradigms.md",
     "Liverpool/207-Database Development.md",
     "Liverpool/211-Computer Networks.md",
@@ -340,7 +342,6 @@
     "index - not themeable.html",
     "index - 副本.html",
     "img/Pasted image 20230820004454.png",
-    "img/Pasted image 20230819023917.png",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 2.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 1.zip",
