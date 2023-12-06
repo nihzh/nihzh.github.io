@@ -359,3 +359,7 @@ Shannon’s law: `Max data rate = B * log[base2] (1 + S/N)`
 ![[c28a299f31f7d5a7323ce36158b2a1f.jpg]]
 
 ![[b05cc94894e188baaced867f918d43d.jpg]]
+
+# 11/30/2023
+#### Public Key Cryptography
+- *RSA*： key pair

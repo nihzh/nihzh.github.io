@@ -439,7 +439,7 @@ filter’ f (x:xs)
 # 11/01/2023
 ### Fold
 ```haskell
-foldr’ :: (a —> b -> b) -> b -> [a] -> b
+foldr’ :: (a -> b -> b) -> b -> [a] -> b
 foldr’ _ init [] = init
 foldr’ f init (x:xs) = f x (foldr’ f init xs)
 
@@ -455,7 +455,7 @@ sum’ list = foldr1 (+) list
 concat’ list = foldr1 (++) list
 maximum’ list = folder (\ x acc -> if x > acc then x else acc) list
 
-—- have to define a return value or default in statement
+-- have to define a return value or default in statement
 
 
 foldr: processes list from the right
@@ -612,14 +612,15 @@ safe_head_either (x:_) = Left x
 ```
 
 # 11/15/2023
-Recursive custom types
+Recursive custom types: constructuors contain the type itself
 ```haskell
-data IntList Empty | Cons Int IntList deriving(Show)
+data IntList = Empty | Cons Int IntList deriving(Show)
 
+-- when using variant data types
 data List a = Empty | Cons a (List a) deriving(Show)
 
 our_head :: List a -> a
-our_head Empty = error “Empty list”
+our_head Empty = error "Empty list"
 our_head (Cons x _) = x
 
 data TwoList a b = TwoEmpty
@@ -627,8 +628,17 @@ data TwoList a b = TwoEmpty
 				| BCons b (TwoList a b)
 							deriving (Show)
 ```
+- `Empty`: the data type represents this word finally, default value, can be any group of letters
+- `Cons`: name of the constructor, can be any group of letters
+- `Int`: forced data type
+- `a`: any data type, it will be determined when instantiate this type
+- `Cons a (List a)`: constructor expression, in this case, it can be instantiated recursively by 
+	- `Cons 1 (Cons 2 (Cons 3 Empty))`, equivalent `[1,2,3]`, `:t` = `:: Num a => List a` (when the value not be defined precisely, show a greater set)
+	- `Cons 1 (Cons (2::Int) (Cons 3 Empty))`, `[1,2,3]`, `:t` = `:: List Int` (any of each is defined precisely, become a certain value)
+	- `Cons 1 (Cons 'b' (Cons 3 Empty))`, error, the data type must same all the time
+	- `Cons 'a' (Cons 'b' (Cons 'c' Empty))`, equivalent `['a', 'b', 'c']`, `:t` = `List Char`
 
-Trees
+Trees: a classical data structure
 ```haskell
 data Tree = Leaf | Branch Tree Tree deriving (Show)
 
