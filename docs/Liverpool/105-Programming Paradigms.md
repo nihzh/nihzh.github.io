@@ -13,8 +13,10 @@
 - complex algorithms are mostly functional
 - A pure function is a balckbox
 - Pure functions **only** influence the world through **return values** -- No changes global state, printing, connect netwoks.....
-- Pure functions must be **deterministic**, no random contents
-- *Side-effect* is anything changes global state, printing, connect netwoks which cannot **export same output when have same input**.
+- *Pure functions* must be **deterministic**; must not including side-effect, no random contents
+- *Deterministic*: When given same arguments, it always returns the same value
+- *Side-effect* is anything changes global state, printing, connect netwoks which  **cannot export same output when having same input**.
+	- Anything the function does that is visible to the outside world
 - same input, always same output.
 - one function do one thing only.
 - No control flow, everything is juct function application
@@ -581,7 +583,7 @@ data Point a = Point a a
 :t Point (1::Int) (2::Int) == Point Int
 ```
 
-`maybe` type: save version for functional code that might fail.
+`maybe` type: save version for functional code that might fail. This provides a **pure functional way** to deal with computations that might fil, and avoids the use of exceptions which are not pure functional.
 ```haskell
 data Maybe a = Just a | Nothing
 ```
@@ -591,10 +593,10 @@ data Maybe a = Just a | Nothing
 case [expression] of [pattern1] -> [expression]
 ```
 
-`exceptions`: is not pure functional, only be used in IO code
-- the `Maybe` type provides exemption-like behavior in pure functional code
+`exceptions`: is **not pure functional**, only be used in IO code
+- the `Maybe` type provides **exemption-like** behavior in pure functional code
 
-`Either` type: useful to store different types in the same list
+`Either` type: This prosvedes a way to store two different types in the same data type, useful to store different types in the same list.
 ```haskell
 data Eigher’ a b = Left a | Right b
 
@@ -653,15 +655,32 @@ data DTree a = DLeaf a
 			| DBranch a (DTree a) (DTree a)
 							deriving (Show)
 
-— Recursion on trees with data
+-- Recursion on trees with data
 tree_sum :: Num a => DTree a -> a
 tree_sum (DLeaf x) = x
 tree_sum (DBranch x l r) = x + tree_sum l + tree_sum r
+
+
+-- formulate the file directory as a data tree, find a file
+find_file file (DLeaf x)
+	| x == file = Just file
+	| otherwise = Nothing
+
+fild_file file (DBranch x l r) = 
+	let 
+		left = fild_file file l
+		right = fild_file file r
+	in
+		case (left, right) of
+			(Just y, _) -> Just (x ++ y)
+			(_, Just y) -> Just (x ++ y)
+			(_, _) -> Nothing
+
 ```
 
 # 11/16/2023
 ### IO
-Non-pure programming
+Non-pure functional programming
 - Print, read/write a file, communicate over network, create GUI
 - IO code can call pure functions
 `getLine`: reads a line of input from the console
@@ -673,14 +692,14 @@ Non-pure programming
 - IO type should be through of as a **box**
 	- holds a value from an impure computation
 	- use `<—` to get the value out, will be convert to normal type
-```
+```haskell
 x <- getLine
 hello
-x == “hello”
+x == "hello"
 :t x == x :: String
 ```
 The values must be **unboxed** before that are used in pure functions
-```
+```haskell
 x <- getLine
 head x
 ```
@@ -703,7 +722,7 @@ get_and_print =
 	do
 		x <- getLine
 		y <- getLine
-		putStrLn (x ++ “ “ ++ y)
+		putStrLn (x ++ " " ++ y)
 ```
 
 `if` expression can be used inside do blocks
@@ -715,17 +734,17 @@ add_one =
 		n <- getLine
 		let num = (read n) :: Int
 			out = show (num + 1)
-		if out == “42”
-			then putStrLn “correct!”
-			else putStrLn “wrong!”
+		if out == "42"
+			then putStrLn "correct!"
+			else putStrLn "wrong!"
 ```
 
-`return`: put a pure value into IO
+`return`: put a pure value into IO, packate a value to a *Just* constructor
 ```haskell
-:t return “hello”
+:t return "hello"
 IO [Char]
 
-return ()   —print nothing
+return ()  -- print nothing
 ```
 - just converts pure values to IO values
 - not like return in imperative language
@@ -734,6 +753,16 @@ return ()   —print nothing
 :t return
 return :: Monad m => a -> m a
 ```
+- *Monad*: abstract calculation structure, provides a method for serializing the steps of a computation, passing and manipulating values are allowed in the computation procedure. instance including `Maybe`, `List ([])`, IO
+	- Linking the computation steps together by defining some operations, and pass the value through the different stages of the computation
+	- **"boxed"**: Monad (IO)
+
+```haskell
+class Monad m where
+	return :: a -> m a
+	(>>=) :: m a -> (a -> m b) -> m b
+```
+- `>>=`: *bind operaor*, recieve a Monad and a function, pass the Monad to the function and returns a new Monad
 
 # 17/11/2023
 ghc
@@ -761,12 +790,12 @@ main = do
 
 `read file :: String -> IO String`
 ```haskell
-readFile “example.txt”
+readFile "example.txt"
 ```
 
 `write file :: String -> String —> IO ()`, the file will be **overwritten**.
 ```haskell
-writeFile “output.txt” “hello\nthere\n”
+writeFile "output.txt" "hello\nthere\n"
 ```
 
 report function
@@ -787,7 +816,7 @@ main = do
 ```haskell
 process :: IO ()
 process = do
-	putStr “input: ”
+	putStr "input: "
 	l <- getLine
 	putStrLn (map toUpper l)
 ```
@@ -808,7 +837,7 @@ sequence (map print [1,2,3])
 
 `when :: Bool -> IO () -> IO ()`
 ```haskell
-when True (print “hi”)
+when True (print "hi")
 ```
 
 `unless`: executes an IO action of a condition is false
@@ -820,7 +849,7 @@ have to unbox and rebox the output of the recursion
 get_lines :: IO [String]
 get_lines = do
 	x <- getLine
-	if x == “”
+	if x == "
 		then return []
 		else do
 			xx <- get_lines
@@ -894,8 +923,10 @@ main = big_letters blank_screen 0
 ```
 
 # 11/23/2023
-- *Strict evaluation*: always apply the innermost functions first, Imperative languages are always strict
-- *Lazy evaluation*: always apply the outermost functions first
+- *Strict evaluation*: always apply the innermost functions first. Arguments to a function must be fully evaluated before the funciton itself is evaluated
+	- Imperative languages are always strict
+- *Lazy evaluation*: always apply the outermost functions first. functions can be aplied to arguments that are not yet fully evalueated
+	- only comutes a value when it is needed
 	- if value is never used, it is never computed
 ```haskell
 let f x = 1
@@ -908,11 +939,11 @@ all_1s = 1 : all_1s
 all_2s = zipWith (+) all_1s all_1s
 ```
 
--  `$` operator evaluates a function
-- `$!` operator does strict evaluation
+- `$` operator evaluates a function
+- `$!` operator does strict evaluation, it forces the argument to the function to be evalueated before the function itself is evaluated
 
 # 11/24/2023
-- *Tail recursion*: nothing left to do after the recursive call
+- *Tail recursion*: there is nothing left to do after the recursive call
 ```haskell
 is_even 0 = True
 is_even 1 = False
@@ -930,4 +961,27 @@ factorial n = fact_tail n 1
 -- evedn
 foldl f acc [] = acc
 foldl f acc (x:xs) = foldl f (f acc x) xs
+
+-- strict version of foldl, usually less memory
+foldl' f acc [] = acc
+foldl' f acc (x:xs) = (foldl' f $! (f acc x)) xs
 ```
+left fold can destroy laziness, which must reach the end of the list to get the accumulator
+
+# Next
+- Recursive algorithms: sorting, tree, graph
+- file handling, networking, GUIs, games, via the cabel system
+- https://hackage.haskell.org/
+- https://www.haskell.org/hoogle/
+- alternatives for linked lists in haskell
+	- `Data.Vector` provides arrays
+	- `Data.Text` gives packed uniode string representations
+- Monads: Learn You a Haskell
+- build own imperative language with monad transformers
+- lenses for deeply nested records
+- advanced type system
+	- Rank-N
+	- Existential
+	- Linear
+	- Dependent
+	- *What I Wish I Knew When Learning Haskell*
