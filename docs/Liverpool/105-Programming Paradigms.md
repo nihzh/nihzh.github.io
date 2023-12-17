@@ -209,7 +209,7 @@ take’ n (x:xs) = x : take’ (n-1) xs
 
 elem’ e [] = False
 elem’ e (x:xs)
-	| e == x =True
+	| e == x = True
 	| otherwise = elem’ e xs
 
 maximum’ [] = error “Called with empty list”
@@ -243,7 +243,7 @@ remove_twos (x:xs)
 	where rest = remove_twos xs
 ```
 ```haskell
-initials first last = [f] ++ “. “ ++ [l] ++ “.”
+initials first last = [f] ++ "." ++ [l] ++ "."
 	where (f:_) = first
 		  (l:_) = last
 ```
@@ -261,7 +261,7 @@ gt_10 (x:xs)
 ```
 `zip`: takes two lists and returns a list of pairs, shorter one determines the length
 #### mutual recursion
-```
+```haskell
 events [] = []
 events (x:xs) = x : odds xs
 
@@ -520,8 +520,8 @@ m6 list = zipWith m5 list list
 
 # 11/03/2023
 `x <- readFile “marks.csv”`
-`lines`: split a String to a list by ‘\\n’
-`unlines`: combine a list to a string that separate by ‘\\n’
+`lines`: split a String to a list by '\\n'
+`unlines`: combine a list to a string that separate by '\\n'
 ```haskell
 map words $ lines x
 ```
@@ -535,7 +535,7 @@ type VoteResults = [(Int, String)]
 ```
 
 `data`: create an entirely new type, is not part of any type class
-- `|` should be read as “or”
+- `|` should be read as "or"
 - each value is a constructor
 - ordering by the order (Ord)
 ```haskell
@@ -766,7 +766,7 @@ class Monad m where
 
 # 17/11/2023
 ghc
-```haskell
+```shell
 ghc code.hs
 code
 ```
@@ -788,12 +788,12 @@ main = do
 	printN (args !! 1) n
 ```
 
-`read file :: String -> IO String`
+`readFile :: String -> IO String`
 ```haskell
 readFile "example.txt"
 ```
 
-`write file :: String -> String —> IO ()`, the file will be **overwritten**.
+`writeFile :: String -> String —> IO ()`, the file will be **overwritten**.
 ```haskell
 writeFile "output.txt" "hello\nthere\n"
 ```
@@ -803,9 +803,9 @@ report function
 main :: IO ()
 main = do
 	args <- getArgs
-	let infile = args !! 0
+	let infile = args !! '
 		outfile = args !! 1
-	input <- read file infile
+	input <- readFile infile.
 	writeFile outfile (report input)
 ```
 
@@ -910,8 +910,8 @@ big_letters screem cursor =
 	do
 		c <- getLine
 		let lett = case head c of
-				‘a’ -> letter_a
-				‘b’ -> letter_b
+				'a' -> letter_a
+				'b' -> letter_b
 				otherwise -> []
 			new _screen = set_list screen (shift_letter lett cursor)
 		print_screen new_screen
@@ -953,7 +953,7 @@ is_even n = is_even(n - 2)
 - Less memory is used
 ```haskell
 fact_tail 1 acc = acc
-fact_tail n acc = fact_tail (n-1) $! (acc*n)
+      
 factorial n = fact_tail n 1
 ```
 
