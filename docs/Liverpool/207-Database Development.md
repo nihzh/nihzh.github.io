@@ -211,7 +211,7 @@ The corresponding isolation strategy only activate on the new session which esta
 
 
 # 10/17/2023
-- `SET tx_isolationn = ‘Serializable’`
+- `SET tx_isolationn = 'Serializable'`
 
 # 10/19/2023
 ### Locks
@@ -281,14 +281,14 @@ The corresponding isolation strategy only activate on the new session which esta
 - Write all log records for all updates to databse items first
 - Ensure Atomicity and Durability without log using No Steal/Force;
 
-#### Checkpoints
+##### Checkpoints
 - ARIES:
 	- Undo/Redo logging
 	- Transactions do not write to buffers before they are sure they want to commit
 	- Write `<CHECKPOINT(T1, T2)>` at first; write `<END CHECKPOINT>` after moved the content of the buffer to the disk.
 - recovery:
 	- find a `<CHECKPOINT(T1,T2)>` with corresponding `<END CHECKPOINT>` and `<START Ti>` for *all mentioned transactions* that are **uncommitted**.
-	- only redo part of **committed** transactions in mentioned transaction after `<CHECKPOINT(T1,T2)>`; then undo all of uncommitted transactions in mentioned transaction before `<CHECKPOINT(T1,T2)>`
+	- only redo part of **committed** transactions in mentioned transaction after `<CHECKPOINT(T1,T2)>`; then undo all of **uncommitted** transactions in mentioned transaction before `<CHECKPOINT(T1,T2)>`
 - Robust: works even after system failures
 
 ### Concurrency control
@@ -296,7 +296,7 @@ The corresponding isolation strategy only activate on the new session which esta
 - *Cascading Rollback*: If a transaction T aborts: Recursively abort all transactions that have read items written by an aborted transaction.
 	- abort: break isolation
 	- not abort: break durability
-- A schedule S is recoverable if the following is true:
+- A schedule S is *recoverable* if the following is true:
 	- if a transaction T1 commits and has read an item X that was written before by a different transaction T2
 	- then T2 must commit before T1 commits
 - Additional implicit requirement
@@ -583,3 +583,182 @@ Find pointer to the rows with value v
 	3. site B outputs `R' ⋈ S`
 	- communication cost ≈ |S'| * (size of tuple in S') + |R'|
 - In general: |𝜋common attributes(S)| + |R ⋉ S| should be smaller than |R|
+
+### MapReduce
+- Divide and conquer a huge number of datasets
+- *Map*: the computation ono the smaller chunks of data: **applied to a single key/value pair** and produces a **list of zero or more key/value pairs**
+- *Reduce*: how the results are combined to the final result: **group all values by key**
+- Easiest (also faster) for MapReduce: use 2 MapReduce computations
+- Keys/values can be arbitrary objects
+	- keys are typically small
+	- values might be larger
+##### Selection *𝜎c(R)*:
+```python
+Map (String tuple, String tuple):
+	if tuple satisfies c then output pair (tuple, tuple)
+
+Reduce (String tuple, Iterator <String> tupleCopies):
+	output pair (tuple, tuple)
+```
+
+
+### Semistructured Data
+*Fully Structured data* (relation model): data has to fit to schema, highly efficient query processing
+*Unstructured data*: no description of structure or data, programs have to know how to read & interpret the data
+*Semistructured data*:
+- *Self-describing*: no schema required
+- *Flexible*: e.g., can add & remove attributes on demand
+- *Semistructured data model*
+	- typically tree or "tree-like"
+	- Leaf nodes have associated data types
+	- Inner nodes have edges going to other nodes, each edge has a label
+	- Root: no incoming edges, is able to reach every nodes
+- Forms
+	- XML: DTD, Schema, XPath
+	- JSON
+	- key-value relationships
+	- graphs
+
+#### XML
+An identical datatype: `XML`, `XML('<XML content>')` when insert
+
+#### XML::XPath
+XPath allow us to write queries that return a set of values or nodes from an XML document. Result is returned in document order.
+- *Absolute path*: `/E1/E2/.../En`, starts at the root
+- *Relative path*: `E1/E2/.../En`, evaluates to another node relatively
+- *Attributes*: replace the last tag name by `@A`, shorthand of `attribute::`
+- *Wild cards*: `*`, can be used to stand for any tag name or attribute name
+- *Previous element*: `..`
+- *This element*: `.`
+
+```xpath
+-- returns all elements directly below student elements
+/students/student/*
+
+-- returns all attributes of modules
+/students/student/@
+```
+
+##### Navigation Axes
+`axis1::E1/axis2::E2/axis3::E3/.../axisn::En`
+- `attribute`: an attribute
+- `child`: any child, can be omitted
+- `parent`: the parent, `parent::*`, **ordered in reverse**
+- `descendant`: any proper descendant, `//E`, use it directly to select all elements named "E"
+- `descendant-or-self`: any descendant
+- `ancestor`: any proper ancestor, **ordered in reverse**
+- `following-sibling`: any sibling to the right
+- `preceding-sibling`: any sibling to the left, **ordered in reverse**
+- `self`: self, `self::*`
+
+##### Conditions
+`/axis1::E1[C1]/axis2::E2[C2]/axis3::E3[C3]/.../axisn::En[Cn]`
+If the condition is true, follow the path further
+- Comparisons: `=`, `<`, `>`, `<=`, `>=`, `!=`
+- A value can be **a relative path expression** or **any constant**
+- `and`, `or`
+- Selection: `[1]`, `[last()]`
+- Boolean: 
+	- `[category]`, `[@price]`: has a element/attribute with the name
+	- `[@price/data()]`: non-empty price attribute
+```xpath
+-- finds the element preceding an element containing "Maths", reverse document order
+//*[.="Maths"]/preceding-sibling::*[1]
+
+-- finds the grandparent of an element containing "Maths"
+//*[.="Maths]/parents::*[2]
+
+/products/book/[ebook[format="epub" and title="Databases"]]/author
+```
+
+Not included in this document about XPath
+- Datatypes
+-  Text nodes (to extract the text enclosed in leaf elements)
+- Other node tests
+- Built-in functions to perform arithmetic, operations on strings, etc.
+
+#### XML::XQuery
+Extension of XPath by SQL-like features: **FLWR expressions**, Return lists of values/nodes in document order
+- *Let* clause: `let $doc := doc("test.xml")`, assign **the result of XQery expression** to variable, **at least one**, variable names starts with `$`
+- *For* clause: `for <variable> in <XQuery expression>`, Consider each item in the result of the XQery, assign it to variable and execute whatever follows the for clause
+- *Where* clause: `where <condition1>[, condition2...]`, optional
+	- Existential semantics: **Tags aroud an element are removed before comparision**
+	- When comparision two expressions, tags are not necessarily removed, it might **comparissing the level of elements**, `/data()` available for contents.
+	- Interpreted as true if the result is non-empty
+	- `where some/every <$var> in <XQuery> satisfies <condition>`: like ANY/ALL in SQL
+- *Order by* clause
+- *Group by* clause: 
+- *Return* clause: `return $s/name`, mandatory
+- *Distinct values*: `distinct-values(<XQuery expression>)`
+- *Branching*: if (...) then ... else ...
+A query can include **any number of Let & For clauses, interleaved arbitrarily**
+```xquery
+-- order by
+let $doc := doc("mydoc.xml")  
+for $b in $doc/books/book  
+for $author in $b/author  
+order by $author descending  
+return <pair>{$b/title}, {$author}</pair>
+
+<pair><title>...</title>, <author>Ben</author></pair>  
+<pair><title>...</title>, <author>Anna</author></pair>
+
+
+-- group by
+let $doc := doc("mydoc.xml")  
+for $m in $doc/university/student/module  
+group by $mod:=$m  
+return <pair>{$mod}, {count($m)}</pair>
+
+<pair>COMP105, 2</pair>  
+<pair>COMP207, 1</pair>
+```
+
+### NoSQL Databases
+Not Relational, not restricted to such applications
+- Create for typical web applications
+	- fast access, millions users in parallel
+	- semi-structured, flexibility in the datatype
+	- fill ACID sometimes relaced
+- often distributed
+- *Availability*: every non-failing node always executes queries
+- *Consistency*: every read receives the most recent write or an error  
+- *Scalability*: more capacity (users, storage, ...) by adding new nodes  
+- *High performance*: often achieved by very simple interface (e.g., support lookups/inserts of keys, but do this fast)  
+- *Partition-tolerance*: even if nodes (or messages) fail, the remaining subnetworks can continue their work
+- *BASE*: *B*asically *A*vailable, *S*oft state, *E*ventually consistent
+![[Pasted image 20240113010831.png]]
+
+Common classification
+- *Key-value stores*
+- *Document stores*: semistructured data associated with an object ID
+	- MangoDB
+- *Column stores*: table names/column families fixed, column quelifiers vary
+	- Columns referenced as `<column family>:<column qualifier>`
+	- HBase
+- *Graph databases*: store as a graph
+
+### Key-value stores
+- Distributed hash table
+- Replication
+- Versioning and incomparability-resolution using vector clocks
+
+#### Properties
+- *Scalability*:  
+	- Adding new nodes to increase capacity is easy  
+	- Automatic horizontal fragmentation: Add node to free range(s) and move key-value pairs appropriately
+- *Availability & fault-tolerance*:  
+	- Due to replication  
+	- Can retrieve value for a key, even if a few nodes storing values for that key fail  
+- *High performance*:  
+	- Retrieving the value for a key is fast: apply the hash function to determine the node, then ask the node  
+	- Writing, too  
+- Problem: ensuring consistency clashes with availability
+
+#### Consistency
+- If a newer version of a data item is not yet available at a node, the older version is used/updated
+- Method: assign a vector clock to each version of an item X
+	- a list/vector of pairs (node, timestamp)
+- Use clock to decide if version V1 originated from version V2
+	- V1 originated from V2 if for all nodes in V2's clock the corresponding timestamp is less than or equal to the timestamp in V1's clock
+	- If it is incomparable, return all possibilities
