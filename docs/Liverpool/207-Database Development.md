@@ -762,3 +762,68 @@ Common classification
 - Use clock to decide if version V1 originated from version V2
 	- V1 originated from V2 if for all nodes in V2's clock the corresponding timestamp is less than or equal to the timestamp in V1's clock
 	- If it is incomparable, return all possibilities
+
+## Data analysis
+- Data warehouses: designed to support data analysis, typically integrate different data sources
+- *OLAP (Online Analytic Processing)*: refers to the process of analysing complex data stored in a data warehouse
+- *OLTP (Online Transaction Processing)*: traditional DBMS tasks, queries and updates executed faster
+
+### OLAP
+*Star Schemas*: denmormalised schema
+- Main data in one table (fact table)
+- Rest of the data can be joined with fact table very quickly
+- *Unique fact table*: represents events & objects of interest, contains porints in the data cube
+	- *Data cube*: 3 dimention, stores, dates and products, to demonstrate records in database
+- *Demension tables*: describe values along each axis
+![[Pasted image 20240114005219.png]]
+
+
+### Data Mining
+Find factors that have had the most influences over sales of product X
+- Deviation Detection
+- Link Analysis (between attributes)
+- Predictive Modelling
+- Database Segmentation: group data by similar behaviour
+- 
+Association rules
+- Classification hierachies
+- Sequential patterns
+- Clustering
+
+### Market basket model
+Data that can be described by
+- A set of items `I`
+- A set of baskets `B`: each basket `b∈B` is a subset of `I`
+
+#### Frequent-Itemset Mining
+Support of a subset J of I=frequency with which the items in J occur togethre in a basket in B
+- `number of baskets in B containing all items in J` / `number of baskets in B`
+
+A subset J of I is frequent if its support is at least `S`, which is *support threshold* and specified by user
+
+Define all other notions using new baskets / table:
+- Support of a set J with **respect to the customers**: compute the support of J
+- J is frequent with respect to the customers if it is at least the *support thershold*
+
+*Association Rules*
+- General form `{i1, i2, ..., in} => j`
+- Support: supoort of {i1, i2, ..., in, j}
+- Confidence: percentage of baskets for {i1, i2, ..., in} containing j
+	- `support of {i1, ..., in, j}` / `support of {i1, ..., in}`
+
+Compute the set F of all item sets J with support >= s
+- For each set J in F and each j in J, consider rule `J / {j} => j`
+- Compute confidence for `J / {j} => j` and compare with % of baskets containing j
+
+*A-Priori Algorithm*: compute all itemsets J with support >= s
+- `If J has support >= s, then all subsets of J have support >= s`
+- Input: set of items `I`, set of baskets `B`, max size `q`, support threshold `s`
+- Output: subsets J of I with **|J| <= q and support >= s**
+Algorithm: 
+```
+C1 := { {i} : i ∈ I }
+for k = 1 to q do
+	Fk := { J ∈ Ck : J has support ≥ s }
+	if k = q then stop
+Ck+1 := { J ⊆ I : |J| = k+1 and all subsets of J of size k occur in Fk}
+```
