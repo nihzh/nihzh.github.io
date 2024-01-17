@@ -191,32 +191,55 @@ TODO: learn about
 	- a transition function that maps input symbols and current states to a next state
 
 # 10/16/2023
-- Finite State Machines
+- *Finite State Machines*
 	- *states* define behaviour and may produce actions
 	- *state transitions*: movement from one state to another
 	- *rules or conditions*
 	- *input events*: may trigger rules and lead to state transitions
-- Moore Machine
+- *Moore Machine*
 	- two alphabets: input and output
 	- has an output letter associated with each state
-- Petri Net Models
-	- directed arcs connecting places and transitions
+	- the output produced by the machine contains a 1 for each occourrence of the substring aab found in the input string
+- *Petri Net Models*
+	- A collection of directed arcs connecting places and transitions
 	- place may hold tokens
+	- the state or marking of a net is its assignment of tokens to places
 	- capacity: 
-		- arcs: 1
+		- arcs 1 by default, will be marked if is others
 		- places: infinite by default
 		- transitions: no capacity, cannot store tokens
-	- non-deterministic, used to *model* discrete distributed systems
-- Semantic Data models: describe the logical structure of data, entity-relation-attribute model
-- Object Models: reflecting the real-world entities; more abstract entities are more difficult to model
-- The Unified Modelling Language: object-oriented modelling
+	- Arcs can only connect **places to transitions** and vise versa
+	- **non-deterministic** (may be more than one transition in te Petri Net active at the same time), used to model *discrete distributed systems* and systems with resource sharing
+- *Semantic Data models*: describe the logical structure of data, entity-relation-attribute model
+- *Object Models*: reflecting the real-world entities; more abstract entities are more difficult to model
+- *The Unified Modelling Language*: object-oriented modelling
 
 # 10/17/2023
-- High-Level Petri Net Model
-- *Tokens* can represent resources, information, conditions or states of objects
-- *Places* represent buffers, channels, geographical locations, conditions or states
-	- *Transitions* represent events, transformations or transportations.
-- Current state
+### High-Level Petri Net Model
+- *Tokens* **•**: **the dynamic objects**, represent resources, information, conditions or states of objects
+- *Places* **◯**: represent buffers, channels, geographical locations, conditions or states
+- *Transitions* **□**: represent events, transformations or transportations.
+	- *Enabled* if each of the input places contains tokens
+- The *state (marking)* of a Petri Net is determined by the **distribuion of tokens** over the places. (1,2,1,1) for (p1,p2,p3,p4)
+- An enabled transition *fires*: consuming tokens from the input places and producing tokens for the output places
+	- Firing is atomic, only one transition fires at a time, even is more than one is enabled
+- A transition **without any input** can fire at any time and produces tokens in the connected places
+- A transition **without any output** must be enables to fire and deletes/consumes the incoming tokens
+- *Current state (current marking)*: configuration of tokens over the places
+- *Reachable state*: A state reachable from the current state by firing a sequence of enabled transitions
+- *Deadlock state*: A state where no transition is enabled
+
+#### High-Level Petri Net Extensions
+- Colour: 
+	- each token has a **attribute value** (colour)
+	- each transition has an **(in)formal specification**
+		- number of tokens to be produced
+		- values of these tokens
+		- (optionally) a precondition
+- Time: modelling durations, delays to analyse performance
+	- a pair `tmin` and `tmax` with each transition, represent minimum and maximim time that a transition will take **to fire once enabled**
+- Hierarchy: comparable to Data Flow Diagrams
+	- subnet: a net composed out of places, transitions and other subnets
 
 # 10/24/2023
 - Design mixed with implementation 

@@ -469,9 +469,9 @@ Find pointer to the rows with value v
 1. Find the value
 2. Remove the value
 3. Let `x` be  
-	| 2	    𝑖𝑓 𝐶 𝑖𝑠 𝑟𝑜𝑜𝑡  
-	| 𝑛+1/2  𝑖𝑓 𝐶 𝑖𝑠 𝑖𝑛𝑡𝑒𝑟𝑛𝑎𝑙 𝑛𝑜𝑑𝑒  
-	| 𝑛+1/2  𝑖𝑓 𝑐 𝑖𝑠 𝑙𝑒𝑎𝑓
+	| 2	    if C is root
+	| 𝑛+1/2  if C is internal node
+	| 𝑛+1/2  if C is leaf
 4. Let `C` be current node
 5. If `C` has above x pointers: fix ancestors and done
 6. If `C` is the root: remove it and let its child be the new root
