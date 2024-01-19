@@ -5,7 +5,7 @@
 - queueing delay
 - Store and forward: entire packet must arrive at router before it ca be transmitted on next link
 - routing algorithm: RAP
-- FDM (Frequency Division Multiplexing) and TDM (Tim Division Multiplexing)
+- FDM (Frequency Division Multiplexing) and TDM (Time Division Multiplexing)
 - Network of Networks
 
 # 10/02/2023
@@ -352,14 +352,91 @@ Shannon’s law: `Max data rate = B * log[base2] (1 + S/N)`
 - *access and availability*: services must be accessible and available to users
 
 ### Cryptography
-- Symmetric key cryptography
+#### Symmetric key cryptography
+- Monoalphabetic encryption
 	- Caesar
-	- Poly alphabetic encryption
-	- Block ciphers
+- Polyalphabetic encryption
+	- Block ciphers: 2^k! mappings
 ![[c28a299f31f7d5a7323ce36158b2a1f.jpg]]
 
 ![[b05cc94894e188baaced867f918d43d.jpg]]
 
 # 11/30/2023
 #### Public Key Cryptography
-- *RSA*： key pair
+##### RSA
+```
+1. choose two large prime numbers p, q. (e.g., 1024 bits each)
+2. compute n = pq, z = (p-1)(q-1)
+3. choose e (with e<n) that has no common factors with z
+	(e, z are “relatively prime”)
+4. choose d such that ed-1 is exactly divisible by z
+	(in other words: ed mod z = 1 )
+5. public key is (n,e). private key is (n,d)
+
+c^d mod n = m    m^e mod n = c
+m = (m^e mod n)^d mod n
+```
+
+for any x and y: `x^y mod n` = `x^(y mod z) mod n`
+where n = pq and z = (p-1)(q-1)
+thus
+```
+c^d mod n = (m^e mod n)^d mod n
+= m^ed mod n
+= m^(ed mod z) mod n
+= m^1 mod n
+= m
+```
+
+**property: the sequence of using public/private key is doesnt matters**
+```
+(m^e mod n)^d mod n = m^ed mod n
+= m^de mod n
+= (m^d mod n)^e mod n
+```
+
+### Authentication
+host A wants to prove identity of B
+- nonce: number `R` used only once in a lifetime
+- *ap4.0*: to prove B is live, A sends B a nonce `R`, B must return R, encrypted with shared symmetric secret key
+- *ap5.0*: use nonce, public key cryptography
+
+### Integrity
+#### Digital signatures
+for a large message `m`, sender digitally signs document: owner/creater 
+1. use a *hash function* `H` compute hash value `H(m)`
+2. encrypting with his *private key* `KB-(H(m))`
+3. send the **origin message and encrypted msg** digest
+	- `(m, KB-(H(m)))`
+	- *verifiable*, *nonforgeable*
+recipient varifies signature, integrity of digitally signed message
+1. using the origin message`m`, compute hash value by the **same hash function** ==> `H(m)`
+2. decrypt the encrypted msg digest`KB-(H(m))` by *sender's public key* ==> `H(m)`
+3. compare two hash value, both for integrity and varification
+
+#### Hash function algorithms
+- MD5 (RFC 1321): 128-bit msg digest string
+- SHA-1 (NIST, FIPS PUB 180-1): 160-bit msg digest
+
+#### Public key Certification Authorities (CA)
+- binds public key to *particular entity*, `E`
+- eneity (person, website, router) registers its public key with `CE`, privedes "proof of identity" to CA
+- creates certificate to binding E and E's public key, digitally signed by CA
+	- `KCA-(KE+)`
+
+### Security in Internet protocol stack
+#### Email
+![[Pasted image 20240119023855.png]]
+
+#### Transport-layer security (TLS)
+deployed mostly above the transport layer: HTTPS (443)
+- *confidentiality*: symmetric encryption
+- *integrity*: crtptographic hashing
+- *authentication*: public key cryptography
+History: SSL/TLS (RFC 8846)
+
+#### WIFI security: 802.11 authentication, encryption
+1. discovery of security capabilities
+2. mutual authenticaiton and shared symmetric key derivation
+3. shared symmetric session key distribution
+4. encrypted communication between mobile and remote host via AP
