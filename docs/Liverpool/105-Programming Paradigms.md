@@ -25,7 +25,7 @@
 # 09/29/2023
 - Interpreter "ghci"
 
-#### Basic use of Haskell
+### Basic use of Haskell
 - `True` `False`, Capital sensitive
 - Boolean expressions: `&&` `||` `not`
 - Equalities: `==` `/=`(not equal)
@@ -86,7 +86,7 @@ Cylinder r h=
 - You can ignore the layout rule if use `{}`
 
 # 10/05/2023
-#### Tuple
+### Tuple
 - to bind two or more values together
 - Using `()` and `,` to create it, can mix types
 - `(6, “six”, “words”, 1)`
@@ -95,7 +95,7 @@ Cylinder r h=
 - Curry can invert function with a tuple parameter to several separated parameters
 - fst (1,2); snd (1,2) first or second value in the tuple, 2 parameters only.
 
-#### Lists
+### Lists
 - all have the **same type**
 - Using `[]` and `,` to create it
 - `[1, 2, 3, 4, 5]`
@@ -110,8 +110,8 @@ Cylinder r h=
 	- `1 : [2, 3, 4, 5]` = \[1, 2, 3, 4, 5]
 - Internally Haskell will walk the entire list to get the last element
 - Character ‘e’ have not same type with a String “e”
-- *head* is its first element; *tail* is everything but the first element
-- *last* is its last element; *init* is everything but the last element
+- `head` is its first element; `tail` is everything but the first element
+- `last` is its last element; `init` is everything but the last element
 - 1 : [2, 3, 4, 5] == [1,2,3,4,5]
 - *pattern matching*: `triple_head (x:xs) = 3 * x`
 	- *x* matching the *head*; the *xs* matching the *tail*
@@ -194,7 +194,7 @@ even_sum x
 ```
 
 # 10/12/2023
-### Recursion on lists
+#### Recursion on lists
 ```haskell
 sum’ (x:xs) = x + sum’ xs
 
@@ -247,6 +247,7 @@ initials first last = [f] ++ "." ++ [l] ++ "."
 	where (f:_) = first
 		  (l:_) = last
 ```
+
 #### multiple lists recursion
 ```haskell
 add_lists _ [] = []
@@ -260,6 +261,7 @@ gt_10 (x:xs)
 	where (gt, lt) = gt_10 xs
 ```
 `zip`: takes two lists and returns a list of pairs, shorter one determines the length
+
 #### mutual recursion
 ```haskell
 events [] = []
@@ -268,6 +270,7 @@ events (x:xs) = x : odds xs
 odds [] = []
 odds (x:xs) = events xs
 ```
+
 #### multiple recursion
 ```haskell
 fib 0 = 0
@@ -280,6 +283,7 @@ fast_fib_help n = x + y : (x:y:xs)
 
 > fast_fib n = head (fast_fifb_help n)
 ```
+
 #### quick sort
 ```haskell
 qs’ [] = []
@@ -312,7 +316,7 @@ qs’ (x:xs) = qs’ lower ++ [x] ++ qs’ upper
 - Function type is `[input type] -> [output type]`
 - Function with multiple argument: `[First input] -> [Second argument] -> [output type]`
 
-### Partial application
+#### Partial application
 - fix some of the arguments; leave other arguments unfixed
 - calling the function with fewer arguments
 
@@ -339,7 +343,7 @@ g = (1/)
 - use a tuple to carry arguments rather than by listed multiple arguments
 
 # 10/25/2023
-### Type polymorphism
+#### Type polymorphism
 - The function can be applied to any list
 - a will represent the type of the list elements
 - Type variable
@@ -409,7 +413,7 @@ drop_six’ = (\ x -> drop 6 x)
 ```
 
 # 10/27/2023
-### Map
+#### Map
 - applies a function f to every element in a list
 ```haskell
 map’ :: (a -> b) -> [a] -> [b]
@@ -422,7 +426,7 @@ map (\(_:y:_)->y) [“the”, “quick”, “brown]
 
 ```
 
-### Filter
+#### Filter
 - keeps only the element for which f returns True
 ```haskell
 filter’ :: (a -> Bool) -> [a] -> [a]
@@ -439,7 +443,7 @@ filter’ f (x:xs)
 - available in imperative languages
 
 # 11/01/2023
-### Fold
+#### Fold
 ```haskell
 foldr’ :: (a -> b -> b) -> b -> [a] -> b
 foldr’ _ init [] = init
@@ -527,7 +531,7 @@ map words $ lines x
 ```
 
 # 11/08/2023
-#### Custom Types
+### Custom Types
 - `type`: New name of existing type
 - All types must start with capital letters, meaningful
 ```haskell

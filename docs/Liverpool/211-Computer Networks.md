@@ -60,7 +60,8 @@
 - HTTP is a stage-less protocol
 - Cookie: maintaining user/server state
 - Generate a unique id, entry in backend database for ID
-- Every time client send request to the server with the ID, the server could - recognise and given special services.
+- Every time client send request to the server with the ID, the server could
+- recognise and given special services.
 - Session state
 
 #### Web caches
@@ -100,7 +101,7 @@
 #### P2P applications
 - no always-on server
 - Peers communicate with each other directly
-![[b5acfc6ceb32d0993810caa1951e9d5.jpg]]
+![image](../img/b5acfc6ceb32d0993810caa1951e9d5.jpg)
 - BitTorrent: requesting, sending file chunks (tit-for-tat )
 
 # 10/10/2023

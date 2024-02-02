@@ -15,19 +15,39 @@
    <style>
     :root{
       --base-font-family: -apple-system, BlinkMacSystemFont, "LXGW Wenkai", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
+      --base-font-size: 16px;
+      --base-background-color: #d9e6fa;
       --theme-color: #4776fc;
+
+      --code-inline-background: #c7d3e4;
+      --code-theme-background: #c3cede;
+
+      /* --strong-color: #ffaf63; */
+      --strong-font-weight: 750;
 
       --heading-h1-color: #e378b6;
       --heading-h2-color: #b293f6;
       --heading-h3-color: #df5555;
-      --heading-h4-color: #eeb86a;
-      --heading-h5-color: #9bfa84;
-      --heading-h6-color: #ade9fc;
+      --heading-h4-color: #f6b269;
+      --heading-h5-color: #80dc69;
+      --heading-h6-color: #35cffe;
 
-      --heading-h4-font-size: var(--font-size-m) * (var(--modular-scale) - 0.1);
-      --heading-h5-font-size: var(--font-size-m) * (var(--modular-scale) - 0.2);
-      --heading-h6-font-size: var(--font-size-m);
+      --heading-h3-font-size: calc(var(--font-size-xl) * calc(var(--modular-scale) - 0.4));
+      --heading-h4-font-size: calc(var(--font-size-l) * calc(var(--modular-scale) - 0.2));
+      --heading-h5-font-size: var(--font-size-l);
+      --heading-h6-font-size: calc(var(--font-size-l) * calc(var(--modular-scale) - 0.4));
+
+      --heading-h2-padding: 0;
+      --heading-h2-font-weight: 500;
+      --heading-h4-margin: 30px 0px -5px;
+      --heading-h5-margin: 20px 0px -8px;
+      --heading-h6-margin: 20px 0px -5px;
+
+    }
+
+    em{
+        color: #41a6fe;
+        font-weight: 600;
     }
    </style>
 </head>
