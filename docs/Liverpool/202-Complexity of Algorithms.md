@@ -1,4 +1,4 @@
-- An algorithm is a sequence of steps for performing a task in a finate amount of time.
+An algorithm is a sequence of steps for performing a task in a finate amount of time.
 
 #### Big-Oh Notation
 Given two positive functions *f(n)* and *g(n)*, **f(n) is O(g(n))**, written as `f(n) ∈ O(g(n))`, with constants *c* and *a0*: `f(n) <= c*g(n) for all n >= n0`
@@ -9,3 +9,11 @@ Common functions:
 - *Quadratic* O(n^2)
 - *Polynomial* O(n^k) for a positive integer k
 - *Exponential* O(a^n), a > 1
+
+g(n) is O(f(n)) and f(n) is O(g(n))
+
+#### Justification Techniques
+- *Methemetical induction*
+- *Contradiction*: Suppose the proposition is not true
+- *Contrapositive argument*: p => q is equivalent to ¬q => ¬p
+- *Counterexample* (disproof)
