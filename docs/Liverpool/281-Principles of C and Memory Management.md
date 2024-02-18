@@ -27,3 +27,14 @@ declare by `const` or `#define` keyword
 - Floating point: `const double a = 1.23e4`
 - Character: `const char a = ‘a’`
 - Enumeration: `enum City { Manchester, Liverpool, Leeds};`
+
+### Output function
+`%[flags][minimum-field-width][.precision]Type`
+*flag*: -, +, 0, #, space
+- space: a space for positive signed-numeric types
+- \#: hash, o for octal, x for hex
+*width*: +/-, number, \*
+- \*: value that computed at run-time `printf(“|%-*s|”, 5, “abc”);` ==> `|abc  |`
+
+### Switch statement
+the condition expression must be a **integer expression**
