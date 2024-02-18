@@ -43,8 +43,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Liverpool/285-Computer Aided Software Development.md",
+                "file": "Liverpool/202-Complexity of Algorithms.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Liverpool/285-Computer Aided Software Development.md"
+                "file": "Liverpool/202-Complexity of Algorithms.md"
               }
             }
           },
@@ -161,10 +160,10 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "1fb8326cc86aa65d",
+  "active": "e4db76d0a6924692",
   "lastOpenFiles": [
-    "Liverpool/281-Principles of C and Memory Management.md",
     "Liverpool/285-Computer Aided Software Development.md",
+    "Liverpool/281-Principles of C and Memory Management.md",
     "Liverpool/202-Complexity of Algorithms.md",
     "img/9c3f036b0e1ef8d7e3654569b514109.jpg",
     "计算机基础/Linux/Linux定时任务.md",
