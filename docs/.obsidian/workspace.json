@@ -32,6 +32,18 @@
             }
           },
           {
+            "id": "4fa538958b52645f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Troubleshooting/sprintf函数 “%02X”问题.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "1fb8326cc86aa65d",
             "type": "leaf",
             "state": {
@@ -43,7 +55,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -109,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Liverpool/202-Complexity of Algorithms.md",
+                "file": "Troubleshooting/sprintf函数 “%02X”问题.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Liverpool/202-Complexity of Algorithms.md"
+                "file": "Troubleshooting/sprintf函数 “%02X”问题.md"
               }
             }
           },
@@ -160,11 +173,14 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "e4db76d0a6924692",
+  "active": "4fa538958b52645f",
   "lastOpenFiles": [
+    "Troubleshooting/sed unknown option to `s'报错.md",
+    "Troubleshooting/sprintf函数 “%02X”问题.md",
+    "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
+    "Liverpool/202-Complexity of Algorithms.md",
     "Liverpool/285-Computer Aided Software Development.md",
     "Liverpool/281-Principles of C and Memory Management.md",
-    "Liverpool/202-Complexity of Algorithms.md",
     "img/9c3f036b0e1ef8d7e3654569b514109.jpg",
     "计算机基础/Linux/Linux定时任务.md",
     "计算机基础/Linux/未命名.md",
@@ -188,13 +204,11 @@
     "网安/渗透测试--蚁景网安/3.4 渗透框架流量隐藏.md",
     "img/Pasted image 20240119023855.png",
     "Liverpool/201-Software Engineering.md",
-    "Liverpool/207-Database Development.md",
     "img/Pasted image 20240114005219.png",
     "img/Pasted image 20240113010831.png",
     "img/Pasted image 20240113010828.png",
     "img/b05cc94894e188baaced867f918d43d.jpg",
     "img/c28a299f31f7d5a7323ce36158b2a1f.jpg",
-    "网安/渗透测试--蚁景网安/3.5 渗透框架扩展应用.md",
     "img/9b0f489416fd9b94f26efb80f82733b.jpg",
     "img/Pasted image 20231004232729.png",
     "Liverpool",

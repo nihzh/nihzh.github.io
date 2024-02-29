@@ -38,3 +38,12 @@ declare by `const` or `#define` keyword
 
 ### Switch statement
 the condition expression must be a **integer expression**
+
+### Pointer
+- A variable holding the **address** of onother variable of same data type, to access memory and manipulate the address
+- `%p` format specifier for addresses
+- `&x` address of variable x
+- stores a referennnde to another value *pointee*
+- *Double Pointer (pointer to pointer)*: store the address of a pointer variable
+- `*` *dereference operator*, using in an expression, fetch the contents at the that address
+- `(*z)++` to increase

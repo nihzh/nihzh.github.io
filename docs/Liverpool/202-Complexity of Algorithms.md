@@ -49,3 +49,6 @@ T(n) = 2^(log n)c + cn log n = Θ(n log n)
 ### Rooted trees
 sortable, still efficient for search, insert/delete
 - binary tree
+
+### Merge Sort / Heap Sort
+- O(n log n )
