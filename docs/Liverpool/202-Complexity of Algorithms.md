@@ -49,6 +49,59 @@ T(n) = 2^(log n)c + cn log n = Θ(n log n)
 ### Rooted trees
 sortable, still efficient for search, insert/delete
 - binary tree
+- max value index at root
+- min value index at root
 
 ### Merge Sort / Heap Sort
 - O(n log n )
+
+***to be added***
+
+### Greedy method
+solves a given **optimization problem** by going through a sequence of feasible choices, *greedy-choice property*
+- start from well-understood config
+- iteratively makes the decition (seems best)
+
+### Interval scheduling
+- A collecction of tasks
+- A single macchine that can process these tasks
+- To selet a subset of the tasks in order to maximize the number of tasks that can schedule on the machine.
+- Maximum utilize resources/working completion
+
+- Basic Probability
+- Sample space
+- Probability spaces
+- Probability function
+- Independent Events
+- Conditional Probability
+- Random variables
+
+```
+E(X) = Pr(X is heads)*1 + Pr(X is tails)*(1+expected number of additional coin tosses until first heads appears)
+```
+
+- Randomised quicksort
+
+### Linear-time algorithms
+- Aren't comparison based
+- Require a promise that the elements in the input aren't too large
+
+#### Counting sort
+Assumes that each of the n input elements is an integer between 0 and k, when k = O(n), counting sort runs in O(n) time
+- Input A\[1..n], output B\[1..n], use temp storage C\[1..n]
+
+#### Radix Sort
+First sort by the least significant digit. Next sort by second-least significant digit.
+
+## Dynamic Programming
+Optimization
+- first find a recursive recursion solution to the problem
+
+
+## Graphs
+### Single Source shortest paths
+- Dijkstra's algorithm
+
+### All pairs shortest paths
+- Bellman-ford
+
