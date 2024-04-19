@@ -105,3 +105,19 @@ Optimization
 ### All pairs shortest paths
 - Bellman-ford
 
+### Maximum flow
+The maximum flow is a network is equal to capacity of a  
+minimum cut in the network.
+- weight graph w(e) associated with each edge e
+- Directed graph in which each edge (u,v)Ee has a non-negative integer capacity
+- Source s(no in-edges) and sink t(no out-edges)
+- *Ford-Fulkerson* method
+
+#### Residual Networks
+- consists edges that can admit more net flow
+- forward edges
+- backwards edges
+
+#### cuts in networks
+
+### bipartite graph
