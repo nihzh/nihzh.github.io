@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Troubleshooting/sed unknown option to 's'报错.md",
+                "file": "Troubleshooting/sprintf函数 “%02X”问题.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Troubleshooting/sed unknown option to 's'报错.md",
+                "file": "Troubleshooting/sprintf函数 “%02X”问题.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Troubleshooting/sed unknown option to 's'报错.md"
+                "file": "Troubleshooting/sprintf函数 “%02X”问题.md"
               }
             }
           },
@@ -138,6 +138,7 @@
   },
   "active": "dccbd6e9557594d0",
   "lastOpenFiles": [
+    "Troubleshooting/sed unknown option to 's'报错.md",
     "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
     "Liverpool/284-C++ Programming.md",
     "Liverpool/285-Computer Aided Software Development.md",
@@ -160,7 +161,6 @@
     "计算机基础/正则表达式(菜鸟).md",
     "img/Pasted image 20240229152121.png",
     "Troubleshooting/sprintf函数 “%02X”问题.md",
-    "Troubleshooting/sed unknown option to 's'报错.md",
     "img/9c3f036b0e1ef8d7e3654569b514109.jpg",
     "计算机基础/Linux/Linux定时任务.md",
     "计算机基础/Linux/未命名.md",
