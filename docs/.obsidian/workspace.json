@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Liverpool/trytry.md",
+                "file": "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Liverpool/trytry.md",
+                "file": "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Liverpool/trytry.md"
+                "file": "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md"
               }
             }
           },
