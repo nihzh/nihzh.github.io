@@ -13,7 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Liverpool/trytry.md",
+                "file": "GRE/填空.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d7a1640df2ea6de4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GRE/数学.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +81,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "cd468627435ae787",
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Liverpool/trytry.md",
+                "file": "GRE/填空.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Liverpool/trytry.md"
+                "file": "GRE/填空.md"
               }
             }
           },
@@ -128,16 +141,20 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "templates:Insert template": false,
-      "markdown-importer:Open format converter": false,
-      "random-note:Open random note": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "templates:插入模板": false,
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "random-note:开始漫游笔记": false
     }
   },
   "active": "dccbd6e9557594d0",
   "lastOpenFiles": [
+    "GRE/数学.md",
+    "GRE/填空.md",
+    "img/Pasted image 20240702150642.png",
+    "GRE",
     "Liverpool/284-C++ Programming.md",
     "Liverpool/285-Computer Aided Software Development.md",
     "Liverpool/trytry.md",
@@ -165,15 +182,12 @@
     "计算机基础/Linux/Linux定时任务.md",
     "计算机基础/Linux/未命名.md",
     "计算机基础/Linux/基本规则.md",
-    "计算机基础/Linux/$的用法.md",
-    "计算机基础/REST风格.md",
     "img/b5acfc6ceb32d0993810caa1951e9d5.jpg",
     "img/Pasted image 20240119023855.png",
     "img/Pasted image 20240114005219.png",
     "img/Pasted image 20240113010831.png",
     "img/Pasted image 20240113010828.png",
     "img/b05cc94894e188baaced867f918d43d.jpg",
-    "img/c28a299f31f7d5a7323ce36158b2a1f.jpg",
     "Liverpool",
     "未命名 1.canvas",
     "未命名 5.canvas",
@@ -188,7 +202,6 @@
     "index - 副本.html",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 2.zip",
-    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 1.zip",
-    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64.zip"
+    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 1.zip"
   ]
 }
