@@ -1,6 +1,6 @@
 * **Liverpool**
+  * [()](Liverpool/())
   * [105-Programming_Paradigms](Liverpool/105-Programming%20Paradigms)
-  * [1234.txt](Liverpool/1234.txt)
   * [201-Software_Engineering](Liverpool/201-Software%20Engineering)
   * [202-Complexity_of_Algorithms](Liverpool/202-Complexity%20of%20Algorithms)
   * [207-Database_Development](Liverpool/207-Database%20Development)
@@ -13,8 +13,8 @@
   * [docsify的homepage问题](Troubleshooting/docsify的homepage问题)
   * [Java中的Map类型和Spring_@Transaction操作数据库问题](Troubleshooting/Java中的Map类型和Spring%20@Transaction操作数据库问题)
   * [Problems_when_configuring_Git](Troubleshooting/Problems%20when%20configuring%20Git)
-  * [sed_unknown_option_to_`s'报错](Troubleshooting/sed%20unknown%20option%20to%20`s'报错)
-  * [sprintf函数_“%02X”问题](Troubleshooting/sprintf函数%20“%02X”问题)
+  * [sed_unknown_option_to_'s'报错](Troubleshooting/sed%20unknown%20option%20to%20's'报错)
+  * [sprintf函数_“%02X”问题](Troubleshooting/sprintf函数%20“%2502X”问题)
   * [Vulfocus漏洞靶场镜像无法拉取](Troubleshooting/Vulfocus漏洞靶场镜像无法拉取)
   * [WindTerm锁屏主密码问题](Troubleshooting/WindTerm锁屏主密码问题)
   * [wsl下载后报错问题](Troubleshooting/wsl下载后报错问题)
