@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "dccbd6e9557594d0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "GRE/填空.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "d7a1640df2ea6de4",
             "type": "leaf",
             "state": {
@@ -30,8 +18,33 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "dccbd6e9557594d0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GRE/写作.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0de2d8fabc2313a4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GRE/阅读.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "GRE/填空.md",
+                "file": "GRE/阅读.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GRE/填空.md"
+                "file": "GRE/阅读.md"
               }
             }
           },
@@ -149,8 +162,11 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "dccbd6e9557594d0",
+  "active": "0de2d8fabc2313a4",
   "lastOpenFiles": [
+    "GRE/写作.md",
+    "GRE/阅读.md",
+    "GRE/填空.md",
     "img/Pasted image 20240523015334.png",
     "img/Pasted image 20240523014321.png",
     "img/Pasted image 20240523013657.png",
@@ -161,11 +177,9 @@
     "img/Pasted image 20240522213341.png",
     "img/Pasted image 20240522180642.png",
     "img/Pasted image 20240522173528.png",
-    "img/Pasted image 20240522115646.png",
     "Troubleshooting/sed unknown option to 's'报错.md",
     "Liverpool/().md",
     "GRE/数学.md",
-    "GRE/填空.md",
     "GRE",
     "Liverpool/284-C++ Programming.md",
     "Liverpool/285-Computer Aided Software Development.md",
@@ -187,7 +201,6 @@
     "Liverpool/211-Computer Networks.md",
     "计算机基础/正则表达式(菜鸟).md",
     "Troubleshooting/sprintf函数 “%02X”问题.md",
-    "Troubleshooting/sed unknown option to `s'报错.md",
     "Liverpool",
     "未命名 1.canvas",
     "未命名 5.canvas",
