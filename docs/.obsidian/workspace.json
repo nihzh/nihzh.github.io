@@ -13,10 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GRE/数学.md",
+                "file": "Liverpool/305-Biocomputation.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "305-Biocomputation"
             }
           }
         ]
@@ -39,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -48,13 +52,15 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "斜率",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,15 +68,17 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "cd468627435ae787",
@@ -86,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "GRE/数学.md",
+                "file": "Liverpool/323-Introduction to Computational Game Theory.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": true,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 323-Introduction to Computational Game Theory"
             }
           },
           {
@@ -103,8 +113,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GRE/数学.md"
-              }
+                "file": "Liverpool/323-Introduction to Computational Game Theory.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 323-Introduction to Computational Game Theory"
             }
           },
           {
@@ -116,7 +128,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           }
         ],
@@ -129,53 +143,52 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "templates:插入模板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false,
-      "random-note:开始漫游笔记": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "markdown-importer:Open format converter": false,
+      "random-note:Open random note": false
     }
   },
-  "active": "87536496e7a98d23",
+  "active": "0de2d8fabc2313a4",
   "lastOpenFiles": [
+    "Liverpool/323-Introduction to Computational Game Theory.md",
+    "img/Pasted image 20241105034623.png",
+    "img/Pasted image 20241105022706.png",
+    "img/Pasted image 20241105022229.png",
+    "img/Pasted image 20241105021224.png",
+    "img/Pasted image 20241105020036.png",
+    "img/Pasted image 20241105011926.png",
+    "img/Pasted image 20241104215412.png",
+    "img/Pasted image 20241104180017.png",
+    "img/Pasted image 20241104162159.png",
+    "img/Pasted image 20241104155943.png",
+    "Liverpool/Untitled 1.md",
+    "Liverpool/Untitled.md",
+    "Liverpool/305-Biocomputation.md",
+    "Liverpool/304-Knowledge Representation & Reasoning.md",
+    "Liverpool/285-Computer Aided Software Development.md",
+    "Liverpool/201-Software Engineering.md",
+    "计算机基础/Python/直接赋值, 浅拷贝和深拷贝.md",
+    "计算机基础/Python/条件控制和循环语句.md",
+    "计算机基础/Python/类和对象.md",
+    "计算机基础/Python/函数.md",
+    "计算机基础/Python/迭代器与生成器.md",
     "GRE/阅读.md",
-    "GRE/数学.md",
-    "GRE/填空.md",
     "GRE/写作.md",
-    "img/Pasted image 20240523015334.png",
-    "img/Pasted image 20240523014321.png",
-    "img/Pasted image 20240523013657.png",
-    "img/Pasted image 20240523002649.png",
-    "img/Pasted image 20240523002530.png",
-    "img/Pasted image 20240522220951.png",
-    "img/Pasted image 20240522220800.png",
-    "img/Pasted image 20240522213341.png",
-    "img/Pasted image 20240522180642.png",
-    "img/Pasted image 20240522173528.png",
+    "GRE/填空.md",
+    "GRE/数学.md",
     "Troubleshooting/sed unknown option to 's'报错.md",
     "Liverpool/().md",
     "GRE",
     "Liverpool/284-C++ Programming.md",
-    "Liverpool/285-Computer Aided Software Development.md",
     "Liverpool/trytry.md",
     "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
     "Troubleshooting/Java中的Map类型和Spring @Transaction操作数据库问题.md",
     "网安/蚁景网安夏令营/7.28 文件上传原理.md",
     "网安/蚁景网安夏令营/7.26 7.27 文件包含漏洞.md",
     "网安/蚁景网安夏令营/7.25 暴力破解.md",
-    "网安/渗透测试--蚁景网安/1.5 弱口令密码破解.md",
-    "网安/渗透测试--蚁景网安/1.4 Linux反弹Shell.md",
-    "网安/渗透测试--蚁景网安/1.3 命令执行.md",
-    "网安/渗透测试--蚁景网安/1.1 SQL注入.md",
-    "网安/渗透测试--蚁景网安/1.2 文件上传.md",
-    "img/Pasted.md",
-    "Liverpool/202-Complexity of Algorithms.md",
-    "Liverpool/281-Principles of C and Memory Management.md",
-    "Liverpool/207-Database Development.md",
-    "Liverpool/211-Computer Networks.md",
-    "计算机基础/正则表达式(菜鸟).md",
-    "Troubleshooting/sprintf函数 “%02X”问题.md",
     "Liverpool",
     "未命名 1.canvas",
     "未命名 5.canvas",
