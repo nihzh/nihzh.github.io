@@ -106,10 +106,115 @@ It is not permitted to forbid p.
 - Epistemic: □p → □□p.
 If I know p, then I know that I know p.
 
-![[Pasted image 20241028220320.png]]
+![](../img/Pasted%20image%2020241028220320.png)
 
-![[Pasted image 20241028220352.png]]
+![](../img/Pasted%20image%2020241028220352.png)
 
 ## Epidemic Logic (EL)
 
+
 ## Description Logic (DL)
+Used to describe *ontologies*
+- a formal naming and definition of the types, properties, and interrelationships of the entities, for a particular domain of discourse.
+- to determine which objects satisfy a concept
+
+### Language of ALC
+*Attribute Logic with Complement*: multi-agent modal logic -- except with different symbols
+![](../img/Pasted%20image%2020241126182034.png)
+
+- *Object names*: describes a single object, no objects has multiple names.
+	- There can be objects without name
+- *Atomic concept*: a single word that describes a number of objects
+- *Concepts (relation symbols)*: combine one or more atomic concepts into a more complex description.
+- Formulas of ALC are called *concepts* and given by
+
+```
+X ::= ⊤ | ⊥ | A | ¬X | X ⊔ X | X ⊓ X | ∀r.X | ∃r.X
+```
+where A ∈ C and r ∈ R
+- `∃r.X`: object that stand in the relation `r` to **some object** that is `X`
+	- at least one   对于所有...存在...
+	- Modal logic: `♢r φ`
+- `∀r.X`: objects that only stand in the relation `r` to **objects** that are `X`
+	- if any, are all   对于所有...都满足...
+	- Modal logic: `□r φ`
+- `⊤`: indicates **any object**: `p ∨ ¬p`
+	- `∃hasChild.⊤` is someone who has at least one child
+- `⊥`: indicates **no object**: `p ∧ ¬p`
+	- `∀hasChild.⊥` is someone who only has “nothing” as children (has no children)
+
+### Semantics of ALC
+Refer to models as *interpretation*
+![](../img/Pasted%20image%2020241126235221.png)
+- `∆` as things that actually exist, acts as the set of worlds in drawing
+- The map `·I` tell us who has which name
+
+### TBox
+`X ⊑ Y`: the X are a subset of the Y
+`X ≡ Y`: the X are exactly the same as the Y
+
+Taxonomy: a categorization of concepts
+TBox: finite set of *subsumptions*, represents a taxonomy
+TBox may only contain subsumptions where the left-hand side is an atomic concepts, i.e. subsumptions `A ⊑ X` or `A ≡ X`
+
+```
+parent ≡ person ⊓ ∃hasChild.⊤
+mother ≡ parent ⊓ female
+grandparent ≡ person ⊓ ∃hasChild.parent
+```
+
+### ABox
+#### Concept Assertions
+"the object with name `o` satisfies concept X": 描述单个个体属于某个概念
+Notation: `o` : `X`
+
+```
+Ann : parent
+Fido : canis ⊓ ¬person
+```
+
+#### Role Assertions
+"the object with names `o1` and `o2` stand in relation `r` to each other": 描述两个个体之间的关系
+Notation `(o1, o2)` : `r`
+
+```
+(Ann, Claire) : hasChild
+"the object named Ann is in the relation hasChild with the object named Claire" ==> "Claire is the child of Ann"
+```
+
+ABox: finite set of **concept and role assertions**
+
+*Knowledge base*: ABox + TBox
+- `K = (A, T)`
+
+### Checking
+#### Consistency
+A knowledge base `K` is *inconsistent* if it is impossible to satisfy
+So `K` is inconsistency if for every `I`, we have `I not|= K`
+
+- TBox: Possible for a TBox to be inconsistent by itself, i.e. for (∅, T ) to be inconsistent, statements cannot be satisfied at the same time
+- ABox: Possible for a ABox to be inconsistent by it self, i.e. for (A, ∅) to be inconsistent.
+
+*Coherence* and *entailment* are related to consistency
+1. `X` is coherent w.r.t.(with respect to) `K` iff (`A∪{o:X}, T`) is consistent
+	- `X` 在知识库(由断言 `A` 和公理 `T` 组成）中是连贯的, 当且仅当将 `X` 添加到 `A` 后仍然一致 (`o`是一个新引入的符号)
+2. `K |= o : X` iff `(A ∪ {o:¬X}, T)` is **inconsistent**
+	- 知识库`K`蕴含`o : X`当且仅当, 将`¬X`添加到断言集后, 知识库`K`变得不一致
+	- 假设 K 中已经包含 Bird⊑Animal，如果尝试加入 ¬(Bird⊑Animal)，会导致矛盾，因此可以说 K⊨o:(Bird⊑Animal)
+3. `K |= X ⊑ Y` iff `(A ∪ {o:X, o:¬Y}, T)` is inconsistent, where o does not occur in A
+	- 知识库`K`蕴含`X ⊑ Y`当且仅当, 将`X` 和 `¬Y`同时添加到断言集中会导致不一致 ==> "如果 X 成立，而 Y 不成立，那么这与知识库矛盾，因此可以得出 X⊑Y"
+
+#### Coherence
+```
+parent ≡ person ⊓ ∃hasChild.⊤
+grandparent ≡ person ⊓ ∃hasChild.parent
+```
+
+#### Entailment
+An *assertion* `o : X` is entailed by `K` if every interpretation satisfying `K` also satisfies `o : X`
+- `K |= o : X`
+
+A *subsumption* `X ⊑ Y` is entailed by `K` if every interpretation satisfying `K` also satisfies `X ⊑ Y` (similarly as `X ≡ Y`)
+- `K |= X ⊑ Y`
+
+Only concept assertions can be entailed
