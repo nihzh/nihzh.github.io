@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Liverpool/304-Knowledge Representation & Reasoning.md",
+                "file": "Liverpool/305-Biocomputation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "304-Knowledge Representation & Reasoning"
+              "title": "305-Biocomputation"
             }
           }
         ]
@@ -43,7 +43,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "文件列表"
             }
           },
           {
@@ -60,7 +60,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "搜索"
             }
           },
           {
@@ -70,7 +70,7 @@
               "type": "bookmarks",
               "state": {},
               "icon": "lucide-bookmark",
-              "title": "Bookmarks"
+              "title": "书签"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Liverpool/323-Introduction to Computational Game Theory.md",
+                "file": "Liverpool/305-Biocomputation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 323-Introduction to Computational Game Theory"
+              "title": "305-Biocomputation 的反向链接列表"
             }
           },
           {
@@ -113,10 +113,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Liverpool/323-Introduction to Computational Game Theory.md"
+                "file": "Liverpool/305-Biocomputation.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 323-Introduction to Computational Game Theory"
+              "title": "305-Biocomputation 的大纲"
             }
           },
           {
@@ -130,7 +130,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-archive",
-              "title": "All properties"
+              "title": "添加笔记属性"
             }
           }
         ],
@@ -143,23 +143,24 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "templates:Insert template": false,
-      "markdown-importer:Open format converter": false,
-      "random-note:Open random note": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "templates:插入模板": false,
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "random-note:开始漫游笔记": false
     }
   },
   "active": "7b80e3ae61d00a66",
   "lastOpenFiles": [
+    "img/Pasted image 20241201001440.png",
     "Liverpool/305-Biocomputation.md",
+    "Liverpool/304-Knowledge Representation & Reasoning.md",
     "Liverpool/323-Introduction to Computational Game Theory.md",
     "Liverpool/211-Computer Networks.md",
     "Liverpool/202-Complexity of Algorithms.md",
     "Liverpool/201-Software Engineering.md",
     "Liverpool/105-Programming Paradigms.md",
-    "Liverpool/304-Knowledge Representation & Reasoning.md",
     "Liverpool/285-Computer Aided Software Development.md",
     "Liverpool/281-Principles of C and Memory Management.md",
     "Liverpool/284-C++ Programming.md",
@@ -189,7 +190,6 @@
     "GRE",
     "Liverpool/trytry.md",
     "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
-    "Troubleshooting/Java中的Map类型和Spring @Transaction操作数据库问题.md",
     "Liverpool",
     "未命名 1.canvas",
     "未命名 5.canvas",
