@@ -195,7 +195,7 @@ So `K` is inconsistency if for every `I`, we have `I not|= K`
 - TBox: Possible for a TBox to be inconsistent by itself, i.e. for (∅, T ) to be inconsistent, statements cannot be satisfied at the same time
 - ABox: Possible for a ABox to be inconsistent by it self, i.e. for (A, ∅) to be inconsistent.
 
-*Coherence* and *entailment* are related to consistency
+*Coherence* and *Entailment* are related to consistency
 1. `X` is coherent w.r.t.(with respect to) `K` iff (`A∪{o:X}, T`) is consistent
 	- `X` 在知识库(由断言 `A` 和公理 `T` 组成）中是连贯的, 当且仅当将 `X` 添加到 `A` 后仍然一致 (`o`是一个新引入的符号)
 2. `K |= o : X` iff `(A ∪ {o:¬X}, T)` is **inconsistent**
@@ -218,3 +218,37 @@ A *subsumption* `X ⊑ Y` is entailed by `K` if every interpretation satisfying 
 - `K |= X ⊑ Y`
 
 Only concept assertions can be entailed
+
+#### Tableaux based method
+works only for *acyclic* knowledge (非循环知识库) bases
+
+A atomic concept `A` *dierctly uses* an atomic concept `B` if where is a subsumption `A ⊑ X` or `A ≡ X` in `T` such that `B` occurs in `X`, 显式直接使用
+
+A atomic concept `A` *uses* an atomic concept `B` if where is a finite sequence `A1, · · · , An` of atomic cencepts such that `A` directly uses `A1`, `A1` directly uses `A2`, ..., `An` directly uses `B`, 间接关联使用
+
+##### Cycles
+A knowledge base `K` contains a *terminological cycle* if where is a concept that **uses** it self
+
+A knowledge base `K` is *acyclic* if
+- `K` contains no terminological cycle
+- every atomic concept occurs on the left-hand side of at most one subsumption in `T` (不允许重复定义同一个概念)
+
+层级调用和相互调用
+
+##### 6 Steps of Tableaux
+Let `K = (A, T)` be an acyclic knowledge base. Consistency of `K` is checked in 6 steps
+1. Eliminate ⊑ from the TBox
+	- Add a **new atomic concept** `A*` that caracterizes those `X` that are `A`, distinguishes whose X that are A from those X that are ¬A
+	- `A ≡ X ⊓ A∗`
+	- Then replace every `B ⊑ Y` by `B ≡ Y ⊓ B∗`
+	- Resulting knowledge base: `K*`
+2. Expand the TBox
+	- If `A ≡ X` is in `T∗`, then every occurrence of `A` in other concept definitions can be replaced by `X`, replacing until no further replacements are possible
+	- Resulting TBox: ` T^∗e`
+3. Eliminate defined concepts from the ABox
+	- When `o : A` is in `A`, and `A ≡ X` is in `T ^∗e`
+	- Then replace `o : A` by `o : X`
+	- ABox的名字映射直接简化与subsumption的右手对应
+1. Put the ABox in negation normal form
+2. Apply completion rules to the ABox
+3. Check the leaves for contradictions
