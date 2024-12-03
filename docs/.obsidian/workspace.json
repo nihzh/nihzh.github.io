@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "305-Biocomputation"
             }
+          },
+          {
+            "id": "8107f6e8560b06fc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Liverpool/304-Knowledge Representation & Reasoning.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "304-Knowledge Representation & Reasoning"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -43,7 +58,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -60,7 +75,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "搜索"
+              "title": "Search"
             }
           },
           {
@@ -70,7 +85,7 @@
               "type": "bookmarks",
               "state": {},
               "icon": "lucide-bookmark",
-              "title": "书签"
+              "title": "Bookmarks"
             }
           }
         ]
@@ -94,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Liverpool/305-Biocomputation.md",
+                "file": "Liverpool/323-Introduction to Computational Game Theory.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "305-Biocomputation 的反向链接列表"
+              "title": "Backlinks for 323-Introduction to Computational Game Theory"
             }
           },
           {
@@ -113,10 +128,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Liverpool/305-Biocomputation.md"
+                "file": "Liverpool/323-Introduction to Computational Game Theory.md"
               },
               "icon": "lucide-list",
-              "title": "305-Biocomputation 的大纲"
+              "title": "Outline of 323-Introduction to Computational Game Theory"
             }
           },
           {
@@ -130,7 +145,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-archive",
-              "title": "添加笔记属性"
+              "title": "All properties"
             }
           }
         ],
@@ -143,26 +158,29 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "templates:插入模板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false,
-      "random-note:开始漫游笔记": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "markdown-importer:Open format converter": false,
+      "random-note:Open random note": false
     }
   },
-  "active": "7b80e3ae61d00a66",
+  "active": "8107f6e8560b06fc",
   "lastOpenFiles": [
+    "img/Pasted image 20241202120105.png",
+    "img/Pasted image 20241202114127.png",
+    "Liverpool/305-Biocomputation.md",
+    "img/Pasted image 20241202014605.png",
+    "Liverpool/304-Knowledge Representation & Reasoning.md",
     "img/Pasted image 20241201051845.png",
     "img/Pasted image 20241201035500.png",
     "img/Pasted image 20241201035336.png",
-    "Liverpool/305-Biocomputation.md",
     "img/Pasted image 20241201021114.png",
     "img/Pasted image 20241201012852.png",
     "img/Pasted image 20241201012629.png",
     "img/Pasted image 20241201004603.png",
     "img/Pasted image 20241201001440.png",
-    "Liverpool/304-Knowledge Representation & Reasoning.md",
     "Liverpool/323-Introduction to Computational Game Theory.md",
     "Liverpool/211-Computer Networks.md",
     "Liverpool/202-Complexity of Algorithms.md",
@@ -171,12 +189,9 @@
     "Liverpool/285-Computer Aided Software Development.md",
     "Liverpool/281-Principles of C and Memory Management.md",
     "Liverpool/284-C++ Programming.md",
-    "img/Pasted image 20241126235221.png",
     "Liverpool/().md",
-    "img/Pasted image 20241126182034.png",
     "Liverpool/Untitled 1.md",
     "Liverpool/Untitled.md",
-    "img/Pasted image 20241105034623.png",
     "计算机基础/Python/直接赋值, 浅拷贝和深拷贝.md",
     "计算机基础/Python/条件控制和循环语句.md",
     "计算机基础/Python/类和对象.md",

@@ -244,11 +244,41 @@ Let `K = (A, T)` be an acyclic knowledge base. Consistency of `K` is checked in 
 	- Resulting knowledge base: `K*`
 2. Expand the TBox
 	- If `A ≡ X` is in `T∗`, then every occurrence of `A` in other concept definitions can be replaced by `X`, replacing until no further replacements are possible
-	- Resulting TBox: ` T^∗e`
-3. Eliminate defined concepts from the ABox
-	- When `o : A` is in `A`, and `A ≡ X` is in `T ^∗e`
+	- Resulting TBox: $T^{∗e}$
+3. Eliminate *defined concepts* from the ABox
+	- When `o : A` is in `A`, and `A ≡ X` is in $T^{∗e}$
 	- Then replace `o : A` by `o : X`
 	- ABox的名字映射直接简化与subsumption的右手对应
-1. Put the ABox in negation normal form
-2. Apply completion rules to the ABox
-3. Check the leaves for contradictions
+4. Put the ABox in **negation** normal form
+	- put the ABox $A^e$ in *Negation Normal Form (NNF)*
+	- Resulting ABox $A^{en}$
+	![](../img/Pasted%20image%2020241202114127.png)
+5. Apply *completion rules* to the ABox
+	- Build a *tree* of sets of concept and role assertions, the *root* of the tree is $A^{en}$
+	- Whenever one of the folloowing rules can be applied to any node $\Gamma$, use then to generate new nodes.
+	![](../img/Pasted%20image%2020241202120105.png)
+	1. 交集规则: o同时属于X和Y, 补全声明
+	2. 并集规则: o属于X或Y, 补全单独的声明
+	3. 存在性规则: o1**存在**Role assertion但没有任何o2符合, 添加o3声明和相应的断言
+	4. 全称规则: 全称限制: o1和o2通过r关联那么o2必须属于X, o2不存在则添加声明o2属于X
+	5. o同时包含逻辑冲突, 添加`o:⊥`表示o属于不可能的概念, 逻辑冲突
+6. Check the leaves for contradictions
+	- A set $\Gamma$ contains an *immediate contradiction* if `o:⊥∈Γ` for some o
+	- If no more rules can be applied: chack the leaves
+	- If all endpoints contain immediate contradictions: `K` is inconcsistent
+	- If *at least one* endpoint contains no *immediate contradiction:* `K` is consistent 
+
+### Complexity
+#### Language EL
+$$X\space::=\space\top\space|\space A\space|\space X\space\sqcap\space X\space|\space\exists r.X$$
+Destroy `⊔` and `∀`
+- `X ⊔ Y` is equivalent to `¬(¬X ⊓ ¬Y)`
+- `∀r.X` is equivalent to `¬∃r.¬X`
+- `¬` and `⊥`
+
+Define things by properties they have, not by properties they lack
+
+
+- Counting
+- Inverse
+- Transitive Closure

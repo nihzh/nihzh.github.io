@@ -71,6 +71,13 @@ $$\Delta w_{ji}^{k} = Ce_{j}^{k}a_{i}^{k}$$
 	
 	The initially weights are all set to **small random values**, the error close to zero during training, the network has **converged**
 
+### Convergence
+The perceptron learning algorithm can conerge for the data set that is *linearly separable*
+
+*Linearly separable*: Two sets `P` and `N` of points is an n-dimensional space are called (absolutely) linerly separable if there exists a real vector `w = (w1,...,wn)` such that every point `a' = (a1,...,an)∈P` satisfies $w^{T}a'>0$ and every point `a' = (a1,...,an)∈N` satisfies $w^{T}a'<0$
+
+Assume the data set `D` is (absolutely) linearly separable, then set $D'=\{[1,a']\space|\space a'\in D\}$ is also (absolutely) linearly separable
+
 ## Multilayer Perceptron
 ![](../img/Pasted%20image%2020241201035500.png)
 - All the neurons are divided into `l` subsets, each set is called alayer
@@ -95,7 +102,7 @@ The better the MLP performs, the smaller the MLP error function `E` is
 The optimization problem: $min_{w}E(w)$, which the ***Gradient Descent***, addresses the issuue of how to update weights
 
 #### Error Backpropagation Algorithm
-One of the most popular techniques, it looks for the minimum of teh error function `E`  in the space of weights of connections `w` using the method of gradient descent
+One of the most popular techniques, it looks for the minimum of the error function `E` in the space of weights of connections `w` using the method of gradient descent
 ![](../img/Pasted%20image%2020241201051845.png)
 
 $\frac {\partial E}{\partial w_{ji}^{h}}$: partial derivative of the error function `E` w.r.t. the weight of connection between `j-th` neuron in the layer `h` and `i-th` neuron in the previous layer `h-1`
@@ -104,11 +111,49 @@ $\frac {\partial E}{\partial w_{ji}^{h}}$: partial derivative of the error funct
 $$w_{ji}^{h}=w_{ji}^{h}+\Delta w_{ji}^{h},\space\space where\space\Delta w_{ji}^{h}=-C\frac {\partial E}{\partial w_{ji}^{h}}$$
 Using a continuous and differentiable activation function $f$ ==> *Generic sigmoidal activation function* associated with a hidden or output neuron
 $$f(S)=\frac {\alpha}{1+e^{-\beta S+ \gamma}}+\lambda$$
-- The product `𝛼𝛽` defines the steepness of the curve
-- The parameter `𝜸` causes a shifting along the horizontal axis and is usually equal to zero
+- The product `𝛼𝛽` defines the steepness of the curve usually 1
+- The parameter `𝜸` causes a shifting along the horizontal axis and is usually 0
 - The parameters `𝛼` and `𝜆` define the range limits for scaling purposes
 
 $$f'(S)=\frac {df}{dS} = \frac {\beta}{\alpha}\cdot(f(S)+\lambda)(\alpha+\lambda-f(S))$$
 If the value of activation function itself is known for that value of S, it is straight foreard to compute the derivative at any perticular value of variable S without actual differntation
 
 If all actication functions $f(S)$ in the network are differntiable, then we can use the *chain rule* to calculate the partial derivative of the error function `E` w.r.t. the weight of a specific connection
+
+#### Partial Derivative
+If using the results of **all the inputs** within the data set to update weights, called *batch gradient decent*
+
+If using the result of **a single input** to update weights, called *stochastic gradient decent*
+
+Error function `E` for a single input
+$$
+E = \frac 12\sum_{j=1}^{m}(e_{j})^{2} 
+= \frac 12\sum_{j=1}^{m}(t_{j}-X_{j})^{2}
+= \frac 12\sum_{j=1}^{m}(t_{j}-X_{j}^{l})^{2}
+$$
+##### Chain Rule
+$$\frac {\partial E}{\partial w_{j_{0}i_{0}}^{l_{0}}}
+=\sum_{j=1}^{m} 
+\frac {\partial E}{\partial X_{j_{0}}^{l_{0}}}\cdot
+\frac {\partial X_{j_{0}}^{l_{0}}}{\partial S_{j_{0}}^{l_{0}}}\cdot
+\frac {\partial S_{j_{0}}^{l_{0}}}{\partial w_{j_{0}i_{0}}^{l_{0}}}$$
+
+For particular weight $\color {cyan}w_{j_{0}i_{0}}^{l_{0}}$
+When $l = l_0$
+$$=(X_{j_{0}}^{l_{0}}-t_{j_{0}})\cdot
+(f_{j_{0}}^{l_{0}})'(S_{j_{0}}^{l_{0}})\cdot 
+X_{j_{0}}^{l_{0}-1}
+$$
+When $l \ne l_0$
+$$=
+\sum_{j=1}^{n^l}(X_j^l-t_j)\cdot(f_j^l)'(S_j^l)\cdot 
+\sum_{i=1}^{n^{l-1}}w_{ji}^{l-1}
+\frac {\partial X_{i}^{l-1}}{\partial w_{j_{0}i_{0}}^{l_{0}}}
+$$
+
+- $(t_j - X_j^l)^2$的导数是$2(t_j - X_j^l)$，乘以前面的系数$\frac{1}{2}$​后化简为$-(t_j - X_j^l)$
+	- 负号是因为导数的方向与$X_j^l$增大的方向相反。
+- $\frac {\partial X_{j_{0}}^{l_{0}}}{\partial S_{j_{0}}^{l_{0}}}$表示神经元输出对净输入的变化率, 当$S_{j_{0}}^{l_{0}}$发生微小变化时, 输出$X_{j_{0}}^{l_{0}}$的变化量由激活函数的导数$f'(S_{j_{0}}^{l_{0}})$决定
+- 因为 $S_{j_0}^{l_0}$是权重$w_{j_0i_0}^{l_0}$和对应输入$X_{i_0}^{l_0-1}$​的线性组合，其余项在求导时为 0
+
+![](../img/Pasted%20image%2020241202014605.png)
