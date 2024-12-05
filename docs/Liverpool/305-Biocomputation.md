@@ -252,4 +252,4 @@ The *defining length* of a schema `H` = `𝛿(H)`, denoting the **maximum distan
 #### Schema Theorem
 ![](../img/Pasted%20image%2020241204164251.png)
 
-Hightly fit, short defining length, low order schemas increase exponentially infrequency in successive generations
+Hightly fit, short defining length, low order schemas increase exponentially in frequency in successive generations
