@@ -78,6 +78,8 @@ The perceptron learning algorithm can conerge for the data set that is *linearly
 
 Assume the data set `D` is (absolutely) linearly separable, then set $D'=\{[1,a']\space|\space a'\in D\}$ is also (absolutely) linearly separable
 
+The data set $D'=\{[1,a']\space|\space a'\in D\}$ can be divided into two separated set `P` and `N`, by the definition of absolutely linear separability
+
 ## Multilayer Perceptron
 ![](../img/Pasted%20image%2020241201035500.png)
 - All the neurons are divided into `l` subsets, each set is called alayer
@@ -145,7 +147,13 @@ $$=(X_{j_{0}}^{l_{0}}-t_{j_{0}})\cdot
 X_{j_{0}}^{l_{0}-1}
 $$
 When $l \ne l_0$
-$$=
+$$
+\frac {\partial X_j^l}{\partial w_{j_{0}i_{0}}^{l_{0}}}=
+(f_j^l)'(S_j^l)\cdot\sum_{i=1}^{n^{l-1}}w_{ji}^{l-1}
+\frac {\partial X_{i}^{l-1}}{\partial w_{j_{0}i_{0}}^{l_{0}}}
+$$
+$$
+\frac {\partial E}{\partial w_{j_{0}i_{0}}^{l_{0}}}=
 \sum_{j=1}^{n^l}(X_j^l-t_j)\cdot(f_j^l)'(S_j^l)\cdot 
 \sum_{i=1}^{n^{l-1}}w_{ji}^{l-1}
 \frac {\partial X_{i}^{l-1}}{\partial w_{j_{0}i_{0}}^{l_{0}}}
