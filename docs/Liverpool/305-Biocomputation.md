@@ -131,7 +131,7 @@ E = \frac 12\sum_{j=1}^{m}(e_{j})^{2}
 = \frac 12\sum_{j=1}^{m}(t_{j}-X_{j})^{2}
 = \frac 12\sum_{j=1}^{m}(t_{j}-X_{j}^{l})^{2}
 $$
-##### Chain Rule
+#### Chain Rule
 $$\frac {\partial E}{\partial w_{j_{0}i_{0}}^{l_{0}}}
 =\sum_{j=1}^{m} 
 \frac {\partial E}{\partial X_{j_{0}}^{l_{0}}}\cdot
@@ -157,3 +157,99 @@ $$
 - 因为 $S_{j_0}^{l_0}$是权重$w_{j_0i_0}^{l_0}$和对应输入$X_{i_0}^{l_0-1}$​的线性组合，其余项在求导时为 0
 
 ![](../img/Pasted%20image%2020241202014605.png)
+
+### Backpropagation
+![](../img/Pasted%20image%2020241203222707.png)
+
+Rewrite the partial derivative: Unify the representations in two cases
+![](../img/Pasted%20image%2020241203223020.png)
+
+![](../img/Pasted%20image%2020241203234338.png)
+
+
+## Genetic Algorithms
+Fitness: *Genotype* \==forcast==> *Phenotype* \==testing==> *Fitness*
+
+Natural Evolutoin
+- *Parallelism*: every individual in the population is tested independently
+- *Adaption to a changing environment*: only best fitted for the current environment do survive and reproduce
+- *Optimization*: only **optimal** for the current environment do survive and reproduce
+
+### GAs by John Holland
+*Adaption in Natural and Artificial Systems*
+- *Chromosomes*: **String of charactors** e.g., `"1100001001010101111"`
+	- Often: fixed length binary string
+	- Coding a candidate solution for a particular problem
+- *Gene*: bits in chromosome an instance of a *"allele"*, 0 or 1
+- *Allele*: possible setting for a gene
+- *Locus of the gene*: position of the gene in the string
+- *Natural selsection*: 
+	- *Crossover*: exchange subparts of two chromosomes
+		- cutting point is chosed randomly
+		- **One-point corssover**
+	- *Mutation*: random of **allele value** of a gene at randomely chosen location in the chromosomes
+	- *Inversion (mutaion)*: **180° reverses the order** of a continuous section of a chromosome, same position, rearranging the genes order
+	- *Translocation (mutation)*: a continuous section of a chromosome is **cut out and moved to a different location**, same order
+- *Population* (population of candidate solutions): population of chromosomes
+
+**GAs chromosome = GAs genotype = GAs organism**
+
+- No universal code, every coding is **problem dependent**
+- serious capable restrictions on the class of problems
+
+*Fitness function*: Evaluate how good the candidate solution soves the problem
+- Takes a chromosome as an input
+- Produces its **quantitative** fitness evaluation as an output
+
+*Evolving unit*: GAs population  evolves from one *generation* of chromosomes to the next generation and so on
+
+*Selection operator*: a rule that chooses those chromosomes in the population that will be allowed to reproduce, "fitter" produce more offsprings in average
+- Roulette Wheel Selection: fitness-proportionate selection: the number of times an individual expected to be selected $\color{cyan}N_i=f_i/\overline f$
+	- $f_i$: individual fitness
+	- $\overline f$: average fitness of the population
+- Tournament Selection
+
+*Search space*: set of all possible solution to a problem in consideration
+
+*Fitness Landscape*: a representatoin of all possible solutions along with their fitness
+- each candidate: points in the coordinate plane
+- fitness is measured along an additional dimension
+- Evolution: populations toward the peak
+
+### Basic structure of a GA
+![](../img/Pasted%20image%2020241204010324.png)
+
+Probability in *crossover* `Pc`: generate a random number `r` between 0-1 for each pair of parental chromosomes. If the `r` **less or equal** to `Pc`, then apply crossover to the parents at random chosen locus, otherwise not crossover.
+- No crossover: offsping = parent's idntical copies
+
+Probability of occurrence in *mutation* `Pm`: generate a random number `r` between 0-1 for each **new chromosome**. If the `r` **less or equal** to `Pm`, then apply mutation to the chromosome, flip a bit at randomly chosen locus, otherwise not crossover.
+
+### Schema
+A schema is a similarity template describing a subset of strings with similarities at certain string positions
+
+*building block* of a chromosome
+
+`{0, 1, *}`
+With * is a kind of placeholder, can be either 0 or 1
+
+```Example
+111**0 is a schema of the chromosome 111100
+```
+
+**Pattern matching device**: at every location in the schema, a 1 matches 1 in the string, a 0 matches 0 or a \* matches either
+
+For a schema with `k` placeholders, there will be $2^k$ chromosomes
+In a binary chromosome of a length `l` there are $2^l$ building blocks (schemas)
+
+The *Order* of a schema `H` = `O(H)`, denoting **the number of defining symbols (non-\* symbols)** it contains
+
+The *defining length* of a schema `H` = `𝛿(H)`, denoting the **maximum distance** between two **defining symbols**
+```Example
+10*00***
+𝛿(H) = (index)5 − (index)1 = 4
+```
+
+#### Schema Theorem
+![](../img/Pasted%20image%2020241204164251.png)
+
+Hightly fit, short defining length, low order schemas increase exponentially infrequency in successive generations
