@@ -375,10 +375,12 @@ can be Both
 ![](../img/Pasted%20image%2020241209162037.png)
 unweighted (network) congestion games are exact potential games
 
+![](../img/Pasted%20image%2020241210102900.png)
 ### weighted network congestion game
 ![](../img/Pasted%20image%2020241209170302.png)
 
-linear delays
+linear delays: x is the load on edge e
+$$d_e(x)=a_e*x+b_e$$
 ![](../img/Pasted%20image%2020241209170520.png)
 
 exponential delays
@@ -439,9 +441,6 @@ PoA: 均匀相关机器上的混合策略纳什均衡
 ### Second-price sealed-bid auctions
 竞标者同时提交密封的报价, 出价最高的竞标者以第二高的报价获得拍卖品
 无论其他竞标者如何行动, 竞标者都应该爆出其对拍卖品的真实估值, 以获得最大收益, 无需猜测其他竞标者的行为 (弱主导策略)
-
-弱主导: 一个玩家的某个策略至少和其他策略一样好, 并且在某些情况下比其他策略更好
-
 ### First-price sealed-bid actions
 获胜者支付自身的报价, 需要权衡获胜的概率和支付的价格
 纳什均衡:
