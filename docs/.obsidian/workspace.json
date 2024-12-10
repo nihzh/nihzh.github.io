@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4a9904ae7962c0db",
+        "id": "097573443fcc6ca4",
         "type": "tabs",
         "children": [
           {
-            "id": "7b80e3ae61d00a66",
+            "id": "5d0a565947476a77",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Liverpool/305-Biocomputation.md",
+                "file": "Liverpool/323-Introduction to Computational Game Theory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "305-Biocomputation"
-            }
-          },
-          {
-            "id": "8107f6e8560b06fc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Liverpool/304-Knowledge Representation & Reasoning.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "304-Knowledge Representation & Reasoning"
+              "title": "323-Introduction to Computational Game Theory"
             }
           }
         ]
@@ -108,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Liverpool/305-Biocomputation.md",
+                "file": "Liverpool/323-Introduction to Computational Game Theory.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 305-Biocomputation"
+              "title": "Backlinks for 323-Introduction to Computational Game Theory"
             }
           },
           {
@@ -164,22 +150,26 @@
       "random-note:Open random note": false
     }
   },
-  "active": "7b80e3ae61d00a66",
+  "active": "5d0a565947476a77",
   "lastOpenFiles": [
-    "Liverpool/Untitled.md",
-    "Liverpool/305-Biocomputation.md",
+    "img/Pasted image 20241210023309.png",
+    "img/Pasted image 20241210023131.png",
+    "img/Pasted image 20241210023042.png",
+    "img/Pasted image 20241210022827.png",
+    "img/Pasted image 20241209224506.png",
+    "img/Pasted image 20241209224017.png",
+    "img/Pasted image 20241209220309.png",
+    "img/Pasted image 20241209214846.png",
+    "img/Pasted image 20241209183239.png",
+    "img/Pasted image 20241209183035.png",
+    "img/Pasted image 20241209182831.png",
     "Liverpool/304-Knowledge Representation & Reasoning.md",
-    "img/Pasted image 20241204164251.png",
-    "img/Pasted image 20241204010324.png",
-    "img/Pasted image 20241203234338.png",
-    "img/Pasted image 20241203233557.png",
-    "img/Pasted image 20241203223020.png",
-    "img/Pasted image 20241203222707.png",
-    "img/Pasted image 20241202120105.png",
-    "img/Pasted image 20241202114127.png",
-    "img/Pasted image 20241202014605.png",
-    "img/Pasted image 20241201051845.png",
     "Liverpool/323-Introduction to Computational Game Theory.md",
+    "网安/渗透测试--蚁景网安/3.4 渗透框架流量隐藏.md",
+    "网安/渗透测试--蚁景网安/3.5 渗透框架扩展应用.md",
+    "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
+    "Liverpool/305-Biocomputation.md",
+    "Liverpool/Untitled.md",
     "Liverpool/211-Computer Networks.md",
     "Liverpool/202-Complexity of Algorithms.md",
     "Liverpool/201-Software Engineering.md",
@@ -198,10 +188,7 @@
     "GRE/写作.md",
     "GRE/填空.md",
     "GRE/数学.md",
-    "Troubleshooting/sed unknown option to 's'报错.md",
     "GRE",
-    "Liverpool/trytry.md",
-    "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
     "Liverpool",
     "未命名 1.canvas",
     "未命名 5.canvas",

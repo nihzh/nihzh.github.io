@@ -161,3 +161,290 @@ Find 1/2-approximate Nash equlibrium
 4. the row player take each chosen row with probability 1/2 each
 5. the column player take the chosen column with probability 1
 6. find the payoff each and use `maxi (Ay)i − xT Ay` and `maxj (BT x)j − xT By`
+
+## Algorithmic game theory
+### Proof of Nash’s theorem
+*Analysis*: computation and analysis of properties of Nash equilibria
+*Design*: design games that have both good game-theoretic and algorithmic properties (algorithmic mechanism design)
+
+Nash, 1951: 
+> Every finite strategic game possess a (mixed in genral) Nash equilibrium
+
+#### Brouwer's fixed point theorem
+**Every continuous function F : D --> D from a compact convex set D ⊆ $\mathrm{R^m}$ to itself has a *fixed point*
+- there exists  $x^*$ ∈ D such that F ($x^*$) = $x^*$
+- *Convex set*: a set of points that, given any two points A, B in the set, the line AB lies entirely within the set
+- *Compact set*: shares the basic properties of closed intervals of real numbers, including the property that continuous functions achieve a minimum and maximum.
+- 凸紧集: 保证线性插值在集合内且集合是有限范围且闭合的
+
+#### Sperner's lemma
+In one mimension, If a discrete function takes only the values 0 and 1, begins at the value 0 and ends at the value 1, then it must switch values an odd number of times
+
+*Sperner coloring* (admissible coloring): In two dimensions, **any admissible coloring of any triangulation of the unit triangle has an odd number of trichomatic triangles**
+
+n-dimensional simplex contains a cell colored with a complete set of colors. By making the triangulation maller and smaller, the limit of the fully labeled simplices is exactly the fixed point.
+
+### PPAD-complete
+Polynomial Parity Argument on a Directed graph: 
+- A *search problem* `Π` has a set of instances and each instance `l` has a set `Sol(l)` of solutions (acceptable answers)
+- The search problem is *total* if $Sol(l) \ne \emptyset$ for all instances `l`
+	- *TFNP*: Tatal Function Nondeterministic Polynomial
+- Key: **Given an instance of a total search problem, compute a solution**
+- r-Nash: r-player strategic game, is total
+
+Subclasses of TFNP: 
+- PLS, PPP, PPA
+- PPAD: A directed graph whose vertices have indegree and outdegree at most 1, and with at least one source, must have a sink.
+
+PPAD formally defined by its complete problem: END OF THE LINE
+![](../img/Pasted%20image%2020241208013452.png)
+在有向图中找到一个终点, 即一个汇点或者一个非起点的源点
+- A search problem is in PPAD if it reduces to EOTL
+- PPAD-complete: All problems in PPAD reduce to it
+
+> The problem of computing a Nash equilibrium of a finite 4-player strategic game is PPAD-complete.
+> 
+> The problem of computing a Nash equilibrium of a finite 2-player strategic game is PPAD-complete.
+
+### Potential games
+Real-valued functions defined over the *pure strategy profile* set of a strategic game.
+
+Potential functions and payoff functions are both defined over the set of *pure strategies*
+- A potential function for a game is the same for all players
+- Each player has own payoff function
+
+Whenever a single player deviates from a pure strategy profile, the difference in the payoff of the deviator is as much as the corresponding difference in the value of the potential function
+
+Locally maximize a potential function of a game are *pure Nash equilibria (PNE)*
+- No player can change her strategy so that the potential is increased
+- If a game admits a potential function, then it is guaranteed to have a PNE
+
+The difference in the payoff of the deviator is related to the corresponding difference of the potential
+- generalized ordinal potential functions： 收益增加时势函数一定增加（可以不减少）![](../img/Pasted%20image%2020241208175155.png)
+- ordinal potential functions: 变化方向一致![](../img/Pasted%20image%2020241208175131.png)
+- weighted potential functions：允许收益变化对势函数的影响不同![](../img/Pasted%20image%2020241208175057.png)
+- (exact) potential functions：完全刻画每个玩家收益变化与势函数变化的关系![](../img/Pasted%20image%2020241208175234.png)
+### The Finite Inprovement Property (FIP)
+在一个博弈中，从任意一个纯策略组合开始， 由玩家通过一系列单方面改进策略（提高其收益的策略变更）形成的路径总是有限的
+- 路径上的每一步都能严格提高当前玩家的收益
+- 路径最终停止在一个不能再改进的策略组合 -- 纯策略纳什均衡
+
+A path $λ = (λ^0, λ^1, . . .)$ is an *improvement path* with respect to `Γ` if, for all `k` ≥ 1, 
+$$ui(λ^k) > ui (λ^{k−1})$$
+where `i` is the unique deviator at step `k`
+
+> Game Γ has the FIP if every improvement path is finite
+> 
+> Every finite ordial potential game has the FIP
+> 
+> Game Γ has the FIP iff Γ has a generalized ordinal potential
+> 
+> 当在FIP博弈中，任意玩家i在面对其他玩家固定策略时，选择不同的策略一定会带来不同的收益时，其博弈具有序数势函数（ordinal potential）
+
+### Characterization of exact potential games
+![](../img/Pasted%20image%2020241208185707.png)
+精确潜在博弈：收益的变化可以完全通过一个势函数P表示
+对于闭路径，势函数的总变化应该为0，所有收益的增量和减量必须在路径中完全抵消
+通过验证闭路径的收益变换是否满足公式， 判断博弈是否具有精确潜在函数
+
+### Congestion games
+Any game where:
+- a collection of homogeneous agents have to choose from a finite set of alternatives and
+- the payoff of a player depends on the number of players choosing each alternative
+is a congestion game
+
+- a set of *players* N
+- a set of *resources* M
+- for each player i ∈ N, a set of $\sum_i$ of *pure strateties* of player i, where $A_i$ ∈ $\sum_i$ is a non-empty subset of resources
+- for each resource j ∈ M, a non-decreasing *delay function $d_j()$* where $d_j(k)$ denotes the cost (delay) to each user of resource j, if there are exactly k players using j
+
+- the *payoff function* expressed as the *negative* of the *cost functions*$(\lambda_i)_{i∈N}$, definded as the sum of the delays of all resources that *i* is using
+
+![](../img/Pasted%20image%2020241208213832.png)
+
+> Every congestion game is an exact potential game
+
+### Isomorphic games
+Two games that are idencical except reordering or renaming their pure strateties of the players.
+- Bijections $g_i$: action set jections
+
+> Every finite exact potential game is isomorphic to a congestion game
+
+### PLS-complete
+Compute a pure Nash equlibrium of congestion game --> a local search problem --> *PLS-complete*
+![](../img/Pasted%20image%2020241208215212.png)
+
+congestion game: Two PLS problems Π1 and Π2, find a mapping from the instances of Π1 to the instances of Π2
+
+### Mechanism design
+设计能够实现特定目标的机制， 即使参与者是自私的，并且可能拥有与决策相关的私人信息
+机制设计模型： 使用博弈论工具来模拟代理之间的交互。在机制中，每个代理都有一个消息（或策略）空间，决策结果是代理选择的消息的函数
+![](../img/Pasted%20image%2020241208224847.png)
+
+![](../img/Pasted%20image%2020241208230231.png)
+如果一个机制能激励所有代理选择对其自身最有利的策略， 并且这些策略能够呆滞实现预期的结果，则称该机制实现了预期的目标
+- *主导策略实现*：每个代理都存在一个主导策略，无论其他代理选择什么策略，该策略都能最大化其收益
+
+#### Revelation principle
+启示机制
+直接启示机制：For all `i` and for all $t_i$, $A_i=T_i$
+如果存在一个能够以主导策略实现特定目标的机制，那么一定存在一个能够以真实报告类型作为主导策略来实现相同目标的机制。这意味着在设计机制时，我们可以不失一般性地只考虑**直接启示机制和真实报告类型作为主导策略**的情况
+
+truthful
+1. Each agent reports her input to the mechanism.  
+2. The mechanism computes the desired outcome based on the reported  
+types.  
+3. The mechanism computes payments for each agent.
+
+#### VCG mechanism
+*generalized Vickrey-Clark-Groves mechanism*
+![](../img/Pasted%20image%2020241209013835.png)
+
+![](../img/Pasted%20image%2020241209013157.png)
+
+## Extensive game with Perfect Information
+*Extensive game*: 扩展型博弈能够更详细地描述博弈的顺序结构，允许玩家根据博弈进程改变策略，其顺序被明确定义
+
+*Terminal history*: Each possible sequence of actions
+*Player function*: determines the player who move before each action in each terminal history
+- P(h): 在历史h发生后, 由哪个玩家采取下一步行动, 每个历史h对应唯一玩家P
+
+游戏开始时，不指定玩家可用的动作，而是在玩家选择动作之后根据terminal history 和 player function推断出
+
+作为terminal history的proper subhistory不能单独作为terminal history
+- If (C, D) is a terminal history, C should not be specified as a terminal history: after C is chosen at the start of the game, some player may choose D, so that the action C does not end the game.
+
+*Subhistories*: 子历史, `(a1, a2, . . . , am), where 1 ≤ m ≤ k`, 包括∅
+*Proper subhistory*: 不是完整历史序列, i.e., 不包括最后一项的子历史
+
+![](../img/Pasted%20image%2020241209105240.png)
+
+Terminal history可以无限长，not finite游戏无法用树表示
+*finite horizen*: the longest terminal history is finite
+具有有限视野的游戏可能由无限多个terminal history：某些玩家在某些历史之后可能有无限多个动作
+finite: a game has a finite horizon and finitely many terminal histories
+
+*Perfect information*
+For each player, when choose an action
+1. knows all action chosen previously (has *perfect information*)
+2. always move along (not simultaneously)
+
+*Backward induction*
+A player who has to move deduces, for each of her possible actions, the actions that the players (including herself) will subsequently **rationally** take, and chooses the action that yields the terminal history she most prefers.
+
+*Strategies*
+the action the player chooses for every history after which it is her turn to move
+![](../img/Pasted%20image%2020241209114818.png)
+A player’s strategy provides sufficient information to determine her **plan of action**: the actions she intends to take, **whatever** the other players do
+
+
+*outcomes*
+![](../img/Pasted%20image%2020241209115802.png)
+
+
+*Nash equilibrium of extensive game*
+each player has finitely many strategies:
+1. list each players' strategies
+2. find the outcome of each strategy profile
+3. analyze as for a strategic game
+
+The set of Nash equilibria of any extensive game with perfect information  
+is the set of Nash equilibria of its strategic form.
+
+*Subgames*
+For any nonterminal history h, the subgame following h is the part of the game that remains after h has occurred.
+- The subgame following the empty history ∅ is the **entire game**
+- Every other subgame is called a *proper subgame*.
+
+The players’ behavior must correspond to a steady state in every subgame
+![](../img/Pasted%20image%2020241209120823.png)
+
+![](../img/Pasted%20image%2020241209121105.png)
+can be Both
+
+### Find subgame perfect equilibria
+*Backward induction*
+1. finding the optimal actions of the players who move in the subgames of length 1 (the last subgames)
+2. taking these actions as given, find the optimal actions of the players who move first in the subgames of length 2
+3. continue working back to the beginning of the game, at each stage k finding the optimal actions of the players who move at the start of the subgames of length k, given the optimal actions we have found in all shorter subgames
+![](../img/Pasted%20image%2020241209152300.png)
+
+![](../img/Pasted%20image%2020241209152359.png)
+
+## Network congestion game
+![](../img/Pasted%20image%2020241209162037.png)
+unweighted (network) congestion games are exact potential games
+
+### weighted network congestion game
+![](../img/Pasted%20image%2020241209170302.png)
+
+linear delays
+![](../img/Pasted%20image%2020241209170520.png)
+
+exponential delays
+![](../img/Pasted%20image%2020241209171227.png)
+
+### Load Balancing
+一组加权任务被分配到一组可能具有不同速度的机器上, 是的负载在机器之间均匀分布, 目标是最小化完工时间
+- machines \[m], set of pure strategies for an agent
+	- speeds s
+- tasks \[n], task i ∈ \[n] is managed by agent i
+	- weights w
+	- each taks, a assignment A:\[n] -> \[m]
+- load l = $\sum_{i:j=A(i)}\frac{W_i}{s_j}$
+- cost(A) = max(lj) 机器上最大的load
+
+可以使用混合策略P=($p_i^j$),  $p_i^j=Pr\{A(i)=j\}$
+expected load of machine j
+$$E[l_j]=\sum_{i\in[n]}\frac{w_ip_i^j}{s_j}$$
+social cost
+![](../img/Pasted%20image%2020241209182739.png)
+![](../img/Pasted%20image%2020241209182831.png)
+The expected cost of a task on a machine is larger than the expected load of the machine, unless the task is assigned with probability 1 to this machine
+在expected cost中增加机器没有被完全分配的任务的成本
+
+Nash equilibrium
+![](../img/Pasted%20image%2020241209183035.png)
+
+![](../img/Pasted%20image%2020241209183239.png)
+
+The ratio between the social cost of the worst Nash equilibrium and the optimal social cost, the so-called *price of anarchy*.
+![](../img/Pasted%20image%2020241209214846.png)
+- G(m): 所有包含m个参与者的博弈实例的集合
+- Nash(G): 博弈G的所有纳什均衡策略组合的集合
+- cost(P): 策略组合P下的社会成本
+- opt(G): 博弈G的最优社会成本
+
+PoA: 相同机器上的纯策略纳什均衡
+![](../img/Pasted%20image%2020241209220309.png)
+在最差情况下, 纳什均衡的成本最多是全局最优解的 $(2-\frac{2}{m+1})$倍
+
+*max-weight best response policy*
+1. 按权重递减的顺序激活不合理(需要更改的)代理
+2. 被激活的代理执行最佳相应策略: 将其任务移动到负载最小的机器上
+![](../img/Pasted%20image%2020241209224506.png)
+在每个代理最多被激活一次后达到纯策略纳什均衡
+
+![](../img/Pasted%20image%2020241210022827.png)
+
+
+PoA: 均匀相关机器上的纯策略纳什均衡![](../img/Pasted%20image%2020241209224017.png)
+PoA: 相同机器上的混合策略纳什均衡
+![](../img/Pasted%20image%2020241210023309.png)
+
+PoA: 均匀相关机器上的混合策略纳什均衡
+![](../img/Pasted%20image%2020241210023131.png)
+
+## Auction
+### Second-price sealed-bid auctions
+竞标者同时提交密封的报价, 出价最高的竞标者以第二高的报价获得拍卖品
+无论其他竞标者如何行动, 竞标者都应该爆出其对拍卖品的真实估值, 以获得最大收益, 无需猜测其他竞标者的行为 (弱主导策略)
+
+弱主导: 一个玩家的某个策略至少和其他策略一样好, 并且在某些情况下比其他策略更好
+
+### First-price sealed-bid actions
+获胜者支付自身的报价, 需要权衡获胜的概率和支付的价格
+纳什均衡:
+- 当两个最高报价相同
+- 其中一个最高报价由估值最高的玩家提交
+- 最高报价至少等于第二高的估值, 且不超过最高估值
