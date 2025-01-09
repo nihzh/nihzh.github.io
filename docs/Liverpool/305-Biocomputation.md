@@ -5,6 +5,71 @@
 ![](../img/IMG_1327.PNG)
 
 
+*Biological Excitability*: The membrane potential may change in response to electrical perturbation from other neurons. If the perturbation is sufficiently large, above a **threshold** in **intensity and duration**, the response is a large amplitude electrcal wave propagation from teh stimulated points to the rest of the tissue.
+
+The *excitation* and *transmission* are **all-or-none** and do not allow varying degree of strength
+
+## MP Neuron
+McCulloch-Pitts Neuron (1943)
+- a **binary**, **discrete-time** input
+- with *excitatory* and *inhibitory* connections and an *excitation threshold*
+
+![](../img/Pasted%20image%2020250106221350.png)
+- A neuron `j` with n+1 inputs
+- Each inputs `i` transmits a real value $\color{yellow}a_i$
+- Each connections is assigned with the *weight* $\color{yellow}w_{ji}$
+	- $w_i$ = **+1** for *excitatory* type connection
+	- $w_i$ = **-1** for *inhibitory* type connection
+- The *total inputs S* (the sum of the products of the inputs with the corresponding weights), is compaired with the *threshold 𝜃*, and the **outcome** $\color{yellow}X_j$ is produced consequently
+
+$X^t = 1$ if and only if $\color{red}S^{t-1} = \sum_i w_i a_i^{t-1} \ge \theta$, and $\color{cyan}w_i > 0,\space \forall a_i^{t-1} > 0$
+
+#### Activation function
+*threshold activation function (example)*
+![](../img/Pasted%20image%2020250106230203.png)
+
+### Simple logical functions
+The output 1 and 0 can be associated with the locigal value true/false
+- AND, OR, NOT
+Can only be used to represent some boolean functions which are *linearly separable*
+- 存在一条直线（平面），函数产出的所有1都在一侧，产出的0都在另一侧
+
+Another important function of the brain: to acquire new knowledge through experience, i.e. learning
+
+## ANN Learning rules
+Do not check the inhibitory input
+ANN learning rule is the rule how to adjust the weights of connections to get desirable output
+- storing information
+- producing logical and arithmetical operations on it
+### Hebb's Rules
+"Cells that fire together, wire together"
+![](../img/Pasted%20image%2020250107002609.png)
+- t + 1: next instant
+- C: learning rate: positive coefficient
+
+Input is not eaqul to 0 => Excitatory input
+Output is not eaqual to 0 => Neuron is fired
+![](../img/Pasted%20image%2020250107004720.png)
+
+### Oja's Ruls
+Normalized Hebb's rule
+By normalization, the weights will not monotonously increase, but converge after, which reflects the predisposition to different inputs. It plays an important role in *unsupervised learning* or *self-organisation*.
+![](../img/Pasted%20image%2020250107014608.png)
+
+*unsupervised learning*: We care which inputs are considered similar by the network, rather than the meaning of the output pattern
+- the algorithm is not provided with any pre-assigned labels or scores for the training data
+- first **self-discover any naturally occurring patterns** in that training data set
+
+### Kohonen Rule
+Competitive learning (multiple outputs): only a single output neuron is updated at any instant
+
+
+*winner*: one of the output neurons, has maximim value (**j-th**) of the instant state $\color{yellow}S_j$ at that instant, and only the weights of the winner's connections $$w_j=(w_{j1},w_{j2},...,w_{jn})$$
+is updated
+
+![](../img/Pasted%20image%2020250107035347.png)
+- Difference between input `a` and weight `w`
+
 ## Perceptron
 A neuron network that changes with "experience" using an error-correction rule.
 
@@ -17,7 +82,7 @@ Weight of a neuron changes when it makes **error response** to the input present
 The two layers are fully interconnected.
 
 Semantically, a *perceptron* can be considered as a vector-valued function that maps the input `a = {a0, a1,..., an}` to the output `X = {X1, X2, ..., Xm}`, allows **real inputs**
-
+ 
 Each output neuron has the same inputs, which the total input layer, while each individual outputs are with **individual connections** and therefore have **different weights** of connections
 
 ### Perceptron Training

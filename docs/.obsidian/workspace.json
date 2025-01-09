@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Liverpool/323-Introduction to Computational Game Theory.md",
+                "file": "Liverpool/305-Biocomputation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "323-Introduction to Computational Game Theory"
+              "title": "305-Biocomputation"
             }
           }
         ]
@@ -152,19 +152,19 @@
   },
   "active": "5d0a565947476a77",
   "lastOpenFiles": [
-    "img/Pasted image 20241210102900.png",
-    "img/Pasted image 20241210023309.png",
-    "img/Pasted image 20241210023131.png",
-    "img/Pasted image 20241210023042.png",
-    "img/Pasted image 20241210022827.png",
-    "img/Pasted image 20241209224506.png",
-    "img/Pasted image 20241209224017.png",
-    "img/Pasted image 20241209220309.png",
-    "img/Pasted image 20241209214846.png",
-    "img/Pasted image 20241209183239.png",
-    "img/Pasted image 20241209183035.png",
-    "Liverpool/304-Knowledge Representation & Reasoning.md",
+    "img/Pasted image 20250107035347.png",
+    "img/Pasted image 20250107035103.png",
+    "img/Pasted image 20250107035057.png",
+    "img/Pasted image 20250107034958.png",
+    "img/Pasted image 20250107034845.png",
+    "img/Pasted image 20250107014608.png",
+    "img/Pasted image 20250107004720.png",
+    "img/Pasted image 20250107002609.png",
+    "img/Pasted image 20250106230203.png",
+    "img/Pasted image 20250106225113.png",
+    "img/Pasted image 20250106221350.png",
     "Liverpool/323-Introduction to Computational Game Theory.md",
+    "Liverpool/304-Knowledge Representation & Reasoning.md",
     "网安/渗透测试--蚁景网安/3.4 渗透框架流量隐藏.md",
     "网安/渗透测试--蚁景网安/3.5 渗透框架扩展应用.md",
     "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
