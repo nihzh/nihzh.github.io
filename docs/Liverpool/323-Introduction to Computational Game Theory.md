@@ -438,12 +438,86 @@ PoA: 均匀相关机器上的混合策略纳什均衡
 ![](../img/Pasted%20image%2020241210023131.png)
 
 ## Auction
-### Second-price sealed-bid auctions
-竞标者同时提交密封的报价, 出价最高的竞标者以第二高的报价获得拍卖品
-无论其他竞标者如何行动, 竞标者都应该爆出其对拍卖品的真实估值, 以获得最大收益, 无需猜测其他竞标者的行为 (弱主导策略)
+- Ascending-bid auctions (English auctions)
+	- The seller gradually raises the price
+	- Bidders drop out until finally only one bidder remains, that bidder wins the object at this final price
+- Descending-bid auctions (Dutch auctions)
+	- The seller gradually lowers the price from some hegh initial value until the first moment when some bidderaccepts and pays the current price
+
+### Second-price sealed-bid auctions (Vickrey auctions)
+- Bidders submit simultaneous **sealed bids** to the seller
+- The highest bidder wins the object and pays the value of the **second-highest** bid
+无论其他竞标者如何行动, 竞标者的出价都应该与其对拍卖品的真实估值相等, 以获得最大收益, 无需猜测其他竞标者的行为 (弱主导策略)
+
+#### Formulation
+- Each player $\color {#bd93f9} i\space\in\space N=\{1,2,...,n\}$, submits a bid `bi`
+- The expected value `vi` attached to the object
+	- assumed to be all different and all positive
+- If `i`'s bid higher than every other bid, she obtains the object at the (second-highest) price `p` then payoff is `vi - p`
+
+![](../img/Pasted%20image%2020250117234044.png)
+
+The set of Nash equilibria is the set of pairs (b1, b2) such that
+either b1 ≤ v2 and b2 ≥ v1
+or b1 ≥ v2 , b1 ≥ b2 , and b2 ≤ v1 .
+
+> In a second-price sealed-bid auction, a player's bid equal to her valuation *weakly dominates* all her other bids
+
+
 ### First-price sealed-bid actions
-获胜者支付自身的报价, 需要权衡获胜的概率和支付的价格
-纳什均衡:
+- Bidders submit simultaneous **sealed bids** to the seller
+- The highest bidder wins the object and pays the value of her bid
+需要权衡获胜的概率和支付的价格, 纳什均衡:
 - 当两个最高报价相同
 - 其中一个最高报价由估值最高的玩家提交
 - 最高报价至少等于第二高的估值, 且不超过最高估值
+
+#### Formulation
+![](../img/Pasted%20image%2020250118005928.png)
+
+![](../img/Pasted%20image%2020250118011652.png)
+
+![](../img/Pasted%20image%2020250118010056.png)
+
+> In a first-price sealed-bid auction, a playuer's bid of at least her valuation is weakly dominated, and a bid of less than her valueation is not seakly dominated
+
+### Variation auctions
+#### All-pay auctions
+- every bidder, not only the winner, pays.
+Two bidders: 
+-  *first-price all-pay auction*: both bidders pay the winning price
+	- A first-price all-pay auction with two bidders in which both bidders pay the winning price has **no Nash equilibrium**.
+- *Second-price all-pay auction*: both bidders pay the winning price????
+
+#### Multiunit auctions
+Many units of an object are available, each bidder may value positively more than one unit
+- *Discriminatory auction*: The price paid for each unit is the winning bid for that unit, 分别第一价
+- *Uniform-price auction*: The price paid for each unit is the same, equal to the highest rejected bid among all the bids for all units, 统一最高第二价
+- *Vickrey auction*: A bidder who wins `k` objects pay the sum of the `k` highest rejected bids submitted by the other bidders, 
+
+> In *discriminatory* and *uniform-price auctions*, player i's action of bidding her value `vi` and `wi` does not dominate all her other actions, whereas it does in a *Vickrey* auction.
+
+
+### Auctions with imperfect information
+- Bidders are **not perfectly informed** about each others valuations
+- A single object is for sale, and each bidder independently recieves some information (a signal) about the value of the object to her
+	- *Private* valuations: the bidder's signal is simply her valuation of the object
+	- *Common* valuations: each bidder's valuation depends on other bidders' dignal as well as her own
+
+> 在有两个竞标者的第一价格密封投标拍卖中，每个竞标者将自己的真实估值除以 2 就是其最优出价，即 s(v) = v/2
+
+> 对于有 n 个竞标者的情况，分析表明，每个竞标者最优的出价策略是将其估值乘以 (n-1)/n，即 s(v) = ((n-1)/n)v。这个策略表明，随着竞标者人数的增加，竞标者需要更“激进”地出价以增加胜算，压低出价的幅度要减少。
+
+
+## Matching markets
+### Bipartite matching problem
+- *Perfect matching*: a choise of edges so that each node is the endpoint of exactly one of the chosen edges
+- *Constricted sets*: a bipartite graph has no perfect matching
+![](../img/Pasted%20image%2020250119023936.png)
+
+![](Pasted%20image%2020250119032143.png)
+
+#### Valuations
+Rather than expressing preferences simply as binary "aceptable-or-not" choices, we allow each individual to expresss **how much** they would like each object, in **numerical form**
+- *Quality* of assignment: The sum of each indivudual's valuation for what they are assigned
+- *Optimal assignment*: the assignment of maximum possible quality

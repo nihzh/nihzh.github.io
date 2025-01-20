@@ -110,8 +110,63 @@ If I know p, then I know that I know p.
 
 ![](../img/Pasted%20image%2020241028220352.png)
 
-## Epidemic Logic (EL)
+## Epistemic Logic (EL)
+### Truthfulness
+Reflexive Model: there is an arrow from every world to itself
+- `□aφ → φ` is valid on reflexive models
 
+Serial model: every world has a successor
+- `□φ → ♢φ` is valid on serial models
+
+*Correspondence*
+![](../img/Pasted%20image%2020250119230854.png)
+
+To deal with the problem of certain formulas not being valid even though they should be valid:  
+- add an axiom ψ to the proof system and 
+- restrict the models to those that have the property C corresponding to ψ.  
+Epistemic logic: multi-agemt modal logic where we use the knowledge interpretation of $\color{#bd93f9}□\small{a}$
+
+### Introspection
+Everyone knows which things they know
+Epistemic logic is more about how we **should** reason thatn about how we *do* reason
+- *Positive introspection*: if `a` knows φ, then `a` knows that she knowns φ
+	- the axiom $\color{#bd93f9}□\small{a}\varphi\rightarrow□\small{a}□\small{a}\varphi$ corresponds to the property of being **transitive**
+- *Negative introspection*: if  `a` doesn’t know φ, then `a` knows that she doesn’t know φ
+	- the axiom $\color{#bd93f9}¬□\small{a}φ → □\small{a}¬□\small{a}φ$ corresponds to the property of being **Euclidean**
+正反证
+
+### S5
+write $K\small a$ instead of $□\small a$ and $M\small a$ instead of $♢\small a$
+![](../img/Pasted%20image%2020250120001810.png)
+
+
+![](../img/Pasted%20image%2020250120003016.png)
+![](../img/Pasted%20image%2020250120003204.png)
+
+![](../img/Pasted%20image%2020250120003615.png)
+
+*Symmetry*: For every agent `a` and every `(w1, w2) ∈ Ra`, also have `(w2, w1) ∈ Ra`
+A model is *reflexive, transitive* and *Euclidean* if and only if it is *reflexive*, *transitive* and *symmetric*
+
+#### Drawing models
+No need to draw the arrow already exists (reflexive)
+every arrow is two-way, use a line instead of <-->
+
+### Conventions: Common Knowledge
+`E`: everybody knows, `Eφ` means everyone knows `φ`
+- $\color{#bd93f9}M, w \vDash Eφ \space\Longleftrightarrow\space M,w \vDash K\small aφ ∧ K\small bφ ∧ ...$
+
+*Fixed point definition*: 
+![](../img/Pasted%20image%2020250120013045.png)
+
+*Transitive closure definition*: 
+![](../img/Pasted%20image%2020250120013310.png)
+
+#### Public Announcements
+![](../img/Pasted%20image%2020250120020554.png)
+
+*Semantics*
+![](../img/Pasted%20image%2020250120021226.png)
 
 ## Description Logic (DL)
 Used to describe *ontologies*

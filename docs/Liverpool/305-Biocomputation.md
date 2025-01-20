@@ -137,7 +137,7 @@ $$\Delta w_{ji}^{k} = Ce_{j}^{k}a_{i}^{k}$$
 	The initially weights are all set to **small random values**, the error close to zero during training, the network has **converged**
 
 ### Convergence
-The perceptron learning algorithm can conerge for the data set that is *linearly separable*
+The perceptron learning algorithm can converge for the data set that is *linearly separable*
 
 *Linearly separable*: Two sets `P` and `N` of points is an n-dimensional space are called (absolutely) linerly separable if there exists a real vector `w = (w1,...,wn)` such that every point `a' = (a1,...,an)∈P` satisfies $w^{T}a'>0$ and every point `a' = (a1,...,an)∈N` satisfies $w^{T}a'<0$
 
