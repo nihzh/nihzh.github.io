@@ -124,19 +124,21 @@ Serial model: every world has a successor
 To deal with the problem of certain formulas not being valid even though they should be valid:  
 - add an axiom ψ to the proof system and 
 - restrict the models to those that have the property C corresponding to ψ.  
-Epistemic logic: multi-agemt modal logic where we use the knowledge interpretation of $\color{#bd93f9}□\small{a}$
+Epistemic logic: multi-agemt modal logic where we use the knowledge interpretation of $\color{#bd93f9}□_a$
 
 ### Introspection
 Everyone knows which things they know
 Epistemic logic is more about how we **should** reason thatn about how we *do* reason
 - *Positive introspection*: if `a` knows φ, then `a` knows that she knowns φ
-	- the axiom $\color{#bd93f9}□\small{a}\varphi\rightarrow□\small{a}□\small{a}\varphi$ corresponds to the property of being **transitive**
+	- A multi-agent model M = (W , R, V ) is *transitive* if for every agent `a` and every three worlds `w1`, `w2`, `w3` ∈ W : if (w1, w2) ∈ Ra and (w2, w3) ∈ Ra we then (w1, w3) ∈ Ra
+	- the axiom $\color{#bd93f9}□_a\varphi\rightarrow□_a□_a\varphi$ corresponds to the property of being **transitive**
 - *Negative introspection*: if  `a` doesn’t know φ, then `a` knows that she doesn’t know φ
-	- the axiom $\color{#bd93f9}¬□\small{a}φ → □\small{a}¬□\small{a}φ$ corresponds to the property of being **Euclidean**
+	- A multi-agent model M = (W , R, V ) is *Euclidean* if for every agent `a` and every three worlds `w1`, `w2`, `w3` ∈ W : if (w1, w2) ∈ Ra and (w1, w3) ∈ Ra we then (w2, w3) ∈ Ra
+	- the axiom $\color{#bd93f9}¬□_aφ → □_a¬□_aφ$ corresponds to the property of being **Euclidean**
 正反证
 
 ### S5
-write $K\small a$ instead of $□\small a$ and $M\small a$ instead of $♢\small a$
+write $\color{#bd93f9}K\small a$ instead of $\color{#bd93f9}□\small a$ and $\color{#bd93f9}M\small a$ instead of $\color{#bd93f9}♢\small a$
 ![](../img/Pasted%20image%2020250120001810.png)
 
 
@@ -154,7 +156,7 @@ every arrow is two-way, use a line instead of <-->
 
 ### Conventions: Common Knowledge
 `E`: everybody knows, `Eφ` means everyone knows `φ`
-- $\color{#bd93f9}M, w \vDash Eφ \space\Longleftrightarrow\space M,w \vDash K\small aφ ∧ K\small bφ ∧ ...$
+- $\color{#bd93f9}M, w \vDash Eφ \space\Longleftrightarrow\space M,w \vDash K_aφ ∧ K_bφ ∧ ...$
 
 *Fixed point definition*: 
 ![](../img/Pasted%20image%2020250120013045.png)
