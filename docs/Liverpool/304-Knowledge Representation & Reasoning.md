@@ -335,7 +335,22 @@ Destroy `⊔` and `∀`
 
 Define things by properties they have, not by properties they lack
 
-
 - Counting
 - Inverse
 - Transitive Closure
+
+
+```
+Take any pointed model M,w, we distinguish two caces
+
+This hold every pointed model M,w, therefore the formula is valid
+
+The formula is false in at least one pointed model, the formula is invalid
+
+
+Because K' is inconsistent, follows by that K is inconsistent with b:¬D, so K |= b:D
+
+The right most leaf contains no contradiction, the knowledge base K is therefore consistent
+
+Both leaves contain a contradiction, the K is inconsistent
+```
