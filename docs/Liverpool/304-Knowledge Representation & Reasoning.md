@@ -341,6 +341,8 @@ Define things by properties they have, not by properties they lack
 
 
 ```
+The rows where both premises are assigned truth value 1 and 5, the entailment is valid
+
 Take any pointed model M,w, we distinguish two caces
 
 This hold every pointed model M,w, therefore the formula is valid
