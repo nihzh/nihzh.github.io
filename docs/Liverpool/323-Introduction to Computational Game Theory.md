@@ -221,8 +221,8 @@ Locally maximize a potential function of a game are *pure Nash equilibria (PNE)*
 
 The difference in the payoff of the deviator is related to the corresponding difference of the potential
 - generalized ordinal potential functions： 收益增加时势函数一定增加（可以不减少）![](../img/Pasted%20image%2020241208175155.png)
-- ordinal potential functions: 变化方向一致![](../img/Pasted%20image%2020241208175131.png)
-- weighted potential functions：允许收益变化对势函数的影响不同![](../img/Pasted%20image%2020241208175057.png)
+- ordinal potential functions: 变化方向一致, 不涉及量化收益大小![](../img/Pasted%20image%2020241208175131.png)
+- weighted potential functions：允许收益变化对势函数的影响不同, 变化量的大小满足比例关系![](../img/Pasted%20image%2020241208175057.png)
 - (exact) potential functions：完全刻画每个玩家收益变化与势函数变化的关系![](../img/Pasted%20image%2020241208175234.png)
 ### The Finite Inprovement Property (FIP)
 在一个博弈中，从任意一个纯策略组合开始， 由玩家通过一系列单方面改进策略（提高其收益的策略变更）形成的路径总是有限的
@@ -521,3 +521,30 @@ Many units of an object are available, each bidder may value positively more tha
 Rather than expressing preferences simply as binary "aceptable-or-not" choices, we allow each individual to expresss **how much** they would like each object, in **numerical form**
 - *Quality* of assignment: The sum of each indivudual's valuation for what they are assigned
 - *Optimal assignment*: the assignment of maximum possible quality
+
+### Prices
+Much less central coordination,k with individuals making decisions based on prices and their own self-interest based on valuations and prices can still produce optimal assignments
+- A collection of *sellers*, each have a item
+- A equal-sized collection of *buyers*, each wanted a item
+- Each buyer has a *valuation* for each item, which may be very different
+	- The valuation that buyer `j` has for the item held by seller `i` denoted $\color{#bd93f9}v_{ij}$
+
+
+- Each seller `i` offering a price $\color{#bd93f9}p_i < 0$
+- The buyer will buy form the seller `i` for which $\color{#bd93f9}v_{ij}-p_i$ is maximized
+
+#### Market-Clearing Prices
+A set of prices is market-clearing if the resulting preferred-seller graph has a *perfect matching*
+![](../img/Pasted%20image%2020250123181409.png)市场出清价格总是能产生社会最优的结果，即在买家-卖家匹配问题中，任何市场出清价格所产生的首选卖家图中的完美匹配都具有所有可能的分配中最大的总估值
+
+![](../img/Pasted%20image%2020250124012455.png)
+reduction operation on the prices: if we ever reach a point where all prices are strictly **greater than 0**, then we reduce the prices by subtracting the smallest price, p, **from each one**. This drops the lowest price to 0, and shifts all other prices by the same relative amount. 
+
+#### Potentials
+For any current set of prices, define the *potential of a buyer* to be the maximum payoff she can currently get from any seller.
+- This is the buyer’s potential payoff: the buyer will actually get this payoff if the **current prices are market-clearing prices**.
+
+We also define the *potential of a seller* to be the current price she is charging.
+- This is the seller’s potential payoff: the seller will actually get this payoff if the **current prices are market-clearing prices**.
+
+Finally, we define the *potential of the auction* to be the **sum of the potential of all participants**, both buyers and sellers.
