@@ -65,3 +65,51 @@ $R^{E}$ be the subset of these that end with an environment state
 $r, r', ...$ to represent the members of $R$
 
 #### Environments
+The effect that an agent's actions have on an environment
+$$\tau : R^{Ac} \rightarrow 2^E$$
+- History dependent: the next state not only dependent ont the actino of the agent, but earlier actions may be dignificant
+- Non-deterministic: some uncertainty about the result of an action
+$\tau(r)=\Phi$ : There are no possile successor states to `r`, the run has ended, then `Env` is a triple
+$$Env=<E,e_0,\tau>$$
+Where `E` is a set of states, $\color{#b293f6}e_0\in E$ is an initial state, and $\tau$ is a state transformer function 
+
+#### Agents
+A function which map runs to actions
+$$Ag:R^E \rightarrow Ac$$
+##### Purely Reactive Agents
+- do without reference to their history
+- base their decision making entirely on the present
+
+#### Systems
+A pair containing an agent and an environment
+Any system will have associated with it a set of possible runs
+$$R(Ag,Env)$$
+
+#### Perception
+`see` represents the agent's ability to obtain information from its environment. The agent has soome initernal data structure, which is typically used to record information about the environment state and history
+$$see:E\rightarrow Per$$
+
+#### Next state functions
+`I` be the set of all internal states of the agent
+
+![](../img/Pasted%20image%2020250204172726.png)
+
+#### Utility functions
+- Associate **rewards** with states that we what agensts to bring about
+- Associate **utilities** with individual states
+	- The utility of a state is a numberic value representing how good a state is
+	- The task fo the agent is then to bring about states that maximise utility
+$$u:E\rightarrow\mathrm{R}$$
+##### Local utility functions
+
+
+#### Expected utitility
+The probability that run `r` occurs when agent `Ag` is placed in environment `Env` $$P(r|Ag,Env)$$
+can be computed from the probability of each step
+![](../img/Pasted%20image%2020250204174153.png)
+
+Expected utility `EU` of agent `Ag` in environment `Env` (`P`, `u`)
+$$EU(Ag,Env)=\sum_{r\in R(Ag,Env)}u(r)P(r|Ag,Env)$$
+
+#### Optimal agents
+![](../img/Pasted%20image%2020250204173645.png)

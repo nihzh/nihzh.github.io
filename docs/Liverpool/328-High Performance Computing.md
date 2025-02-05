@@ -43,3 +43,37 @@ Compilers
 - Intel (icc)
 - Portland (pgcc)
 - NVIDIA (nvcc)
+
+Plan the program to be parallel
+
+### Compilers
+- time optimisations
+- space optimisations
+
+#### Memory read/writes
+- Row major -- normally used
+- Column major
+
+#### Common compilers optimisations
+- replace function calls with "inline" code
+	- may not do it when containing a loop, static variables and recursive
+- dead store\code elimination
+- *code hoisting*
+	- for loop-variand computations inside a loop
+	- move to the incariant computation outside of the loop
+- *common sub-expression elimination*: same sub-expression appears multiple times
+- *loop unrolling*:
+	- replace loop with repeated statements
+	- replace momory load/stores and counter increments with constant values
+
+*Vectorisation*
+![](../img/Pasted%20image%2020250205174401.png)
+
+***Time space trade-off***
+
+### Profiling
+when a function in **different file** with calling function, the inline will not be implements
+*inline* keywork with function declaration to force inline
+![](../img/Pasted%20image%2020250205174614.png)
+
+![](../img/Pasted%20image%2020250205174712.png)
