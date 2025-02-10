@@ -115,7 +115,7 @@ $$EU(Ag,Env)=\sum_{r\in R(Ag,Env)}u(r)P(r|Ag,Env)$$
 ![](../img/Pasted%20image%2020250204173645.png)
 
 #### Predicate Task Spacifications
-A special case of assigneing utilities to histories is to assign 0 or 1 to a run, denote $\Psi$
+A special case of assigning utilities to histories is to assign 0 or 1 to a run, denote $\Psi$
 ![](../img/Pasted%20image%2020250210171204.png)
 
 #### Task environments
@@ -126,19 +126,32 @@ $$<Env, \Psi>$$
 A set of all runs of the agent in an environment that satisfy $\Psi$
 $$R_\Psi(Ag,Env)=\{r|r\in R(Ag,Env)\space and\space\Psi(r)=1\}$$
 
-An agnet `Ag` succeeds in task environment $<Env,\Psi>$
+An agnet `Ag` succeeds in task environment $<Env,\Psi>$ if
+$$R_\Psi(Ag,Env)=R(Ag,Env)$$
+- $\forall r\in R(Ag,Env)$, we have $\Psi(r)=1$
+	- if the agent fails on a single run, we say it has failed overall
+- $\exists r\in R(Ag,Env)$, we have $\Psi(r)=1$
+	- which counts an agent as successful as soon as it completes a single successful run
+
+#### The probability of Success
+If the environment is non-deterministic, the $\tau$ returns a set of possible states
+- Let $P(r|Ag,Env)$ denote probability that run `r` occurs if agent `Ag` is placed in environment `Env`
+![](../img/Pasted%20image%2020250211003408.png)
 
 #### Achivement and Maintenance Task
 The idea of a predicate task
-- achievement tasks: achive state of affairs $\varphi$
-- maintanance tasks: maintain state of affairs $\varPsi$
+- *achievement tasks*: achive state of affairs $\varphi$. Specified by aset `G` of "good" or "goal" states $G\subseteq E$
+	- The agent succeeds if it is **guaranteed to bring out** at least one of these states
+	- The agent succeeds in an achivement task if it can **force the environment** into one of the goal states $g\in G$
+- *maintanance goal*: maintain state of affairs $\varPsi$. Specified by a set `B` of "bad" states $B \subseteq E$
+	- The agent succeeds in a particular environment if it manages to **avoid** all states in `B` -- if it never performs actionswhich result in any state in `B` occurring
+	- In terms of games, the agent succeeds in a maintenance task if it ensures that it is **never forced into** one of the fail states $b\in B$
 
 ## Deductive Reasoning Agents
 ### Symbolic Reasoning Agents
 Agents make decisions about what to do via *symbol manipulation*
 - knowledge-based system
 - bring all the associated methodologies of such systems to bear
-### Ractive Agents
 
 To use logic to encode a theory stating the best action to perform in any given situation
 - $\color{#b293f6}\Delta$ be a logical database that describes the current internal state of an agent
@@ -147,4 +160,44 @@ To use logic to encode a theory stating the best action to perform in any given 
 - $\color{#b293f6}Ac$ be the set of actions the agent can perform
 - $\color{#b293f6}\Delta\vdash_\rho\varphi$ means that $\color{#b293f6}\varphi$ can be proved from $\color{#b293f6}\Delta$ using $\color{#b293f6}\rho$
 
+*Perception function*
+$$see:E\rightarrow Per$$
+
+The *next state function* revises the database $\Delta$
+$$next:\Delta\times Per\rightarrow\Delta$$
+
+*Action Function*: The agent's action is determined by its deduction rules and current database.
+![](../img/Pasted%20image%2020250211010545.png)
+
+decision-making: *deduction*
+The agent's decision-making strategy: *logical theroy*
+The process of selecting an action reduces to *a problem of proof
+
+#### Agent0 programming language
+- A set of *capabilities*: things the agent can do
+- A set of *initial beliefs*
+- A set of *initial commitments*: things the agent will do
+- A set of *commitment rules*
+	- a *message condition*
+	- a *mental condition*
+	- an *action*
+An AGENT0 program consists two parts: **initialisation** and **commitment rules**
+
+Decision cycle:
+1. To determine condition is matched against the messages the agent has recieved
+	- The *message condition* <==> the *messages* the agent has recieved
+	- The *mental condition* <==> the *beliefs* of the agent
+2. Actions may be 
+	- *Private*: internally executed computation
+	- *Communicative*: sending messages
+
+Messages constrained:
+- **Requests** to commit to actions
+- **Unrequests** to refrain from actions
+- **Informs**, which pass on information
+
+#### PLACA
+Agent's mental states are expanded to include *plans* and *intentions*
+The inability of agents to plan, and communicate requests for action via high-level goals
+### Reactive Agents
 ### Hybrid Agents

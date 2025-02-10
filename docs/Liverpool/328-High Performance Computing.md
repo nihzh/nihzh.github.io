@@ -77,3 +77,46 @@ when a function in **different file** with calling function, the inline will not
 ![](../img/Pasted%20image%2020250205174614.png)
 
 ![](../img/Pasted%20image%2020250205174712.png)
+
+### Parallelism
+Split by color (type)
+Split by area
+- each individual only has to travel in a local area
+- could have **load imbalance**
+Split by number
+- workload is balanced between individuals
+- Time is taken sequantially numbering the balls
+
+#### Design for parallel performance
+Find best possible solution for a given problem, and objective on a given system
+
+> There is a maximim possible performance for a given cimbination of system and problem to be solved. Choices made during design and implementation will lead **Either to the system meeting this maximim, or cause proformance being below expectation**
+
+For a given system, there is no universal best solution for all problems
+- ensuring some **performance portability** for your parallelised application whichever system it is run on.
+
+![](../img/Pasted%20image%2020250210231838.png)
+
+#### Decomposition
+![](../img/Pasted%20image%2020250210232025.png
+
+##### *Data parallelism*
+Given a data set and an operation that can be applied elemet-by-element, Apply the operation cuncurrently to each element
+
+##### *Task parallelism*
+Several independent tasks operations to be applied to the same data
+
+##### *Pipelining*
+![](../img/Pasted%20image%2020250210232641.png)
+
+*Granularity*
+- *Coarse-grained parallelism*: A program is split into large tasks to be executed in parallel
+	- ok for data parallelism as all threads execute the same instructions, load imbalance reduced
+- *Fine-grained parallelism*: A program is split into small tasks to be executed in parallel
+	- Fine with data parallelism, no load imbalance
+	- Good for task parallelism/pipelining, allows the program to be split into tasks to reduce load imbalance and increase throughput
+
+##### *Mixed Solution*
+**Real problems often have ximed solutions**: combinations of the ideas above
+No fixed rule.
+Test - change - test again for the best configuration of threads and tasks
