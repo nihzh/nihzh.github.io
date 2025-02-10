@@ -113,3 +113,38 @@ $$EU(Ag,Env)=\sum_{r\in R(Ag,Env)}u(r)P(r|Ag,Env)$$
 
 #### Optimal agents
 ![](../img/Pasted%20image%2020250204173645.png)
+
+#### Predicate Task Spacifications
+A special case of assigneing utilities to histories is to assign 0 or 1 to a run, denote $\Psi$
+![](../img/Pasted%20image%2020250210171204.png)
+
+#### Task environments
+$$<Env, \Psi>$$
+- The properties of the system the agent will inhabit
+- The criteria by which an agent will be judged to have either failed or succeeded in its task
+
+A set of all runs of the agent in an environment that satisfy $\Psi$
+$$R_\Psi(Ag,Env)=\{r|r\in R(Ag,Env)\space and\space\Psi(r)=1\}$$
+
+An agnet `Ag` succeeds in task environment $<Env,\Psi>$
+
+#### Achivement and Maintenance Task
+The idea of a predicate task
+- achievement tasks: achive state of affairs $\varphi$
+- maintanance tasks: maintain state of affairs $\varPsi$
+
+## Deductive Reasoning Agents
+### Symbolic Reasoning Agents
+Agents make decisions about what to do via *symbol manipulation*
+- knowledge-based system
+- bring all the associated methodologies of such systems to bear
+### Ractive Agents
+
+To use logic to encode a theory stating the best action to perform in any given situation
+- $\color{#b293f6}\Delta$ be a logical database that describes the current internal state of an agent
+	- *first-order predicate logic*
+- $\color{#b293f6}\rho$ be the theory (tylically a set of deduction rules)
+- $\color{#b293f6}Ac$ be the set of actions the agent can perform
+- $\color{#b293f6}\Delta\vdash_\rho\varphi$ means that $\color{#b293f6}\varphi$ can be proved from $\color{#b293f6}\Delta$ using $\color{#b293f6}\rho$
+
+### Hybrid Agents
