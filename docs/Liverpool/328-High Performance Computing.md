@@ -120,3 +120,44 @@ Several independent tasks operations to be applied to the same data
 **Real problems often have ximed solutions**: combinations of the ideas above
 No fixed rule.
 Test - change - test again for the best configuration of threads and tasks
+
+### Scalability and Speedup
+*Speedup*: ratio of the time it takes to urn a program without parallelism versus teh time it runs in parallel
+*Scalability*: a measure of how much speedup the program gets as one adds more processors/cores
+
+A program's performance stops scaling when adding more resources no longer results in additional speedup
+![](../img/Pasted%20image%2020250212171150.png)
+
+*Strong scaling*
+- problem sizefixed
+- measure the fastest time for a given problem
+- Ideal: linear reduction in runtime
+- report time to solution for different number of nodes/cores
+*Weak scaling*
+- increase problem size with cores/nodes
+- measure how time to solution changes with probelm size but increasing compute resources at the same time
+- Ideal Constant runtime
+- report time to solution
+
+#### Amdahl's Law
+A computer program will never go faster than the sum of the prots that do not run in parallel (the serial protions of the program), no matter how many processing elements we have
+![](../img/Pasted%20image%2020250212171851.png)
+Strong scaling
+Practical Parallelism
+- Presumes time spend in serial protion remains constant
+- May not constant
+
+#### Gustafson's Law
+allowing the probelm size to increase as we add more cores/processors, to solve a larger problem in the same time
+$$Speedup = \alpha+p(1-\alpha)=p-\alpha(p-1)$$
+Weak scaling
+
+### Domain Decomposition
+Equaly splitting data to each core should mean no load imbalance
+
+A *stencil* is an array operation where each element of the output array depends on a small neighourhood of elements from the input array, a kind of *Gather Operation*
+
+Shared memory: threads can see each other's memory
+halo exchange
+
+It is not always about minimising time-to-solution
