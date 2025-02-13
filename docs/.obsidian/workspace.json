@@ -4,11 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "4865ec6143add921",
+        "id": "514ade0500d4ad79",
         "type": "tabs",
         "children": [
           {
-            "id": "57e2638a9374dac7",
+            "id": "b93133f7ccb9b2a9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Liverpool/310-Multi-Agent Systems.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "310-Multi-Agent Systems"
+            }
+          },
+          {
+            "id": "4f52b49efc509df1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,7 +36,21 @@
             }
           },
           {
-            "id": "fc439f611d853218",
+            "id": "21598ad907553d0d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Liverpool/390-CyberCipher.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "390-CyberCipher"
+            }
+          },
+          {
+            "id": "2ac9fbc7ad7a776e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -59,7 +87,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -158,39 +186,38 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "templates:插入模板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false,
-      "random-note:开始漫游笔记": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "markdown-importer:Open format converter": false,
+      "random-note:Open random note": false
     }
   },
-  "active": "fc439f611d853218",
+  "active": "4f52b49efc509df1",
   "lastOpenFiles": [
+    "Liverpool/315-Cloud Computing for E-Commerce.md",
+    "Liverpool/310-Multi-Agent Systems.md",
+    "Liverpool/328-High Performance Computing.md",
+    "Liverpool/390-CyberCipher.md",
     "img/Pasted image 20250213223416.png",
     "img/Pasted image 20250213221247.png",
     "img/Pasted image 20250213221126.png",
-    "Liverpool/328-High Performance Computing.md",
+    "img/Pasted image 20250212172043.png",
     "img/Pasted image 20250212171851.png",
     "img/Pasted image 20250212171150.png",
-    "Liverpool/315-Cloud Computing for E-Commerce.md",
-    "Liverpool/310-Multi-Agent Systems.md",
     "img/Pasted image 20250211010545.png",
     "img/Pasted image 20250211003408.png",
     "img/Pasted image 20250210232641.png",
     "img/Pasted image 20250210232025.png",
-    "img/Pasted image 20250210231838.png",
+    "Liverpool/^.md",
     "Liverpool/323-Introduction to Computational Game Theory.md",
-    "Liverpool/390-CyberCipher.md",
-    "img/Pasted image 20250209033331.png",
     "Liverpool/304-Knowledge Representation & Reasoning.md",
     "Liverpool/211-Computer Networks.md",
     "Liverpool/305-Biocomputation.md",
     "网安/渗透测试--蚁景网安/3.4 渗透框架流量隐藏.md",
     "网安/渗透测试--蚁景网安/3.5 渗透框架扩展应用.md",
     "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
-    "Liverpool/Untitled.md",
     "Liverpool/202-Complexity of Algorithms.md",
     "Liverpool/201-Software Engineering.md",
     "Liverpool/105-Programming Paradigms.md",

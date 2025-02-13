@@ -1,3 +1,4 @@
+## Intro
 ### E-Commerce
 Hosting online stores and managing transactions, refers to the buying and selling of goods and services over the internet
 - Goods: physical products
@@ -6,7 +7,7 @@ Hosting online stores and managing transactions, refers to the buying and sellin
 ### User mode & Kernel mode
 ![](../img/Pasted%20image%2020250206211854.png)
 
-### Hypervisors
+### Virtural machines: Hypervisors
 - Directly on the host's hardware, bare-mental
 	- High performance and efficiency
 	- Hyper-v
@@ -211,14 +212,16 @@ A container is just a collection of processes that are running on the host OS, T
 
 #### Namespaces
 Isolate system resources for a collection of processes, each set of processes sees its own isolated instance of a global resource
-- PID: process ID number space
-- NET: network namespaces virtualised the network stack
-- MNT: manages mount points (file systems)
-- UTS (UNIX time sharing): Isolates host name and domain name
-- IPC: Isolates inter-process communication
-- USER: Provides both privilege isolation and user identification segregation
+- *PID*: process ID number space
+- *NET*: network namespaces virtualised the network stack
+- *MNT*: manages mount points (file systems)
+- *UTS* (UNIX time sharing): Isolates host name and domain name
+- *IPC*: Isolates inter-process communication
+- *USER*: Provides both privilege isolation and user identification segregation
 
 #### Control Groups (cgroups)
-
+Manage **resource allocation** for containers
+Limit and monitor the amount of resources (CPU, memory, disk I/O) that container can use, which ensures that no single container can monopolise system resources and impact other containers
 
 #### Union File Systems
+Container Orchestration: provide a **layered file system**, allow containers to share a read-only base file system, while maintaining separate writable layers for each container
