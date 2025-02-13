@@ -35,7 +35,8 @@
               "title": "315-Cloud Computing for E-Commerce"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -165,24 +166,24 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "57e2638a9374dac7",
+  "active": "fc439f611d853218",
   "lastOpenFiles": [
+    "img/Pasted image 20250213223416.png",
+    "img/Pasted image 20250213221247.png",
+    "img/Pasted image 20250213221126.png",
+    "Liverpool/328-High Performance Computing.md",
     "img/Pasted image 20250212171851.png",
     "img/Pasted image 20250212171150.png",
     "Liverpool/315-Cloud Computing for E-Commerce.md",
     "Liverpool/310-Multi-Agent Systems.md",
     "img/Pasted image 20250211010545.png",
     "img/Pasted image 20250211003408.png",
-    "Liverpool/328-High Performance Computing.md",
     "img/Pasted image 20250210232641.png",
     "img/Pasted image 20250210232025.png",
     "img/Pasted image 20250210231838.png",
     "Liverpool/323-Introduction to Computational Game Theory.md",
     "Liverpool/390-CyberCipher.md",
     "img/Pasted image 20250209033331.png",
-    "img/Pasted image 20250209033300.png",
-    "img/Pasted image 20250210171204.png",
-    "img/Pasted image 20250206212857.png",
     "Liverpool/304-Knowledge Representation & Reasoning.md",
     "Liverpool/211-Computer Networks.md",
     "Liverpool/305-Biocomputation.md",
