@@ -199,5 +199,33 @@ Messages constrained:
 #### PLACA
 Agent's mental states are expanded to include *plans* and *intentions*
 The inability of agents to plan, and communicate requests for action via high-level goals
-### Reactive Agents
-### Hybrid Agents
+
+### Practical Reasoning
+- Deliberation: ..outputs *intentions*
+- Means-ends reasoning
+
+#### Formal Respresentation
+#### Option Generation and Filtering
+
+#### Degrees of Commitment
+
+#### Intention Reconsideration
+
+
+## Reactive and Hybrid Agents
+### General Control Architecture
+- *Perceives* the environment
+- *Revises* its internal state, identifying beliefs and desires
+- *Selects* actions from its intention and plan
+- *Acts*: possibly changing the environment
+
+![](../img/Pasted%20image%2020250217172742.png)
+
+### Behaviours
+![](../img/Pasted%20image%2020250217172938.png)
+- Behavioural chunks of controls each connecting sensors to actuators
+- Implicitly parallel
+- Particularly well suited to Autonomous Robots
+- each layer is independent, each can independently be coded/tested and assemble into a complete system
+
+#### Emergent Behaviour
