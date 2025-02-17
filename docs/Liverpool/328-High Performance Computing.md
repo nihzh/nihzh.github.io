@@ -157,7 +157,8 @@ Equaly splitting data to each core should mean no load imbalance
 
 A *stencil* is an array operation where each element of the output array depends on a small neighourhood of elements from the input array, a kind of *Gather Operation*
 
-Shared memory: threads can see each other's memory
-halo exchange
+*Shared memory*: threads can see each other's memory
+halo exchange: explicitly send each other values when in a distributed memory content where these parts live on different nodes.
 
 It is not always about minimising time-to-solution
+一点点时间缩减有时可能带来成倍的资源消耗
