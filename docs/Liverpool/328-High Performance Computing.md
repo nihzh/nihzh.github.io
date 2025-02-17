@@ -189,7 +189,11 @@ hard to debug,
 Acquiring a lock gives a process (or thread) an exclusive access to a shared resources, can be used to unsure correct bahaviour of the multiple-threads programs
 
 *High-level access control*
-OpenMP critical sections
-OpenMP atomic
+OpenMP critical sections: a code section can be marked as critical
+- introduce locks
+- `#progma omp critical (name) {code}`
+OpenMP atomic: restricted to certain operations
+- use sections if no hardware support available
+- `#pragma omp critical <single assignment>`
 
 Reduction operators??
