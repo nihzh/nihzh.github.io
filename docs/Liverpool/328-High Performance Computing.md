@@ -207,6 +207,81 @@ An operator that can take multiple inputs and produce a single result
 - Reduce an array to a scalar value, can be done in partial steps, where applying the operator to **part of the array** can generate intermediates that can then be reduced further to get the result.
 - sum, product, logical AND, OR, maximum, minimum
 
+### Computation Models
+- *Single Instruction, Single Data (SISD)*
+![](../img/Pasted%20image%2020250219170844.png)
+
+
+*Single Instruction, Multiple Data (SIMD)*
+- Vectorisation
+- Some elemnets of OpenMP
+- SIMT (Threats) = SIMD + multithreading
+- GPUs
+![](../img/Pasted%20image%2020250219170956.png)
+- *Multiple Instruction, Single Data (MISD)*
+![](../img/Pasted%20image%2020250219171043.png)
+
+- *Multiple Instruction, Multiple Data (MIMD)*
+
+
+#### Shared memory programming
+Used within a single node distributed over **cores**, coores have individual memory though all memory is accessable within the shared-memory
+- Limited to addressable memory
+- Limited by number of cores
+- OpenMP: `#pragma omp parallel for <for-loop>`
+
+#### Distributed Memory Programming
+Usually **more than one node**, involves explicit communication between nodes over a network. In each node, shared memory programming
+- Limited by the network bandwidth / latency (cost of communication)\
+- Not limited by number of cores / nodes
+- Use MPI for this: declare the variables that shared, not portable
+
+#### SLURM
+Only 40 cores and 1 node available on the node
+`sbatch [] script.sh`
+
+**cores**
+`SLURM_CPUS_PER_TASK`: `-c` request cpus per task
+`SLURM_NTASKS`: `-n` request 4 tasks
+
+**nodes**
+`-N`: request nodes
+
+#### Makefiles
+```sh
+{make command}: {target files}
+	{compiler instruction}
+```
+
+![[Pasted image 20250219173405.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Lab
 
