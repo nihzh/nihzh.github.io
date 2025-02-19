@@ -78,7 +78,7 @@ when a function in **different file** with calling function, the inline will not
 
 ![](../img/Pasted%20image%2020250205174712.png)
 
-### Parallelism
+## Parallelism
 Split by color (type)
 Split by area
 - each individual only has to travel in a local area
@@ -87,7 +87,7 @@ Split by number
 - workload is balanced between individuals
 - Time is taken sequantially numbering the balls
 
-#### Design for parallel performance
+### Design for parallel performance
 Find best possible solution for a given problem, and objective on a given system
 
 > There is a maximim possible performance for a given cimbination of system and problem to be solved. Choices made during design and implementation will lead **Either to the system meeting this maximim, or cause proformance being below expectation**
@@ -97,16 +97,16 @@ For a given system, there is no universal best solution for all problems
 
 ![](../img/Pasted%20image%2020250210231838.png)
 
-## Decomposition
+### Decomposition
 ![](../img/Pasted%20image%2020250210232025.png
 
-##### *Data parallelism*
+#### Data parallelism
 Given a data set and an operation that can be applied elemet-by-element, Apply the operation cuncurrently to each element
 
-##### *Task parallelism*
+#### Task parallelism
 Several independent tasks operations to be applied to the same data
 
-##### *Pipelining*
+#### Pipelining
 ![](../img/Pasted%20image%2020250210232641.png)
 
 *Granularity*
@@ -116,12 +116,12 @@ Several independent tasks operations to be applied to the same data
 	- Fine with data parallelism, no load imbalance
 	- Good for task parallelism/pipelining, allows the program to be split into tasks to reduce load imbalance and increase throughput
 
-##### *Mixed Solution*
+##### Mixed Solution
 **Real problems often have ximed solutions**: combinations of the ideas above
 No fixed rule.
 Test - change - test again for the best configuration of threads and tasks
 
-## Scalability and Speedup
+### Scalability and Speedup
 *Speedup*: ratio of the time it takes to urn a program without parallelism versus teh time it runs in parallel
 *Scalability*: a measure of how much speedup the program gets as one adds more processors/cores
 
@@ -152,7 +152,7 @@ allowing the probelm size to increase as we add more cores/processors, to solve 
 $$Speedup = \alpha+p(1-\alpha)=p-\alpha(p-1)$$
 Weak scaling
 
-### Domain Decomposition
+#### Domain Decomposition
 Equaly splitting data to each core should mean no load imbalance
 
 A *stencil* is an array operation where each element of the output array depends on a small neighourhood of elements from the input array, a kind of *Gather Operation*
@@ -163,8 +163,8 @@ halo exchange: explicitly send each other values when in a distributed memory co
 It is not always about minimising time-to-solution
 一点点时间缩减有时可能带来成倍的资源消耗
 
-## Corrctness
-### Round-off error
+### Corrctness
+#### Round-off error
 有效符号位长度限制带来的精度丢失
 Since parallel programs run in a different order everytime, this could result in a different numerical result on every run
 - use double precision
@@ -174,21 +174,26 @@ Since parallel programs run in a different order everytime, this could result in
 *Deadlock*: Occours when two or more tasks wait for each other and each will not resume until some action is taken
 *Livelock*: Occurs when the tasks involved in a deadlock take action to resole the original deadlock but in suth a way that there is still/another deadlock, No tasks are able to resumt
 
-### Race Conditions
+#### Race Conditions
 Occour when a program's behaviour chages depending on the sequence or timing of events outside the control of the program itself
 ![](../img/Pasted%20image%2020250217232429.png)
 
-#### Multiple Write Race Conditions
+##### Multiple Write Race Conditions
 hard to debug, 
 
 - extra memory: Thread-local copy of the variable, to be accumulated in the end
 - extra time: only one thread is allowed access at a time
 - use underlying suppourt: the underlying system implements the access control to avoid race conditoins
 
-#### Concurrent access and locks
+##### Concurrent access and locks
 Acquiring a lock gives a process (or thread) an exclusive access to a shared resources, can be used to unsure correct bahaviour of the multiple-threads programs
 
-*High-level access control*
+*Low-level locks*
+- OpenMP: `omp_set_lock()`, `omp_unset_lock`, ...
+- Fine-grained control
+- Easy to end up with a dead lock
+
+*High-level access control*: OpenMP and MPI
 OpenMP critical sections: a code section can be marked as critical
 - introduce locks
 - `#progma omp critical (name) {code}`
@@ -196,4 +201,57 @@ OpenMP atomic: restricted to certain operations
 - use sections if no hardware support available
 - `#pragma omp critical <single assignment>`
 
-Reduction operators??
+*Reduction operators*
+An operator that can take multiple inputs and produce a single result
+- **associative** and **commutative**
+- Reduce an array to a scalar value, can be done in partial steps, where applying the operator to **part of the array** can generate intermediates that can then be reduced further to get the result.
+- sum, product, logical AND, OR, maximum, minimum
+
+
+## Lab
+
+```sh
+#!/bin/bash -l
+
+# Specify the current working directory as the location for executables/files
+# This is the default setting.
+#SBATCH -D ./
+
+# Export the current environment to the compute node
+# This is the default setting.
+#SBATCH --export=ALL
+
+# Specific course queue, exclusive use (for timings), max 1 min wallclock time
+#SBATCH -p course
+#SBATCH --exclusive
+#SBATCH -t 1
+
+# load modules 
+module load compilers/intel/2019u5
+
+# just 1 thread to run on
+export OMP NUM THREADS=1
+
+# GNU no-opt
+# echo GNU no-opt
+# icc -O3 quad.c func1.c -lm
+# time ./a.out
+# echo "-------"
+
+for i in'seq 0 3`; do
+	echo Level $i optimisation
+	icc -O$i -gopenmp -mkl=sequential matrices-mkl.c -o matricesMKLO$i.out
+	time ./matricesMKLO$i.out
+done
+
+```
+
+*Slurm*
+![](../img/Pasted%20image%2020250218171642.png)
+`sbatch -c 16` threads setting
+
+*Compilers OpenMP*
+gcc: `-fopenmp` to enable the OpenMP
+icc: `-qopenmp` to enable the OpenMP
+
+*MKL: Intel Maths Kernel Library*
