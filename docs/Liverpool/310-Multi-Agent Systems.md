@@ -229,3 +229,42 @@ The inability of agents to plan, and communicate requests for action via high-le
 - each layer is independent, each can independently be coded/tested and assemble into a complete system
 
 #### Emergent Behaviour
+### Hybrid Architectures
+
+
+## Ontologies & Communication
+"Social" ability
+- Most work on multi-agent systems assumes communication
+- Ontologies: language for understanding
+
+Speech Acts
+- Performative verb
+- Propositional content
+
+### ACLs
+Agent Communication Languages
+- *KQML*: Knowledge Query and Manipulation Language, Message itself
+- *KIF*: Knowledge Interchange Format, **the body of the message**
+
+#### KQML
+Defines various acceptable 'communicative verbs' or *performatives*
+Each KQML message has a performative and a numberr of parameters
+![](../img/Pasted%20image%2020250221192416.png)
+
+#### KIF
+A language for expressing **message content** or **domain knowledge**, can be used to writing down *ontologies* and based on first-order logic
+- properties of things in a domain
+- repationships between things in a domain
+- general properties of a domain
+
+### Ontologies
+Agents need to **agree on the words** they use to describe a domain
+Types of objects:
+- *Classes*: collections of things with semilar properties
+- *Instances*: specific examples of classes
+- *Relations*: describe the properties of objects and connect then together
+
+Different levels of detail: the more specific an ontology, the less reusable it is
+- *Upper ontology*: contains the **most general information** about the world
+- *Domain ontology*: defines concepts appropriate for a **spacific application domain**
+- *Application ontology*: defines concepts used by a specific application
