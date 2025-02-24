@@ -255,34 +255,6 @@ Only 40 cores and 1 node available on the node
 
 ![[Pasted image 20250219173405.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Lab
 
 ```sh
@@ -330,3 +302,88 @@ gcc: `-fopenmp` to enable the OpenMP
 icc: `-qopenmp` to enable the OpenMP
 
 *MKL: Intel Maths Kernel Library*
+
+
+# OpenMP
+### Process and Thread
+*Process*
+
+### OpenMP
+Thread-based parallelism
+- shared memory and also accelerations
+- parallelisation using work-sharing and tasks
+
+Elements of OpenMP
+- Dierectives and their data clauses
+- Environment variables
+- Runtime functions
+
+#### OMP_NUM_THREADS
+The maximum number of threads for program to use
+- when not specified, program will use as many threads as cores
+
+```sh
+cores = ${SLURM_CPUS_PER_TASK : -1}
+icc -qopenmp file.c -0 output.exe
+export OMP_NUM_THREADS = $cores
+./output.exe
+```
+
+#### Parallel region
+```c
+// serial code
+#pragma omp parallel [...]
+{
+	// parallel code
+	int numThreads = omp_get_num_threads();  
+	for(int i = 0; i < numThreads; i++){  
+		printf(“Thread %d says Hello”, i); 
+	}
+}
+// serial code
+```
+
+##### Replication
+All threads will execute the for loop from 0 to maxThreads
+- Parallel: threads work independently
+- Not parallel: same code is executed
+
+##### omp for
+`#pragma omp for`
+- must exist inside a parallel region
+- distributes the iterations of the for loop across the threads of the (existing) parallel region: implicit work sharing
+- loop: 
+	- must standard loop structure
+	- cannot branch
+
+`# pragma omp parallel for`
+No race condition: Threads vectorisation
+The loop iterations are distributed among threads, ensuring correct parallel execution
+
+##### Nested for loop
+```c
+#pragma omp parallel for num_thread(4)
+for(int i = 0; i < 2; i++){  
+	for(int j = 0; j < 4; j++){  
+		//...code to do  
+	}  
+}
+```
+Only `i` is distributed between threads, only the omp loop is workshared
+
+##### omp for collapse
+```c
+#pragma omp parallel for collapse(2) num_thread(4)
+for(int i = 0; i < 2; i++){  
+	for(int j = 0; j < 4; j++){  
+		//...code to do  
+	}  
+}
+```
+![[Pasted image 20250224235612.png]
+The 2 for loops are collapsed into 1
+- Must have a for loop immediately nested after the first for loop
+
+- There are uneven iterations as above to reduce load imbalance.  
+- Micromanaging memory access to reduce false sharing (look at  
+this later
