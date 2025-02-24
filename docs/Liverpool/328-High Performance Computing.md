@@ -179,7 +179,7 @@ Occour when a program's behaviour chages depending on the sequence or timing of 
 ![](../img/Pasted%20image%2020250217232429.png)
 
 ##### Multiple Write Race Conditions
-hard to debug, 
+hard to debug
 
 - extra memory: Thread-local copy of the variable, to be accumulated in the end
 - extra time: only one thread is allowed access at a time

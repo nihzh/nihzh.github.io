@@ -201,8 +201,36 @@ Agent's mental states are expanded to include *plans* and *intentions*
 The inability of agents to plan, and communicate requests for action via high-level goals
 
 ### Practical Reasoning
-- Deliberation: ..outputs *intentions*
-- Means-ends reasoning
+Reasoning directed towards *actions*, 
+- Theoretical resoning: *beliefs*
+
+*Deliberation*
+Deciding **what** state of affairs we want to achieve, outputs *intentions*
+- *intensions*: the interplay between *beliefs* and *desires*, defines how the model works
+
+*Means-ends reasoning*
+Deciding **how** to achieve these states of affairs, outputs *plans*
+
+#### Intensions in Practical Reasoning
+Intentions are stronger thatn desire
+![](../img/Pasted%20image%2020250219221357.png)
+![](../img/Pasted%20image%2020250219221429.png)
+![](../img/Pasted%20image%2020250219221501.png)
+![](../img/Pasted%20image%2020250219222144.png)
+
+#### Means-ends Reasoning / Planning
+The design of a course of action that will achieve some desired goal
+Basic ideas to give a planning system, use **logic** to represent:
+- goal/intension to achieve
+- actions it can perform, each has
+	- A *name*, which may have arguments
+	- A *pre-condition list*: a list of facts which **must be true** for the action to be executed
+	- A *delete list*: a list of facts that are no **longer true** after the action is performed
+	- An *add list*: a list of facts made true by executing the action
+- the environment: *ontology*
+Generate a *plan* to achieve the goal, a sequence of steps (actions)
+![](../img/Pasted%20image%2020250220001433.png)
+The *goal* is represented as a set of formulate
 
 #### Formal Respresentation
 #### Option Generation and Filtering
