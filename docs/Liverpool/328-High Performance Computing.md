@@ -253,10 +253,9 @@ Only 40 cores and 1 node available on the node
 	{compiler instruction}
 ```
 
-![[Pasted image 20250219173405.png)
+![](../img/Pasted%20image%2020250219173405.png)
 
 ## Lab
-
 ```sh
 #!/bin/bash -l
 
@@ -307,6 +306,19 @@ icc: `-qopenmp` to enable the OpenMP
 # OpenMP
 ### Process and Thread
 *Process*
+- Basic unit of work of for the OS
+- **Big overheads** in creation/deletion/context switch
+- **Isolated from other processes**
+- All communication between deifferent processes must be **explicit** -- through a mechanism called *Inter-process Communication*
+- Each process has its **own stack and heap**
+
+*Thread*
+- Part of a program that can be run independently (simultaneously)
+- **Small overheads** in creation/deletion/context switch
+- **Share memory with other threads in the same process** 
+- Communication can be **implicit** since they share memory -- just change the momory of the other thread (or shared) to communicate
+- Threads **share a heap** within a process, while each has its **own stack**
+- **Files and other resources** are shared between threads of the same process
 
 ### OpenMP
 Thread-based parallelism
@@ -318,7 +330,7 @@ Elements of OpenMP
 - Environment variables
 - Runtime functions
 
-#### OMP_NUM_THREADS
+### OMP_NUM_THREADS
 The maximum number of threads for program to use
 - when not specified, program will use as many threads as cores
 
@@ -329,7 +341,7 @@ export OMP_NUM_THREADS = $cores
 ./output.exe
 ```
 
-#### Parallel region
+### Parallel region
 ```c
 // serial code
 #pragma omp parallel [...]
@@ -343,24 +355,33 @@ export OMP_NUM_THREADS = $cores
 // serial code
 ```
 
-##### Replication
+#### Replication
 All threads will execute the for loop from 0 to maxThreads
 - Parallel: threads work independently
 - Not parallel: same code is executed
 
-##### omp for
+#### omp for
 `#pragma omp for`
 - must exist inside a parallel region
-- distributes the iterations of the for loop across the threads of the (existing) parallel region: implicit work sharing
+- can only contain a for loop
+- **distributes the iterations** of the for loop **across the threads** of the (existing) parallel region: implicit work sharing
 - loop: 
 	- must standard loop structure
 	- cannot branch
 
+#### omp parallel for
 `# pragma omp parallel for`
+Create a *parallel region* and *workshare* for loop
+- Must only contain a for loop
 No race condition: Threads vectorisation
 The loop iterations are distributed among threads, ensuring correct parallel execution
 
-##### Nested for loop
+*Loop workshare*
+Dividing work between threads
+All threads execute `iters / numThreads` iterations (by default)
+OpenMP orders threads implicitly (by default)
+
+#### Nested for loop
 ```c
 #pragma omp parallel for num_thread(4)
 for(int i = 0; i < 2; i++){  
@@ -371,7 +392,7 @@ for(int i = 0; i < 2; i++){
 ```
 Only `i` is distributed between threads, only the omp loop is workshared
 
-##### omp for collapse
+#### omp for collapse
 ```c
 #pragma omp parallel for collapse(2) num_thread(4)
 for(int i = 0; i < 2; i++){  
@@ -380,10 +401,11 @@ for(int i = 0; i < 2; i++){
 	}  
 }
 ```
-![[Pasted image 20250224235612.png]
-The 2 for loops are collapsed into 1
+![](../img/Pasted%20image%2020250224235612.png)
+The 2 for loops are **collapsed into 1** and all Iterations are distributed to threads.
 - Must have a for loop immediately nested after the first for loop
 
-- There are uneven iterations as above to reduce load imbalance.  
-- Micromanaging memory access to reduce false sharing (look at  
-this later
+Collapse is good if: 
+- There are uneven iterations as above to **reduce load imbalance**
+- Micromanaging memory access to **reduce false sharing**
+else: will not see major performance gains and may see slower gains
