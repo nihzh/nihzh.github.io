@@ -129,7 +129,7 @@ A program's performance stops scaling when adding more resources no longer resul
 ![](../img/Pasted%20image%2020250212171150.png)
 
 *Strong scaling*
-- problem sizefixed
+- problem size fixed
 - measure the fastest time for a given problem
 - Ideal: linear reduction in runtime
 - report time to solution for different number of nodes/cores
@@ -320,7 +320,7 @@ icc: `-qopenmp` to enable the OpenMP
 - Threads **share a heap** within a process, while each has its **own stack**
 - **Files and other resources** are shared between threads of the same process
 
-### OpenMP
+## OpenMP
 Thread-based parallelism
 - shared memory and also accelerations
 - parallelisation using work-sharing and tasks
@@ -409,3 +409,38 @@ Collapse is good if:
 - There are uneven iterations as above to **reduce load imbalance**
 - Micromanaging memory access to **reduce false sharing**
 else: will not see major performance gains and may see slower gains
+
+## Data Clauses
+By default
+- *Shared*:  A variable that is declared outside of a parallel region is shared between all threads implicitly
+- *Private*: A variable that is declared inside a palallel region if private between all threads and is only available to that thread
+
+`shared(x)`: the memory location for `x` is shared to all threads, 
+`private(x)`: all threads get allocated a memory location for `x` (own copy)
+- no correctness
+- useful when only writing
+- after the parallel region, `x` will be what it was before enterin the region
+`firstprivate(x)`: private, with the original value of `x` upon entry into the parallel region is copied to all threads
+`lastprivate(x)`: private, with the value will persist after the end of the parallel region
+- only use with *omp for*
+
+`default(none)`
+`reduction(op:var)`: do the `op` to the `var` after the parallel region
+
+### Schedule
+gain performance in places
+`schedule(static, <chunk_size>)`: pre-divide the work into chunks and stick to it, deterministic
+`schedule(dycamic)`: when a thread finishes its assigned work, it takes the next availbe chunk, load balance, non-deterministic
+
+
+`#ifdef_OPENMP ... #endif`: portable , execute only defined (compile) with OpenMP
+
+Runtime functions
+`omp_get_wtime()`
+`omp_get_num_threads()`
+`omp_get_max_threads()`
+`omp_get_thread_num()`
+`omp_set_num_threads()`
+
+`#pragpa omp parallel if(condition)`: enable or disable parallelism conditionally (one region at a time)
+`#pragma omp parallel num_threads(<i>)`: set number of threads for this parallel region
