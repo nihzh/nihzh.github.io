@@ -225,3 +225,129 @@ Limit and monitor the amount of resources (CPU, memory, disk I/O) that container
 
 #### Union File Systems
 Container Orchestration: provide a **layered file system**, allow containers to share a read-only base file system, while maintaining separate writable layers for each container
+
+
+## Hosting
+*Forward proxy*: intermediary between a client and the internet
+- Caching 
+
+*Reverse proxy*: sites between the internet and web servers
+- **Load balancing** to distribute traffic across multiple servers
+- **Enhancing security** by hiding backend server IP address
+- Caching static content to **improve response times**
+
+### Apache
+Dockerfile for an Apache HTTP Server
+```Dockerfile
+FROM httpd:latest
+COPY index.html /user/local/apache2/htdocs/
+EXPOSE 80
+```
+- official Apache HTTP Server image
+- copy the index file to the container at the default Apache document root
+
+```sh
+docker build -t apache-image .
+docker run --name apache-container -p 8081:80 apache-image
+
+docker exec -it apache-container /bin/bash
+```
+Inside the container, Apache's configuration files can be found at `/usr/local/apache2/conf`, with the config file `httpd.conf`
+
+For copy the conf file to the host machine
+`docker cp apache-container:/usr/local/apache2/conf/httpd.conf`
+
+Document root
+`/usr/local/apache2/htdocs`
+
+#### HTTPS
+Self-signed certificated
+```sh
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \  
+-out selfsigned.crt -keyout private.key \  
+-subj "/C=UK/ST=Merseyside/L=Liverpool/O=MyOrg/CN=www.example.com"
+```
+- `-x509`: specifies that a self signed certificate is to be generated
+- `-subj`: sets the subject name field of the new certificate. The subject name field typically contains information about the organisation that owns the certificate
+
+To enable TLS in Apache, Create a custom SSL configuration file `httpd-ssl.conf`
+```conf
+Listen 443
+<VirtualHost *:443>
+	SSLEngine on
+	SSLCertificateFile "/usr/local/apache2/conf/selfsigned.crt"
+	SSLCertificateKeyFile "/usr/local/apache2/conf/private.key"
+	DocumentRoot "/usr/local/apache2/htdocs/"
+	ServerName www.example.com
+</VirtualHost>
+```
+
+Dockerfile for HTTPS
+```Dockerfile
+FROM httpd:2.4  
+COPY index.html /usr/local/apache2/htdocs/  
+COPY selfsigned.crt /usr/local/apache2/conf/selfsigned.crt  
+COPY private.key /usr/local/apache2/conf/private.key  
+COPY httpd-ssl.conf /usr/local/apache2/conf/extra/
+
+# Enable SSL module  
+RUN sed -i \  
+'s|#LoadModule ssl_module modules/mod_ssl.so|\  
+LoadModule ssl_module modules/mod_ssl.so|'\  
+/usr/local/apache2/conf/httpd.conf && \  
+sed -i \  
+'s|#LoadModule socache_shmcb_module modules/mod_socache_shmcb.so|\  
+LoadModule socache_shmcb_module modules/mod_socache_shmcb.so|'\
+/usr/local/apache2/conf/httpd.conf
+
+# Include SSL configuration  
+RUN echo 'Include conf/extra/httpd-ssl.conf' >> /usr/local/apache2/conf/httpd.conf  
+EXPOSE 80 443
+```
+`sed`: stream editor
+- `-i`: in-place, changes the file directly without outputting to terminal
+- `'s|old|new|'`: substitute
+
+```sh
+docker build -t apache-ssl-image .
+docker run --name apache-ssl-container -p 8081:80 -p 8082:443 apache-ssl-image
+```
+### NGINX
+Reverse proxy for the Apache HTTP web server
+create a new network on docker
+`docker network create web-net`
+
+## Storage
+*Local Server Storage*
+
+*Network Attached Storage (NAS)*
+
+*Storage Area Network (SAN)*: specialiaed computer networks taht store data, consist of multiple disk arrays, network switches and servers.
+
+*Relational Database*
+
+*Non-SQL Databases*: can handle unstructured data: 
+- MangoDB stores JSON-like documents
+### Graph Databases
+Store data in nodes and edges, each can hold any number of attributes
+- Nodes: represent entities
+- Edges: represent relationships between entites
+
+#### Neo4j
+- Neo4j Aura: fully managed cloud service
+- Neo4j Desktop: A desktop local application
+```sh
+docker run -p7474:7474 -p7687:7687 -e NEO4J_AUTH=neo4j/<passwd>/neo4j
+```
+
+```neo4j
+# create graph
+CREATE (ee:Person {name: 'Emil', from: 'Sweden', kloutScore: 99})
+
+# finding nodes
+MATCH (ee:Person) WHERE ee.name = 'Emil' RETURN ee;
+
+# match patterns
+MATCH (ee:Person)-[:KNOWS]-(friends)  
+WHERE ee.name = 'Emil' RETURN ee, friends
+```

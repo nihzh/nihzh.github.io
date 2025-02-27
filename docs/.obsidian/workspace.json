@@ -49,7 +49,8 @@
               "title": "310-Multi-Agent Systems"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -179,11 +180,11 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "57e2638a9374dac7",
+  "active": "fc439f611d853218",
   "lastOpenFiles": [
     "Liverpool/315-Cloud Computing for E-Commerce.md",
-    "Liverpool/310-Multi-Agent Systems.md",
     "Liverpool/328-High Performance Computing.md",
+    "Liverpool/310-Multi-Agent Systems.md",
     "img/Pasted image 20250220001433.png",
     "img/Pasted image 20250220001429.png",
     "img/Pasted image 20250219222144.png",
