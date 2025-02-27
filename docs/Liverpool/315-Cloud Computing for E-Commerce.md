@@ -227,6 +227,115 @@ Limit and monitor the amount of resources (CPU, memory, disk I/O) that container
 Container Orchestration: provide a **layered file system**, allow containers to share a read-only base file system, while maintaining separate writable layers for each container
 
 
+## Networking
+
+
+## Ansible
+*Configuration as code (CaC)*
+Designed for **configuration management**, it helps manage multiple machines by organizing them to an *inventory*, which can be sourced dynamically or from cloud prividers
+
+### Agentless architecture
+Core principle: *agentless architecture*, no need to installing and set up
+- Communication with managed hosts happens over *SSH*
+- *Temporary modules* are deployed and run, then removed when tasks complete
+- Resources: 
+	- Only consumes **resources on the target node** during configuration
+	- **No permanent background processes** remain on the node afterward
+
+### Inventory
+*Inventory file* (YAML or INI) to define and track host information upon which is expected to operate:
+- Static and defined in text files
+- Dynamic, pulling host data from external resources such as cloud APIs
+- *Groupings*: selecting subsets of machines for specific tasks
+
+*Idempotency*: If the system is already inthe desired state, Ansible will not make any changes, allows safely re-run playbooks without worrying about unintended side effects
+
+### Playbooks
+To describe more complicated configurations than with the `ansible` command line
+- Written in YAML
+```
+---
+- name: Ping all hosts
+  hosts: all                   --group of hosts the play applies to
+  becomes: yes                 --escalates root privileges
+  tasks:
+	- name: Install nginx
+	  ansible.builtin.yum:     --Ansible modules for action
+	    name: nginx
+	    state: present
+	- name: Start nginx service
+	  ansible.builtin.service:
+	    name: nginx
+	    state: started
+	    enabled: yes
+	  when: ansible_selinux.status == "enabled"
+...
+```
+
+#### Running the play book
+```sh
+ansible-playbook -i hosts.ini ping-playbook.yml --ask-become-pass
+```
+`-i hosts.ini`: specifies teh infentory file
+`-ask-become-pass`: prompts for the sudo password before executing tasks that require sudo privileges
+
+#### Register and Debug
+```Playbook
+- hosts: web_servers  
+  tasks:  
+	- name: Run a shell command and register its output  
+	  ansible.builtin.shell: /usr/bin/foo  
+	  register: foo_result  
+	  ignore_errors: false  
+	- name: Run a shell command using output of foo  
+	  ansible.builtin.shell: /usr/bin/bar  
+	  when: foo_result.rc == 5
+	  debug:  
+		msg: "debug says: {{ foo_result }}"
+```
+
+#### Loops
+```Playbook
+tasks:  
+- name: Check connectivity  
+	ping:  
+	loop: "{{ range(1, 4) | list }}"  
+	loop_control:  
+		label: "Ping number {{ item }}"
+```
+- `| list`: filter, converts the range object into a list, making it iterable
+- `loop_control`: customozes the loop behaviour
+- `item`: the default name of iterator in each round
+
+### Variables
+```Playbook
+- name : Create New User  
+  hosts: all
+  vars:  
+	username: lisa
+  tasks:
+	  - name create a user
+	    user:
+		  name: "{{ username }}"
+```
+
+#### Facts
+When run a Ansible, it gathers facts about the hosts in the inventory
+`ansible -i hosts.ini local -m`
+
+Print Default IPv4 address
+```Playbook
+---  
+- hosts: all  
+  tasks:  
+	- name: Print IP Address  
+	debug:  
+	  msg: >  
+	  this host uses IP address  
+	  {{ ansible_facts.default_ipv4.address }}  
+```
+
+
 ## Hosting
 *Forward proxy*: intermediary between a client and the internet
 - Caching 
@@ -316,6 +425,39 @@ docker run --name apache-ssl-container -p 8081:80 -p 8082:443 apache-ssl-image
 Reverse proxy for the Apache HTTP web server
 create a new network on docker
 `docker network create web-net`
+
+forward all HTTP requests to `apache-container`
+```nginx.conf
+http {  
+	upstream apache-server {  
+			server apache-container:80;  
+	}  
+	server {  
+		listen 80;  
+		location / {  
+			proxy_pass http://apache-server;  
+		}  
+	}  
+}
+```
+
+```dockerfile
+# Use the official NGINX image as a base  
+FROM nginx:latest  
+# Remove the default configuration file  
+RUN rm /etc/nginx/conf.d/default.conf  
+# Copy the custom configuration file  
+COPY nginx.conf /etc/nginx/conf.d/  
+# Expose port 80  
+EXPOSE 80
+```
+
+```sh
+docker build -f Nginx.Dockerfile -t nginx-reverse-proxy .
+
+docker run -d --name apache-container --network web-net apache-image
+docker run -d --name nginx-proxy --network web-net -p 8083:80 gninx-reberse-proxy
+```
 
 ## Storage
 *Local Server Storage*

@@ -241,11 +241,13 @@ Only 40 cores and 1 node available on the node
 `sbatch [] script.sh`
 
 **cores**
-`SLURM_CPUS_PER_TASK`: `-c` request cpus per task
-`SLURM_NTASKS`: `-n` request tasks
+`SLURM_CPUS_PER_TASK`: `-c <n>` request cpus per task
+`SLURM_NTASKS`: `-n <n>` request tasks
 
 **nodes**
-`-N`: request nodes
+`-N <n>`: request nodes
+
+`-p <nodes>`: change the partitions of nodes which submitting to
 
 `htop`: monitor CPU usage
 `cat /proc/$SLURM_JOB_ID/status`: check CPU binding
