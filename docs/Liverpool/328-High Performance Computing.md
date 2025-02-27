@@ -242,10 +242,13 @@ Only 40 cores and 1 node available on the node
 
 **cores**
 `SLURM_CPUS_PER_TASK`: `-c` request cpus per task
-`SLURM_NTASKS`: `-n` request 4 tasks
+`SLURM_NTASKS`: `-n` request tasks
 
 **nodes**
 `-N`: request nodes
+
+`htop`: monitor CPU usage
+`cat /proc/$SLURM_JOB_ID/status`: check CPU binding
 
 #### Makefiles
 ```sh
