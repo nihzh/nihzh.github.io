@@ -449,3 +449,40 @@ Runtime functions
 
 `#pragpa omp parallel if(condition)`: enable or disable parallelism conditionally (one region at a time)
 `#pragma omp parallel num_threads(<i>)`: set number of threads for this parallel region
+
+## Barriers
+There are implicit barriers at the end of work-sharing constructs and parallel sections
+`nowait`: remove the barrier after
+
+`#pragma omp master`: execute the following code block only on the mastter thread (thread#0), has no barriers on entry or exit
+
+*Barriers*
+Slow down parallel code by sorcing cynchronisation
+- sometimes necessary for correctness
+- remove while ensuring correctness
+`#pragma omp barrier`: Manually place a varrier at some point in a parallel region, any thread that reaches a point in the code where it says `#pragma omp barrier` must wait until all other threads have reached that point
+
+### First touch (NUMA)
+The memory addresses in C pointers are *virtual memory address*
+Memory is allocated only then first accessed, or **first touched**
+
+`#pragma omp parallel for schedule(static)`: same thread that initialized array will read it in the later loop
+
+OS schedular moves the thread to a core on the other socket
+
+`OMP_SET_DYNAMIC=false`: disables "reserves the right" optimise system usage
+- controlling how many threads are running
+
+`OMP_PROC_BIND=true` (pinning, affinity, placement): bind thread to core (prevent migration of thtreads across cores)
+
+`OMP_PLACES=`: hand-pick which thread lives on which core
+- Highly-hardware-specific
+
+### Cache Coherence
+A value stored in Core#0's cache, assuming Core#0 was teh last to update it, must be know to another Core if they want to modify a variable
+- must be maintianed for correctness
+
+FALSE SHARING
+Even though both cores are updating different locations, the design of cache (thanks to cache lines) forces every access to skip the cache and most reads are still from main memory
+
+Can significantly impact perforamnce of a parallel program due to memory contentiono
