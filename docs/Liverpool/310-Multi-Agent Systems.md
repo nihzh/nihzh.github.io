@@ -296,3 +296,37 @@ Different levels of detail: the more specific an ontology, the less reusable it 
 - *Upper ontology*: contains the **most general information** about the world
 - *Domain ontology*: defines concepts appropriate for a **spacific application domain**
 - *Application ontology*: defines concepts used by a specific application
+
+### Cooperative DIstributed Problem Solving
+#### Coherence and Coordination
+#### Task Sharing and Result Sharing
+#### Problem Decomposition
+The overall probelm is divided into smaller sub-problems
+
+*Sub-problem Solution*
+
+##### Task Sharing & the Contract Net
+Recognition
+Announcement
+Bidding
+Awarding & Ecpediting
+
+##### How to bid
+
+#### Result Sharing
+Black board Systems
+Subscribe/Notify Pattern
+
+##### Handling Inconsistency
+
+#### Coordination
+Coordination is managing inter-dependencies between the activities of agents
+- positive coordination may be requested (explicit) or non-requested(implicit)
+
+Decide what to do
+make sure their work is coordinated
+
+
+## Utilities and Preferences
+### Multi-Agent Systems
+#### Dominant Strategies
