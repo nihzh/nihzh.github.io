@@ -468,6 +468,7 @@ Memory is allocated only then first accessed, or **first touched**
 
 `#pragma omp parallel for schedule(static)`: same thread that initialized array will read it in the later loop
 
+
 OS schedular moves the thread to a core on the other socket
 
 `OMP_SET_DYNAMIC=false`: disables "reserves the right" optimise system usage
@@ -479,10 +480,27 @@ OS schedular moves the thread to a core on the other socket
 - Highly-hardware-specific
 
 ### Cache Coherence
-A value stored in Core#0's cache, assuming Core#0 was teh last to update it, must be know to another Core if they want to modify a variable
+A value stored in Core#0's cache, assuming Core#0 was the last to update it, must be know to another Core if they want to modify a variable
 - must be maintianed for correctness
 
-FALSE SHARING
-Even though both cores are updating different locations, the design of cache (thanks to cache lines) forces every access to skip the cache and most reads are still from main memory
+### FALSE SHARING
+Even though both cores are updating different locations, the design of cache (thanks to cache lines) forces every access to skip the cache and most reads are still from main memory. Which can significantly impact perforamnce of a parallel program due to memory contention
 
-Can significantly impact perforamnce of a parallel program due to memory contentiono
+`shecule(static, 4)` (the width of cache line)
+
+By defult, no false sharing: 2 threads for multiple number of iterations
+
+*Padding arrays*: to ensure that all memory is aligned
+- add some fake iterations (space of array), round up the iterations to **nearest multiples**
+- padding for vectorisatoin: additions in a **clock cycle**
+`arr[i * 4]` accessing different cache
+
+### Syncronisation constructs
+`#pragma omp single [data clauses]`
+has a implicit varrier at the end, is a *work-sharing construct*
+- connot be nested
+
+`#pragma omp atomic`: protect single variable
+`#pragma omp critical`: protect the entire statement
+
+`#pragma omp simd`: override safety checks, vectorise the for loop
