@@ -493,3 +493,21 @@ MATCH (ee:Person) WHERE ee.name = 'Emil' RETURN ee;
 MATCH (ee:Person)-[:KNOWS]-(friends)  
 WHERE ee.name = 'Emil' RETURN ee, friends
 ```
+
+## Typescript
+Extends JavaScript by adding types
+Compiles down to plain JavaScript, run in any JS environment
+
+```typescript
+let message:string = 'Hello, world!';
+console.log(message)
+
+tsc helloworld.ts
+```
+
+Type
+- `any`
+- `unknown`
+- `boolean`, `true`, `false`
+- `number`, `bigint`
+- `symbol`
