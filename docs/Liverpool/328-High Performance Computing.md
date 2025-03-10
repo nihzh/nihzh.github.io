@@ -504,3 +504,83 @@ has a implicit varrier at the end, is a *work-sharing construct*
 `#pragma omp critical`: protect the entire statement
 
 `#pragma omp simd`: override safety checks, vectorise the for loop
+
+
+# MPI
+Message-Passing Interfaces
+
+```sh
+module load mpi/intel-mpi/2019u5/bin
+module load compilers/intel/2019u5
+mpiicc hello.c
+mpirun -np 4 ./a.out
+```
+
+*Process*: each instance of the code run as an MPI process, typically with 1 MPI process per physical core ornode
+
+*Communicator*: a collection of processes that can send messages to each other
+- `MPI_Init()`, as `MPI_COMM_WORLD`
+
+*Rank*: A numerical ID of a process within a communicator (0, 1, 2,...)
+
+```
+#include <stdio.h>  
+#include <mpi.h>  
+int main(int argc, char *argv[] ){  
+	MPI_Init(&argc, &argv);  
+	mpiRankWorkToDo();  
+	MPI_Finalize();  
+}
+```
+
+GNU: `mpicc`   `mpiexec -n 8 ./a.out`
+Intel: `mpiicc`   `mpirun -np 8 ./a.out`
+
+Script MPI: `sbatch -n 4 script.sh`
+```
+#!/bin/bash –l  
+#SBATCH –D ./  
+#SBATCH –p course  
+#SBATCH –t 5  
+module load compilers/intel/2019u5  
+procs=${SLURM_NTASKS:-1}  
+mpiicc file.c -o output.exe  
+mpirun –np $procs ./output.exe
+```
+
+Script MPI & OpenMP `sbatch -n 4 -c 4 script.sh`
+``` 
+#!/bin/bash –l  
+#SBATCH –D ./  
+#SBATCH –p course  
+#SBATCH –t 5  
+module load compilers/intel/2019u5  
+cores=${SLURM_CPUS_PER_TASK:-1}  
+procs=${SLURM_NTASKS:-1}  
+mpiicc –qopenmp file.c -o output.exe  
+export OMP_NUM_THREADS=$cores  
+mpirun –np $procs ./output.exe
+```
+
+## MPI Messages
+### Point-to-Point communications
+One sender, One receiver
+- `MPI_Send()`
+- `MPI_Recv()`
+
+Returns: `MPI_SUCCESS`
+
+Deadlock problem fixing: change the sequence on even ranks
+```c
+if(rank % 2 == 0){  
+	MPI_Send(items_to_send, num, MPI_INT, next_rank, 0, MPI_COMM_WORLD);  
+	MPI_Recv(items_to_recv, num, MPI_INT, prev_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);  
+}  
+else if(rank % 2 == 1){  
+	MPI_Recv(items_to_recv, num, MPI_INT, prev_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);  
+	MPI_Send(items_to_send, num, MPI_INT, next_rank, 0, MPI_COMM_WORLD);  
+}
+```
+
+### Collective communications
+- All processes participate
