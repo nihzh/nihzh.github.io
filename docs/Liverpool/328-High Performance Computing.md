@@ -582,5 +582,19 @@ else if(rank % 2 == 1){
 }
 ```
 
+`MPI_Sendrecv`
+```c
+MPI_Sendrecv(items_to_send, num, MPI_INT, next_rank, 0, items_to_recv, num, MPI_INT, prev_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+```
+
+#### Non-blocking communications
+*Blocking*: The program will wait until MPI_X has returned
+*Non-blocking*: allow executing of code after an MPI_X call, program will continue executingstatements regardless of MPI_X has returned or not
+
+A procedure is nonblocking if it may return before the associated operation completes, and before the user is allowed to reuse resources (such as buffers) specified in the call.
+
+`MPI_Isend()`
+`MPI_Irecv()`
+
 ### Collective communications
 - All processes participate
