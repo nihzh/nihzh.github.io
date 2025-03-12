@@ -596,5 +596,7 @@ A procedure is nonblocking if it may return before the associated operation comp
 `MPI_Isend()`
 `MPI_Irecv()`
 
+![](../img/Pasted%20image%2020250312172331.png)
+
 ### Collective communications
 - All processes participate
