@@ -281,7 +281,7 @@ Only 40 cores and 1 node available on the node
 module load compilers/intel/2019u5
 
 # just 1 thread to run on
-export OMP NUM THREADS=1
+export OMP_NUM_THREADS=1
 
 # GNU no-opt
 # echo GNU no-opt
@@ -600,3 +600,16 @@ A procedure is nonblocking if it may return before the associated operation comp
 
 ### Collective communications
 - All processes participate
+
+#### Cost of MPI messages
+*Latency*:
+- Lower is better
+- Infiniband beats gigabit Ethernet
+- Number of switches in the path may matter
+*Bandwidth*
+*Message size*
+
+Time for a message
+$$k*(\alpha\space(latency)+\frac{(message\space size)}{(available\space bandwidth)})$$
+
+`MPI_Bcast`, `MPI_Scatter`, `MPI_Gather`, `MPI_Reduce`
