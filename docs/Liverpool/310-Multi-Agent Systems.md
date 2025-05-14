@@ -367,3 +367,25 @@ make sure their work is coordinated
 ## Utilities and Preferences
 ### Multi-Agent Systems
 #### Dominant Strategies
+
+
+
+
+option: generate a set of possible alternatives (desires)
+
+filters: chooses between alternatives, commits to achieve them
+
+condorcet paradox: no matter which outcome we choose, a majority of volters will be unhappy with the chosen outcome.
+
+rebuttal: conclusion or premises of one argument contradict with that of another argument
+
+undercut: .... contradicts a proposition within the support of the another argument
+
+Sheply: agent i's average amount that is expected to contribute to a coalition
+
+delibration: what state want to achieve 
+means-ends: how to achieve these states of affairs
+
+core
+- efficiency: sum of distributed value equal to total value
+- individual rationality: each distributed value not lower than its payoff of single action
