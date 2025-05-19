@@ -236,9 +236,10 @@ The *goal* is represented as a set of formulate
 #### Option Generation and Filtering
 
 #### Degrees of Commitment
-*Blind commitment*: 
-- maintain an intention until it belives that the intention has actually been **achieved**, *fanatical commitment*
+*Blind commitment*: maintain an intention until it belives that the intention has actually been **achieved**, *fanatical commitment*
+
 *Single-minded commitment*: maintain an intention until it beleves that **either** the intension has been achieved, **or** else that it is no longer possible to achieve the intention.
+
 *Open-minded commitment*: maintain an intension **as long as it is still believed possible**
 
 Commitment to:
@@ -334,7 +335,7 @@ Different levels of detail: the more specific an ontology, the less reusable it 
 - *Domain ontology*: defines concepts appropriate for a **spacific application domain**
 - *Application ontology*: defines concepts used by a specific application
 
-### Cooperative DIstributed Problem Solving
+### Cooperative Distributed Problem Solving
 #### Coherence and Coordination
 #### Task Sharing and Result Sharing
 #### Problem Decomposition
