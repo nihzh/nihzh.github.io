@@ -181,20 +181,21 @@
           }
         ],
         "direction": "vertical",
-        "x": 1132,
-        "y": 181,
-        "width": 604,
-        "height": 604,
+        "x": 1335,
+        "y": 134,
+        "width": 609,
+        "height": 609,
         "maximize": true,
         "zoom": 0
       }
     ]
   },
-  "active": "6bac80b83ca8581a",
+  "active": "10699e731181b1bb",
   "lastOpenFiles": [
+    "网安/渗透测试--蚁景网安/1.0 信息收集.md",
+    "Liverpool/315-Cloud Computing for E-Commerce.md",
     "网安/渗透测试--蚁景网安/1.6 Web漏洞扫描.md",
     "网安/渗透测试--蚁景网安/1.5 弱口令密码破解.md",
-    "Liverpool/315-Cloud Computing for E-Commerce.md",
     "Liverpool/328-High Performance Computing.md",
     "Liverpool/310-Multi-Agent Systems.md",
     "img/Pasted image 20250514011035.png",
@@ -227,7 +228,6 @@
     "Liverpool/202-Complexity of Algorithms.md",
     "Liverpool/201-Software Engineering.md",
     "Liverpool/105-Programming Paradigms.md",
-    "Liverpool/285-Computer Aided Software Development.md",
     "GRE",
     "Liverpool",
     "未命名 1.canvas",
