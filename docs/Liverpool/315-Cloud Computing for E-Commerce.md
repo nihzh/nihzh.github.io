@@ -530,6 +530,14 @@ Primitive Types
 - `bigint`: `1234n`
 - `symbol`
 
+```TypeScript
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+```
+`as`: the type of value is guaranteed, risks for abuse
+`is`: if the function returns true, then (pet is Fish)
+
 Everything as Code
 - Infrastructure as Code
 - Configuration as Code
@@ -540,6 +548,27 @@ XaaS -- Anything as a Service: 3 levels of access ot the cloud
 - software as a service: SaaS
 
 What an object can do
+
+Type guard
+- `typeof`: basic types
+- `instance of`: classes
+- `in`
+```TypeScript
+type Fish = { swim: () => void }
+type Bird = { fly: () => void }
+
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+
+function act(pet: Fish | Bird) {
+  if (isFish(pet)) {
+    pet.swim(); // 类型缩小为 Fish
+  } else {
+    pet.fly();
+  }
+}
+```
 
 ## Kubernetes
 clusters made up of nodes (physical or virtual), run containerised applications
@@ -586,6 +615,8 @@ passing data from parent to child components
 Hooks
 - useState
 - useEffect: 接收argument, 执行side effect
+	- call back function
+	- an array of dependencies
 
 ## Next.js
 Compared to React, Next.js significantly improve:
