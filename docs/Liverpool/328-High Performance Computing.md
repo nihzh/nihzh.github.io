@@ -25,7 +25,7 @@ Horizontal bound: maximum capacity of the processor ($R_{peak}$ and $R_{max}$)
 Relates processor performance to **off-chip** memory traffic
 
 #### Von Neumann Architecture
-![](../img/Pasted%20image%2020250203231854.png
+![](../img/Pasted%20image%2020250203231854.png)
 instructions and data must transport through a same bus
 *Pipelining*: Instruction-level parallelism
 
@@ -140,7 +140,7 @@ A program's performance stops scaling when adding more resources no longer resul
 - report time to solution
 
 #### Amdahl's Law
-A computer program will never go faster than the sum of the prots that do not run in parallel (the serial protions of the program), no matter how many processing elements we have
+A computer program will never go faster than the sum of the parts that do not run in parallel (the serial protions of the program), no matter how many processing elements we have
 ![](../img/Pasted%20image%2020250212171851.png)
 Strong scaling
 Practical Parallelism
@@ -450,7 +450,7 @@ Runtime functions
 `#pragpa omp parallel if(condition)`: enable or disable parallelism conditionally (one region at a time)
 `#pragma omp parallel num_threads(<i>)`: set number of threads for this parallel region
 
-## Barriers
+### Barriers
 There are implicit barriers at the end of work-sharing constructs and parallel sections
 `nowait`: remove the barrier after
 
@@ -460,7 +460,7 @@ There are implicit barriers at the end of work-sharing constructs and parallel s
 Slow down parallel code by sorcing cynchronisation
 - sometimes necessary for correctness
 - remove while ensuring correctness
-`#pragma omp barrier`: Manually place a varrier at some point in a parallel region, any thread that reaches a point in the code where it says `#pragma omp barrier` must wait until all other threads have reached that point
+`#pragma omp barrier`: Manually place a barrier at some point in a parallel region, any thread that reaches a point in the code where it says `#pragma omp barrier` must wait until all other threads have reached that point
 
 ### First touch (NUMA)
 The memory addresses in C pointers are *virtual memory address*
@@ -497,7 +497,7 @@ By defult, no false sharing: 2 threads for multiple number of iterations
 
 ### Syncronisation constructs
 `#pragma omp single [data clauses]`
-has a implicit varrier at the end, is a *work-sharing construct*
+Only a sinble thread will execute the block, has a implicit barrier at the end, is a *work-sharing construct*
 - connot be nested
 
 `#pragma omp atomic`: protect single variable
@@ -573,12 +573,12 @@ Returns: `MPI_SUCCESS`
 Deadlock problem fixing: change the sequence on even ranks
 ```c
 if(rank % 2 == 0){  
-	MPI_Send(items_to_send, num, MPI_INT, next_rank, 0, MPI_COMM_WORLD);  
-	MPI_Recv(items_to_recv, num, MPI_INT, prev_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);  
-}  
-else if(rank % 2 == 1){  
-	MPI_Recv(items_to_recv, num, MPI_INT, prev_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);  
-	MPI_Send(items_to_send, num, MPI_INT, next_rank, 0, MPI_COMM_WORLD);  
+	MPI_Send(items_to_send, num, MPI_INT, next_rank, 0, MPI_COMM_WORLD);
+	MPI_Recv(items_to_recv, num, MPI_INT, prev_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+}
+else if(rank % 2 == 1){
+	MPI_Recv(items_to_recv, num, MPI_INT, prev_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+	MPI_Send(items_to_send, num, MPI_INT, next_rank, 0, MPI_COMM_WORLD);
 }
 ```
 
@@ -610,6 +610,10 @@ A procedure is nonblocking if it may return before the associated operation comp
 *Message size*
 
 Time for a message
-$$k*(\alpha\space(latency)+\frac{(message\space size)}{(available\space bandwidth)})$$
+$$\alpha\space(latency)+k*\frac{(message\space size)}{(available\space bandwidth)}$$
 
 `MPI_Bcast`, `MPI_Scatter`, `MPI_Gather`, `MPI_Reduce`
+
+# GPU
+Good to accelerate vector-like operations 
+FPGA: Field programmable gate array
