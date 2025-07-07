@@ -7,6 +7,13 @@ Hosting online stores and managing transactions, refers to the buying and sellin
 ### User mode & Kernel mode
 ![](../img/Pasted%20image%2020250206211854.png)
 
+Kernel Space: where the kernel runs
+- code running access to the hardware
+- run in protected memory area
+
+User Space: where user applications runs
+- processes have limited access to the harware and must communicate with the kernel for resource access
+
 ### Virtural machines: Hypervisors
 - Directly on the host's hardware, bare-mental
 	- High performance and efficiency
@@ -37,14 +44,14 @@ A utility-first CSS framework, it proveides low-level utility classes that let y
 ![](../img/Pasted%20image%2020250206212857.png)
 - Block scope: if, for...
 
-False values: false, 0, -0, 0n, "", null, undefined, NaN
+Falsy values: false, 0, -0, 0n, "", null, undefined, NaN
 
 Double equals: 1 == "1" is true
 Triple equals: 1 === "1" is false, does not perform **type coercion**
 
 null and undefined: both falsy
-- null: no value or no object
-- undefined: a variable has been decared but no value has been assigned to it
+- null: no value or no object 无对象
+- undefined: a variable has been decared but no value has been assigned to it 对象未初始化
 
 *Object*
 ```JavaScript
@@ -143,6 +150,9 @@ Operate three modes: *enforcing*, *permissive* and *disabled*
 - *Permissive mode*: SELinux policies are not enforces, but access violations are logged
 - *Disable mode*: SELinux is disabled and no access violates are logged
 
+*Multi-category Security - MCS*: multiple processes with same type
+*Multi Level Security - MLS*: controlling processes based on the data level they will be using
+
 SELinux is a *labelling* system, every 
 - process
 - file
@@ -226,6 +236,12 @@ Limit and monitor the amount of resources (CPU, memory, disk I/O) that container
 #### Union File Systems
 Container Orchestration: provide a **layered file system**, allow containers to share a read-only base file system, while maintaining separate writable layers for each container
 
+#### Orchestration Software
+Kubernetes: automate the deployment, scaling, and operation of containers It runs on data centre servers and abstracts away the complexity of the underlying hardware to provide a simple interface for running containers.
+
+Pods ==> Deployment
+
+YAML manifest
 
 ## Networking
 
@@ -248,7 +264,7 @@ Core principle: *agentless architecture*, no need to installing and set up
 - Dynamic, pulling host data from external resources such as cloud APIs
 - *Groupings*: selecting subsets of machines for specific tasks
 
-*Idempotency*: If the system is already inthe desired state, Ansible will not make any changes, allows safely re-run playbooks without worrying about unintended side effects
+*Idempotency*: If the system is already in the desired state, Ansible will not make any changes, allows safely re-run playbooks without worrying about unintended side effects
 
 ### Playbooks
 To describe more complicated configurations than with the `ansible` command line
@@ -505,9 +521,140 @@ console.log(message)
 tsc helloworld.ts
 ```
 
-Type
+Primitive Types
 - `any`
-- `unknown`
-- `boolean`, `true`, `false`
-- `number`, `bigint`
+- `unknown`: compare but not calculate
+- `null`
+- `boolean`: `true`, `false`
+- `number`: `1234.56`
+- `bigint`: `1234n`
 - `symbol`
+
+```TypeScript
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+```
+`as`: the type of value is guaranteed, risks for abuse
+`is`: if the function returns true, then (pet is Fish)
+
+Everything as Code
+- Infrastructure as Code
+- Configuration as Code
+
+XaaS -- Anything as a Service: 3 levels of access ot the cloud
+- infrastructure as a service: IaaS
+- platform as a service: PaaS
+- software as a service: SaaS
+
+What an object can do
+
+Type guard
+- `typeof`: basic types
+- `instance of`: classes
+- `in`
+```TypeScript
+type Fish = { swim: () => void }
+type Bird = { fly: () => void }
+
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+
+function act(pet: Fish | Bird) {
+  if (isFish(pet)) {
+    pet.swim(); // 类型缩小为 Fish
+  } else {
+    pet.fly();
+  }
+}
+```
+
+## Kubernetes
+clusters made up of nodes (physical or virtual), run containerised applications
+- Control plane nodes: managing the cluster, must Linux
+	- API server: restful over https
+	- cluster store: key-value
+	- scheduler: watches API server and selects nodes to run
+	- controllers: deployment, statefulset, replicaset
+	- controller manager
+- Worker nodes: run the containers, Linux or Windows
+	- kubelet
+	- kube proxy
+	- container runtimes
+
+## React
+
+Components
+return *JSX elements*
+```React
+--- ButtonComponent.jsx ---
+const ButtonComponent = ({ label }) => {
+	alert ('You clicked on ${label}!') ;
+	...
+};
+export default ButtonComponent;
+
+--- App.jsx ---
+import ButtonComponent form './ButtonComponent'
+function App() {
+	return (
+	...
+	<ButtonComponent label="About" />
+	...
+);}
+export default App;
+
+```
+
+Props
+passing data from parent to child components
+- read-only
+- when changed, re-render with the new value
+
+Hooks
+- useState
+- useEffect: 接收argument, 执行side effect
+	- call back function
+	- an array of dependencies
+
+## Next.js
+Compared to React, Next.js significantly improve:
+- initial page load performance
+- search engine optimisation (SEO)
+- user experience on slower divices or networks
+
+choices of rendering in *React*
+- client side rendering (CSR)
+	- con: the browser has to download the entire JS bundle
+	- pro: fast for small re-renders of pages
+- server side rendering (SSR)
+	- pro: fast for initial loading of pages
+	- con: slower for small re-renders of pages
+
+In Next.js, by default, it performs SSR, generates HTML for each page in advance and associated with a small amout of JS code, when page is loaded by teh browser, the code runs and makes the page fully interactive
+- hydration
+
+App router / Pages router
+Routing in the context of web frameworks such as Next.js refers to how  
+an application handles a client’s request based on its URL.
+
+### File Conventions
+.js, .jsx, .tsx can be used
+- layout
+- poage
+- loading (React suspense boundary)
+- not-found (React error boundary)
+- error (React error boundary)
+- global-error
+- route
+- template
+- default
+
+colocation: only the contents returned by `page.js` or `route.js` are publicly addressable
+
+parallel routes
+intercepting routes
+
+### Route Handlers
+create API endpoints tha chanbe accessed via HTTP

@@ -236,12 +236,22 @@ The *goal* is represented as a set of formulate
 #### Option Generation and Filtering
 
 #### Degrees of Commitment
+*Blind commitment*: maintain an intention until it belives that the intention has actually been **achieved**, *fanatical commitment*
+
+*Single-minded commitment*: maintain an intention until it beleves that **either** the intension has been achieved, **or** else that it is no longer possible to achieve the intention.
+
+*Open-minded commitment*: maintain an intension **as long as it is still believed possible**
+
+Commitment to:
+- *Ends*: the state of affairs it **wiches to bring about**
+- *Means*: **the mechanism** via which the agent wishes to achieve the state of affairs
 
 #### Intention Reconsideration
-
+![](../img/Pasted%20image%2020250514011035.png)
 
 ## Reactive and Hybrid Agents
 ### General Control Architecture
+![](../img/Pasted%20image%2020250513223252.png)
 - *Perceives* the environment
 - *Revises* its internal state, identifying beliefs and desires
 - *Selects* actions from its intention and plan
@@ -258,7 +268,29 @@ The *goal* is represented as a set of formulate
 
 #### Emergent Behaviour
 ### Hybrid Architectures
+classical and alternative approaches, to build two or more subsystems:
+- A *deliberative* one, containing a *symbolic world model*, which develops plans and makes decisions in the way proposed by symbolic AI
+- A *reactive* one, which can **react to events** without complex reasoning
 
+- *Horizontal layering*: layers are each directly connected to the sensory input and action output, each layer acts like an agent
+- *Vertical layering*: sensory input and action output are each dealt with by at most one layer each
+
+#### TouringMachines (Ferguson)
+Consists *perception* and *action subsystems*, interface directly with the agent's environment 
+
+Three control layers, embedded in a control framework **horizontally**
+- *Reactive layer*: situation-action rules, can only make references to the agent's current state
+- *Planning layer*: achieves the agent's procative behaviour
+- *Modelling layer*: symbolic representations of the 'cognitive state' of other entities in the agent's environment
+
+#### InterRRaP
+![](../img/Pasted%20image%2020250513165227.png)
+Bottom-up activation
+Top-down execution
+
+- Behaviour layer
+- Plan layer
+- Cooperation layer
 
 ## Ontologies & Communication
 "Social" ability
@@ -266,6 +298,12 @@ The *goal* is represented as a set of formulate
 - Ontologies: language for understanding
 
 Speech Acts
+- Representatives
+- Directives
+- Commisives
+- Expressives
+- Declarations
+
 - Performative verb
 - Propositional content
 
@@ -297,7 +335,7 @@ Different levels of detail: the more specific an ontology, the less reusable it 
 - *Domain ontology*: defines concepts appropriate for a **spacific application domain**
 - *Application ontology*: defines concepts used by a specific application
 
-### Cooperative DIstributed Problem Solving
+### Cooperative Distributed Problem Solving
 #### Coherence and Coordination
 #### Task Sharing and Result Sharing
 #### Problem Decomposition
@@ -330,3 +368,25 @@ make sure their work is coordinated
 ## Utilities and Preferences
 ### Multi-Agent Systems
 #### Dominant Strategies
+
+
+
+
+option: generate a set of possible alternatives (desires)
+
+filters: chooses between alternatives, commits to achieve them
+
+condorcet paradox: no matter which outcome we choose, a majority of volters will be unhappy with the chosen outcome.
+
+rebuttal: conclusion or premises of one argument contradict with that of another argument
+
+undercut: .... contradicts a proposition within the support of the another argument
+
+Sheply: agent i's average amount that is expected to contribute to a coalition
+
+delibration: what state want to achieve 
+means-ends: how to achieve these states of affairs
+
+core
+- efficiency: sum of distributed value equal to total value
+- individual rationality: each distributed value not lower than its payoff of single action
