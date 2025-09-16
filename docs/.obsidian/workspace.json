@@ -25,14 +25,32 @@
             "id": "c20c1095aecf8c39",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Edinburgh/Secure Programming.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "Secure Programming"
+            }
+          },
+          {
+            "id": "4c458daffb7643c4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Edinburgh/Applied Machine Learning.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Applied Machine Learning"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -163,8 +181,11 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "c20c1095aecf8c39",
+  "active": "4c458daffb7643c4",
   "lastOpenFiles": [
+    "Edinburgh/Secure Programming.md",
+    "Edinburgh/Applied Machine Learning.md",
+    "Edinburgh",
     "网安/渗透测试--蚁景网安/2.1 Weblogic漏洞.md",
     "网安/渗透测试--蚁景网安/1.7 未授权访问.md",
     "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
@@ -199,8 +220,6 @@
     "网安/渗透测试--蚁景网安/3.5 渗透框架扩展应用.md",
     "Liverpool/Untitled.md",
     "Liverpool/202-Complexity of Algorithms.md",
-    "Liverpool/201-Software Engineering.md",
-    "Liverpool/105-Programming Paradigms.md",
     "GRE",
     "Liverpool",
     "未命名 1.canvas",
@@ -215,7 +234,6 @@
     "index - not themeable.html",
     "index - 副本.html",
     "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip",
-    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 2.zip",
-    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 1.zip"
+    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 2.zip"
   ]
 }

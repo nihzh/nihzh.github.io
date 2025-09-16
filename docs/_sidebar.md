@@ -1,3 +1,6 @@
+* **Edinburgh**
+  * [Applied_Machine_Learning](Edinburgh/Applied%20Machine%20Learning)
+  * [Secure_Programming](Edinburgh/Secure%20Programming)
 * **GRE**
   * [写作](GRE/写作)
   * [填空](GRE/填空)
