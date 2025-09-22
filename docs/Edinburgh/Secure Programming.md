@@ -25,3 +25,20 @@ Frontiers
 - Repeating same mistakes
 - Cyber resilience
 - Datasharing: privacy
+
+## Landscape
+*Threat*: should be robust against local and remote attackers
+Security advisors
+
+CVE Identifiers: vulnerability or exposure
+
+*Vulnerability*: A mistake that canbe used by a hacker to violate a "reasonable" security policy for a system 系统漏洞
+*Exposure*: S system configuration issue or mistake in software that can be used by a hack as a stepping-stone into a system or network 信息收集，暴露信息
+
+BSIMM
+- SSI
+- 4 domains covering 12 practices, each practices involves numerous activities
+	- Goverance
+	- Intelligence
+- maturity levels 1-3
+- 126 activities
