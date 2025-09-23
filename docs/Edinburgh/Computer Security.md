@@ -70,3 +70,22 @@ Simple messages encapsulated in single IP packets
 **Wireshark**
 - Packet sniffer and protocol analyzer
 - When run in promiscuous mode, captures traffic across the network
+
+**ARP**
+Matching IP and MAC address, work in link-layer
+- broadcasting messages of specified IP address, wait for response
+- caches: static/dynamic
+- `arp -a -d` flushed the ARP cache
+- ***ARP Cache Poisoning***
+
+**IP**
+![](../img/Pasted%20image%2020250922173008.png)
+
+![](../img/Pasted%20image%2020250922173208.png)
+
+UDP multiple concurrent applications
+TCP sequence
+
+**SYN Flooding**: sending thousands of SYN requests to the victim, without ack any replies. Bob accumulates more SYN packets than he can handle, runs out of space in **state table**
+- attack don't need his own IP address, forge the source of the TCP packet
+- attacker's own bandwidth, likely smaller than server's

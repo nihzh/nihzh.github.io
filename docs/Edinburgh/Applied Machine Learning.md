@@ -90,9 +90,12 @@ Convariance matrix
 - positive semi-definite x⊺ 𝚺x ≥ 0 and x⊺ 𝚺−1x ≥ 0
 - full convariance matric has D(D+1)/2 free parameters
 
+![](../img/Pasted%20image%2020250923234808.png)
+
 - **LDA (Linear Discriminant Analysis)**：假设所有类别共享同一个协方差矩阵 Σ\SigmaΣ。 → 决策边界是线性的。
 - **QDA (Quadratic Discriminant Analysis)**：每个类别都有自己的协方差矩阵 Σc\Sigma_cΣc​。 → 决策边界是二次曲线。
 
+preserve the ordering
 ### Supervised Learning
 goal is a function `f`, inputs `x` and output `y`
 x and y are all given in the training data
