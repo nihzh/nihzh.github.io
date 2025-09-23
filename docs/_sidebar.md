@@ -1,3 +1,9 @@
+* **Edinburgh**
+  * [Applied_Machine_Learning](Edinburgh/Applied%20Machine%20Learning)
+  * [Blockchans_and_Distributed_Ledgers](Edinburgh/Blockchans%20and%20Distributed%20Ledgers)
+  * [Computer_Security](Edinburgh/Computer%20Security)
+  * [Pasted_image](Edinburgh/Pasted%20image)
+  * [Secure_Programming](Edinburgh/Secure%20Programming)
 * **GRE**
   * [写作](GRE/写作)
   * [填空](GRE/填空)
@@ -19,6 +25,7 @@
   * [323-Introduction_to_Computational_Game_Theory](Liverpool/323-Introduction%20to%20Computational%20Game%20Theory)
   * [328-High_Performance_Computing](Liverpool/328-High%20Performance%20Computing)
   * [390-CyberCipher](Liverpool/390-CyberCipher)
+  * [720北京](Liverpool/720北京)
 * **Troubleshooting**
   * [docsify代码块闭合问题](Troubleshooting/docsify代码块闭合问题)
   * [docsify的homepage问题](Troubleshooting/docsify的homepage问题)
