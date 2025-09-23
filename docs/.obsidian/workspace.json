@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "30d5854d55a6fd2e",
+        "id": "5cdf0149e68a3ace",
         "type": "tabs",
         "children": [
           {
-            "id": "6bac80b83ca8581a",
+            "id": "8e39765ac0e2e219",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "网安/渗透测试--蚁景网安/1.0 信息收集.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "1.0 信息收集"
+              "title": "New tab"
             }
           }
         ]
@@ -151,83 +147,44 @@
       "random-note:Open random note": false
     }
   },
-  "floating": {
-    "id": "2970a9a840f3b18d",
-    "type": "floating",
-    "children": [
-      {
-        "id": "abd6512120f75d3c",
-        "type": "window",
-        "children": [
-          {
-            "id": "fc6ce430269fcd2e",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "f8f8a4c13aa2ff13",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Liverpool/328-High Performance Computing.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "328-High Performance Computing"
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 1335,
-        "y": 134,
-        "width": 609,
-        "height": 609,
-        "maximize": true,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "f8f8a4c13aa2ff13",
+  "active": "8e39765ac0e2e219",
   "lastOpenFiles": [
-    "网安/渗透测试--蚁景网安/1.0 信息收集.md",
-    "Liverpool/328-High Performance Computing.md",
-    "Liverpool/315-Cloud Computing for E-Commerce.md",
+    "网安/渗透测试--蚁景网安/1.1 SQL注入.md",
+    "网安/渗透测试--蚁景网安/4.10 免杀基础.md",
     "网安/渗透测试--蚁景网安/1.6 Web漏洞扫描.md",
-    "网安/渗透测试--蚁景网安/1.5 弱口令密码破解.md",
-    "Liverpool/310-Multi-Agent Systems.md",
+    "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
+    "网安/渗透测试--蚁景网安/2.4 Shiro漏洞.md",
+    "网安/蚁景网安夏令营/8.8 Springboot漏洞.md",
+    "Troubleshooting/Java中的Map类型和Spring @Transaction操作数据库问题.md",
+    "网安/渗透测试--蚁景网安/2.3 FastJson漏洞.md",
+    "网安/渗透测试--蚁景网安/2.5 其它中间件漏洞.md",
+    "网安/渗透测试--蚁景网安/2.1 Weblogic漏洞.md",
+    "网安/渗透测试--蚁景网安/2.2 JBoss漏洞.md",
+    "网安/渗透测试--蚁景网安/1.7 未授权访问.md",
+    "网安/渗透测试--蚁景网安/2.5 Log4j2 漏洞.md",
+    "网安/渗透测试--蚁景网安/3.3 CobaltStrike渗透框架.md",
+    "网安/渗透测试--蚁景网安/3.1 Matasploit渗透框架.md",
+    "网安/渗透测试--蚁景网安/3.2 Viper渗透框架.md",
+    "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
+    "网安/渗透测试--蚁景网安/3.4 渗透框架流量隐藏.md",
+    "网安/渗透测试--蚁景网安/4.5 内网横向移动.md",
+    "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",
+    "网安/渗透测试--蚁景网安/4.6 域内横向移动.md",
+    "img/Pasted image 20250620164247.png",
+    "网安/渗透测试--蚁景网安/4.4 域环境密码凭证获取.md",
+    "网安/渗透测试--蚁景网安/4.3 Windows密码凭证获取.md",
+    "img/Pasted image 20250609141720.png",
+    "img/Pasted image 20250609133303.png",
+    "网安/渗透测试--蚁景网安/1.0 信息收集.md",
+    "网安/渗透测试--蚁景网安/4.2 内网信息收集.md",
+    "Liverpool/328-High Performance Computing.md",
     "img/Pasted image 20250514011035.png",
     "img/Pasted image 20250513223252.png",
     "img/Pasted image 20250513165227.png",
-    "网安/渗透测试--蚁景网安/3.3 CobaltStrike渗透框架.md",
-    "Liverpool/390-CyberCipher.md",
-    "网安/渗透测试--蚁景网安/3.1 Matasploit渗透框架.md",
-    "网安/渗透测试--蚁景网安/2.5 其它中间件漏洞.md",
-    "网安/渗透测试--蚁景网安/2.2 JBoss漏洞.md",
-    "网安/渗透测试--蚁景网安/2.1 Weblogic漏洞.md",
-    "网安/渗透测试--蚁景网安/1.1 SQL注入.md",
-    "网安/渗透测试--蚁景网安/1.7 未授权访问.md",
-    "Untitled.md",
     "img/Pasted image 20250312172331.png",
     "img/Pasted image 20250220001433.png",
     "img/Pasted image 20250220001429.png",
     "img/Pasted image 20250219222144.png",
-    "img/Pasted image 20250219221501.png",
-    "img/Pasted image 20250219221434.png",
-    "img/Pasted image 20250219221429.png",
-    "Liverpool/323-Introduction to Computational Game Theory.md",
-    "Liverpool/304-Knowledge Representation & Reasoning.md",
-    "Liverpool/211-Computer Networks.md",
-    "Liverpool/305-Biocomputation.md",
-    "网安/渗透测试--蚁景网安/3.4 渗透框架流量隐藏.md",
-    "网安/渗透测试--蚁景网安/3.5 渗透框架扩展应用.md",
-    "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
-    "Liverpool/Untitled.md",
-    "Liverpool/202-Complexity of Algorithms.md",
-    "Liverpool/201-Software Engineering.md",
-    "Liverpool/105-Programming Paradigms.md",
     "GRE",
     "Liverpool",
     "未命名 1.canvas",
