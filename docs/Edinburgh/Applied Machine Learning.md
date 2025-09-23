@@ -56,7 +56,7 @@ model fitting / model training
 ![](../img/Pasted%20image%2020250919190108.png)
 *iid assumption*: independent and identically sampled from the same distribution
 
-*Log Likelihood*
+*Log Likelihood* : preserve the ordering
 ![](../img/Pasted%20image%2020250919190524.png)
 
 *Negative Log Likelihood*
@@ -84,9 +84,13 @@ Define model for multivariate data 多变量
 
 Mean vector
 ![](../img/Pasted%20image%2020250920012818.png)
-Convariance matrix
+
+##### Convariance matrix
 ![](../img/Pasted%20image%2020250920012855.png)
+The main diagnal contains *variances*, i.e. the *covariance* of each dimension with itself, for a given random vector $\color{#bd93f9}x=[x1​,x2​]^⊤$
+![](../img/Pasted%20image%2020250923193913.png)
 - symmetric
+- Generalises the notion of variance to **multiple dimensions**
 - positive semi-definite x⊺ 𝚺x ≥ 0 and x⊺ 𝚺−1x ≥ 0
 - full convariance matric has D(D+1)/2 free parameters
 
@@ -95,7 +99,9 @@ Convariance matrix
 - **LDA (Linear Discriminant Analysis)**：假设所有类别共享同一个协方差矩阵 Σ\SigmaΣ。 → 决策边界是线性的。
 - **QDA (Quadratic Discriminant Analysis)**：每个类别都有自己的协方差矩阵 Σc\Sigma_cΣc​。 → 决策边界是二次曲线。
 
-preserve the ordering
+![](../img/Pasted%20image%2020250923194233.png)
+
+y ∈ {1, ..., C} and C > 2, by simply defining a class conditional model p(x|y = c) for each class
 ### Supervised Learning
 goal is a function `f`, inputs `x` and output `y`
 x and y are all given in the training data
