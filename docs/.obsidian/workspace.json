@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Edinburgh/Applied Machine Learning.md",
+                "file": "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Applied Machine Learning"
+              "title": "5.1 日志分析和清理"
             }
           }
         ]
@@ -152,8 +152,8 @@
   },
   "active": "9253ec1d23ae6726",
   "lastOpenFiles": [
-    "Edinburgh/Blockchans and Distributed Ledgers.md",
     "Edinburgh/Applied Machine Learning.md",
+    "Edinburgh/Blockchans and Distributed Ledgers.md",
     "_sidebar.md",
     "img/Pasted image 20250923234808.png",
     "img/Pasted image 20250923195401.png",
