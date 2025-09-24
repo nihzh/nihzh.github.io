@@ -89,3 +89,46 @@ TCP sequence
 **SYN Flooding**: sending thousands of SYN requests to the victim, without ack any replies. Bob accumulates more SYN packets than he can handle, runs out of space in **state table**
 - attack don't need his own IP address, forge the source of the TCP packet
 - attacker's own bandwidth, likely smaller than server's
+
+*Smurfing*
+Expoloits ICMP **ping** requests thereby remote hosts respond to echo packets to say they are online. Some network respond to pings to **broadcast** address => *Smurf amplifiers*
+- Ping a LAN on a broadcast address, then all hosts on the LAN reply to the sender of the ping
+
+![](../img/Pasted%20image%2020250924170835.png)
+
+![](../img/Pasted%20image%2020250924171000.png)
+Domain name contains not only latin alphabet
+DoS attack on major DNS provider
+- DNS Servers are soft targets for attackers
+- Take out the mapping and the website goes "offline"
+
+Authoritative name server: Stores reference version of DNS records for a zone (prartial tree)
+
+Name Resolver
+- Program that retrieves DNS records
+- Connect to a nameserver (default, root, or given)
+- Caches records received
+
+```sh
+ipconfig /displaydns    # view caches
+ipconfig /flushdns      # clear caches
+```
+
+DNS Cache Poisonoing
+Give a DNS server a false address record and get it cached
+- UDP on port 53
+- 16-bit requeist identifier in payload to match answers
+- when a resolver
+	- query has **predictable** identifiers and return ports
+	- attacker **answers begore** authoriative name server
+	- ignore identifier, accepts unsolicited DNS records
+- defences
+	- Query rendomization
+		- request identifier: 16 bits
+		- return port: 16 bits
+	- DNSSEC
+		- signature on DNS request
+
+Kaminsky: Subdomain DNS Cache Poisoning
+
+![](../img/Pasted%20image%2020250924182029.png)
