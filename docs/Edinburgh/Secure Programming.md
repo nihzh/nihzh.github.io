@@ -63,7 +63,7 @@ Unconstrained read/writing of memories, lead to arbitrary execution, remote comm
 Low-level programs manipulate memory directly: C or assembler
 - pointer, null pointer
 
-**Memory safety**
+### Memory safety
 A programming language or analysis tool is said to enforce *memory safety* if it ensures that reads and whites stay within cleaerly defined memory areas, belonging to different parts of the program.
 
 **Memory areas**
@@ -78,3 +78,34 @@ A programming language or analysis tool is said to enforce *memory safety* if it
 > The malicious argument overwrites all of the space allocated for the buffer, all the way to the return address location. The return address is altered to point back into the stack, somewhere before the attack code. Typically, the attack code executes a shell.
 
 *Stack* => Abstract Data Type
+
+Frame pointer may be used to help locate argumetns and local variables
+![](../img/Pasted%20image%2020250925192724.png)
+
+*Spatial memory errors*: memory access goes outside the region of memory that a date item is intended to occupy
+*Tdemporal memory errors*: memory access happens in some regions of memory that the program ought not currently have access to
+
+### Buffer overflow
+- putting m bytes into a buffer of size n, for m > n
+- corrupts the surrounding memory
+
+*Stack overflows*
+*Heap overfows*
+
+overwriting the return address, points
+- shared library
+- application code
+- shellcode
+	- small and self-contaiined
+	- position independent
+	- free of ASCII NUL characters
+
+#### write code for an attacker
+`execve()`
+
+Invoking system calls
+- store parameters in registers EBX, ECX
+- put the desired system call number into AL
+- `int 128`
+
+https://www.exploit-db.com/shellcodes
