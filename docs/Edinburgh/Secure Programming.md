@@ -1,4 +1,3 @@
-
 ## Introduction
 Heartbeating messages: no client can be trust
 Injection
