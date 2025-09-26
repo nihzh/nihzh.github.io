@@ -71,6 +71,8 @@ Simple messages encapsulated in single IP packets
 - Packet sniffer and protocol analyzer
 - When run in promiscuous mode, captures traffic across the network
 
+
+### Link & Network
 **ARP**
 Matching IP and MAC address, work in link-layer
 - broadcasting messages of specified IP address, wait for response
@@ -96,6 +98,7 @@ Expoloits ICMP **ping** requests thereby remote hosts respond to echo packets to
 
 ![](../img/Pasted%20image%2020250924170835.png)
 
+### Application Layer
 ![](../img/Pasted%20image%2020250924171000.png)
 Domain name contains not only latin alphabet
 DoS attack on major DNS provider
@@ -132,3 +135,32 @@ Give a DNS server a false address record and get it cached
 Kaminsky: Subdomain DNS Cache Poisoning
 
 ![](../img/Pasted%20image%2020250924182029.png)
+
+### Application layer protection
+#### Firewall
+prevent unauthorized electronic access
+- firewall policies: Blocklist/Allowlist
+
+**packet filters(stateless)**
+Each packet attempting to travel through it in isolation without considering packets that it has processed previously
+
+**stateful filters**
+maintains records of all connections passing through it and can determine if a packet is either the start of a new connection
+- maintaining tables on each active connection
+- port scan
+
+**application layer**
+Simulates the effects of an application, protective interceptor that screens information at an application layer, i.e. words censorship
+
+#### NAT
+https://www.hashemian.com/whoami/
+IPv4 and address space exhaustion
+
+#### Intrusion Detection Systems (IDS)
+Firewalls are preventative, IDS detects a potential incident in progress
+- Let some traffic into and out the network is essential
+- Most security incidents are caused by passing malicious
+- cannot be prevented or anticipated in advance
+- quickly addressing
+
+*Rule-based*: attack pattern signature
