@@ -83,29 +83,58 @@ Frame pointer may be used to help locate argumetns and local variables
 ![](../img/Pasted%20image%2020250925192724.png)
 
 *Spatial memory errors*: memory access goes outside the region of memory that a date item is intended to occupy
-*Tdemporal memory errors*: memory access happens in some regions of memory that the program ought not currently have access to
+*Temporal memory errors*: memory access happens in some regions of memory that the program ought not currently have access to
 
 ### Buffer overflow
+#### Stack overflows
+*Stack variable corrption*
+Local variables are put close together on the stack
+- If a stray write goes beyond the size of one variable, it can corrupt another
 - putting m bytes into a buffer of size n, for m > n
 - corrupts the surrounding memory
 
-*Stack overflows*
-*Heap overfows*
-
-overwriting the return address, points
+By *overwriting the return address*, set it to points
+- known piece of application code
 - shared library
-- application code
-- shellcode
-	- small and self-contaiined
-	- position independent
-	- free of ASCII NUL characters
+- shellcode: own attack code
 
-#### write code for an attacker
-`execve()`
+##### Write code for an attacker
+*Shellcode*
+- small and self-contained
+- position independent
+- free of ASCII NUL (0x00) characters
 
-Invoking system calls
+`execve()`: starts a process with the given name and argument list and the environment as the third parameter
+- `#include <unistd.h>` in Standard C Library
+- `int execve(const char *pathname, char *const argv[], char *const envp[]);`
+	- `pathname`: executable file and its path
+	- `argv[]`: arguments to the new program, `argv[0]` as program name
+	- `envp[]`: environment variable to the new program, in `"KEY=VALUE"`
+- Only return `-1` when failed, then `errno` are set
+- 用另一个程序镜像替换当前进程的镜像，调用它的进程回丢弃当前的代码段、堆、栈等用户空间内容，启动一个新的可执行性文件，在同一个PID下运行新程序，如果成功，不会返回
+- A exactly to a system call
+
+**Invoking system calls**
+Linux calls: 
 - store parameters in registers EBX, ECX
 - put the desired system call number into AL
 - `int 128`
+![](../img/Pasted%20image%2020250925233127.png)
+`$0x80` equivalent to `128`, the kernel executes the system call according to the value of `EAX`
+- `EAX = 11 (0xb)` means `execve` system call
+- relavent parameters are set to other registers
 
+**Binary representations**
+Encode the hex op code of malicious input
+https://shell-storm.org/shellcode
 https://www.exploit-db.com/shellcodes
+
+##### Store executable code in memory & implement stack overflow
+*shellcode on stack*
+*shellcode in another part of the program data*
+
+The overflow uses a **NOP sled** before the shellcode, which the CPU execution "lands on", before being directed to the attack code
+
+![](../img/Pasted%20image%2020250926001729.png)
+
+#### Heap overfows
