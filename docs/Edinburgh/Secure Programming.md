@@ -66,6 +66,8 @@ Low-level programs manipulate memory directly: C or assembler
 ### Memory safety
 A programming language or analysis tool is said to enforce *memory safety* if it ensures that reads and whites stay within cleaerly defined memory areas, belonging to different parts of the program.
 
+> A programming language enforces *memory safety* if it ensures that reads and writes stary within clearly defined meory areas.
+
 **Memory areas**
 *Code* (compiled program, lib)
 *Data*: non-local program variables, **global** or **static**, program **heap** for dynamically allocated data
@@ -138,3 +140,45 @@ The overflow uses a **NOP sled** before the shellcode, which the CPU execution "
 ![](../img/Pasted%20image%2020250926001729.png)
 
 #### Heap overfows
+**Dynamically allocated data** region of memory
+- The runtime OS provides *memory management*
+- library functions
+
+*Undefined bahavious*
+> A programming language specification defines the meaning of progrms. Without memory safety, the specification may say the meaning of an illegal memory access is undefined
+
+`malloc(size)` & `calloc(size)`
+
+##### Spcific heap attacks
+![](../img/Pasted%20image%2020250930192747.png)
+`strcpy()` function
+![](../img/Pasted%20image%2020250930192922.png)
+![](../img/Pasted%20image%2020250930192948.png)
+
+might cause crashes
+
+##### General heap attacks
+The OS arranges continuously memory chuncks (blocks) to applications
+
+*Heap Blocks Headers*
+- size of previous block
+- size of this block
+- flags (e.g. freeflag)
+- if not in use, pointers to next/previous free block
+
+`unlink()` do an arbitrary write
+
+### Out-by-one
+字符串的结束符一个字符
+Integer overflow: 分配二维矩阵没有检查n\*m数值大小是否溢出，结果会是一个小值或者无效值
+### Type confusion errors
+*Type safety*
+> A programming language, analysis tool or runtime is said to enforce **type safety** if it has a clearly specified typing discipline for data values and it ensures that data values fr types stay within the domain of those during program execution
+
+C
+- implicit type conversions
+- expllicit type casts
+
+
+
+### Memory Corrption Countermeasures
