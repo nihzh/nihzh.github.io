@@ -164,3 +164,41 @@ Firewalls are preventative, IDS detects a potential incident in progress
 - quickly addressing
 
 *Rule-based*: attack pattern signature
+
+## Cryptography
+### Symmetric encryption
+![](../img/Pasted%20image%2020251001170444.png)
+
+Kerckhosff principle
+- E and D algorithms are public
+- security relies entirely on the secrecy of the key
+
+![](../img/Pasted%20image%2020251001171006.png)
+
+Frequency Analysis
+
+#### One-Time Pad
+![](../img/Pasted%20image%2020251001173136.png)
+
+Perfect secrecy
+![](../img/Pasted%20image%2020251001172949.png)
+![](../img/Pasted%20image%2020251001173325.png)
+same likelyhood of keys behind the ciphertext
+
+*Two-time pad attacks*
+
+
+Getting treu randomness
+- the key should not be gurssable from an attacker
+- if the key is not truly random, frequency analysis might again be possible
+
+OTP is mellable
+> given the ciphertext 𝑐 = 𝐸(𝑘, 𝑚) with 𝑚 = 𝑡𝑜 𝑏𝑜𝑏 ∶ 𝑚0, it is possible to compute the ciphertext 𝑐′ = 𝐸(𝑘, 𝑚′) with 𝑚′ = 𝑡𝑜 𝑒𝑣𝑒 ∶ 𝑚0 
+> 𝑐′ ∶= 𝑐 ⊕ "𝑡𝑜 𝑏𝑜𝑏 ∶ 00 ... 00" ⊕ "𝑡𝑜 𝑒𝑣𝑒 ∶ 00 ... 00"
+#### Stream Ciphers
+Use a pseudooramdom key rather than a really rondom key
+*Pseudo-Random Gernerator*
+![](../img/Pasted%20image%2020251001174638.png)
+
+RC4: used in HTTPS and WEP
+seed

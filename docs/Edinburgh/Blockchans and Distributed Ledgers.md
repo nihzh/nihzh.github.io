@@ -146,3 +146,107 @@ Isolate some **hosest nodes** in the network, effectively causing a network spli
 *The connectivity assumption*
 - There is a path between two nodes on the network
 - If a node broadcasts a message, every other node **will** learn it
+
+## Smart contract
+A contract is a legally binding agreement that defines and governs the rights and duties between or among its parties
+
+*Bitcoin Script*
+- stack-based
+- Notation: <>, data in the script
+- Opcodes: commands for functions
+
+![](../img/Pasted%20image%2020251001181934.png)
+
+
+## Ethereum
+Global state: accounts
+- personal accounts
+- contract accounts
+![](../img/Pasted%20image%2020251001184221.png)
+
+![](../img/Pasted%20image%2020251001184324.png)
+Signature: sender's private key
+
+Extra block of data about the contract
+
+Create -> Interact -> Destroy
+
+Can only send transactions when other transactions received
+
+*Message*: a transaction except it is produces by a contract
+
+Ethereum Virtual Machine
+- A quashi Turing complete machine
+
+*Gas*: Every computationn step has a fee, unit in gas
+![](../img/Pasted%20image%2020251001193138.png)
+startgas & gasprice block
+- all unused gas is refunded
+- gas (price) raised determines how quickly a transaction will be included in a block
+
+### Solidity
+A high level programming language for writeing smart contracts on Ethereum, compile code for the *Ethereum Virtual Machine*
+- look like classes
+- Statically typed language
+
+`pragma solidity ^0.8.1`enable certain compiler (version) features or checks
+
+```solidity
+contract <ContractName> {
+	constructor (uint x, ...) { ... }
+	
+	address owner;
+	address payable anotherAddress;
+	
+	enum State {Created, Locked, Inactive}
+	
+	mapping(address => uint256) balances;
+	
+	struct Voter {
+		bool voted;
+		...
+	}
+}
+```
+
+State variables
+Local variables
+
+##### Types
+
+- 2 Category
+	- Value types
+	- Reference types
+- Undefined or NULL not exist
+- Uninitialised variables always have a default value (zero-state)
+- C99
+
+
+address
+static and dynamic arrays
+mappings: key => value
+
+##### Visibility
+public
+external
+internal
+*private*: can be called only by the contract in which they are defined and not by a derived contract
+
+##### Functions
+
+##### Inheritance
+interface
+```solidity
+interface Regulator {  
+	... 
+}  
+contract Bank is Regulator {}
+```
+
+##### Data location
+**Reference type**: storage and memory
+
+##### Events, Modifiers and Global variables
+
+EVM logging machanism, stored arguments
+listeners
