@@ -171,8 +171,8 @@ Modifying the input to the logistic function changes the shape of the function
 Logistic regression = **linear weights + logistic squashing function**
 ![](../img/Pasted%20image%2020251003001443.png)
 
-![](../img/Pasted%20image%2020251003001559.png)
-
+Has a linear decision boundary $\color{#bd93f9}p(y=1|x;w)=p(y=0|x)=0.5$, which equivalent to $\color{#bd93f9}w^⊤ϕ(x)=0$
+![](../img/Pasted%20image%2020251003002549.png)
 
 
 # Data Exploation and Evaluation
