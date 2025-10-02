@@ -11,7 +11,7 @@
   "vimMode": false,
   "showLineNumber": false,
   "strictLineBreaks": false,
-  "useMarkdownLinks": false,
+  "useMarkdownLinks": true,
   "foldIndent": true,
   "pdfExportSettings": {
     "includeName": false,

@@ -159,30 +159,71 @@ A contract is a legally binding agreement that defines and governs the rights an
 
 
 ## Ethereum
-Global state: accounts
-- personal accounts
-- contract accounts
+Transaction-based deterministic state machine
+- global state
+- decentralized applications/computing infrastructure
+- stack-based
+- turing-completeness
+
+**Global state of Ethereum**: *accounts* which interact to each other through *transactions* (or *messages*)
+
+### Ethereum Accounts
+- *personal account*
+![](../img/Pasted%20image%2020251002104723.png)
+- *contract account*
+![](../img/Pasted%20image%2020251002104754.png)
+
 ![](../img/Pasted%20image%2020251001184221.png)
+nonce: total transactions
 
-![](../img/Pasted%20image%2020251001184324.png)
-Signature: sender's private key
-
-Extra block of data about the contract
-
+### Ethereum Transactions
+*Smart Contract*
 Create -> Interact -> Destroy
+
+![](../img/Pasted%20image%2020251002110018.png)
+*Signature*: sender's private key
+*Data*:
+- Create: *Smart contract code* + *initial arguments*
+- Interaction: Which method to call + arguments
+
+When contract account is activated:
+- **Contract code** runs
+- Read/write to internal storage
+- Send other transactions or call other contracts
 
 Can only send transactions when other transactions received
 
-*Message*: a transaction except it is produces by a contract
+*Message*: a transaction except it is **produces by a contract**
+- Exist only in the Ethereum execution environment
+- Leads to the recipient account running its code
+- Relationship with other contracts
 
 Ethereum Virtual Machine
 - A quashi Turing complete machine
 
+Types of transactions
+![](../img/Pasted%20image%2020251002111704.png)
+
+
 *Gas*: Every computationn step has a fee, unit in gas
+
+`gasLimit`: 用户愿意为这笔交易最多提供多少gas
+`gasUsed`: 实际执行过程中消耗的gas
+- `maxFeePerGas` / `maxPriorityFeePerGas`
+	- `maxFeePerGas`: 用户愿意支付的最高费用
+	- `maxPriorityFeePerGas`: tips给区块提议者
+	- `baseFee`: 由协议自动调整的底价, 随网络拥堵程度波动
+$$gasUsed*(baseFee+priorityFee)$$
+
 ![](../img/Pasted%20image%2020251001193138.png)
 startgas & gasprice block
 - all unused gas is refunded
 - gas (price) raised determines how quickly a transaction will be included in a block
+
+### Ethereum Block
+Contain: transaction list and most recent state
+Block time: 12 seconds
+![](../img/Pasted%20image%2020251002112304.png)
 
 ### Solidity
 A high level programming language for writeing smart contracts on Ethereum, compile code for the *Ethereum Virtual Machine*

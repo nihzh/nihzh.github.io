@@ -26,13 +26,18 @@ similar data as before
 - How can I **estimate the parameters** of my model
 - How should I measure the **performance** of my model
 
-### Classification
+# Supervised Learning
+goal is a function `f`, inputs `x` and output `y`
+x and y are all given in the training data
+![](../img/Pasted%20image%2020250918211650.png)
+predicting some continuous quantity
+## Classification
 given an input feature vector x, predicting an output vector y
 
 - binary classivication: two possibilities
 - bulticlass classification: C possible options
 
-#### Generative Classification:
+### Generative Classification
 通过高斯分布确定特征
 - Assumption: conditined on the class, Data is Gaussian distributed\
 ![](../img/Pasted%20image%2020250918222504.png)
@@ -102,24 +107,82 @@ The main diagnal contains *variances*, i.e. the *covariance* of each dimension w
 ![](../img/Pasted%20image%2020250923194233.png)
 
 y ∈ {1, ..., C} and C > 2, by simply defining a class conditional model p(x|y = c) for each class
-### Supervised Learning
-goal is a function `f`, inputs `x` and output `y`
-x and y are all given in the training data
-![](../img/Pasted%20image%2020250918211650.png)
-predicting some continuous quantity
+
+#### Naive Bayes
+*Probabilisitc model* for conditional density $\color{#bd93f9}p(x|y)$, assume that **features are conditionally independent given the class label**
+![](../img/Pasted%20image%2020251002165008.png)
+
+*independent*: one variable does not affect another, `A` is (marginally) independent of `B` if $$p(A|B)=P(A)$$, which in conditional probability, $$p(A, B)=P(A)P(B)$$
+
+`A` is *Conditionally independent* of `C` given `B` if $$p(A|C, B)=p(A|B)$$ i.e. once we know `B`, knowing `C` does not provide additional information about `A`
+
+![](../img/Pasted%20image%2020251002180731.png)
+
+![](../img/Pasted%20image%2020251002184116.png)
+![](../img/Pasted%20image%2020251002184812.png)
+![](../img/Pasted%20image%2020251002184846.png)
+
+![](../img/Pasted%20image%2020251002184920.png)
+
+*Laplace smoothing*: add a small positive number to all counts
+![](../img/Pasted%20image%2020251002192253.png)
+
+Missing Data: simply **ignore** the feature in any instance where the value is missing
+
+##### Continuous Data
+![](../img/Pasted%20image%2020251002203405.png)
+
+![](../img/Pasted%20image%2020251002203904.png)
+
+The conditional independence assumption used by Naive Bayes can fail to capture relationships that may be present in some datasets
+
+### Discriminative Classifiers
+Unlike Generative classifiers, the *discriminative classifiers* do not modelling the generative process
+
+Discriminative approaches directly model the posterior $\color{#bd93f9}p(y|x)$
+![](../img/Pasted%20image%2020251002232234.png)
+
+#### Binary Linear Classification
+Given some input features `x`, with associated class labels `y`, the goal is to estimate the parameters `w` of a *hyperplane* that can separate the data into the two classes
+
+The *decision boundary* is where teh two classes are tied
+- In 2D, **line**
+- In 3D, **plane**
+- In higher dimensions, **hyperplane**
+
+![](../img/Pasted%20image%2020251002232909.png)
+
+Decision boundary: $\color{#bd93f9}w^⊤ϕ(x)=0$
+![](../img/Pasted%20image%2020251002235103.png)
+
+If we can find a hyperplane to separate the data based on the class labels, the problem is said to be *linearly separable*
+
+#### Logistic Regression
+Model predictionos need be in range `[0, 1]`
+
+*Logistic function*
+![](../img/Pasted%20image%2020251003000434.png)
+As `z` goes from $\color{#bd93f9}-\infty$ to $\color{#bd93f9}\infty$, $\color{#bd93f9}\sigma(z)$ goes from 0 to 1, has a **sigmoid** shape
+![](../img/Pasted%20image%2020251003000916.png)
+Modifying the input to the logistic function changes the shape of the function
+
+Logistic regression = **linear weights + logistic squashing function**
+![](../img/Pasted%20image%2020251003001443.png)
+
+![](Pasted%20image%2020251003001559.png)
 
 
 
-### Data Exploation and Evaluation
+# Data Exploation and Evaluation
 
-### Unsupervised Learning
+# Unsupervised Learning
 have no y-values
 ![](../img/Pasted%20image%2020250918211823.png)
 
-### Reinforcement Learning
+# Reinforcement Learning
 Learn how to interact with its environment
 Learn a **policy** which specifies the action to take in response to obeservation of the environment
 Agents aims to maximise their reward
 
-### Ethics
+# Ethics
 
