@@ -161,15 +161,17 @@ If we can find a hyperplane to separate the data based on the class labels, the 
 Model predictionos need be in range `[0, 1]`
 
 *Logistic function*
+
 ![](../img/Pasted%20image%2020251003000434.png)
 As `z` goes from $\color{#bd93f9}-\infty$ to $\color{#bd93f9}\infty$, $\color{#bd93f9}\sigma(z)$ goes from 0 to 1, has a **sigmoid** shape
+
 ![](../img/Pasted%20image%2020251003000916.png)
 Modifying the input to the logistic function changes the shape of the function
 
 Logistic regression = **linear weights + logistic squashing function**
 ![](../img/Pasted%20image%2020251003001443.png)
 
-![](Pasted%20image%2020251003001559.png)
+![](../img/Pasted%20image%2020251003001559.png)
 
 
 
