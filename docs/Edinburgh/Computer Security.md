@@ -202,3 +202,31 @@ Use a pseudooramdom key rather than a really rondom key
 
 RC4: used in HTTPS and WEP
 seed
+
+#### Block Ciphers
+![](../img/Pasted%20image%2020251003170658.png)
+
+DES
+- 2^56 to do an exhaustive search over the key space, 1997
+- affine approximations to DES, total attack time 2^43
+
+3DES: 3keys, 3 time slow than DES
+2DES: meet-in-the-middle attack
+
+Encrypt `𝑀` using a block cipher operating on blocks of length `ℓ` when `|𝑀| ≠ ℓ`
+- Bit padding: 1000000
+- ANSI X.923: pad 0, number of padded in last type
+- PKCS#7: value of each added type is the total number of padding bytes
+
+*Elecctronic Code Book* mode
+![](../img/Pasted%20image%2020251003174416.png)
+Same input in each block, same output
+- Melleable and weak to frequency analysis
+- No using in semantic security
+
+*Cipher-Block Chaining (CBC)* mode
+![](../img/Pasted%20image%2020251003174638.png)
+
+*Counter (CTR)* mode
+![](../img/Pasted%20image%2020251003174902.png)
+
