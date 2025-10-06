@@ -174,8 +174,82 @@ Logistic regression = **linear weights + logistic squashing function**
 Has a linear decision boundary $\color{#bd93f9}p(y=1|x;w)=p(y=0|x)=0.5$, which equivalent to $\color{#bd93f9}w^⊤ϕ(x)=0$
 ![](../img/Pasted%20image%2020251003002549.png)
 
+![](../img/Pasted%20image%2020251004014446.png)
 
-# Data Exploation and Evaluation
+- `w0` bias term
+- `w1` weight for feature 1
+	- 如果 $w_1 > 0$，说明 $x_1$​ 越大，越倾向于预测为正类（y=1）。
+	- 如果 $w_1 < 0$，说明 $x_1​$ 越大，越倾向于预测为负类（y=0）。
+- `w2` weight for feature 2
+
+![](../img/Pasted%20image%2020251004234038.png)
+![](../img/Pasted%20image%2020251004234109.png)
+在参数 `w` 下，所有样本的标签刚好等于观测到的 `y` 的概率
+最大似然估计MLE就是 **找到最优的 `w`，让观测数据的概率最大**
+![](../img/Pasted%20image%2020251004234344.png)
+$\color{#bd93f9}x_{nd}$​：将误差按每个特征维度的贡献进行加权
+
+*One-vs-Rest* classification
+- train an separate classifier, with an associated weight vector $\color{#bd93f9}w_c$, for each class
+![](../img/Pasted%20image%2020251004235857.png)
+- We select the maximum of the different classifiers as the predicted class
+![](../img/Pasted%20image%2020251005000556.png)
+
+
+*Softmax* function
+![](../img/Pasted%20image%2020251005002811.png)
+where![](../img/Pasted%20image%2020251005002832.png)![](../img/Pasted%20image%2020251005002927.png)
+#### Linear Regression
+The relationship between the features `x` and the target `y` is linear
+
+![](../img/Pasted%20image%2020251005192519.png)
+![](../img/Pasted%20image%2020251005192440.png)
+
+The solved weights tell us the contribution of each feature to the final prediction
+- Weight that close to 0 --> feature does not influence the output
+- Large positive value --> strong positive relationship
+- Large negative value --> string negative relationship
+
+Standardise the data: interpret the relative model weights across the different dimensions, for each feature dimension from the training set:
+- Mean
+- Standard deviation
+
+![](../img/Pasted%20image%2020251005231305.png)
+*Sum of Squared Errors (SSE)*
+![](../img/Pasted%20image%2020251005231359.png)
+![](../img/Pasted%20image%2020251005235144.png)
+
+![](../img/Pasted%20image%2020251006000538.png)
+
+![](../img/Pasted%20image%2020251006001329.png)
+
+Sensitive to *outliers*:
+- Is the relationship obviously nonlinear
+- Are there obvious outliers?
+
+#### Non-linear Regression
+*Polynomial regression*, the dimensionality of weights `w` will be the same as $\color{#bd93f9}𝜙(x)$
+![](../img/Pasted%20image%2020251006005057.png)
+
+##### Basis Expansion
+Transform the original features `x` non-linearly into $\color{#bd93f9}𝜙(x)$ and *perform linear regression* on the transformed features, like a set of `M` basis functions
+![](../img/Pasted%20image%2020251006005109.png)
+
+So, the model becomes
+![](../img/Pasted%20image%2020251006005133.png)
+
+##### Radial Basis Functions (RBFs)
+Each RBF $\color{#bd93f9}𝜓 ()_m$ has two parameters, a bell-shaped curve
+- A centre location $\color{#bd93f9}c_m$
+- A width $\color{#bd93f9}𝜎^2_m$
+- outputs a single scalar
+![](../img/Pasted%20image%2020251006005507.png)
+Choosing a subset of the datapoints as centres
+
+
+
+
+# Data Exploration and Evaluation
 
 # Unsupervised Learning
 have no y-values

@@ -4,67 +4,71 @@
     "type": "split",
     "children": [
       {
-        "id": "67b4c3d61ede19cb",
+        "id": "7a98a7be03d25510",
         "type": "tabs",
         "children": [
           {
-            "id": "c20c1095aecf8c39",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Edinburgh/Secure Programming.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Secure Programming"
-            }
-          },
-          {
-            "id": "b392d7288f03f771",
+            "id": "ab3d489613134e18",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Edinburgh/Computer Security.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
               "title": "Computer Security"
             }
           },
           {
-            "id": "b740dedf77e95a8f",
+            "id": "a8b0041d57946c6d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Edinburgh/Secure Programming.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Secure Programming"
+            }
+          },
+          {
+            "id": "0045ac279f943293",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Edinburgh/Blockchans and Distributed Ledgers.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
               "title": "Blockchans and Distributed Ledgers"
             }
           },
           {
-            "id": "ab9b7a027ac3a6e2",
+            "id": "6afb8dd400fd84c1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Edinburgh/Applied Machine Learning.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
               "title": "Applied Machine Learning"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -87,7 +91,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "File explorer"
             }
           },
           {
@@ -133,25 +137,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "40f5fd50f0bac6a4",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Liverpool/323-Introduction to Computational Game Theory.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "Backlinks for 323-Introduction to Computational Game Theory"
-            }
-          },
-          {
             "id": "7ae1736339fd337a",
             "type": "leaf",
             "state": {
@@ -186,53 +171,52 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:创建新数据库": false,
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "templates:插入模板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false,
-      "random-note:开始漫游笔记": false
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "markdown-importer:Open Markdown importer": false,
+      "random-note:Open random note": false,
+      "publish:Publish changes...": false
     }
   },
-  "active": "b392d7288f03f771",
+  "active": "6afb8dd400fd84c1",
   "lastOpenFiles": [
-    "img/Pasted image 20251003174902.png",
-    "img/Pasted image 20251003174638.png",
-    "img/Pasted image 20251003174416.png",
-    "img/Pasted image 20251003170658.png",
-    "Edinburgh/Secure Programming.md",
+    "img/Pasted image 20251006005507.png",
+    "img/Pasted image 20251006005133.png",
+    "img/Pasted image 20251006005109.png",
+    "img/Pasted image 20251006005057.png",
+    "img/Pasted image 20251006005052.png",
+    "img/Pasted image 20251006004138.png",
+    "img/Pasted image 20251006004022.png",
+    "img/Pasted image 20251006001329.png",
+    "img/Pasted image 20251006000538.png",
+    "img/Pasted image 20251005235144.png",
+    "img/Pasted image 20251005235113.png",
     "Edinburgh/Computer Security.md",
-    "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "img/Pasted image 20251003002549.png",
-    "img/Pasted image 20251003001559.png",
-    "img/Pasted image 20251003001443.png",
-    "img/Pasted image 20251003001402.png",
-    "img/Pasted image 20251003000916.png",
-    "img/Pasted image 20251003000434.png",
-    "img/Pasted image 20251002235103.png",
     "Edinburgh/Applied Machine Learning.md",
-    "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
-    "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
-    "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",
-    "网安/渗透测试--蚁景网安/4.6 域内横向移动.md",
-    "网安/渗透测试--蚁景网安/4.5 内网横向移动.md",
-    "网安/渗透测试--蚁景网安/4.10 免杀基础.md",
+    "Edinburgh/Secure Programming.md",
+    "Edinburgh/Blockchans and Distributed Ledgers.md",
     "Edinburgh/Pasted image.md",
+    "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
+    "_sidebar.md",
+    "Liverpool/720北京.md",
     "Edinburgh",
-    "网安/渗透测试--蚁景网安/2.1 Weblogic漏洞.md",
-    "网安/渗透测试--蚁景网安/1.7 未授权访问.md",
-    "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
-    "网安/渗透测试--蚁景网安/1.0 信息收集.md",
-    "Liverpool/328-High Performance Computing.md",
-    "Liverpool/315-Cloud Computing for E-Commerce.md",
+    "_coverpage.md",
+    "README.md",
+    "Untitled.md",
+    "网安/渗透测试--蚁景网安/4.5 内网横向移动.md",
+    "网安/渗透测试--蚁景网安/4.6 域内横向移动.md",
+    "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",
+    "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
+    "网安/渗透测试--蚁景网安/4.10 免杀基础.md",
+    "网安/渗透测试--蚁景网安/1.1 SQL注入.md",
     "网安/渗透测试--蚁景网安/1.6 Web漏洞扫描.md",
-    "网安/渗透测试--蚁景网安/1.5 弱口令密码破解.md",
-    "Liverpool/310-Multi-Agent Systems.md",
-    "网安/渗透测试--蚁景网安/3.3 CobaltStrike渗透框架.md",
-    "Liverpool/390-CyberCipher.md",
-    "网安/渗透测试--蚁景网安/3.1 Matasploit渗透框架.md",
+    "网安/渗透测试--蚁景网安/2.4 Shiro漏洞.md",
+    "网安/蚁景网安夏令营/8.8 Springboot漏洞.md",
+    "Troubleshooting/Java中的Map类型和Spring @Transaction操作数据库问题.md",
+    "网安/渗透测试--蚁景网安/2.3 FastJson漏洞.md",
     "网安/渗透测试--蚁景网安/2.5 其它中间件漏洞.md",
+    "网安/渗透测试--蚁景网安/2.1 Weblogic漏洞.md",
     "网安/渗透测试--蚁景网安/2.2 JBoss漏洞.md",
     "GRE",
     "Liverpool",

@@ -1,20 +1,20 @@
 Introduction to Computer Security
 
 Security
-- Confidentiality: authorized --> Authenticity
+- Confidentiality: authorised --> Authenticity
 - Integrity: The data is untampered and uncorrupted
-- Availability: accessable
+- Availability: accessible
 
 Trust
 - Assurance: The means to know that the system is secure
-- Reliability/Resilience: operate intect
-- Accountability: The means to verify thta the system is operating as designed (securely...)
+- Reliability/Resilience: operate intact
+- Accountability: The means to verify that the system is operating as designed (securely...)
 - Trust/Trustworthy
 
 私钥只存在于本机中
 
 Privacy
-Concerns individuals and their expectations on how their data behaviouors, and interactions are recorded, utilized and spread
+Concerns individuals and their expectations on how their data behaviours, and interactions are recorded, utilised and spread
 - Person gets to control information about themselves
 - 不安全的库: 撞库攻击
 
@@ -24,7 +24,7 @@ Threat Modelling
 - Who is the adversary
 - What are they allowed to do / What cant we prevent them from doing
 - What we want to prevent the adversary from doing or learning
-- set of threats we want to pretect against given this
+- set of threats we want to protect against given this
 
 Assets: Hardware, software, information
 Vulnerabilities
@@ -229,4 +229,3 @@ Same input in each block, same output
 
 *Counter (CTR)* mode
 ![](../img/Pasted%20image%2020251003174902.png)
-

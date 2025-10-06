@@ -2,7 +2,7 @@
   "legacyEditor": false,
   "livePreview": true,
   "attachmentFolderPath": "img",
-  "promptDelete": false,
+  "promptDelete": true,
   "alwaysUpdateLinks": true,
   "fileSortOrder": "byCreatedTimeReverse",
   "readableLineLength": true,
@@ -19,5 +19,7 @@
     "landscape": false,
     "margin": "0",
     "downscalePercent": 100
-  }
+  },
+  "newLinkFormat": "relative",
+  "focusNewTab": false
 }
