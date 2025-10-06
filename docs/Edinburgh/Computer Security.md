@@ -229,3 +229,30 @@ Same input in each block, same output
 
 *Counter (CTR)* mode
 ![](../img/Pasted%20image%2020251003174902.png)
+
+#### Hash functions
+*One-way functions (OWFs)*: easy to compute and hard to invert
+![](../img/Pasted%20image%2020251006170347.png)
+- Multiplication of large primes, hard to retrieve
+
+*Collision-resistant functions (CRFs)*
+![](../img/Pasted%20image%2020251006171306.png)
+- successor function
+- multiplication of large primes
+
+Hash funciton: arbitrary length and returns a fixed-seze bit string
+![](../img/Pasted%20image%2020251006171705.png)
+
+The birthday attack: why large cipher space
+![](../img/Pasted%20image%2020251006173132.png)
+
+Merkle-Damgard: SHA-256
+
+#### Message Authentication Codes (MACs)
+Message integrity & Authenticity
+![](../img/Pasted%20image%2020251006174049.png)
+
+Always compute the MACs on the ciphertext, never on the plaintext
+Use two different keys, one for encryption $\color{#b293f6}K_E$ and one for the MAC $\color{#b293f6}K_M$
+
+Galoris Counter Mode
