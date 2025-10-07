@@ -246,8 +246,14 @@ Each RBF $\color{#bd93f9}𝜓 ()_m$ has two parameters, a bell-shaped curve
 ![](../img/Pasted%20image%2020251006005507.png)
 Choosing a subset of the datapoints as centres
 
+#### Decision Trees
+Nonlinear Data: classification and regression
 
+- Root
+- Internal
+- Leaves
 
+1. All the data at
 
 # Data Exploration and Evaluation
 
