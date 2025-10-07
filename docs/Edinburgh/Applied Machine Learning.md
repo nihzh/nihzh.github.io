@@ -248,12 +248,55 @@ Choosing a subset of the datapoints as centres
 
 #### Decision Trees
 Nonlinear Data: classification and regression
-
+Nodes:
 - Root
 - Internal
 - Leaves
 
-1. All the data at
+At each node, split data based on *feature dimension* and *threshold 𝜃*
+
+1. All the data at the root node of the tree
+2. Grow the tree by recursively splitting the data at each node
+3. Until reach a specified condition
+	- predefined maximum depth
+	- impossible to split the data further
+
+**Favour splits that result in child nodes that have high 'purity' i.e. 'impurity' `I(S)`** 
+
+Measure the *entropy* at each node, using the distribution of datapoints
+![](../img/Pasted%20image%2020251007224521.png)
+Also notated as `H(S)`
+
+*Gini Impurity*
+![](../img/Pasted%20image%2020251007224807.png)
+
+Measure the *Information Gain* of a split for each feature dimension and threshold pair, choose the **largest gain**
+![](../img/Pasted%20image%2020251007225533.png)
+
+"Singleton nodes" will be 100% purity ==> **overfitting**
+Additional *hyperparameter* to prune it
+- Maximum tree depth
+- Minimum number of datapoints per node
+- Minimum information gain
+
+##### Regression trees
+Ground truth targets are continuous values, *Node purity*: variance
+![](../img/Pasted%20image%2020251007232448.png)
+At each leaf we store the **mean** of all the datapoints that arrived at the node
+![](../img/Pasted%20image%2020251007232534.png)
+
+##### Ensembles of Trees
+> 训练多棵稍有差异的决策树，然后**让它们共同投票或平均预测结果**。
+> 这样单个树的“噪声”会被平均掉，整体模型更稳、更准确。
+
+Grow an ensemble of `K` different decision trees
+1. Pick a random subset of the data
+2. Train a decision tree on this data, when splitting, choose a random subset of features
+3. Repeat this `K` different times
+
+Given a new datapoint `x` at test time: **classify `x` separately using each tree**
+- Classification: majority vote
+- Regression: mean prediction
 
 # Data Exploration and Evaluation
 
@@ -263,7 +306,7 @@ have no y-values
 
 # Reinforcement Learning
 Learn how to interact with its environment
-Learn a **policy** which specifies the action to take in response to obeservation of the environment
+Learn a **policy** which specifies the action to take in response to observation of the environment
 Agents aims to maximise their reward
 
 # Ethics
