@@ -179,6 +179,43 @@ C
 - implicit type conversions
 - expllicit type casts
 
-
-
 ### Memory Corrption Countermeasures
+Give devence indepth taht can protect in case of new attacks, malware, regressions to vulnerable code
+- Tamper detection in software
+- Memory protect in OS and hardware
+- Diversification methods
+
+#### Tamper detection
+Wrap frame with protective layer, canary sits below return address. Attacker overflows atack buffer to hit return address
+
+Attackers respond to new protection mechanisms by looking for mulnabilities th those mechanisms
+
+#### Memory mode protection
+Isolation different processes have different resouces
+Sharing resources are shared between processes, partial isolation
+
+Granularity of protection
+- *Fencs*: separate memory accesses between OS and user code
+- *Base and bounds regiester*: enforce separation between several programs allowing access control on memory ranges
+- *Tagged architecture*: tag on each memory locatoin set access rights to stored word, not supported in modern
+- *Paging*: split program/data into pieces, mapped onto memory separately
+
+#### Diversification
+Make many versions of same program; thwarts general attacks that assume some fixed structure
+*ASLR*: randomising layout suring load time makes it harder to find data or code locations
+- small amounts could be brute force
+
+#### Defensive programming
+*Bounds checking*
+- data length
+- array subscripts
+- boundary conditions: off-by-one
+- size of inputs
+- dangerous API calls
+
+![](../img/Pasted%20image%2020251007195427.png)
+
+*Automated code review*: code checking tools
+- Memory faults
+	- Valgrind: Dynamic runtime vulnerability, 
+	- AddressSanitizer: compile time
