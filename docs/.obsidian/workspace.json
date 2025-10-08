@@ -43,7 +43,8 @@
               "state": {
                 "file": "Edinburgh/Blockchans and Distributed Ledgers.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
               "title": "Blockchans and Distributed Ledgers"
@@ -57,14 +58,15 @@
               "state": {
                 "file": "Edinburgh/Applied Machine Learning.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
               "title": "Applied Machine Learning"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -147,8 +149,8 @@
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               },
-              "icon": "links-coming-in",
-              "title": "Backlinks for 323-Introduction to Computational Game Theory"
+              "icon": "lucide-ghost",
+              "title": "backlink"
             }
           },
           {
@@ -186,8 +188,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "publish:发布更改": false,
       "bases:创建新数据库": false,
-      "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "templates:插入模板": false,
@@ -195,8 +197,9 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "b740dedf77e95a8f",
+  "active": "ab9b7a027ac3a6e2",
   "lastOpenFiles": [
+    "Edinburgh/Blockchans and Distributed Ledgers.md",
     "img/Pasted image 20251008194355.png",
     "img/Pasted image 20251008193930.png",
     "img/Pasted image 20251008192842.png",
@@ -208,9 +211,7 @@
     "img/Pasted image 20251008174447.png",
     "img/Pasted image 20251008174355.png",
     "img/Pasted image 20251008173520.png",
-    "img/Pasted image 20251008172739.png",
     "Edinburgh/Secure Programming.md",
-    "Edinburgh/Blockchans and Distributed Ledgers.md",
     "Edinburgh/Applied Machine Learning.md",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
