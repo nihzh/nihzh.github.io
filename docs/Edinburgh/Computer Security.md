@@ -256,3 +256,26 @@ Always compute the MACs on the ciphertext, never on the plaintext
 Use two different keys, one for encryption $\color{#b293f6}K_E$ and one for the MAC $\color{#b293f6}K_M$
 
 Galoris Counter Mode
+
+### Asymmetric encryption
+#### Online Trusted Third Party (TTP)
+![](../img/Pasted%20image%2020251008172305.png)
+
+Public-key encryption
+![](../img/Pasted%20image%2020251008172739.png)
+
+#### Numbers theory: modulo inverse
+*Relative primes*
+![](../img/Pasted%20image%2020251008173520.png)
+
+*Integers modulo*
+![](../img/Pasted%20image%2020251008174355.png)
+
+*Multiplicative group of integers modulo `n`*
+![](../img/Pasted%20image%2020251008174447.png)
+- Factoring
+- RSA
+- Discrete Logarithm Problem
+- Diffie-Hellmam Problem
+
+#### No TTP Asymmetric key distribution

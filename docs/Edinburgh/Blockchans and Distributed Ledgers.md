@@ -262,18 +262,14 @@ Local variables
 - Uninitialised variables always have a default value (zero-state)
 - C99
 
-
 address
 static and dynamic arrays
 mappings: key => value
-
 ##### Visibility
 public
 external
 internal
 *private*: can be called only by the contract in which they are defined and not by a derived contract
-
-##### Functions
 
 ##### Inheritance
 interface
@@ -288,6 +284,64 @@ contract Bank is Regulator {}
 **Reference type**: storage and memory
 
 ##### Events, Modifiers and Global variables
-
 EVM logging machanism, stored arguments
 listeners
+
+### Potential Attacks
+#### Denial-of-Service
+*Unbounded operation*: reach the gasLimit, impossible to execute
+*Griefing*
+![](../img/Pasted%20image%2020251008181544.png)
+
+Send/transfer **call fails**
+
+Design pattern: *pull over push*
+- avoid multiple `send()`, user withdraw their funds
+
+#### Reentrancy
+![](../img/Pasted%20image%2020251008183526.png)
+![](../img/Pasted%20image%2020251008183530.png)
+
+![](../img/Pasted%20image%2020251008183626.png)
+
+Design pattern *Checks-Effects-Interactions*
+Finish all internal word (state changes) and then call external functions
+
+Mutexes
+Avoid strict equality checks with the contract'bs balance
+
+tx.origin ==> `msg.sender`
+
+
+*Nomad Bridge Hack*
+
+Always check user input
+
+#### Front-runninig
+> 攻击者“看见”你的交易要发生，于是花更高的 gas 费，让自己的交易先执行。
+
+Transparent mempool
+
+Cryptographic *Commitment scheme*
+- Binding
+- Hiding
+
+User is forces to spend extra gas for new `tx` that posts new commitment
+
+##### Generating Randomness
+Insecure, can be manipulated by a malicious miner
+![](../img/Pasted%20image%2020251008192842.png)
+
+Intra-transaction information leak
+If same-block txs share randomness source, attacker can check whecher conditions are favorable **before acting**
+
+*validate block's age*
+miner keep newly-minded blocks hidded
+
+![](../img/Pasted%20image%2020251008193930.png)
+
+Overflow/Underflow: number
+
+
+##### Gas Fairness
+![](../img/Pasted%20image%2020251008194355.png)
