@@ -219,3 +219,41 @@ Make many versions of same program; thwarts general attacks that assume some fix
 - Memory faults
 	- Valgrind: Dynamic runtime vulnerability, 
 	- AddressSanitizer: compile time
+
+## Injection
+*CWE: Common Weakness Enumeration*
+25 top
+
+**Always check your inputs!**
+
+Downstream component
+- call to a library function
+	- picture / movie
+	- execute an OS command
+- a message sent to another service
+	- web query / web API call
+	- query database
+
+*Trust assumptions*
+Programmers make trust assumptions concerning which parts of the system they believe will behave as expected.
+
+### Command injection
+Programmers often insert **system command** calls in application code, interpreted by a **command shell**
+
+Metadata & meta-characters
+- In-band reparesentation: embeds metadata into the data stream
+- Out-of-band representation: separates metadata from data
+
+separators / delimiters
+escape-sequence: describe additional data
+
+*Input validation*
+Block lists (characters)
+- reject
+- filter
+- santize
+
+sub-process
+
+### SQL Injection
+### OS Command Injection
