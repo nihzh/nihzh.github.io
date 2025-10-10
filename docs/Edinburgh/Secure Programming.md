@@ -241,7 +241,7 @@ Programmers make trust assumptions concerning which parts of the system they bel
 Programmers often insert **system command** calls in application code, interpreted by a **command shell**
 
 Metadata & meta-characters
-- In-band reparesentation: embeds metadata into the data stream
+- In-band representation: embeds metadata into the data stream
 - Out-of-band representation: separates metadata from data
 
 separators / delimiters
@@ -251,9 +251,13 @@ escape-sequence: describe additional data
 Block lists (characters)
 - reject
 - filter
-- santize
+- sanitize
 
-sub-process
+Sub-process: risky as they invoke a **shell** to process the commands
+- `system()` in C, equivalently to `/bin/sh -c <cmd>`
+- `popen()` executes a command as a sub-process, returning a *pipe* to send or read data
+
+Some attacks exploit differences in meta-characters between languages
 
 ### SQL Injection
 ### OS Command Injection

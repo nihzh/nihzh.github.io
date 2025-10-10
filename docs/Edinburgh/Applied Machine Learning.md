@@ -299,9 +299,20 @@ Given a new datapoint `x` at test time: **classify `x` separately using each tre
 - Regression: mean prediction
 
 # Data Exploration and Evaluation
+## Representing Data
+
+*Core Questions*
+- What task am I trying to solve?  
+- How should I model the problem?  
+- How should I represent my data?  
+- How can I estimate the parameters of my model?  
+- How should I measure the performance of my model?
+
+
+
 
 # Unsupervised Learning
-have no y-values
+have no label values
 ![](../img/Pasted%20image%2020250918211823.png)
 
 # Reinforcement Learning

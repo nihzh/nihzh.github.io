@@ -289,59 +289,94 @@ listeners
 
 ### Potential Attacks
 #### Denial-of-Service
-*Unbounded operation*: reach the gasLimit, impossible to execute
-*Griefing*
 ![](../img/Pasted%20image%2020251008181544.png)
+*Unbounded operation*: requires more gas as array become larger, reach the `gasLimit` ==> DoS, impossible to execute
+*Griefing*: if a send/transfer call fails, the contract might get stuck
+- it is possible to **force a call to fail**
 
-Send/transfer **call fails**
+![](../img/Pasted%20image%2020251009194345.png)
 
+##### solution
 Design pattern: *pull over push*
-- avoid multiple `send()`, user withdraw their funds
+- avoid multiple nested `send()` call in a single transaction
+- Isolates each *external call* into its own transaction
+- let users withdraw their funds, no `push()` transfer
+- gas fairness
+- A trade-off between security and user experience
 
 #### Reentrancy
 ![](../img/Pasted%20image%2020251008183526.png)
 ![](../img/Pasted%20image%2020251008183530.png)
 
-![](../img/Pasted%20image%2020251008183626.png)
-
+##### solutions
 Design pattern *Checks-Effects-Interactions*
-Finish all internal word (state changes) and then call external functions
+- Perform checks on outputs, sender, value etc.
+- Enforce **effects** and update the **state** accordingly
+- Interact with other accounts via external calls or send/transfer
+
+Finish all **internal work** (state changes) and then call **external** functions
 
 Mutexes
-Avoid strict equality checks with the contract'bs balance
 
-tx.origin ==> `msg.sender`
+#### Solidity specific hazards
+##### Forcibly Sending Ether to a Contract
+misuse of `this.balance`
+Send ether with `selfdestruct(victimContractAddress)` will not trigger contact's fallback
+**Avoid strict equality checks with the contract's balance**
 
+`delegatecall` forwards calls from one contract to another
+
+tx.origin ==> `msg.sender`   onlyOwner
+
+keep `fallback` and `receive` logically minimise
+- only `emit event` in `fallback`
+
+#### Default values
+Solidity sign empty/zero value automatically for every uninitialised variable
 
 *Nomad Bridge Hack*
 
 Always check user input
+Even never accessed before, it has zero value
 
-#### Front-runninig
-> 攻击者“看见”你的交易要发生，于是花更高的 gas 费，让自己的交易先执行。
+Keep simple
+复杂的自研证明/加密构造极易出错——**尽量使用成熟库、保持简单、避免自己重写加密/证明逻辑**
 
-Transparent mempool
+#### Front-running
+> 攻击者在mempool“看见”你的交易要发生，于是花更高的 gas 费，让自己的交易先执行。
+
+Public *mempool*
 
 Cryptographic *Commitment scheme*
-- Binding
-- Hiding
+![](../img/Pasted%20image%2020251009230005.png)
+- Binding: a commitment can be opened only to its committed value
+- Hiding: a commitment reveals no information about its committed value
 
-User is forces to spend extra gas for new `tx` that posts new commitment
+Possible **DoS** and **forced gas cost**
+User is forced to spend extra gas for new `tx` that posts new commitment
+Attacker can continue front-running until they run out of money (to pay gas)
 
 ##### Generating Randomness
-Insecure, can be manipulated by a malicious miner
+Insecure, can be manipulated by a **malicious miner**
 ![](../img/Pasted%20image%2020251008192842.png)
 
 Intra-transaction information leak
-If same-block txs share randomness source, attacker can check whecher conditions are favorable **before acting**
+If same-block `txs` share randomness source, attacker can check whether conditions are favourable **before acting**
 
 *validate block's age*
-miner keep newly-minded blocks hidded
+miner is still able to keep newly-minded blocks hidden
+
+##### Solutions
+*Commit-Reveal*
+![](../img/Pasted%20image%2020251009230528.png)
+
+*2-party coin flipping via commitments*
+![](../img/Pasted%20image%2020251009230659.png)
 
 ![](../img/Pasted%20image%2020251008193930.png)
 
-Overflow/Underflow: number
+#### Overflow/Underflow: number
+`uint256` overflow/underflow in *Solidity* < 0.8
 
-
-##### Gas Fairness
+#### Gas Fairness
 ![](../img/Pasted%20image%2020251008194355.png)
