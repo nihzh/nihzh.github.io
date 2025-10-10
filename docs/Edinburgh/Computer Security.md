@@ -279,3 +279,15 @@ Public-key encryption
 - Diffie-Hellmam Problem
 
 #### No TTP Asymmetric key distribution
+*Diffie-Hellman protocol*: good for ephemeral encrypt
+![](../img/Pasted%20image%2020251010171318.png)
+
+raw RSA ==> not quite secure, could be brute force
+
+![](../img/Pasted%20image%2020251010174757.png)
+
+加密find解密
+算法proof
+
+#### Signatures
+Data integrity and origin authenticity in the public-key setting
