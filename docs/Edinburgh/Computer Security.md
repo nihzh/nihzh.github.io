@@ -282,7 +282,7 @@ Public-key encryption
 *Diffie-Hellman protocol*: good for ephemeral encrypt
 ![](../img/Pasted%20image%2020251010171318.png)
 
-raw RSA ==> not quite secure, could be brute force
+raw RSA ==> Man In The Middle
 
 ![](../img/Pasted%20image%2020251010174757.png)
 

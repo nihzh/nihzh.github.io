@@ -308,7 +308,41 @@ Given a new datapoint `x` at test time: **classify `x` separately using each tre
 - How can I estimate the parameters of my model?  
 - How should I measure the performance of my model?
 
+![](../img/Pasted%20image%2020251011213935.png)
+Present data mathematically (feature representation)
 
+**Feature-Value Pairs**
+
+*Categorical Features*
+- Each instance falls into one of a set
+- Mutually exclusive
+- Typically encoded as numbers that index into the set
+- No natural 'ordering', 'closeness', only equality
+
+*Ordinal Features*
+- Each instance falls into one of a set
+- Natural ordering to the categories (increasing/decreasing)
+- Compare (<, >, =) only
+
+*Numeric Features*
+- Integers or real numbers
+- comparison, closeness, functions(mean, variance)
+- Extendable to higher order features
+
+![](../img/Pasted%20image%2020251012015954.png)
+
+### Modern representation
+Learn what values for features helps with doing the task well
+> 学习获得有效特征而不是手工设计特征
+
+Choose a basic set of attributes, say image “patches”
+![](../img/Pasted%20image%2020251012020205.png)
+
+> Consider both data and task
+> Consider what kind of model you want
+> 	nuanced, interpretable
+> 	scalable, performant
+> Opaque decision making over learnt task‑specific features
 
 
 # Unsupervised Learning
