@@ -291,3 +291,40 @@ raw RSA ==> Man In The Middle
 
 #### Signatures
 Data integrity and origin authenticity in the public-key setting
+![](../img/Pasted%20image%2020251013171645.png)
+
+![](../img/Pasted%20image%2020251013171549.png)
+
+![](../img/Pasted%20image%2020251013171720.png)
+
+##### CAs distribution
+Let's Encrypt
+Certificates with OpenSSL
+
+```sh
+openssl s_client -connect www.google.com:443 -servername
+www.google.com | openssl x509 -text -noout
+```
+
+Revocation once the corresponding private key has beed compromised
+- Certificate Revocation Lists (CRLs)
+- Online Certificate Status Protocol (OCSP)
+
+### Post-Quantum Security
+Quantium bits (qubits): Can be in superposition of 0 and 1 sumultaneously
+
+*Superposition*
+- A qubit can represent both states at once
+- `n` qubits can represent all $\color{#b293f6}2^n$ values simultaneously
+
+*Entanglement*: measuring one qubit instantly affects others
+- enables parallel computation across exponentally many states
+
+Process all possibilities at once, extract aswer through interference
+- "try all solutions instantly"
+
+maintain quantum state of qubits
+
+Larger input sizes needed
+
+Store now, decrypt later
