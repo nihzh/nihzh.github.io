@@ -344,6 +344,86 @@ Choose a basic set of attributes, say image “patches”
 > 	scalable, performant
 > Opaque decision making over learnt task‑specific features
 
+### Plotting Data
+Features
+- title
+- labelled axes
+- axes ranges and ticks
+- clarity (colour / thickness)
+- legend
+
+Informative: Convey as much as necessary
+Clean: avoid overfilling & redundancy
+
+#### Dimensionality Reduction
+> *Manifold Hypothesis*: High-dimensional data in the real world really lies on low-dimensional manifolds within that high-dimensional space
+
+**High dimensionality**
+- **Counting** problem: As dimensionality grows, fewer abservations per region
+- Mitigation
+	- domain knowledge
+	- feature engineering
+	- modelling assumptions about features independence smoothness symmetry
+	- reduce data dimensionality, struct a new set
+
+*Dimensionality Reduction*
+Represent data using a "few" variables
+- *compression*: preserve as much information / structure as possible
+- *discrimination*: only keep information that enables task
+	- classification
+
+*Feature selection*
+- subset all features
+- relevant to task
+
+*Featrue Transformation*
+- construct a new set of dimensions
+![](../img/Pasted%20image%2020251013194650.png)
+- transformation of original: linear F =⇒ e = Fx
+
+##### Principal Components Analysis
+Define printcipal commponents
+- 1st PC: direction of **greatest** variation in the data
+- 2nd PC: ⊥ 1st PC; **greatest remaining** variation
+- ... until D, for $\color{#b293f6}x\in\mathrm{R}^D$
+
+First $M << D$ components become new basis dimensions
+Transform coordinates of each data point to new basis
+
+Variation along direction = information
+Transform basis --> fit maximum informaiton into M dimensions
+
+![](../img/Pasted%20image%2020251013210933.png)
+**不断乘以 S 会把任意非零向量的方向推向 S 的*主特征向量***（对应最大特征值的那个向量)
+
+![](../img/Pasted%20image%2020251013214241.png)
+任意单位向量 $v$ 上的投影方差是 $v^TSv$, 而 PCA 正是寻找让这个方差最大的方向$v$
+- 方向 $v$ 是 $S$ 的特征向量;
+- 方差大小（投影后信息量）= 对应的特征值 $\lambda$。
+
+![](../img/Pasted%20image%2020251013221556.png)
+
+![](../img/Pasted%20image%2020251013222654.png)
+
+*Explained Variance*: Find minimum $M$, such![](../img/Pasted%20image%2020251013222810.png)
+累计方差比例 / 特征值下降趋势
+
+![](../img/Pasted%20image%2020251013223835.png)
+降维：“把高维数据在主成分方向上投影”。
+原来的 D 维向量现在用 M 个主成分坐标 $e_i$​ 来表示。
+
+重构：“从低维空间近似地恢复原始数据”
+M 越大，重构越接近原数据
+
+##### Limitations
+Sensitivity: **outliers** changes variance and pricipal components
+- normalise: zero mean unit variance![](../img/Pasted%20image%2020251013233209.png)
+- find outliers using interquartile range (IQR)
+	- median(upper quartile 25%) ‑ median(lower quartile 75%)
+	- define 'outlier' as values > 1.5\*IQR
+
+Transform to handle non-linearity
+LDA supervised
 
 # Unsupervised Learning
 have no label values

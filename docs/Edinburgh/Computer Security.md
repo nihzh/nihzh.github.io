@@ -328,3 +328,7 @@ maintain quantum state of qubits
 Larger input sizes needed
 
 Store now, decrypt later
+
+Given 𝐹: $\color{#b293f6}{0, 1}^𝑛 → {0, 1}$, Grover's algorithm makes $𝑂(2^𝑛/2)$ quantum evaluations of 𝐹 and outputs 𝑋 ∈ {0, 1}𝑛 such that 𝐹(𝑋) = 1, if such 𝑋 exists
+![](../img/Pasted%20image%2020251013185416.png)
+- $O(2^{n/2})$ time
