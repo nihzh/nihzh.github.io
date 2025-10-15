@@ -259,5 +259,13 @@ Sub-process: risky as they invoke a **shell** to process the commands
 
 Some attacks exploit differences in meta-characters between languages
 
+environment variables
+
+DLL in Windows: search order to PATH environment variables
+Unix use a search path which can be defined/overridden by variables
+	`LD_LIBRARY_PATH`
+	`LD_PRELOAD`
+
+IFS changing CVE-2014-6271
 ### SQL Injection
 ### OS Command Injection

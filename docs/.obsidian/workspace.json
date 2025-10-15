@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -199,8 +199,14 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "ab9b7a027ac3a6e2",
+  "active": "b740dedf77e95a8f",
   "lastOpenFiles": [
+    "img/Pasted image 20251015195437.png",
+    "img/Pasted image 20251015183440.png",
+    "img/Pasted image 20251015182911.png",
+    "Edinburgh/Secure Programming.md",
+    "Edinburgh/Computer Security.md",
+    "Edinburgh/Applied Machine Learning.md",
     "img/Pasted image 20251013233209.png",
     "img/Pasted image 20251013223835.png",
     "img/Pasted image 20251013222810.png",
@@ -209,13 +215,7 @@
     "img/Pasted image 20251013221556.png",
     "img/Pasted image 20251013214241.png",
     "img/Pasted image 20251013210933.png",
-    "img/Pasted image 20251013194650.png",
-    "Edinburgh/Computer Security.md",
-    "img/Pasted image 20251013185416.png",
-    "img/Pasted image 20251013171720.png",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "Edinburgh/Secure Programming.md",
-    "Edinburgh/Applied Machine Learning.md",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
     "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",

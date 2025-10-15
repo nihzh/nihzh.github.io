@@ -380,3 +380,40 @@ miner is still able to keep newly-minded blocks hidden
 
 #### Gas Fairness
 ![](../img/Pasted%20image%2020251008194355.png)
+
+## The Consensus Problem
+A transaction history and/or state of the service needs to be agreed by all servers
+- participants with diverging intrests
+
+![](../img/Pasted%20image%2020251015182911.png)
+
+![](../img/Pasted%20image%2020251015183440.png)
+
+Doesn't matter the input parties of the aggrement: All outputs are the same
+
+#### Model
+- `n` parites running the protocol
+- Synchronous
+- Each party has a quota of `q` queries to the function `H()` in each round
+- A number of `t` parties are controlled by an adversary
+
+[images]
+
+Broadcast the whole book --> check the chain of hashes
+
+Basis Properties
+- Common prefix
+	- Attacker aplits from the main chain and tries to overtake the "honest chain"
+- Chain Quality: The property holds probabilistically with an error that exponentally
+- Chain Growth
+
+Consistency
+Liveness
+
+Hash operations: $2^{78}$ hashing operations
+
+
+*T (PoW algorithm target)*: how difficulty of the Proof of Work algorithm (probability)
+![](../img/Pasted%20image%2020251015195437.png)
+if T is small, the hardness increase
+
