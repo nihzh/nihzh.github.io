@@ -268,4 +268,41 @@ Unix use a search path which can be defined/overridden by variables
 
 IFS changing CVE-2014-6271
 ### SQL Injection
-### OS Command Injection
+Routes
+- GET/POST
+- Cookie
+- 服务器变量（HTTP header）
+- 二次注入
+
+提取，修改，绕过认证， 执行任意敏玲
+
+Idea: use static analysis pre-processing to generate a dynamic detection tool:  
+1. Find SQL query-generation points in code  
+2. Build SQL-query model as NDFA which models SQL grammar, transition labels are tokens  
+3. Instrument application to call runtime monitor  
+4. If monitor detects violation of state machine, triggers error, preventing SQL query  
+
+静态分析 动态监测攻击 SQLRand
+## Racing
+### Race conditions
+多进程和多CPU并行，
+![](../img/Pasted%20image%2020251016193515.png)
+访问文件的时间窗口差
+在检查和open之间对文件修改恶意代码
+*Unix*
+1. 多次解析相同文件
+2. Permission Races: 文件创建时是`0666`
+3. Ownership Races
+4. Directory Races
+5. Temporary File Races
+	- `fd = mkstemp(temp);`
+### Data Races
+两个或多个线程，访问同一共享变量，多次读写导致非确定性结果
+Atomic memory accesses
+Multi-threaded programs
+
+> A data race occurs when two or more threads access a shared variable:  
+1. (potentially) at the same time, and  
+2. at least one of the accesses is a write
+
+Write speculation in JAVA
