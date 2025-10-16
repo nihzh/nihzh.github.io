@@ -389,31 +389,94 @@ A transaction history and/or state of the service needs to be agreed by all serv
 
 ![](../img/Pasted%20image%2020251015183440.png)
 
-Doesn't matter the input parties of the aggrement: All outputs are the same
+Doesn't matter the parties input of the agreement: All outputs are the same
+
+Bitcoin: a < 1/2
+51% attack
+![](../img/590d70c4c7a669cb51ea8daf164f14e9.jpg)
+![](../img/19c90b11d2c0d7f486bb0aa1cd923443.jpg)
+
+##### Ledger Consensus Properties
+*Consistency* $$\forall i,j \in \mathbf{H}, t,t' : (\text{Log}_i[t] \npreceq \text{Log}_j[t']) \rightarrow (\text{Log}_j[t'] \preceq \text{Log}_i[t])$$
+对于任意两个诚实的参与者 `i` 和 `j`，以及任意时间点`t`,`t′`：
+- 如果某一方的日志（账本）不是另一方日志的前缀，
+- 那么反过来，另一方的日志一定是它的前缀。
+所有诚实节点的账本是前缀关系，不会出现账本分叉或冲突
+
+*Liveness* $$(\forall i \in \mathbf{H} : tx \in I_i[t]) \rightarrow (\forall i \in \mathbf{H} : tx \in \text{Log}_i[t + u])$$
+where 
+$\color{#bd93f9}I_j[t]$ is Transaction Input of party `j` at time `t` consistent with its log
+$\color{#bd93f9}\text{Log}_j[t]$ is Log of party `j` at time `t`
+
+对于任意一个诚实节点 `i`：
+- 如果在时间 `t` 时它提交了一笔交易 `tx`, 
+- 那么在经过某个有限的延迟时间 `u` 之后, 所有诚实节点的账本中都会包含这笔交易。
+提交的交易最终都会上链，系统持续运行，交易最终确认
+
+##### Bitcoin Blockchain
+![](../img/Pasted%20image%2020251016002936.png)
+
+匿名性 不可关联性 无身份认证机制 无信任
+
+- The chain validation predicate
+- The chain selection rule (max-valid)
+- The proof of work function
+- The main protocol loop
 
 #### Model
-- `n` parites running the protocol
+- `n` parties running the protocol
 - Synchronous
 - Each party has a quota of `q` queries to the function `H()` in each round
 - A number of `t` parties are controlled by an adversary
 
-[images]
+![](../img/169fc0a6024015bd650f5c26287d523d.jpg)
+![](../img/5d4b72901580bd74c16c9f733064b6db.jpg)
 
 Broadcast the whole book --> check the chain of hashes
 
-Basis Properties
-- Common prefix
-	- Attacker aplits from the main chain and tries to overtake the "honest chain"
-- Chain Quality: The property holds probabilistically with an error that exponentally
-- Chain Growth
+#### Basis Properties
+##### *Common prefix*  **(Consistency)** $$\forall r_1, r_2, (r_1 \le r_2), P_1, P_2, \text{ with } C_1, C_2 : C_1^{\lfloor k \rfloor} \preceq C_2$$
+> 对任意两个诚实节点 `P1`,`P2` 在任意两个时间点 `r1`≤`r2`，
+> 如果你从较早节点 `P1`​ 的区块链中去掉最后 `k` 个区块，
+> 那么得到的链一定是另一个节点 `P2` 当前区块链的前缀。
 
-Consistency
-Liveness
+所有诚实节点的区块链大部分一致，只有最近k个可能存在分歧
+- **Racing**: Attacker splits from the main chain and tries to overtake the "honest chain"
+- Confirmation depth: 6 confirmations
+- The property holds true, in a probabilistic sense, with an error that decays exponentially in `k`.
 
-Hash operations: $2^{78}$ hashing operations
+##### *Chain Growth* **(Liveness)** $$Parameters\space\tau \in (0,1), \, s \in \mathbb{N}$$In any period of `s` rounds at least `τs` blocks are add to the chain of an honest party `P`. Where 
+τ≈probability that at least one honest party finds a PoW in a round.
+> 区块链会持续增长，不会陷入死锁，极大概率成立
 
+##### *Chain Quality* **(Liveness)** $$\mu \in (0,1), \, \ell \in \mathbb{N}$$
+The ratio of blocks of an `ℓ-long` segment of an honest chain produced by the adversary is bounded by `(1−μ)ℓ`
+μ：链质量参数，表示诚实节点在该区段中占据的最小比例
 
+> 在任意长度为`ℓ`的链区间中，至少有比例为`μ`的区块是由诚实节点产生的
+
+The property holds true probabilistically with an error that exponentially decays in `ℓ`.
+
+![](../img/Pasted%20image%2020251016015407.png)
+> 对手每获得 1 个主链区块，就最多能让 1 个诚实独占区块“失效”（成孤块）。 
+> 所以诚实净贡献是“诚实独占 − 对手独占”。
+
+> 只要 $t < \tfrac{n}{2}$，就有 $\mu>0$；当 $t \to \tfrac{n}{2}$​ 时，$\mu \to 0$。
+> 当$\mu >  0$, 系统才具备自愈能力
+
+*Block Withholding Attacks*
+> Attacker mines privately and releases their block at the same time an honest party releases its own block
+> Assuming honest propagation favours the adversary, the honest block is dropped, reducing chain quality
+
+*Hash operations*: $2^{78}$ hashing operations
+
+Mining pools parallelising: work together to solve PoW for the same block
+- shares
+
+#### Dynamic Availability
 *T (PoW algorithm target)*: how difficulty of the Proof of Work algorithm (probability)
 ![](../img/Pasted%20image%2020251015195437.png)
 if T is small, the hardness increase
+with the attendance increase, the hardness raise
+![](../img/Pasted%20image%2020251016022441.png)
 

@@ -4,26 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "67b4c3d61ede19cb",
+        "id": "7a98a7be03d25510",
         "type": "tabs",
         "children": [
           {
-            "id": "c20c1095aecf8c39",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Edinburgh/Secure Programming.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Secure Programming"
-            }
-          },
-          {
-            "id": "b392d7288f03f771",
+            "id": "ab3d489613134e18",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -38,7 +23,22 @@
             }
           },
           {
-            "id": "b740dedf77e95a8f",
+            "id": "a8b0041d57946c6d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Edinburgh/Secure Programming.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Secure Programming"
+            }
+          },
+          {
+            "id": "0045ac279f943293",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -53,7 +53,7 @@
             }
           },
           {
-            "id": "ab9b7a027ac3a6e2",
+            "id": "6afb8dd400fd84c1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -91,7 +91,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -137,25 +137,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "40f5fd50f0bac6a4",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Liverpool/323-Introduction to Computational Game Theory.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "lucide-ghost",
-              "title": "backlink"
-            }
-          },
-          {
             "id": "7ae1736339fd337a",
             "type": "leaf",
             "state": {
@@ -190,54 +171,54 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "publish:发布更改": false,
-      "bases:创建新数据库": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "templates:插入模板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false,
-      "random-note:开始漫游笔记": false
+      "markdown-importer:Open format converter": false,
+      "bases:Create new base": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "random-note:Open random note": false,
+      "publish:Publish changes...": false
     }
   },
-  "active": "b740dedf77e95a8f",
+  "active": "0045ac279f943293",
   "lastOpenFiles": [
+    "img/Pasted image 20251016022441.png",
+    "img/Pasted image 20251016015407.png",
+    "img/169fc0a6024015bd650f5c26287d523d.jpg",
+    "img/5d4b72901580bd74c16c9f733064b6db.jpg",
+    "img/19c90b11d2c0d7f486bb0aa1cd923443.jpg",
+    "img/590d70c4c7a669cb51ea8daf164f14e9.jpg",
+    "img/Pasted image 20251016002936.png",
+    "Edinburgh/Secure Programming.md",
     "img/Pasted image 20251015195437.png",
     "img/Pasted image 20251015183440.png",
     "img/Pasted image 20251015182911.png",
-    "Edinburgh/Secure Programming.md",
     "Edinburgh/Computer Security.md",
     "Edinburgh/Applied Machine Learning.md",
     "img/Pasted image 20251013233209.png",
-    "img/Pasted image 20251013223835.png",
-    "img/Pasted image 20251013222810.png",
-    "img/Pasted image 20251013222737.png",
-    "img/Pasted image 20251013222654.png",
-    "img/Pasted image 20251013221556.png",
-    "img/Pasted image 20251013214241.png",
-    "img/Pasted image 20251013210933.png",
+    "Liverpool/202-Complexity of Algorithms.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
-    "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
-    "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",
-    "网安/渗透测试--蚁景网安/4.6 域内横向移动.md",
-    "网安/渗透测试--蚁景网安/4.5 内网横向移动.md",
-    "网安/渗透测试--蚁景网安/4.10 免杀基础.md",
     "Edinburgh/Pasted image.md",
+    "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
+    "_sidebar.md",
+    "Liverpool/720北京.md",
     "Edinburgh",
-    "网安/渗透测试--蚁景网安/2.1 Weblogic漏洞.md",
-    "网安/渗透测试--蚁景网安/1.7 未授权访问.md",
-    "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
-    "网安/渗透测试--蚁景网安/1.0 信息收集.md",
-    "Liverpool/328-High Performance Computing.md",
-    "Liverpool/315-Cloud Computing for E-Commerce.md",
+    "_coverpage.md",
+    "README.md",
+    "Untitled.md",
+    "网安/渗透测试--蚁景网安/4.5 内网横向移动.md",
+    "网安/渗透测试--蚁景网安/4.6 域内横向移动.md",
+    "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",
+    "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
+    "网安/渗透测试--蚁景网安/4.10 免杀基础.md",
+    "网安/渗透测试--蚁景网安/1.1 SQL注入.md",
     "网安/渗透测试--蚁景网安/1.6 Web漏洞扫描.md",
-    "网安/渗透测试--蚁景网安/1.5 弱口令密码破解.md",
-    "Liverpool/310-Multi-Agent Systems.md",
-    "网安/渗透测试--蚁景网安/3.3 CobaltStrike渗透框架.md",
-    "Liverpool/390-CyberCipher.md",
-    "网安/渗透测试--蚁景网安/3.1 Matasploit渗透框架.md",
+    "网安/渗透测试--蚁景网安/2.4 Shiro漏洞.md",
+    "网安/蚁景网安夏令营/8.8 Springboot漏洞.md",
+    "Troubleshooting/Java中的Map类型和Spring @Transaction操作数据库问题.md",
+    "网安/渗透测试--蚁景网安/2.3 FastJson漏洞.md",
     "网安/渗透测试--蚁景网安/2.5 其它中间件漏洞.md",
-    "网安/渗透测试--蚁景网安/2.2 JBoss漏洞.md",
+    "网安/渗透测试--蚁景网安/2.1 Weblogic漏洞.md",
     "GRE",
     "Liverpool",
     "未命名 1.canvas",
