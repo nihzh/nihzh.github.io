@@ -305,4 +305,5 @@ Multi-threaded programs
 1. (potentially) at the same time, and  
 2. at least one of the accesses is a write
 
+*No out-of-thin-air*
 Write speculation in JAVA
