@@ -274,14 +274,22 @@ Routes
 - 服务器变量（HTTP header）
 - 二次注入
 
-提取，修改，绕过认证， 执行任意敏玲
+提取，修改，绕过认证，执行任意命令
+
+Forms of SQL Injection
+- 恒真
+- 报错回显
+- `UNION`联合查询
+- `;`双语句查询
+- 布尔盲注、时间盲注
+- 数据库存储过程漏洞
 
 Idea: use static analysis pre-processing to generate a dynamic detection tool:  
 1. Find SQL query-generation points in code  
 2. Build SQL-query model as NDFA which models SQL grammar, transition labels are tokens  
 3. Instrument application to call runtime monitor  
 4. If monitor detects violation of state machine, triggers error, preventing SQL query  
-
+#### Defence
 静态分析 动态监测攻击 SQLRand
 ## Racing
 ### Race conditions

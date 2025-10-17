@@ -480,3 +480,4 @@ if T is small, the hardness increase
 with the attendance increase, the hardness raise
 ![](../img/Pasted%20image%2020251016022441.png)
 
+0xAf0F1AEf2d28cCA39554335C9a79914512645A90

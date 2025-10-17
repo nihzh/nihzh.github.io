@@ -334,3 +334,68 @@ Given 𝐹: $\color{#b293f6}{0, 1}^𝑛 → {0, 1}$, Grover's algorithm makes $�
 - $O(2^{n/2})$ time
 
 OpenSSH
+
+## OS Security
+### Operating System
+Mediate between applications and harware
+
+Multi-users: isolate different users
+Multi-tasks: isolate different applications running
+
+*Unix architecture*
+- *kernel
+	- supports secure sharing of low-level resources between users/applications
+	- limits how applications access computer resources
+- *Exucution modes*
+	- *User mode*: access to resources through syscall to kernel
+	- *Kernel mode*: direct access to resources
+		- direct interaction with hardware
+- *System calls*: programs, C library `libc`
+
+*Processes and process management*
+- an instance of a program currently executing
+- unique PID for each
+- loaded into RAM
+- CPU time, meory useage, program name...
+- fork: control other processes and **child process inherits context from parent process**
+
+#### RAM: 
+- code for the running program
+- input data
+- working memory
+- `%eip` to points to next instruction
+
+Stack: from higher to lower `%esp`
+Heap: from lower to higher
+
+*Virtural memory*: a section of the hard drive to emulate RAM
+- Memory Management Unit maps logical address -> physical address
+
+![](../img/Pasted%20image%2020251017173451.png)
+
+### Security principles
+*Defence-in-depth*: build multiple layers of the system, if one machanism fails, other steps up immediately
+- Firewalls
+- instusion detection and protection systems
+- network segmentation
+- anti-virus, least privilege
+- strong passwords
+- patch management
+
+**Users and programs should only access the data and resources required to perform its function**
+
+Segment the system priviledges
+
+**Open design**
+The security of a mechanism **should not** depend on its secrecy
+The design and implementation details always get leaked
+
+When designing a security mechanism **keep it simple**
+- security researchers: allow verification
+- delopers: avoid bugs
+- users: avoid misuses
+
+*Security principles*
+*Fail-safe defaults*: default configuration should be conservative
+*Complete mediation*: every access to a resource must be checked for comliance with security policy
+*Usable security*: UIs and security machanisms should be designed with the ordinary user in mind, the users should be supported in interacting in a secure way with the system
