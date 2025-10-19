@@ -298,6 +298,54 @@ Given a new datapoint `x` at test time: **classify `x` separately using each tre
 - Classification: majority vote
 - Regression: mean prediction
 
+## Optimisation
+"Learning" --> continuous optimisation
+descending error surface, minimise *error function* $\color{#bd93f9}\mathcal{L}(w)$
+When data is i.i.d. (Independent and Identically Distributed)
+![](../img/Pasted%20image%2020251018175302.png)
+
+*Smoothness*
+Constrained/continuous data, $\color{#bd93f9}\mathcal{L}(w)$ provides information about $\mathcal{L}$ and nearby values
+
+*Derivatives*
+For differentiable $\color{#bd93f9}\mathcal{L}(w)$, partial derivatives $\frac{\partial \mathcal{L}}{\partial w_i}$
+vector of partial derivatives = gradient of the error: steepest error ascent 误差上升最快的方向 $$\nabla_w \mathcal{L} = \left( \frac{\partial \mathcal{L}}{\partial w_1}, \frac{\partial \mathcal{L}}{\partial w_2}, \dots, \frac{\partial \mathcal{L}}{\partial w_N} \right)$$
+for descent 最小化误差: $$-\nabla_w \mathcal{L}$$
+
+*Optimisation algorithm* $$\underset{w}{min}\space\mathcal{L}(w)$$
+![](../img/Pasted%20image%2020251018212110.png)
+> 不断计算梯度 → 确定下降方向 → 沿负梯度方向更新参数 → 直到误差足够小为止
+
+$\color{#bd93f9}\eta$: step size
+
+![](../img/Pasted%20image%2020251019002906.png)
+> “Taking a step along δ cannot increase value locally”
+> 只要步长足够小，沿着负梯度方向（δ方向）前进，不会让损失上升。
+
+![](../img/Pasted%20image%2020251019010019.png)
+
+### Gradient Descent
+`compute directiono d=g`
+![](../img/Pasted%20image%2020251019010231.png)
+
+Computation
+![](../img/Pasted%20image%2020251019013925.png)
+- Estimation requires evaluating gradients at all N data points
+
+*Stochastic Gradient Descent*
+Compute update for parameter with just a single instance
+![](../img/Pasted%20image%2020251019014754.png)
+- Choose randomly for $\color{#bd93f9}i\in{1,...,N}$
+- $\mathrm{E}[\nabla_w\mathcal{L}^i(w)] = \nabla_w\mathcal{L}(w)$
+Provides an unbiased estimate of the gradient at each step
+
+Struggle close to optimum
+
+*Mini-batches Stochastic Gradient Descent*
+![](../img/Pasted%20image%2020251019021044.png)
+reduces the variance of the gradient estimator by `1/B`, also `B` times more expensive to compute `O(B * D)`
+
+
 # Data Exploration and Evaluation
 ## Representing Data
 
