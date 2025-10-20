@@ -399,3 +399,38 @@ When designing a security mechanism **keep it simple**
 *Fail-safe defaults*: default configuration should be conservative
 *Complete mediation*: every access to a resource must be checked for comliance with security policy
 *Usable security*: UIs and security machanisms should be designed with the ordinary user in mind, the users should be supported in interacting in a secure way with the system
+
+### Privilege separation
+***Who is allowed to access what and how***
+
+Complete meditation: all requests go to the reference monitor
+The **reference monitor** grants permission to users to apply certain opperations to a given resource
+
+**Users** `uid`
+- User accounts: humans
+- Service accounts: background processes
+```/etc/passwd
+username:password:uid:gid:uid_info:home:shell
+```
+
+**Groups** `gid`
+A set of users that share resources
+```/etc/group
+group_name:password:gid:group_list
+```
+
+**File permissions**: rwxrwxrwx
+- only root and owner can change file perissions
+- only root can change file ownership
+
+**Processes** `pid`
+Each process is associated with the user that spawned it
+Every process has
+- Real user `uid`: the user ID that started the process
+- Effective user `euid`: the user ID that determines the process' privileges 进程的权限被设置为该文件的所有者的
+- Saved user `suid`: the effective user ID before the last modification 用来临时切换权限
+Root can change `euid`/`uid` to arbitrary value `x`
+Unprivileged users can only change `euid` to `uid` or `suid`
+![](../img/Pasted%20image%2020251020174602.png)
+
+If `A` executes a `setuid` file owned by `B`, the `euid` of the process is `B` not `A`, hte priviledge is also `B`

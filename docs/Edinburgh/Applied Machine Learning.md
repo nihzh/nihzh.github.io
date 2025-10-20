@@ -345,6 +345,67 @@ Struggle close to optimum
 ![](../img/Pasted%20image%2020251019021044.png)
 reduces the variance of the gradient estimator by `1/B`, also `B` times more expensive to compute `O(B * D)`
 
+## Generalisation
+Overfitting & Underfitting
+
+*Qualitative*: Traning Data, Model Parameters
+*Goldkocks Zone*: sufficient capacity to lean true regularities, but not enough to memorise or expoit accedential regularities
+
+Control capacity: **model hyper-parameters**, to minisise generalisation error
+- Regression: polynominal order
+- Naive Bayes: # attributes, bounds on $\color{#b293f6}/sigma^2$
+- Decision Trees # nodes
+
+### Measuring Generalisation
+Generalise to **novel** and **unseed** instances
+Estimate error on test data without training on test data
+
+#### Cross Validation
+Partition data into train/test in different ways $$\{\mathcal{D}_{train_1};\mathcal{D}_{test_1}\},...,\{\mathcal{D}_{train_K};\mathcal{D}_{test_K}\}$$
+For each partition: train model on training data -> test error on test data
+**Find model from partition with lowest test error**
+**Typically for small data**
+
+#### Train-Val-Test
+Hyper-parameters $$\mathcal{D}=\{\mathcal{D}_{train};\mathcal{D}_{val};\mathcal{D}_{test}\}$$
+Tuning typer-parameters on $\mathcal{D}_{val}$
+- for every candidate set of hyper-parameters, train on $\mathcal{D}_{train}$
+- evaluate error on $\mathcal{D}_{val}$
+- Find the hyper-parameters that lowest error on $\mathcal{D}_{val}$
+Test error on $\mathcal{D}_{test}$
+**Typically for big data that hard to 'cross validate'**
+
+*Modelling Generalisation Error*
+![](../img/Pasted%20image%2020251020214149.png)
+
+#### Bias and Variance
+![](../img/Pasted%20image%2020251020215742.png)
+Bayes Error: 即使知道x也无法消除的目标随机性
+
+![](../img/Pasted%20image%2020251020220044.png)
+> 模型预测的**平均值**与真实均值差距（$423K vs $420K）就是 **bias（偏差）**；
+> 不同训练得到的预测值之间的波动是 **variance（方差）**；
+> 同样房子的真实售价自身的波动（$410K~$430K）就是 **Bayes error（噪声）**。
+
+![](../img/Pasted%20image%2020251020223339.png)
+
+### Improving Generalisation
+Reducting overfitting
+- Reducing capacity: tune on a validation set
+- Early stopping: stop training when generalisation error starts to increase
+- Ensembles: train different models on random subsets of training data and **averaging predictions** from multiple models reduces variance
+- Regularisation
+
+#### Regularisation
+Penalise parameters that may be pathological and unlikely to generalise well
+Complexity cost
+![](../img/Pasted%20image%2020251020223543.png)
+
+Linear regression    Ridge
+![](../img/Pasted%20image%2020251020224049.png)
+
+![](../img/Pasted%20image%2020251020230903.png)
+
 
 # Data Exploration and Evaluation
 ## Representing Data
