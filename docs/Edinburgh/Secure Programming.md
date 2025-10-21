@@ -315,3 +315,57 @@ Multi-threaded programs
 
 *No out-of-thin-air*
 Write speculation in JAVA
+
+- Ensuring atomicity: enforce mutual exclusion
+- Using locks: mutual exclusion for shared resources
+
+Dynamic analysis: monitor every access to every memory location and see whether the access might have reces with a previous access from a different thread
+- *Lockset algoorithm*: every shared variable is protected by at least one lock
+![](../img/Pasted%20image%2020251021193652.png)
+- Eraser tool
+![](../img/Pasted%20image%2020251021192935.png)
+
+Static analysis
+GuardedBy
+
+## Secure development
+*McGraw's Three Pillars*
+![](../img/Pasted%20image%2020251021193233.png)
+
+Run security activities alongside traditional
+
+![](../img/Pasted%20image%2020251021193503.png)
+
+### Code review
+- industry: economy choices, rush, no extratime
+- Manual: -> agile
+	- subtle
+	- onerous, large code bases
+- Automatic: human config, increasingly sophisticated
+
+### Architectural risk analysis
+  
+- the security threats that attackers pose to assets  
+- vulnerabilities that allow threats to be realised  
+- the impact and probability of an attack  
+- hence the risk, as risk = probability × impact  
+- countermeasures that may be put into place
+![](../img/Pasted%20image%2020251021195019.png)
+
+![](../img/Pasted%20image%2020251021195000.png)
+
+![](../img/Pasted%20image%2020251021195051.png)
+
+Think adversarily
+
+![](../img/Pasted%20image%2020251021195319.png)
+
+### Penetration testing
+Ethical hacking: finds real problems
+Modern professional pen testing uses source
+last check before deployment, use as regression tests
+For repairing software, not deploying work-arounds
+
+### Security testing
+*Strategy for security testing*
+![](../img/Pasted%20image%2020251021200146.png)
