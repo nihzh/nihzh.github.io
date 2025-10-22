@@ -434,3 +434,46 @@ Unprivileged users can only change `euid` to `uid` or `suid`
 ![](../img/Pasted%20image%2020251020174602.png)
 
 If `A` executes a `setuid` file owned by `B`, the `euid` of the process is `B` not `A`, hte priviledge is also `B`
+
+### Password authentication
+username and password: hard to guess and easy to remember
+
+Defending against eavesdroppers
+
+#### Phishing attacks
+![](../img/Pasted%20image%2020251022171535.png)
+
+*NCSC*   www.ncsc.gov.uk/guidance/phishing
+1. Make it difficult for attackers to reach users
+2. Help users identify and report suspend phishing emails
+3. Protect your organisation from the effects of undetected phishing emils
+4. Respond quickly to incidents
+
+Against phishing: Password manager
+
+*Malware attacks*: records keyboard stroke and intercept passwords when typed
+- Mitigation: Second-factor authentication
+
+#### Guessing
+*Brute force attack*
+Try all passwords $K^\mathscr{l}$ 
+- `K`: possible characters
+- `l`: password length
+
+*Dictionary attack*
+- The N most common passwords
+- Words in English dictionary
+- Personal relatives: names, places, totable dates
+- Combinations of the above
+
+Defending against online guessing attacks
+- A good password
+- Rate limit: number of failed password attempts
+- captchas: automated prevent
+
+Offline guessing attacks: leak the password database
+**Salt and Hash passwords**
+- $\color{#b293f6}d_1 = H(s_1 ||pwd_1)$
+- since every user has a different salt, identical passwords (different platform) will not have identical hashes
+- use a slow hash functions
+- when salting one cannot use preexisting tables to crack passwords easily
