@@ -369,3 +369,47 @@ For repairing software, not deploying work-arounds
 ### Security testing
 *Strategy for security testing*
 ![](../img/Pasted%20image%2020251021200146.png)
+### Abuse cases
+attack patterns
+Examine assuptions
+unexpected events
+anti-requirements
+
+### Security requirements
+Functional security requirements: 
+- cryptography
+- audit trail
+- privacy: only gather essential data
+Emergent security requirements:
+- minimise sode channels
+
+### Security operations
+managing the security of the deployed software
+Information security professionals
+- Incident handling, proactive threat monitoring  
+- Range and mechanisms of vulnerabilities, cross systems  
+- Understanding and deploying desirable patches  
+- Configuring firewalls, IDS, virus detectors, etc
+
+Coders: expert
+- Software design, application architecture  
+- Programming, often single languages  
+- Build systems, overnight testing
+
+## Web Application Security
+OWASP Top 10
+Exploits and vulnerabilities would appear at any level of tech stack
+
+Knowing what is happening at the bottom of the stack is important to  
+understand fundamentally how web security provisions work
+- Understand higher-level problems
+- How the bottom layers work to study the detail of web exploits as they have evolved
+
+Client != Browser
+![](../img/Pasted%20image%2020251023194807.png)
+
+`Referer: http://www.ed.ac.uk/loggedin`
+![](../img/Pasted%20image%2020251023195114.png)
+
+Get and POST
+![](../img/Pasted%20image%2020251023195448.png)
