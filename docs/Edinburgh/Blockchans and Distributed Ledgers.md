@@ -495,7 +495,7 @@ lottery based on stake
 Stake: The amount of digital assets a party controls
 No need to consume high amounts of energy to run the stake-based lottery
 
-Nakemoto Design
+#### Nakemoto Design
 - Blocks are arranged on a chain (tree)
 - each block points to the predecessor
 - In case of conflicts, pick the longest chain
@@ -505,32 +505,66 @@ Nakemoto Design
 		- Security: the majority of computational power is in the hand of honest parties
 	- PoS: lottery based on stake
 		- Probability of winning proportional to stake, =amount of cryptocurrency on your account
-		- Security: the majority of cryptocurrency is conotrolled by the honest parites
+		- Security: the majority of cryptocurrency is controlled by the honest parties
 	- who is winning the game is more incentivised to keep it running
 
+*Time slot*: Protocol breaks time in *slots*
+- parameter: `slot length`
+- parties act based on the time slot they are in
+- network is assumed **synchronous**
 
+- The number of all assets is known: Tokens recorded on the ledger
+- The **public key** that controls each asset is known
+- **One block** should be created per slot
+- At each slot, choose one of the assets at **random**
+- The owner of the chosen asset is **eligible to produce a block** at that slot
 
+![](../img/Pasted%20image%2020251023014831.png)
 
-Verify Random Function
-**epoch** : associated with a random string, to randomness the lottery `R`
+*Grinding Attack on x*: attacker can try different x to find the one that satisfies the inequality
+*Content Malleability*: block's content not represent in the header
+*Posterior Corruptions*: **corrupt parties after the slot passes** (who create a block in that slot), change part of the chain's history
+![](../img/Pasted%20image%2020251023020230.png)
 
-$$VRF($$
+*Adaptive corruption*: `vk` that satisfies inequality is publicly known before the time slot starts, attackers can predict and corrupt a party that is known to be leader of a specific future slot
+
+*Verify Random Function*: `VRF` $$(\pi,y) \leftarrow VRF(sk_n, s) < T \cdot stake\_factor_n$$
+- 若$\color{#bd93f9}y < T \cdot \text{stake}_n$​，则当选出块者。
+- 之后区块头中带上 VRF 证明 `π`，让所有人验证。
+
 K <- miner's VRF secret key
 pk <- miner's VRF public key
 
-break personal computer and get secret key
+*Stalling Hazard*: With some `T`, no `vk` will satisfy the equation, no blocks created -> no parameter in the inequality changes
+
+![](../img/Pasted%20image%2020251023021438.png)
+Time slot into VRF, for next lottery randomness $$VRF(sk_n, s || ts) < T \cdot stake\_factor_n$$
+
+*Key Grinding Attack*: attacker play multiple possible VRF calculations prior to committing to a particular key
+
+*epoch* : each associated with a random string, to randomness the lottery `R`
+- each epoch has its own stakeholder distribution and randomness
+
+
+*Long-range attack*: a branch from an old block, increasing stake and get majority
+- costless: the attacker can create an arbitrarily long chain
+
+1. trustable checkpointing
+2. chain density: the new nodes joins the system, chooses a path at each fork by following the most dense branch *Ouroboros Genesis*
 
 ### Permissioned Ledgers
 **Restricted** participation: only be performed after being authorized by some other nodes
 - CA, TLS/SSL
-- In case of secret key leaking, blacklist of certificate
+- In case of secret key leaking (break personal computer and get secret key
+), blacklist of certificate **Delete the old key**
 
 The set of participating nodes is **fixed** and determined at the onset of protocal's execution
 
+![](../img/Pasted%20image%2020251023024429.png)
 Proof-of-Authority, PoA
 
-
-### BFT protocol
+http://www.ietf.org/rfc/rfc3280.txt
+#### BFT protocol
 No need for assumptions on distribution of resources
 
 Graded broadcast: how confident you are
@@ -538,8 +572,17 @@ Binary consensus protocol
 
 **Communication rounds**
 1. The sender sends the message M to all receivers  
-2. The i-th receiver, who obtained M1,i in round 1, sends it to all receivers  
-3. The i-th receiver, who obtained M2,j,i from the j-th receiver in round 2
-if there is a single message that was sent by at least 2n/3 receivers, it sends it to all receivers
+2. The i-th receiver, who obtained M1,i in round 1, sends it to all receivers 
+3. The i-th receiver, who obtained M2,j,i from the j-th receiver in round 2 if there is a single message that was sent by at least 2n/3 receivers, it sends it to all receivers
 
-T+1 rounds
+3t+1 rounds
+
+### BFT-style PoS
+*Algorand*: **每个 slot** 随机（按 stake 加权）**抽取一个委员会**，由委员会运行**BFT 协议**敲定新区块，并按 BFT 规则给予**终局性**；
+![](../img/Pasted%20image%2020251023024947.png)
+
+
+![](../img/Pasted%20image%2020251023025330.png)
+“Self-healing” 是 PoS 系统与 PoW 系统在长期安全性上的最大差异。  
+PoW 依赖算力市场恢复信任；  
+PoS 则可以让系统**经济地惩罚攻击并自修复**。
