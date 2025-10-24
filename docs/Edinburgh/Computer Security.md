@@ -477,3 +477,19 @@ Offline guessing attacks: leak the password database
 - since every user has a different salt, identical passwords (different platform) will not have identical hashes
 - use a slow hash functions
 - when salting one cannot use preexisting tables to crack passwords easily
+
+### Memory Management
+1. The compiler converts C code to assembly code
+2. The assembler converts assembly code to machine code
+3. The linker deals with dependencies and libraries
+4. The loader sets up address space in memory and load machine code in memory, and jumps to the first instruction of the program
+5. The CPU interprets instructions
+	- `%eip` points to next instruction, increased after each instruction
+	- `$eip` modified by `call`, `rep`, `jmp` and conditional `jmp`
+
+*x86-32 registers*
+![](../img/Pasted%20image%2020251024171700.png)
+
+Endianess
+- Little-endian, most commmon micro-architectures
+- Big-endian
