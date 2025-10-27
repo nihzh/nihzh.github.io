@@ -534,6 +534,55 @@ Sensitivity: **outliers** changes variance and pricipal components
 Transform to handle non-linearity
 LDA supervised
 
+## Evaluation
+### Classification
+*Error*
+Measure of how good a classifier is
+![](../img/Pasted%20image%2020251026233000.png)
+
+![](../img/Pasted%20image%2020251026233941.png)
+*Recall*: 正类(应该为正) 中被正确识别的比例: 已找到的/该找到的
+*Precision*: 预测为正的样本中，正确的比例 (真正为正) : 找对了/找到的
+
+![](../img/Pasted%20image%2020251027000715.png)
+
+*Cohen's Kappa*
+$\color{#bd93f9}p_o$ Observed Agreement: Accuracy
+$\color{#bd93f9}p_e$ Expected Agreement by Chance: 假设预测与真实独立时，随机一致的概率
+$$p_e=\frac{(P_{true+}\cdot P_{pred+})+(P_{true-}\cdot P_{pred-})}{T^2}$$
+
+如果一个模型预测与真实结果完全一致，κ = 1。  
+如果模型表现与随机猜测差不多，κ = 0。  
+如果模型比随机猜测还糟（系统性错误），κ < 0。
+
+*Threshold*
+Models typically compute "confidence" as $\color{#bd93f9}p(y|x)$
+Decisions are made by *thresholding* of this confidence
+![](../img/Pasted%20image%2020251027001036.png)
+Thresholding $\color{#bd93f9}\tau$ determines error rates and confusion matrix, each provides a value for chosen measure
+#### Precision-Recall Curve
+![](../img/Pasted%20image%2020251027005722.png)
+- 如果 **降低阈值 $\tau$**：模型更容易预测“正类”  
+    → 正类召回更多 (**Recall ↑**)  
+    → 但错误预测正类的概率也更高 (**Precision ↓**)
+- 如果 **提高阈值 $\tau$**：模型更谨慎预测“正类”  
+    → 错误的正例减少 (**Precision ↑**)  
+    → 但漏掉一些真实正例 (**Recall ↓**)
+
+#### ROC: Receiver Operating Characteristic
+![](../img/Pasted%20image%2020251027005853.png)
+*AUC: Area Under the ROC Curve*: Large Area ==> better model
+
+#### Multi-Class Classification
+*Cohen's Kappa*
+*Matthews Correlation Coefficient (MCC)* $$MCC=\frac{p_0-p_e}{\sqrt{(1-p_y)(1-p_\hat{y})}}$$![](../img/Pasted%20image%2020251027010301.png)
+Confusion Matrix *C*![](../img/Pasted%20image%2020251027010650.png)
+衡量预测值与真实值之间的整体相关性
+
+### Regression
+
+
+
 # Unsupervised Learning
 have no label values
 ![](../img/Pasted%20image%2020250918211823.png)
