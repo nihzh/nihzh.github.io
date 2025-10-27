@@ -620,6 +620,69 @@ Predict the mean label
 
 Convex optimality with scaling and translation, $\color{#b293f6}\rho^2=R^2$
 
+## Model Selection
+*Comparing Point Estimates*: can be susceptible to many kinds of reandom effects
+
+*Comparison with tradeoff*: AUC of Precision-Recall
+- Random effects can make comparison hard
+
+Embracing Uncertanty
+
+*Comparing Distributions*
+
+### Statictical Tests
+*Population*: all the elements from a set
+*Sample*: observations drawn from population
+
+*CLT: Central Limit Theorem*
+For a set of samples $\color{#b293f6}x_1$, ..., $\color{#b293f6}x_N$, ... from a **population** with *expected mean* $\color{#b293f6}\mu$ and *finite variance* $\color{#b293f6}\sigma^2$
+![](../img/Pasted%20image%2020251027222421.png)
+样本均值的标准化分布会弱收敛 (weak convergence)于标准正态分布 (Gaussian)
+- Independent
+- Identically distribution
+- large enough
+
+*Student's-t Distribution*
+For **smaller N**, not Gaussian
+**Unknown population finate variance $\color{#b293f6}\sigma^2$**
+estimate sample variance $\color{#b293f6}s^2=\frac{1}{N-1}\sum_{i=1}^{N}(x_i-\bar{x}_N)^2$
+- `n-1`: Bessel's correction
+![](../img/Pasted%20image%2020251027230547.png)
+uses $\color{#b293f6}s=\sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i-\bar{x}_N)^2}$ , the precision changes along the sample size
+`v` (df) = number of observations − number of parameters estimated ($\bar x$ in this case)
+- larger N, larger v
+
+
+![](../img/Pasted%20image%2020251027235552.png)
+
+概率密度函数：每个自由度v下 t 分布的具体形状
+![](../img/Pasted%20image%2020251027235814.png)
+
+#### Hypothesis Testing
+Formally examine two opposing conjectures (hypothesis): $H_0$ and $H_1$, Analyse data to determine which is True and which is False
+![](../img/Pasted%20image%2020251028004126.png)
+
+![](../img/Pasted%20image%2020251028004140.png)
+
+
+![](../img/Pasted%20image%2020251028004054.png)
+
+$\alpha$: significance
+临界值c: v=19, $\alpha$=0.05
+Report confidence interval *CI* 置信区间
+![](../img/Pasted%20image%2020251028005334.png)
+
+![](../img/Pasted%20image%2020251028005637.png)
+
+![](../img/Pasted%20image%2020251028005114.png)
+![](../img/Pasted%20image%2020251028005048.png)
+
+Rejecting $H_0\ne H_0$ is 100% false
+Failing to reject $H_0\ne H_0$ is 100% true
+but not how big or important the difference is
+
+Simple cross-validation can violate that independence for CLT (overlap in $\mathcal{D}_{train}$)
+
 # Unsupervised Learning
 have no label values
 ![](../img/Pasted%20image%2020250918211823.png)
