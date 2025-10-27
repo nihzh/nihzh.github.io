@@ -493,3 +493,32 @@ Offline guessing attacks: leak the password database
 Endianess
 - Little-endian, most commmon micro-architectures
 - Big-endian
+
+### Buffer overrun attacks
+*Control hijacking*: a buffer overflow can change the flow of execution of the program
+- load malicious code into memory
+- make `%eip` points to it
+
+#### Shellcode injection
+- machine code instructions
+- cannot contain any \0 bytes
+- no OS loader using
+![](../img/Pasted%20image%2020251027183243.png)
+how far the overflowed variable from the saved `%ebp`
+- possibilities? brute-force?
+- NOP sled: insert many NOPs before Shell Code in memory
+
+Unsave libc functions: `strcpy`, `strcat`, `gets`, `scanf`
+- They **do not check bounds of buffers** they manipulate
+
+Safe function: `fgets`
+
+#### Arithmetic overflow
+variables wrapping around
+![](../img/Pasted%20image%2020251027185052.png)
+
+`size_t`: return value of `sizeof` only positive number, when passing in a negative number, will be interpreted as a unsigned number
+
+Heap-based buffer overflow
+- when `len` is very large, the `len * sizeof(int)` may out-of-range
+- *garbage collection* and *heap implementation* understanding required

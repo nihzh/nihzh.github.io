@@ -580,8 +580,45 @@ Confusion Matrix *C*![](../img/Pasted%20image%2020251027010650.png)
 衡量预测值与真实值之间的整体相关性
 
 ### Regression
+Distance between predicted and actual values
 
+![](../img/Pasted%20image%2020251027200327.png)
 
+#### MSE: Mean Square Error
+![](../img/Pasted%20image%2020251027200615.png)
+Predict mean $\color{#b293f6}y$
+- squaring: blow up error
+
+- Sensitivity to outliers
+- Sensitivity to scaling / transaction
+
+#### MAE: Mean Absolute Error
+![](../img/Pasted%20image%2020251027200718.png)
+Median, not mean
+Less sensitive to outliers: no squaring
+
+**Variants**
+![](../img/Pasted%20image%2020251027201326.png)
+
+#### Correlation Coefficient
+![](../img/Pasted%20image%2020251027201409.png)
+
+![](../img/Pasted%20image%2020251027202410.png)
+Insensitive to scaling and transaction
+- for large $\color{#b293f6}y$, predict larger $\color{#b293f6}\hat{y}$
+- for smaller $\color{#b293f6}y$, predict smaller $\color{#b293f6}\hat{y}$
+衡量预测值与真实值的线性相关性: 上升或下降趋势
+无量纲: 不受单位或尺度影响
+方向相关性
+非线性关系、异常值可能误判
+**不反应偏移误差**
+
+#### Coefficent of Determination $R^2$
+![](../img/Pasted%20image%2020251027201923.png)![](../img/Pasted%20image%2020251027202118.png)Measures goodness of fit for model
+Predict the mean label
+![](../img/Pasted%20image%2020251027202029.png)
+
+Convex optimality with scaling and translation, $\color{#b293f6}\rho^2=R^2$
 
 # Unsupervised Learning
 have no label values
