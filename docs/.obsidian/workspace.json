@@ -67,8 +67,7 @@
               "title": "Applied Machine Learning"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -199,8 +198,12 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "ab9b7a027ac3a6e2",
+  "active": "c20c1095aecf8c39",
   "lastOpenFiles": [
+    "img/Pasted image 20251028210047.png",
+    "img/Pasted image 20251028205716.png",
+    "img/Pasted image 20251028201728.png",
+    "Edinburgh/Applied Machine Learning.md",
     "img/Pasted image 20251028005637.png",
     "img/Pasted image 20251028005339.png",
     "img/Pasted image 20251028005334.png",
@@ -209,13 +212,9 @@
     "img/Pasted image 20251028005114.png",
     "img/Pasted image 20251028005048.png",
     "img/Pasted image 20251028005035.png",
-    "img/Pasted image 20251028004140.png",
-    "img/Pasted image 20251028004126.png",
-    "img/Pasted image 20251028004054.png",
     "Edinburgh/Computer Security.md",
     "Edinburgh/Secure Programming.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "Edinburgh/Applied Machine Learning.md",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
     "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",

