@@ -522,3 +522,35 @@ variables wrapping around
 Heap-based buffer overflow
 - when `len` is very large, the `len * sizeof(int)` may out-of-range
 - *garbage collection* and *heap implementation* understanding required
+
+Format string: Exploit
+```c
+printf("%08x.%08x.%08x.%08x.%08x|%s|");
+```
+- `%x` 表示以十六进制输出下一个栈上的值。
+- 连续使用 `%x` 可以遍历栈上的内容，直到发现想要的地址。
+- `%s` 则会把一个栈上的值当作指针去读取字符串内容。
+
+![](../img/Pasted%20image%2020251029181639.png)
+
+### Memory safety defenses
+1. Use memory-safe languages
+	- access to memory is well-defined
+	- check on array bounds and pointer dereferences are automatically included by the compiler
+	- garbage collection takes away from the programmer, the error-plone task of managing memory
+2. Apply safe programming practices
+	- use safe C libs
+	- check bounds and validate user input
+3. Code hardending
+	- *Stack canaries*: place trap just before teh stack return pointer
+		- be able to guess the value: brute force
+		- be ablt to jump over
+		- will not detect heap overruns
+	- *W^X*: Write XOR Execute: Make regions in memory **either executable or writeable** (not both)
+		- Limitation: return-to-libc attacks
+	- *ASLR*: Address Space Layout Randomization: place std libs to random locations in memory, attack cannot directly point into `exec()`
+
+safe programming
+ensure that the progrm does not copy more data than the buffer can hold
+
+> OSes may have efeatures to reduce the risks of BOs, but the best way to guarantee safety is to remove these vulnerabilities fro application code
