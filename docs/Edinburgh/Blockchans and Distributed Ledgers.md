@@ -586,3 +586,4 @@ Binary consensus protocol
 “Self-healing” 是 PoS 系统与 PoW 系统在长期安全性上的最大差异。  
 PoW 依赖算力市场恢复信任；  
 PoS 则可以让系统**经济地惩罚攻击并自修复**。
+

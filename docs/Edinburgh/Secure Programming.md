@@ -421,6 +421,7 @@ RFC 3986
 javascript://expmple.com/%0alert(1)
 malito://user@example.com
 ```
+
 ### Broken access control
 #### Object references
 PHP: arbitrary file access
@@ -479,3 +480,27 @@ Solutions
 - HTML encoding
 - Marked up output: complex filtering: rule out risky tags
 - Marked up output: DSL: Domain Specific Language, convert to secure HTML (eliminated risky tags)
+
+### Cookies and Sessions
+![](../img/Pasted%20image%2020251030202942.png)
+
+#### Session hijacking
+Many web apps use session IDs as a credential
+- Attacker can steals it
+- XSS, sniffing, interception
+- calculate, guess, brute-force
+
+Session fixation
+- using same SID form unauthenticated to logged in
+- attacker grabs/sets SID before user visits site
+
+*Defence*
+Link SID to IP address of client
+- NAT problem
+- mobile taptop?
+Link SID to HTTP Headers, e.g. User-Agent
+- can be trivially faked, and usually guessed
+
+#### CSRF: Cross Site Request Forgery
+1. get user to open malicious actoin
+2. browser undertakes action on target site
