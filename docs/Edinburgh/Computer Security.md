@@ -554,3 +554,30 @@ safe programming
 ensure that the progrm does not copy more data than the buffer can hold
 
 > OSes may have efeatures to reduce the risks of BOs, but the best way to guarantee safety is to remove these vulnerabilities fro application code
+
+## Zero Knowledge
+NP statements Arbitrary polynominal time computable checks
+
+Convince verifier without reveal the witness w
+
+Mslicious verifier does not learn anything about w
+
+the verifier can compute the protocal message itself
+
+- completeness
+- soundness
+- zero-knowledge
+
+simulation paradigm: a simulator trying to recomput
+indistinguishaable: simulator cannot get any information about w in the protocol
+
+### Proof of Knowledge
+the provider has ability to efficiently compute w
+Extractoro: 
+- A valid witness w
+- Interrogate the prover (malicisous)
+
+Cut and Choose
+*Construct Zero Knowledge and Proofs of Knowledge*
+
+Randomized Anagram
