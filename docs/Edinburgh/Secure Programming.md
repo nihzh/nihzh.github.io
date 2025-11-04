@@ -502,5 +502,97 @@ Link SID to HTTP Headers, e.g. User-Agent
 - can be trivially faked, and usually guessed
 
 #### CSRF: Cross Site Request Forgery
-1. get user to open malicious actoin
+1. get user to open malicious action
 2. browser undertakes action on target site
+
+exploits:
+- local internet website
+- banking or email site user is logged into
+- browser is authorized to connect here
+
+```html
+<form action="http://geemail.com/send_email.htm" method="GET">  
+	Recipient’s Email address: <input type="text" name="to">  
+	Subject: <input type="text" name="subject">  
+	Message: <textarea name="msg"></textarea>  
+	<input type="submit" value="Send Email">  
+</form>
+
+
+http://geemail.com/send_email.htm?to=bob%40example.com  
+&subject=hello&msg=What%27s+the+status+of+that+proposal%3F
+
+<img src="http://geemail.com/send_email.htm?to=charliegeemail.com&subject=Hi&msg=My+email+address+has+been+stolen">
+```
+
+use a good framework that provides built-in protections
+- not use GET
+- double cookie, repeated in POST
+- special CSRF token, check in server side, save state
+- browser sandboxing
+
+*CORS: Cross-Origin Resource Sharing*
+Uses new HTTP headers from server to allow responses to indicate violations of same-origin
+
+#### Unvalidaated Redirects
+phishing
+
+- do not use redirects at all
+- use them but only with hard wired URLS
+- if user-supplied parameters must be used, indirection
+
+#### XML External Entities
+Web applications process XML documents which can contain external  
+references given as URIs.  
+XML processors may obey these without restriction.  
+Attacker may be able to upload/control files
+
+payloads: 
+- 本地文件读取
+- SSRF/内网探测
+- 拒绝服务DoS
+- 凭证/密钥泄露
+- 反序列化
+
+restrictive and specific formats for exchanging data, configure DTD and XML to vslidate documents, security checks
+
+Nasty attacks
+```
+<?xml version="1.0"?>
+<!DOCTYPE root [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+<root>&xxe;</root>
+```
+
+A billion laughs
+
+#### Insecure Deserialization
+
+## Code review and Architectural Analysis
+![](../img/Pasted%20image%2020251104204532.png)
+
+![](../img/Pasted%20image%2020251104223142.png)
+
+Weaknesses classify Vulnerabilities
+![](../img/Pasted%20image%2020251104204735.png)
+https://cwe.mitre.org/data/pdfs.html
+
+### Static analysis
+White box technique: source code/binary code
+- assurrance of good behaviour
+- evidence of bad behaviour
+
+it examines every code path, and  
+it considers every possible input
+![](../img/Pasted%20image%2020251104205311.png)
+
+False negative problem
+- 路径爆炸/可达性分析不足
+- 上下文/环境缺失
+- 抽象/模型不足
+- 库/框架特性
+- 配置/规则不足
+- 性能/工程权衡
+
+one missed bug enough for an attacker to get in!

@@ -687,6 +687,91 @@ Simple cross-validation can violate that independence for CLT (overlap in $\math
 have no label values
 ![](../img/Pasted%20image%2020250918211823.png)
 
+## Clustering
+### K-Means
+让“离某些特殊点（簇心）最近”的样本分到同一簇；不断**交替**“分配→重算中心”。
+Ensure points closest to some special point end up in the same cluster
+
+Hard: a point belongs to just one cluster
+Flat: **single level of clustering**
+Polythetic: distance based similarity within clusters
+![](../img/Pasted%20image%2020251104234137.png)
+
+Converges to local minimum
+repeat several random initialisations and pick one with smallest aggregate distance
+
+choose K from a elbow plot
+
+### Hierarchical
+![](../img/Pasted%20image%2020251105004318.png)
+
+#### HK-Means
+Top-Down
+Perform K-Means on data
+For each resulting cluster $\color{#b293f6}c_i$, run K-Means within $\color{#b293f6}c_i$
+once cluster has been determined at top level, cannot change
+
+#### Agglomerative
+Bottom-Up
+Ensure "nearby" points end up in the same cluster
+
+Hard: a point belongs to just one cluster
+Hierachical: **multiple elvels of clustering**
+Polythetic: distance-based similarity within clusters
+
+
+![](../img/Pasted%20image%2020251105015445.png)
+
+树状图的竖向高度代表合并时的距离；**水平切一刀**得到某个粒度下的若干簇；往上切→簇更少更粗，往下切→簇更多更细。
+##### Cluster Distance Measures
+*Single link*
+两个cluster之间最近两点的距离
+![](../img/Pasted%20image%2020251105015625.png)
+
+*Complete link*
+两个cluster之间最远两点的距离
+![](../img/Pasted%20image%2020251105015637.png)
+
+*Average link*
+跨簇所有点对距离的平均
+![](../img/Pasted%20image%2020251105015702.png)
+
+*Ward's Method*
+合并后类内方差（SSE）最小
+![](../img/Pasted%20image%2020251105022001.png)
+
+##### Unified Formulation
+*Lance-Williams Algorithm*
+合并$c_i,c_j$​ 得到$c_{i\cdot j}$后，与其他cluster $c_k$的新距离
+![](../img/Pasted%20image%2020251105022606.png)
+
+### Evaluation
+#### Extrinsic
+Solve downstream task 任务驱动
+Quantisation: represent data with cluster features
+- color quantisation: use centroid value
+- feature extraction: use cluster index
+Partition: train separate classifiers for each sub-group
+
+#### Intrinsic
+##### Unsupervised
+Measure how well-separated clusters are
+Compare intra-cluster distances to inter-cluster distance
+![](../img/Pasted%20image%2020251105025325.png)
+- a = 与**本簇**其余点的平均距离（簇内紧凑度）；
+- b = 与**最近的其他簇**的平均距离（与他簇分离度）；
+
+##### Supervised
+Measure alignmetn of clusters to known labels
+![](../img/Pasted%20image%2020251105025508.png)
+把“样本对是否在同一簇/同一类”当二分类，计算 **Accuracy**
+
+![](../img/Pasted%20image%2020251105025605.png)
+在 RI 基础上**扣除随机期望**并做**归一化**，使“随机分区”的期望为 0；其计算基于簇–类交叉表 Nij=∣ri∩cj∣N_{ij}=|r_i\cap c_j|Nij​=∣ri​∩cj​∣ 的组合项。
+##### Human
+Compare judgements to humans on exemplars
+
+
 # Reinforcement Learning
 Learn how to interact with its environment
 Learn a **policy** which specifies the action to take in response to observation of the environment

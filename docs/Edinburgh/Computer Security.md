@@ -581,3 +581,20 @@ Cut and Choose
 *Construct Zero Knowledge and Proofs of Knowledge*
 
 Randomized Anagram
+
+# TTL
+salting password: high probs for multiple people using same password, or same person use same password on different platform.
+- hash to hiding the plain password: same value stored
+- break one != break all
+- salt is visible, just for slow down the attacking process
+
+calling functions: choosing size_t parameters tranferred
+check must do: 
+- check array not null
+- size_t not 0
+- two size_t same
+- `a != NULL && b != NULL && m < size(a) && n < size(b) && m <= n+1`
+
+human factor
+open design principle
+default save mode

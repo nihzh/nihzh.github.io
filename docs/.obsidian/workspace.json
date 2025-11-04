@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -199,22 +199,23 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "b392d7288f03f771",
+  "active": "ab9b7a027ac3a6e2",
   "lastOpenFiles": [
+    "img/Pasted image 20251105025605.png",
+    "img/Pasted image 20251105025508.png",
+    "img/Pasted image 20251105025404.png",
+    "img/Pasted image 20251105025325.png",
+    "img/Pasted image 20251105022606.png",
+    "img/Pasted image 20251105022001.png",
+    "img/Pasted image 20251105015702.png",
+    "img/Pasted image 20251105015637.png",
+    "img/Pasted image 20251105015625.png",
+    "img/Pasted image 20251105015445.png",
+    "img/Pasted image 20251105004318.png",
     "Edinburgh/Secure Programming.md",
-    "img/Pasted image 20251030202942.png",
+    "Edinburgh/Computer Security.md",
     "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "Edinburgh/Computer Security.md",
-    "img/Pasted image 20251029181639.png",
-    "img/Pasted image 20251028210047.png",
-    "img/Pasted image 20251028205716.png",
-    "img/Pasted image 20251028201728.png",
-    "img/Pasted image 20251028005637.png",
-    "img/Pasted image 20251028005339.png",
-    "img/Pasted image 20251028005334.png",
-    "img/Pasted image 20251028005320.png",
-    "img/Pasted image 20251028005130.png",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
     "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",
