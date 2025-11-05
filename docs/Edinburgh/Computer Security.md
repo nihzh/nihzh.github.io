@@ -582,6 +582,33 @@ Cut and Choose
 
 Randomized Anagram
 
+## Secure Communications
+### SSL/TLS
+
+### Anonymous Communication
+Routing information can reveal who you are
+- Your IP address is Your ID
+
+*Anonymity*: A user may use a service or resource without disclosing the user's identity
+
+![](../img/Pasted%20image%2020251105182027.png)
+- required pair-wise shared secret keys between teh participants
+- requires large amounts of randomness
+- DoS
+
+*Crowds*: Randomly route the request through a crowd of users
+- NOT resistant against an attacker that sees Dthe whole network traffic!
+
+*Chaum's mix*
+![](../img/Pasted%20image%2020251105184228.png)
+message padding and buffering to avoid time correlation attacks
+one user
+
+*Anonymous return address*
+![](../img/Pasted%20image%2020251105184722.png)
+
+
+
 # TTL
 salting password: high probs for multiple people using same password, or same person use same password on different platform.
 - hash to hiding the plain password: same value stored
