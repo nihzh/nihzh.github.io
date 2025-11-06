@@ -539,7 +539,6 @@ pk <- miner's VRF public key
 
 ![](../img/Pasted%20image%2020251023021438.png)
 Time slot into VRF, for next lottery randomness $$VRF(sk_n, s || ts) < T \cdot stake\_factor_n$$
-
 *Key Grinding Attack*: attacker play multiple possible VRF calculations prior to committing to a particular key
 
 *epoch* : each associated with a random string, to randomness the lottery `R`
@@ -587,3 +586,41 @@ Binary consensus protocol
 PoW 依赖算力市场恢复信任；  
 PoS 则可以让系统**经济地惩罚攻击并自修复**。
 
+## Anonymity
+*Pseudonyms*
+Fungibility: coins are interchangeable
+
+### Transaction Anonymization
+![](../img/Pasted%20image%2020251105194423.png)
+shuffle
+
+*Mimblewimble*: commitments with homomorphic property
+
+![](../img/Pasted%20image%2020251105201001.png)
+
+![](../img/Pasted%20image%2020251105201254.png)
+
+![](../img/Pasted%20image%2020251105201740.png)
+*Fair Swaps*: A and B exchange secrets, either none of them gets their output, or both do
+- resort to a trustedn third party
+- with penalties
+
+![](../img/Pasted%20image%2020251105201819.png)
+
+Ring signature
+
+### Zero-Knowledge
+#### ZK-SNARK
+Zero-knowledge succinct non-interactive argument of knowledge
+![](../img/Pasted%20image%2020251105205709.png)
+
+*Computational soundness*:  
+If the claim is false, it is unlikely that any polynomial-time prover manages to convince the verifier
+
+*Zero-Knowledge*:  
+The proof 𝜋 leaks no information about w
+
+*Succinctness*:  
+The size of the proof 𝜋 and the complexity of its verification are **independent** of the size of w and the running time of R.
+
+#### Zerocash

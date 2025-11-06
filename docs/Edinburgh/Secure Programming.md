@@ -595,4 +595,61 @@ False negative problem
 - 配置/规则不足
 - 性能/工程权衡
 
-one missed bug enough for an attacker to get in!
+One missed bug enough for an attacker to get in!
+
+#### Style checking
+save practice
+
+#### Type checking
+possible value check
+variable memory length check
+
+*Gradual typing*
+- infer types in parts of code where possible
+- manually add type annotatoins elsewhere
+- TypeScript
+
+Type systems: modularity
+- type check program pieces separately ==> whole type-checked
+
+MATE
+![](../img/Pasted%20image%2020251106222157.png)
+
+#### Program understanding
+Tools:
+- Navigation
+- Refactoring
+- Inferring design
+
+structure101
+Jujaba and Reclipse
+![](../img/Pasted%20image%2020251106203757.png)
+
+**Model based testing**
+
+
+
+#### Program Verification & Property checking
+Gold standard, formal specification
+- theorem proving
+- model checking
+
+Lightweight formal methods: make specifications be standard and generic
+Static checking
+
+*Assertion checking*: dynamic runtime checks, to test properties teh programmer expects to be true
+assertion tests usually disabled
+
+*Contracts* 
+use explicit pre- and post-conditions supplied by teh programmer when developing code
+
+*Design by Contract (TM)* aims to build a system as a set of components whose interaction is governed by mutual obligations, or contracts.
+*Hoare triple*$$\{P\}C\{Q\}$$where C is a program command, P is aa pre-condition and Q is a post-condition
+
+*Effel*: besides pre and post conditions, class invatiants which must be established when an object is created and maintained whenever it is modified
+
+*Defensive programming*: adds checks to code to ensure that pre-conditions are met
+
+`strncat(dest, src, num)`, throus warnings when preconditions `maxRead()` and `maxSet()` are not set
+
+- bug finding
