@@ -607,6 +607,21 @@ one user
 *Anonymous return address*
 ![](../img/Pasted%20image%2020251105184722.png)
 
+Pool: always some messages in the pool, once timer out, it is canditate to be sent
+
+### Tor
+mixes
+![](../img/Pasted%20image%2020251107201723.png)
+
+#### Website Fingerprinting Attack
+traffic fingerprinting
+the Tor still reveal
+- Timing
+- Packet sizes
+- Direction of travel pattern
+
+Decreasing accuracy at scale raising
+Base Rate Neglect
 
 
 # TTL
