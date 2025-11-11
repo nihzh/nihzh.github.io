@@ -652,4 +652,73 @@ use explicit pre- and post-conditions supplied by teh programmer when developing
 
 `strncat(dest, src, num)`, throus warnings when preconditions `maxRead()` and `maxSet()` are not set
 
-- bug finding
+*Bound/range Analysis*
+- `alloc_size(dest) > strlen(src)`
+- `array_size(a) > n` before a\[n\]access
+
+*Type State (resource) Tracking*
+isnull(ptr), nonull(ptr)  
+isopen_for_read(handle), isclosed(handle)  
+uninitialized(buffer), terminatedstring(buffer)
+
+avoiding double-free errors
+![](../img/Pasted%20image%2020251111202237.png)
+
+Null pointers
+#### bug finding
+severity
+confidence
+
+anti-idiom: double-checked locking in Java
+
+## Information Leakage
+### Language-based security approach
+
+CIA triple:
+- Confidentiality
+- Ingetrity
+- Availability
+
+> Information is confidential if it cannot be learned by unauthorised principals.
+
+Browser: *Single Origin Policy* (SOP): web page elements must come from same domain, else block/warn, too restrictive
+- CSP
+- CORS
+- SameSite attribute cookies
+
+### Taint tracking
+- Data from taint sources
+- Data arising from or influenced by tainted data
+
+sanitization
+
+Dynamic taint analysis
+
+> Preventing code injection exploits using dynamic taint tracking is like letting a thief in your house and checking his bag for stolen goods at the very moment he tries to leave. It might work, but only if you never lose track of the gangster and if you really know your house. However, I would prefer a solution that does not let thieves in my house in the first place.
+
+### Type-checking
+
+security level
+- high: sensitive information
+	- computed directly from high data
+	- occurs in a high context
+- low: public information
+
+Static guarantee
+> Theorem: Typability implies no insecure flows 
+> If an output expression has type low, then it cannot be affected by any input of type high. Hence there can be no insecure information flows in the program.
+
+For any two executions of the program which differ only in high  
+inputs, the result of low outputs does not change.
+
+![](../img/Pasted%20image%2020251111214010.png)
+
+basic rules
+![](../img/Pasted%20image%2020251111214036.png)
+
+compound rules
+![](../img/Pasted%20image%2020251111214053.png)
+
+![](../img/Pasted%20image%2020251111205401.png)
+
+![](../img/Pasted%20image%2020251111205613.png)
