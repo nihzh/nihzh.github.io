@@ -711,6 +711,9 @@ Static guarantee
 For any two executions of the program which differ only in high  
 inputs, the result of low outputs does not change.
 
+Preventing jumps to tainted addresses
+- implicit flows
+
 ![](../img/Pasted%20image%2020251111214010.png)
 
 basic rules

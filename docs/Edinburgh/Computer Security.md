@@ -584,7 +584,25 @@ Randomized Anagram
 
 ## Secure Communications
 ### SSL/TLS
+Public key certificate, assurance by a third party that a public key is associdated with an identity
 
+Chain of trust and Revocation
+- Trust/public_key of issuer implies trust/public_key of subject
+- Chain of certificates
+- 浏览器内置根证书作为信任锚，通过链式签名把信任传到目标站点证书。
+
+*chain of certificates*
+- `level 0`: Root CA, internally embedded by browsers
+- `level 1`: Intermediate CA, signed by Root, for batching signature
+- `level 2`: End-Entity (leaf), signed by Intermediate, site or user
+
+RootCA ──signs──> SubCA ──signs──> Server
+>  每一级的证书都包含“签名者是谁 + 被签名的公钥 + 签名值”
+
+Revocation: private key compromised
+- post on CA's site
+
+简化握手
 ### Anonymous Communication
 Routing information can reveal who you are
 - Your IP address is Your ID
@@ -623,6 +641,30 @@ the Tor still reveal
 Decreasing accuracy at scale raising
 Base Rate Neglect
 
+### Public Key Transparency
+authentication of the key
+each user keep a public key on platform
+
+Transparency -> trust: inclusion and integrity of the key
+- users can verify their own keys
+- anyone can verify anyone else's keys
+
+*Markle tree*
+- leaf nodes hold data: ID and key
+- intermediate (root) nodes are hashes of the contents of the left and right sub-nodes
+
+![](../img/Pasted%20image%2020251113015455.png)
+
+> 根节点是全树的唯一承诺（root hash）。树一处改动会引发根哈希改变；同时，给任何一个叶子生成**认证路径（authentication path）** 只需 O(log n) 个哈希值，验证者据此可在本地重算根哈希并与“公共根哈希存储”对比。这样就实现了“大规模数据、极短证明”的目标，而且更新叶子时只需重算沿路径的哈希，成本低、适合增量更新。
+
+
+Alice updaes (verify) the root of the tree continuously to avoid swaping attack
+
+Split-view attack
+- everyone needs to have the same root hash view: a append-only log data structure
+## Web Security
+Cookies is what going to protect
+`<iframe src="URL"></iframe>`: outer webpage specifies the size and position of the inner webpage within the outer webpage
 
 # TTL
 salting password: high probs for multiple people using same password, or same person use same password on different platform.

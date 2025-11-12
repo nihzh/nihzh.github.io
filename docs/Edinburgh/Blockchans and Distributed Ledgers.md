@@ -624,3 +624,35 @@ The proof 𝜋 leaks no information about w
 The size of the proof 𝜋 and the complexity of its verification are **independent** of the size of w and the running time of R.
 
 #### Zerocash
+![](../img/Pasted%20image%2020251112191711.png)
+![](../img/Pasted%20image%2020251112191707.png)
+### Network Security
+Bitcoin: P2P network
+Peers address book: how to maintain
+
+Eclipse Attack
+
+ban ADDR
+validate incoming connections
+
+Hot wallet: keys on an internet-connected computer
+Cold wallet: private keys offline
+
+## Secure Multiparty Communication
+1. 
+2. T-privacy: even if a subset < T parties collude, all they learn about the other parties inputs is their own outptus
+
+T-out-of-N
+![](../img/Pasted%20image%2020251112201358.png)
+If P is prime, 
+given T points in Zp, these exists only one polynomial q of degree t-1 at $q(x_i)=y_i$
+
+![](../img/Pasted%20image%2020251112204102.png)
+N parties maintaining a same secret and secret key
+
+secret sharing of each key, joining
+
+![](../img/Pasted%20image%2020251112205239.png)
+
+Multiple gate ????
+[images]
