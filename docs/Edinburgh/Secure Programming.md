@@ -725,3 +725,68 @@ compound rules
 ![](../img/Pasted%20image%2020251111205401.png)
 
 ![](../img/Pasted%20image%2020251111205613.png)
+
+Web applications should provide the same security guarantees as  
+those required for standalone applications
+
+Web attacker
+- controls `evil.com`
+- has valid SSL/TLS certificates for `evil.com`
+- victim user visits `evil.com`
+
+Network attacker: controls the whole network: cna intercept, craft, send messages
+
+A Web attacker is weaker than a Network attacker
+
+## Software Protection
+
+
+### Code signing
+![](../img/Pasted%20image%2020251113202700.png)
+- Code integrity and authenticity
+- Detects tampering before code execution
+- Aims to protect recipient from unsafe code: malware
+
+
+### Program objuscation
+```c
+char O,o[];main(l){for(;~l;O||puts(o))O=(O[o]=  
+~(l=getchar())?4<(4ˆl>>5)?l:46:0)?-~O&printf("%02x ",l)*5:!O;}
+```
+Obfuscating compiler
+functionally equivalent program
+![](../img/Pasted%20image%2020251113203453.png)
+
+*Black box simulator* $S^P$ of P can onlu observe the input-output behaviour of P, nothing about its code or timing
+Secure Virtual Black-box" 分析混淆代码并不会带来额外知识或洞察
+
+Derived: cryptographic primitives
+- **Symmetric to Asymmetric crypto**: An obfuscated symmetric encrypt function $C(E_k)$ with a key `k`, thus anyone can encrypt but only the owner who knows `k` can decrypt
+- **Homomorphic encryption**: Homomorphic encryption allows general computation on encrypted data. For any boolean operation f, the plain program P computes $E_k(f(D_k(x)))$. Its obfuscated version $C(P_k)$ hides the key K and encryption method.
+
+> It is impossible to construct an obfuscating compiler that satistfies virtual black box security.
+- counterexample
+
+### Tamperproofing
+**Check**, to see if tampering has occurred
+- code checking
+- result checking
+- environment checking
+
+**Respond** somehow, imposing a penalty
+- termination
+- restore
+- degrade: slow down operatoin
+- report
+- punish: destroy program, data or environment
+
+> One technique is to to use multiple hashing methods and compute multiple hashes on fragments of code. 
+> Then spread the hash computation repeatedly throughout the code. 
+> To help prevent attackers figuring out the scheme, tamperproofing is combined with obfuscation.
+
+### Watermarking
+![](../img/Pasted%20image%2020251113204748.png)
+Program $P_w=embed_k(P,w)$
+- should be recoverable with a secret key k
+- should be robust
+- high credibility
