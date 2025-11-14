@@ -666,6 +666,70 @@ Split-view attack
 Cookies is what going to protect
 `<iframe src="URL"></iframe>`: outer webpage specifies the size and position of the inner webpage within the outer webpage
 
+**Web applications should provide the same security guarantees as those required for standalone applications**
+
+Web attacker
+- controls `evil.com`
+- has valid SSL/TLS certificates for `evil.com`
+- victim user visits `evil.com`
+
+Network attacker: controls the whole network: cna intercept, craft, send messages
+
+A Web attacker is weaker than a Network attacker
+
+### Web security model
+#### SOP: Same Origin Policy
+Scripts can manipulate the Dom of a page using the API for the document or window elements, which are the variaous elements in the web page
+
+origin: protocol://domain:port
+
+*window*
+cross-origin scrpt will execute with parent frame/window's origin
+
+no inspectng it, able to call functions
+
+`postMessage` interface allows windows to talk to each other no matter which origin they are from
+
+#### Cookie Policy
+Scripts can manipulate the cookies stored in the browser using the API for the document elements
+
+prevents a script from accessing the cookies
+
+`Set-Cookie`
+
+Cookie policy shares the same main domain
+SOP different sub-somain shoule be viewed as different origins and isolated
+
+`HTTPonly`: if enabled scripting languages cannot accessing or manipulating the cookie, can prevent GA from accessing cookies set by `example.com`
+
+*Secure Cookies*
+A cookie with the Secure attribute is sent to the server only with an encrypted request over the HTTPS protocol, never with unsecured HTTP.
+
+*SameSite Cookies*
+Prevent the cookies go anywhere except the given domain
+Browser will not send them
+
+### XSS: Cross-Site Scripting
+*Session highjacking*
+Session hijacking is the exploitation of a valid computer session to gain unauthorized access to informaiton or services in a computer system
+- predictable tokens
+	- unpredictable cookies
+- site has mixed HTTPS/HTTP pages and token is sent over HTTP rather than HTTPS
+	- set secure attribute for session tokens
+	- always issue a new session token when elevating a user
+- XSS vulnerabilities
+- CSRF vulnerabilities
+
+> Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted web sites
+
+#### Stored XSS Attacks
+The injected script is permanently stored on the target servers
+The victim then retrieves the malicious script from the server when it requests the stored information
+
+#### Reflected XSS Attacks
+
+
+
 # TTL
 salting password: high probs for multiple people using same password, or same person use same password on different platform.
 - hash to hiding the plain password: same value stored

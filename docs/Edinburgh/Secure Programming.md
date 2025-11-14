@@ -726,20 +726,7 @@ compound rules
 
 ![](../img/Pasted%20image%2020251111205613.png)
 
-Web applications should provide the same security guarantees as  
-those required for standalone applications
-
-Web attacker
-- controls `evil.com`
-- has valid SSL/TLS certificates for `evil.com`
-- victim user visits `evil.com`
-
-Network attacker: controls the whole network: cna intercept, craft, send messages
-
-A Web attacker is weaker than a Network attacker
-
 ## Software Protection
-
 
 ### Code signing
 ![](../img/Pasted%20image%2020251113202700.png)
