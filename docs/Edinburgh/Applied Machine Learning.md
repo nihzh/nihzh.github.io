@@ -767,15 +767,22 @@ Measure alignmetn of clusters to known labels
 把“样本对是否在同一簇/同一类”当二分类，计算 **Accuracy**
 
 ![](../img/Pasted%20image%2020251105025605.png)
-在 RI 基础上**扣除随机期望**并做**归一化**，使“随机分区”的期望为 0；其计算基于簇–类交叉表 Nij=∣ri∩cj∣N_{ij}=|r_i\cap c_j|Nij​=∣ri​∩cj​∣ 的组合项。
+在 RI 基础上**扣除随机期望**并做**归一化**，使“随机分区”的期望为 0；其计算基于簇–类交叉表 $N_{ij}=|r_i\cap c_j|$ 的组合项。
 ##### Human
 Compare judgements to humans on exemplars
 
+## Non-Linear Dimensionality Reduction
+*Feature Transformation*: 
 
-# Reinforcement Learning
-Learn how to interact with its environment
-Learn a **policy** which specifies the action to take in response to observation of the environment
-Agents aims to maximise their reward
+
+
+
+
+
+
 
 # Ethics
 
+Learn how to interact with its environment
+Learn a **policy** which specifies the action to take in response to observation of the environment
+Agents aims to maximise their reward
