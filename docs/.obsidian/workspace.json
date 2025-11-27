@@ -180,19 +180,9 @@
               "icon": "lucide-archive",
               "title": "All properties"
             }
-          },
-          {
-            "id": "cb57125018cce4e3",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -213,21 +203,22 @@
   },
   "active": "ab9b7a027ac3a6e2",
   "lastOpenFiles": [
+    "img/Pasted image 20251127223639.png",
+    "img/Pasted image 20251127212301.png",
+    "img/Pasted image 20251127210450.png",
+    "img/Pasted image 20251127200311.png",
+    "img/Pasted image 20251127195458.png",
+    "img/Pasted image 20251127193050.png",
+    "img/Pasted image 20251127192405.png",
+    "img/Pasted image 20251127192045.png",
+    "img/Pasted image 20251127191150.png",
+    "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Secure Programming.md",
     "Edinburgh/Computer Security.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Untitled.base",
     "img/Pasted image 20251113205621.png",
     "img/Pasted image 20251113205611.png",
-    "img/Pasted image 20251113204748.png",
-    "img/Pasted image 20251113203453.png",
-    "img/Pasted image 20251113202700.png",
-    "img/Pasted image 20251113015455.png",
-    "img/Pasted image 20251113015447.png",
-    "img/Pasted image 20251112205239.png",
-    "img/Pasted image 20251112204102.png",
-    "img/Pasted image 20251112201358.png",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
     "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",

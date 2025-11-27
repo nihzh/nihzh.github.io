@@ -772,13 +772,56 @@ Measure alignmetn of clusters to known labels
 Compare judgements to humans on exemplars
 
 ## Non-Linear Dimensionality Reduction
-*Feature Transformation*: 
+*Feature Transformation*: Transform inputs `x` using a feature map $\phi(x)$ to a higher dimension C > D, which data is linearly separable in C $$x\in \mathrm{R}^D,\phi(x)\in \mathrm{R}^C,C>D$$
+![](../img/Pasted%20image%2020251127191150.png)
 
+Choosing the right kernel: 
+- to learn kernel matrices K directly from data
 
+> Several non‑linear dimensionality reduction methods can be viewed as kernel PCA, with kernels learned from data
 
+### Manifold Hypothesis
+High-dimensional data in the real world really lies on low-dimensional manifolds within that high-dimensional space
+- local measure of **closeness**
+- project data `x` onto lower-dimensional manifold as `e`
+![](../img/Pasted%20image%2020251127192045.png)
 
+> 所有非线性可视化方法的共同目标：找到映射$f: X \to E$，让“重要的关系”（距离、邻居、概率分布、拓扑结构等）在 X 和 E 中尽量一致。
 
+### Multi-Dimensional Scaling (MDS)
+Project data from $\mathcal{X}$ to $\mathcal{E}$ while preserving the distance between **every pair** of samples in original data X
+![](../img/Pasted%20image%2020251127192405.png)
+Choosing L2, simpler optimisation
 
+In swiss-roll, miss the manifold surface
+
+### Isomap
+Project data from X to E while preserving the distance between **points on the embedded manifold**, not arbitrary distance
+![](../img/Pasted%20image%2020251127200311.png)
+
+![](../img/Pasted%20image%2020251127195458.png)
+
+拓扑形态，采样要求高
+NN图可能不连通
+FW是$O(N^3)$
+
+### Locally Linear Embeddings (LLE)
+Project data from X to E while preserving the **linear transform** that reconstructs points from the K nearest neighbours
+![](../img/Pasted%20image%2020251127210450.png)
+
+在高维空间中取每个点的K个邻居的线性重构，每个邻居的权重$w_{ik}$
+在低维空间中希望用相同的权重重构嵌入点
+
+对噪声敏感，流形结构无法保证
+
+### t-distributed Stochastic Neighbour Embedding (t-SNE)
+Project data from X to E while preserving the **probability distribution** over  
+pairwise similarities between points in the space.
+![](../img/Pasted%20image%2020251127212301.png)
+
+### Uniform Manifold Approximation & Projection (UMAP)
+*Leverage Riemannian geometry* and *topology* to construct a general framework for manifold learning and dimensionality reduction.
+![](../img/Pasted%20image%2020251127223639.png)
 
 
 # Ethics
