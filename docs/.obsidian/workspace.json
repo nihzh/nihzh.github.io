@@ -181,8 +181,7 @@
               "title": "All properties"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -191,34 +190,32 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "publish:发布更改": false,
+      "bases:创建新数据库": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "templates:插入模板": false,
       "markdown-importer:打开 Markdown 格式转换器": false,
-      "random-note:开始漫游笔记": false,
-      "publish:发布更改": false,
-      "bases:创建新数据库": false,
-      "obsidian-git:Open Git source control": false
+      "random-note:开始漫游笔记": false
     }
   },
   "active": "ab9b7a027ac3a6e2",
   "lastOpenFiles": [
-    "img/Pasted image 20251127223639.png",
-    "img/Pasted image 20251127212301.png",
-    "img/Pasted image 20251127210450.png",
-    "img/Pasted image 20251127200311.png",
-    "img/Pasted image 20251127195458.png",
-    "img/Pasted image 20251127193050.png",
-    "img/Pasted image 20251127192405.png",
-    "img/Pasted image 20251127192045.png",
-    "img/Pasted image 20251127191150.png",
-    "Edinburgh/Applied Machine Learning.md",
-    "Edinburgh/Secure Programming.md",
+    "img/Pasted image 20251129030732.png",
+    "img/Pasted image 20251129030455.png",
+    "img/Pasted image 20251129030334.png",
+    "img/Pasted image 20251129025915.png",
+    "img/Pasted image 20251129023810.png",
+    "img/Pasted image 20251129023101.png",
+    "img/Pasted image 20251129021117.png",
+    "img/Pasted image 20251129021010.png",
+    "img/Pasted image 20251129020915.png",
+    "img/Pasted image 20251129020527.png",
+    "img/Pasted image 20251129014316.png",
     "Edinburgh/Computer Security.md",
+    "Edinburgh/Secure Programming.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "Edinburgh/Untitled.base",
-    "img/Pasted image 20251113205621.png",
-    "img/Pasted image 20251113205611.png",
+    "Edinburgh/Applied Machine Learning.md",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
     "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",
@@ -254,6 +251,7 @@
     "indexthemeable.html",
     "index - not themeable.html",
     "index - 副本.html",
-    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip"
+    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip",
+    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 2.zip"
   ]
 }

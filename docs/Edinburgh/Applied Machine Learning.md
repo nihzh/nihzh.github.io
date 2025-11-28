@@ -683,6 +683,146 @@ but not how big or important the difference is
 
 Simple cross-validation can violate that independence for CLT (overlap in $\mathcal{D}_{train}$)
 
+## Recommender System
+How to predict a user's rating for the items they have not yet seen
+
+The rating data from other users, is likely to be very **sparse**: the average user only rates a very small number of items
+
+*Explicit Feedback*: Users rate items directly
+- hard to get information
+*Implicit Feedback*: Extracted from user actions: clicking, watching until end...
+- weaker form of supervision
+
+Present user ratings as a matrix Y of sieze $|\mathcal{U}|\times|\mathcal{I}|$, can be very sparse
+![](../img/Pasted%20image%2020251128220826.png)
+
+### Predict missing ratings
+*Average rating*: $\hat{Y}_{ui}$ 
+![](../img/Pasted%20image%2020251128221503.png)
+取所有已评分用户的平均评分
+忽略了用户间的差异
+
+### Collaboratve Filtering
+Find similar users and make predictins for absent user of interest based their similarity to these existing users
+
+> The underlaying assumption is that if user A and B rate items they have both seen similarly, then user A is more likely to rate items thay have not seen similar to how user B would.
+
+Weight the rating score based on the similarity between the users
+*Weighted average*
+![](../img/Pasted%20image%2020251128224818.png)
+
+### Matrix Factorisation
+Recommenedation task => matrix completion
+Predict all the missing entries of Y given the subset of user rating pairs $(u,y)\in S$
+![](../img/Pasted%20image%2020251128225104.png)
+
+Assume Y is a low rank matrix as $\hat{Y}=UV^{\top}\approx Y$, 
+where $U$ is $|U| \times K$, $V$ is $|I| \times K$
+![](../img/Pasted%20image%2020251128231750.png)
+Each row $u_u$ of U represents a different user
+Each row $v_i$ of V represents a different item
+To predict a missing entry: $$\hat{Y}_{ui}=u_u^{\top}v_i$$
+### Model Training With SGD
+From subset of user rating pairs $(u,i)\in S$ where $Y_{ui}\ne ?$
+Loss function $$\mathcal{L}(\theta)=\sum_{(u,i)\in S}(Y_{ui}-u_u^{\top}v_i)^2$$
+![](../img/Pasted%20image%2020251128234630.png)
+
+#### Regularisation
+![](../img/Pasted%20image%2020251128234859.png)
+![](../img/Pasted%20image%2020251128234908.png)
+
+## Neural Networks
+逻辑回归：线性决策边界， 表达力不足
+- 切换非线性边界模型
+- 非线性变换特征，在新空间线性可分
+
+A linear method, can **learn the features** from the raw input data
+![](../img/Pasted%20image%2020251129010449.png)
+
+### Single Layer Network
+$$\hat{y}=g2(w^\top_2g1(W_1x+b_1)+b_2)$$
+![](../img/Pasted%20image%2020251129013833.png)
+
+### Multilayer Neural Network
+Multilayer perceptron (MLP)
+Fully connected network with three input features, three hidden layers with four hidden units in each, and two output units
+![](../img/Pasted%20image%2020251129014316.png)
+Any sequence of linear layers can be equivalently represented with a single linear layer $$y=W3​(W2​(W1​x))=(W3​W2​W1​)x=W′x$$
+Non-Linear Activation Functions
+- *Sigmoid (Logistic)*:  $\sigma(z)=\frac{1}{1+exp(-z)}$ ，输出 \[0, 1\]
+- *Hyperbolic tangent*: $tanh(z)=\frac{exp(2z)-1}{exp(2z)+1}$, 输出 \[-1,1\]
+- *Rectified linear unit*: $ReLU(z) = max(z,0)$
+
+*Universal function approximators*: 
+具有非线性激活函数的前馈神经网络可以以任意精度近似任何函数
+
+Deeper neural networks are more effective than shallow ones
+In deeper networks, later layers can leverage teh features learned by earlier ones
+
+#### Transforming Features
+![](../img/Pasted%20image%2020251129020527.png)
+![](../img/Pasted%20image%2020251129020915.png)
+![](../img/Pasted%20image%2020251129021010.png)
+increased the number of hidden units in the first layer
+![](../img/Pasted%20image%2020251129021117.png)
+
+### Training Neural Networks
+For L-layer MLP with L weight matrix and bias vector, parameters $$\theta=(W_1,b_1,...,W_L,b_L)$$
+*Loss function* $L(\theta)$ to measure the disagreement between the model prediction $f(x)$ and the ground truth target $y$
+**Gradient of the loss + descent** $$\theta\leftarrow\theta-\eta\cdot\nabla_{\theta}\mathcal{L}$$
+#### Backpropagation
+A recursive calgorithm for computing the derivatives, uses the chain rule by stroing some intermediate terms
+利用Chain Rule递归计算梯度
+1. *Forward pass*: compute and store the values at all of the hidden units and the network output
+2. *Backward pass*: calculate the derivatives of each weight, starting at the end of the network, and reusing the previous computation as we move towards the start
+![](../img/Pasted%20image%2020251129023101.png)
+
+![](../img/Pasted%20image%2020251129023810.png)
+
+Multilayer neural networks are non-convex, gradient descent mau get stuck in local minima during training and never find the global optimum. In practice, it can still obtain good solutions for many proctical problems.
+
+#### Hyperparamenters
+Network Structure
+- number of hidden layers
+- number of units in each hidden layers
+- the type of non-linear activation function
+
+Training Schedule
+- the learning rate
+- the type of optimiser
+- how the weights are initialised
+- then to stop training
+
+#### Automatic Differentation
+Compute the gradient of a loss function applied to the output of the network wrt the parameters in each layer
+
+*Autodiff*: automatic evaluate the derivative of a function
+
+![](../img/Pasted%20image%2020251129025915.png)
+
+### Convolutional Neural Network (CNN)
+Constrain each hidden unit to extract features by sharing weights across the input
+
+Image X with K\*K weight matrix W
+![](../img/Pasted%20image%2020251129030334.png)
+Multiple weight matrices can be used to produce multiple feature maps
+![](../img/Pasted%20image%2020251129030455.png)
+
+### Recurrent Neural Networks (RNN)
+For sequence data (time series)
+Each input is processed sequentially, one item at a time, past information is retained through past hidden states
+![](../img/Pasted%20image%2020251129030732.png)
+
+### Transformers
+Process the entire input all at once
+- training be performed in parallel
+- less susceptible to foregetting information from the past, better in GPU
+
+**Self-attention** unit, used to compute similarity scores between input in the input sequence
+
+计算序列中任意两个位置之间的相似度，让模型能直接“看见”远处的词。
+
+
 # Unsupervised Learning
 have no label values
 ![](../img/Pasted%20image%2020250918211823.png)
