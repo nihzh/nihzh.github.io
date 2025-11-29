@@ -801,7 +801,7 @@ Compute the gradient of a loss function applied to the output of the network wrt
 ![](../img/Pasted%20image%2020251129025915.png)
 
 ### Convolutional Neural Network (CNN)
-Constrain each hidden unit to extract features by sharing weights across the input
+Constrain each hidden unit to extract features by sharing weights across the input, better for image
 
 Image X with K\*K weight matrix W
 ![](../img/Pasted%20image%2020251129030334.png)
@@ -965,6 +965,19 @@ pairwise similarities between points in the space.
 
 
 # Ethics
+形式化动作、后果、效用、意图，用于机器伦理推理
+## The ART Principles
+*Accountability*: The system explains and justifies its decision to users and relevant parties
+
+*Responsibility*: The focus is on how the socio-tecnical systems operate
+
+*Transparency*: It is about the data being used, methods being applied openness about choices and decisions
+
+ART is essential to build social trust in Autonomous Systems
+![](../img/Pasted%20image%2020251129032001.png)
+
+
+
 
 Learn how to interact with its environment
 Learn a **policy** which specifies the action to take in response to observation of the environment
