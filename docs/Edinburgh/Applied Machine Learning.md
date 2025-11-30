@@ -966,7 +966,30 @@ pairwise similarities between points in the space.
 
 # Ethics
 形式化动作、后果、效用、意图，用于机器伦理推理
+
+> Ethics is concerned with studying and/or building up a coherent set of rules or principles by which people ought to live
+
+How human should act
+- right, fair and just
+- does not cause harm
+
+*Virtue Theories*: Who is doing the action?
+*Consequentialist Theories*: Are the consequences moral?
+*Deontological Theories*: Is the action itself moral?
+![](../img/Pasted%20image%2020251130003008.png)
+
+## Machine Ethics
+Can a computer operate ethically because it is internally ethical in some way?
+
+**Top-down**: Start with an **ethical theory**, identify smaller problems and solve them
+- not clear from the beginning if subproblems are solvable
+
+**Bottom-up**: Start with **data**, learn ethical behaviour from data
+- non-necessary subproblems may be dealt with
+
 ## The ART Principles
+> We need to find an ethically acceptable way of designing technology that can benefit the society.
+
 *Accountability*: The system explains and justifies its decision to users and relevant parties
 
 *Responsibility*: The focus is on how the socio-tecnical systems operate
@@ -976,7 +999,69 @@ pairwise similarities between points in the space.
 ART is essential to build social trust in Autonomous Systems
 ![](../img/Pasted%20image%2020251129032001.png)
 
+### Transparency
+- access to **justifications for decisions** when needed, how to contest and appeal
+- addresses the right to know: participation information sheet in data lifecycle
+- helps in understanding and managing risks
 
+*Explanations*
+- *Contrastive*: why P instead of Q
+- *Selected*: weight factors explanations, influenced by cognitive biases
+- **Driven by casual** rather than probabilities
+- *Social/interactive*: audience knowledge/requirement background
+
+many stakeholders, interested in something different
+
+How to explain a "black box" model, avoiding system vulnerable to attacks
+- use simpler models?
+
+## Justice Fairness and Bias
+Human dignity ==> discrimination, unjust treatment, stem of biases
+
+Algorithmic fairness, since algorithms may amplify existing economic and societal bias
+
+在 **数据收集、特征计算、建模、评估、部署** 等每一步都可能引入伤害。
+
+> 有害后果往往不是“算法本身突然坏掉”，而是从整个机器学习流程中多个小偏差累积而成。
+
+![](../img/Pasted%20image%2020251129213617.png)
+
+### Representation Bias
+Target population != Use population
+
+Under-represented groups
+
+*Sampling bias*: Target population is set to X, but the data available is only a small subset of X
+
+![](../img/Pasted%20image%2020251129213516.png)
+
+### Learning Bias
+When modeling choices amplify performance disparities
+
+Differential privacy 会在训练中加入噪声，换来隐私保证，但必然**降低模型准确度**
+
+在DP中差距被进一步放大 ==> 保护隐私的机制本身也可能带来新的不公平效应
+
+### Evaluation Bias
+When the benchmark datasets **do not represent** the use population
+
+The choice of metrices can also result in evaluation bias
+- aggregate results
+- reporting one type of metric
+
+> 模型训练与评估时使用的基准数据没覆盖好这些群体 → 评估偏差；
+> 模型参数与目标设计没有关注不同群体 → 学习偏差。
+
+### De-biasing Algorithms
+Aware different types of bias, in how to design an AI system
+
+> We can talk about fairness when people are not discriminated against based on their membership to a specific group.
+
+Arvind Narayanan
+
+Fairness definition
+- group fairness (statistical fairness)
+- individual fairness
 
 
 Learn how to interact with its environment
