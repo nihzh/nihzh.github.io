@@ -1067,3 +1067,19 @@ Fairness definition
 Learn how to interact with its environment
 Learn a **policy** which specifies the action to take in response to observation of the environment
 Agents aims to maximise their reward
+
+# Further Topics
+## Semi-Supervised Learning
+![](../img/Pasted%20image%2020251130010817.png)
+
+![](../img/Pasted%20image%2020251130010853.png)
+
+![](../img/Pasted%20image%2020251130010942.png)
+
+![](../img/Pasted%20image%2020251130011105.png)
+![](../img/Pasted%20image%2020251130011255.png)
+
+![](../img/Pasted%20image%2020251130011203.png)
+
+## Active learning
+![](../img/Pasted%20image%2020251130010703.png)![](../img/Pasted%20image%2020251130010719.png)
