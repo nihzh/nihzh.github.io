@@ -1,9 +1,16 @@
 Introduction to Computer Security
 
 *Security*
-- Confidentiality: authorised --> Authenticity
-- Integrity: The data is untampered and uncorrupted
-- Availability: accessible
+- **Confidentiality**: Authorization, Authenticity
+	- not on physical security
+- **Integrity**: The data is untampered and uncorrupted
+	- backups
+	- checksums
+	- data correcting codes
+	- not on metadata
+- **Availability**: accessible
+	- physical protections
+	- computational redundancies
 
 *Trust*
 - Assurance: The means to know that the system is secure
@@ -13,12 +20,21 @@ Introduction to Computer Security
 
 私钥只存在于本机中
 
+*Authenticity*
+Ability to determine that statements, policies and permissions issued by persons or systems are genuine
+*Nonrepudiation*: authentic statements issued by some person or system cannot be denied
+*Digital signatures*, achieve nonreputation and also check integrity
+Electronically identifying people
+
 *Privacy*
 Concerns individuals and their expectations on how their data behaviours, and interactions are recorded, utilised and spread
 - Person gets to control information about themselves
 - 不安全的库: 撞库攻击
 
 **Teamwork for making secure system**
+
+*Security Principles*
+- Economy of mechanism: simplicity indesign and implementatioinof security measures
 
 *Threat Modelling*
 - Who is the adversary
@@ -758,8 +774,29 @@ on the page
 *Http-Only* attribute: scripting languages cannot access or manipulate the cookie
 
 ### CSRF: Cross-Site Request Forgery
+> CSRF forces a user to execute unwanted actions on a web application in which they're currently authenticated. CSRF attacks target stage-changing requests, not theft of data, since the attacker has ho way to see the response to the forged request
 
-???????
+Theft of grants
+
+Attacker: have the victim visit attacker's server while logged-in to vulnerable server
+
+The authentication cookies are automatically sent by the  
+victim browser.
+
+Cookies are insufficient when side effects
+
+TLS does not prevent CSRF attacks
+
+#### CSRF Defenses
+The server ensures that the HTTP request (the **referer**) has come from the original site.
+- can also be modified
+
+*CSRF tokens*: make URLs unpredictable
+- Includes a fresh CSRF token in every form as a hidden field
+- On every request, the server chesks that the supplied token is the valid one
+- different in each server response, avoid replay attack
+
+`SameSite` flag on cookies: prevents cookies from being sent in cross-site requests
 
 # TTL
 salting password: high probs for multiple people using same password, or same person use same password on different platform.

@@ -1,3 +1,4 @@
+# Introduction
 Probabilistic Machine Learning: An Introduction
 https://probml.gthub.io/pml-book/book1.html
 Pattern Recognition and Machine Learning
@@ -26,6 +27,11 @@ similar data as before
 - How can I **estimate the parameters** of my model
 - How should I measure the **performance** of my model
 
+*Reinforcement learning*
+Learn how to interact with its environment
+Learn a **policy** which specifies the action to take in response to observation of the environment
+Agents aims to maximise their reward
+
 # Supervised Learning
 goal is a function `f`, inputs `x` and output `y`
 x and y are all given in the training data
@@ -35,9 +41,10 @@ predicting some continuous quantity
 given an input feature vector x, predicting an output vector y
 
 - binary classivication: two possibilities
-- bulticlass classification: C possible options
+- multiclass classification: C possible options
 
 ### Generative Classification
+**Making Predictions**
 通过高斯分布确定特征
 - Assumption: conditined on the class, Data is Gaussian distributed\
 ![](../img/Pasted%20image%2020250918222504.png)
@@ -1062,11 +1069,6 @@ Arvind Narayanan
 Fairness definition
 - group fairness (statistical fairness)
 - individual fairness
-
-
-Learn how to interact with its environment
-Learn a **policy** which specifies the action to take in response to observation of the environment
-Agents aims to maximise their reward
 
 # Further Topics
 ## Semi-Supervised Learning
