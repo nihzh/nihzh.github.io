@@ -34,7 +34,19 @@ Concerns individuals and their expectations on how their data behaviours, and in
 **Teamwork for making secure system**
 
 *Security Principles*
-- Economy of mechanism: simplicity indesign and implementatioinof security measures
+- *Economy of mechanism*: simplicity indesign and implementatioinof security measures
+- [Fail-safe defaults](#^828d16)
+- [Complete mediation](#^fb97be)
+- [Open Design](#^3c24c2)
+- [Privilege separation](#Privilege%20separation)
+- *Least privilege*: Each program and user of a computer system should operate with the bare minimum privileges necessary to function properly
+- *Least common mechanism*: in multiple users system, minimize shared resources, interactions and side-effects
+- *Psycological acceptability*: 
+	- UI should be well designed and intuitive
+	- security-related settings should adhere to ordinary user might expect
+- *Work factor*: cost, compaired with attacker resources
+	- NONONO
+- *Compromise recording*
 
 *Threat Modelling*
 - Who is the adversary
@@ -87,7 +99,6 @@ Simple messages encapsulated in single IP packets
 - Packet sniffer and protocol analyzer
 - When run in promiscuous mode, captures traffic across the network
 
-
 ### Link & Network
 **ARP**
 Matching IP and MAC address, work in link-layer
@@ -104,26 +115,61 @@ Matching IP and MAC address, work in link-layer
 UDP multiple concurrent applications
 TCP sequence
 
-**SYN Flooding**: sending thousands of SYN requests to the victim, without ack any replies. Bob accumulates more SYN packets than he can handle, runs out of space in **state table**
+#### IP Spoofing
+协议本身不验证源IP地址的真实性
+
+在IP头中覆盖Source Address字段，并且重新计算Checkusm，后续回应会发往伪造的地址
+- Dos
+- 为了绕过WAF或进行TCP会话劫持，利用反射式回显
+
+**Dealing with IP Spoofing**
+Ingress/Egress Filtering, 子网边界路由器过滤
+- 拒绝目标不是本子网IP的进入
+- 拒绝**内部主机**发出目标是外部IP的数据
+
+IP Traceback，溯源，拦截/隔离检查
+
+#### TCP Hijacking
+Attack hijack or alter a TCP connection from another user
+
+*TCP sequence prediction* (session spoofing):
+- Modern TCP stack implementations use pseudo-random number generators to determine sequene numbers
+- Attacker attempts to guess an initial sequence number sent by the server at the start of a TCP session
+
+![](../img/Pasted%20image%2020251201234842.png)
+
+#### Denial-of-Service Attacks (DoS)
+耗尽带宽或处理能力，新连接或正常通信无法完成
+
+*Distributed-DoS*
+Botnet
+
+#### ICMP Attacks
+*Ping Flood Attack*
+
+*Smurfing Attack*
+Expoloits ICMP **ping** requests thereby remote hosts respond to echo packets to say they are online. Some network respond to pings to **broadcast** address => *Smurf amplifiers*
+- Ping a LAN on a broadcast address, **then all hosts on the LAN reply to the sender of the ping**
+
+#### SYN Flooding
+Sending thousands of SYN requests to the victim, without ack any replies. Bob accumulates more SYN packets than he can handle, runs out of space in **state table**
 - attack don't need his own IP address, forge the source of the TCP packet
 - attacker's own bandwidth, likely smaller than server's
 
-*Smurfing*
-Expoloits ICMP **ping** requests thereby remote hosts respond to echo packets to say they are online. Some network respond to pings to **broadcast** address => *Smurf amplifiers*
-- Ping a LAN on a broadcast address, then all hosts on the LAN reply to the sender of the ping
-
-![](../img/Pasted%20image%2020250924170835.png)
+**SYN cookies**: when memory is filled, the server sends a specially crafted SYN/ACK packet without creating a corresponding memory entry
+![](../img/Pasted%20image%2020251201235821.png)
 
 ### Application Layer
+![](../img/Pasted%20image%2020250924170835.png)
 ![](../img/Pasted%20image%2020250924171000.png)
 Domain name contains not only latin alphabet
 DoS attack on major DNS provider
 - DNS Servers are soft targets for attackers
 - Take out the mapping and the website goes "offline"
 
-Authoritative name server: Stores reference version of DNS records for a zone (prartial tree)
+*Authoritative name server*: Stores reference version of DNS records for a zone (prartial tree)
 
-Name Resolver
+*Name Resolver*
 - Program that retrieves DNS records
 - Connect to a nameserver (default, root, or given)
 - Caches records received
@@ -133,10 +179,11 @@ ipconfig /displaydns    # view caches
 ipconfig /flushdns      # clear caches
 ```
 
-DNS Cache Poisonoing
+*DNS Cache Poisonoing*
 Give a DNS server a false address record and get it cached
 - UDP on port 53
 - 16-bit requeist identifier in payload to match answers
+- Pharming & Fishing
 - when a resolver
 	- query has **predictable** identifiers and return ports
 	- attacker **answers begore** authoriative name server
@@ -151,19 +198,29 @@ Give a DNS server a false address record and get it cached
 Kaminsky: Subdomain DNS Cache Poisoning
 
 ![](../img/Pasted%20image%2020250924182029.png)
+![](../img/Pasted%20image%2020251202012308.png)
+
 
 ### Application layer protection
 #### Firewall
 prevent unauthorized electronic access
-- firewall policies: Blocklist/Allowlist
+- *firewall policies*: Blocklist/Allowlist
+	- Accepted
+	- Dropped: no return
+	- Rejected: return a notion
+- demilitarized zone (DMZ)
 
 **packet filters(stateless)**
 Each packet attempting to travel through it in isolation without considering packets that it has processed previously
 
 **stateful filters**
 maintains records of all connections passing through it and can determine if a packet is either the start of a new connection
-- maintaining tables on each active connection
+- maintaining a *state table* on each active connection
 - port scan
+- TCP connection, recorded when session established, only accept TCP package when
+	- session record matched
+	- content is leagal for the session
+- UDP, record first accepted package, subsequent trasmissions for same IP/port is all allowed until a timeout
 
 **application layer**
 Simulates the effects of an application, protective interceptor that screens information at an application layer, i.e. words censorship
@@ -179,7 +236,70 @@ Firewalls are preventative, IDS detects a potential incident in progress
 - cannot be prevented or anticipated in advance
 - quickly addressing
 
-*Rule-based*: attack pattern signature
+*NIDS Network IDS* 网络边界或关键位置
+- 攻击特征库signatures
+- 流量统计分析
+*DIPS Protocol-based*: deployed on specific host, monitoring ideal protocol
+*HIDS Host-based*: detect by audit/system log
+
+*Rule-based IDS*: attack pattern signature
++
+*Statistical IDS*: gathering audit data about a certain user or host, to determine baseline numerical values about the action that the person or machine performs
+- 新型或未知攻击
+- 学习不足时误报率高
+- 隐蔽攻击容易绕过
+
+Detect malicious
+- masquerader
+- misfeasor
+- clandestine user
+
+- port scans
+- DoS, DDoS
+- Malware
+- ARP spoofing
+- DNS cache poisoning
+
+#### Intrution Prevention System (IPS)
+检测威胁流量，自动更新WAF规则，过滤/丢弃该段流量
+IPS Snort
+
+对IDS发起DoS，淹没真正的攻击
+
+**The Base-Rate Fallacy**
+当“真实入侵事件”在所有事件中占比很小时，即使 IDS 的检测精度看起来很高，也可能导致绝大多数告警都是误报。
+![](../img/Pasted%20image%2020251026233941.png)
+
+#### Port Scanning
+- port open, accepting connections
+- port closed, not accepting connections
+- port blocked, by firewall or other device is preventing traffic
+
+nmap
+
+*Fingerprinting*: 推断服务类型、版本、操作系统等
+
+openning port == potential targets for attack
+
+TCP scan ==> SYN scan
+UDP scans
+- port closed: ICMP: not achieveable
+- port open/blocked: no return
+- payload design
+
+*Idle scanning*
+relies on finding a third-party maching as a "zombie", taht has predictable TCP sequence numbers
+![](../img/Pasted%20image%2020251202024221.png)
+
+### Network Security 
+- Confidentiality
+- Integrity
+- Availability
+- Assurance
+- Authenticity
+- Anonymity
+
+DoS, Eavesdropping, Man-in-the-Middle, Masquerading
 
 ## Cryptography
 ### Symmetric encryption
@@ -402,9 +522,9 @@ Heap: from lower to higher
 
 Segment the system priviledges
 
-**Open design**
-The security of a mechanism **should not** depend on its secrecy
-The design and implementation details always get leaked
+*Open design*
+The security of a mechanism **should not** depend on its secrecy and obscurity, should rely on keeping cryptographic keys secret
+The design and implementation details always get leaked ^3c24c2
 
 When designing a security mechanism **keep it simple**
 - security researchers: allow verification
@@ -414,13 +534,15 @@ When designing a security mechanism **keep it simple**
 *Security principles*
 *Fail-safe defaults*: default configuration should be conservative
 *Complete mediation*: every access to a resource must be checked for comliance with security policy
-*Usable security*: UIs and security machanisms should be designed with the ordinary user in mind, the users should be supported in interacting in a secure way with the system
+*Usable security*: UIs and security machanisms should be designed with the ordinary user in mind, the users should be supported in interacting in a secure way with the system ^828d16
 
 ### Privilege separation
 ***Who is allowed to access what and how***
 
-Complete meditation: all requests go to the reference monitor
-The **reference monitor** grants permission to users to apply certain opperations to a given resource
+Multiple conditions shoule be requireed to schieve acceess to restricted resources or have a program perform some action
+
+*Complete meditation*: all requests go to the reference monitor must be checked for compliance with a protection scheme
+The **reference monitor** grants permission to users to apply certain opperations to a given resource ^fb97be
 
 **Users** `uid`
 - User accounts: humans
