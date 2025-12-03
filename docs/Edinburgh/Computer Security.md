@@ -309,23 +309,36 @@ Kerckhosff principle
 - E and D algorithms are public
 - security relies entirely on the secrecy of the key
 
+Assume that the algorithm is known by everyone. open design principle
+Security by obscurity
+- company documents published or stolen
+- programmer bribed/disclose
+- reverse engineered
+
+unicity distance  使得合理解密唯一的最小密文长度
+- 语言中帮助理解和交流的 冗余
+
 ![](../img/Pasted%20image%2020251001171006.png)
 
 Frequency Analysis
 
 #### One-Time Pad
+(Binary)
 ![](../img/Pasted%20image%2020251001173136.png)
 
 Perfect secrecy
+> 看到某个密文 c 之后，攻击者不能从中判断到底是哪个明文更有可能被加密得到它。密文中不带任何关于明文的信息。
+
+![](../img/Pasted%20image%2020251202222327.png)
+
 ![](../img/Pasted%20image%2020251001172949.png)
 ![](../img/Pasted%20image%2020251001173325.png)
 same likelyhood of keys behind the ciphertext
 
 *Two-time pad attacks*
 
-
-Getting treu randomness
-- the key should not be gurssable from an attacker
+Getting true randomness
+- the key should not be guessable from an attacker
 - if the key is not truly random, frequency analysis might again be possible
 
 OTP is mellable
@@ -333,11 +346,15 @@ OTP is mellable
 > 𝑐′ ∶= 𝑐 ⊕ "𝑡𝑜 𝑏𝑜𝑏 ∶ 00 ... 00" ⊕ "𝑡𝑜 𝑒𝑣𝑒 ∶ 00 ... 00"
 #### Stream Ciphers
 Use a pseudooramdom key rather than a really rondom key
-*Pseudo-Random Gernerator*
+*Pseudo-Random Number Gernerator*
 ![](../img/Pasted%20image%2020251001174638.png)
 
+PRNG Security Properties
+- hard to predict from previous numbers of sequence
+- seed ==> repeating period
+
 RC4: used in HTTPS and WEP
-seed
+no reuse seed
 
 #### Block Ciphers
 ![](../img/Pasted%20image%2020251003170658.png)
@@ -365,6 +382,7 @@ Same input in each block, same output
 
 *Counter (CTR)* mode
 ![](../img/Pasted%20image%2020251003174902.png)
+![](../img/Pasted%20image%2020251202230852.png)
 
 #### Hash functions
 *One-way functions (OWFs)*: easy to compute and hard to invert
