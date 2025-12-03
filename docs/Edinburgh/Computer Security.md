@@ -428,17 +428,22 @@ Public-key encryption
 *Multiplicative group of integers modulo `n`*
 ![](../img/Pasted%20image%2020251008174447.png)
 - Factoring
-- RSA
+- RSA: 利用欧拉函数定理的特点，构造两个超大素数的互质密钥空间
+	- Euler Function $\color{#b293f6}\varphi$: $\varphi(n)$ 是 $1\le x<n$ 中与 n 互素的个数
+	- 欧拉定理$$x^{\varphi(n)}\text{ mod n}=1$$若 p 是素数，则 $\varphi(p) = p-1$
 - Discrete Logarithm Problem
-- Diffie-Hellmam Problem
 
 #### No TTP Asymmetric key distribution
-*Diffie-Hellman protocol*: good for ephemeral encrypt
+*Diffie-Hellman protocol*: good for ephemeral encrypt, key exchange
 ![](../img/Pasted%20image%2020251010171318.png)
 
 raw RSA ==> Man In The Middle
 
 ![](../img/Pasted%20image%2020251010174757.png)
+生成元`g`需要满足 $g^1,g^2,...,g^{p-1}$ 在 $\mathrm{Z}_p$ 空间下都是非零值, 即 $$g^{(p-1)/p_i} \not\equiv 1 \pmod p$$
+ $\mathrm{Z}_p$ 乘法群中的生成元数量为 $$\varphi(\varphi(p))=\varphi(p-1)$$
+
+![](../img/Pasted%20image%2020251203234624.png)
 
 加密find解密
 算法proof
@@ -446,6 +451,9 @@ raw RSA ==> Man In The Middle
 #### Signatures
 Data integrity and origin authenticity in the public-key setting
 ![](../img/Pasted%20image%2020251013171645.png)
+- Nonforgeability
+- Nonmutability
+- Nonrepudiation
 
 ![](../img/Pasted%20image%2020251013171549.png)
 
@@ -461,8 +469,21 @@ www.google.com | openssl x509 -text -noout
 ```
 
 Revocation once the corresponding private key has beed compromised
-- Certificate Revocation Lists (CRLs)
+- Certificate Revocation Lists (CRLs), each CA kept one
 - Online Certificate Status Protocol (OCSP)
+
+###### X.509
+![](../img/Pasted%20image%2020251204003255.png)
+Certification Path 证书信任链
+多CA互相签名
+
+**v3**: Extensions
+- Key and Policy Information
+- Certificate Subject and Issuer Attributes
+- Certification Path Constrains
+
+![](../img/Pasted%20image%2020251204010655.png)
+
 
 ### Post-Quantum Security
 Quantium bits (qubits): Can be in superposition of 0 and 1 sumultaneously

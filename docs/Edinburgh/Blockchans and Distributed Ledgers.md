@@ -654,5 +654,20 @@ secret sharing of each key, joining
 
 ![](../img/Pasted%20image%2020251112205239.png)
 
-Multiple gate ????
-[images]
+Multiple gate
+![](../img/Pasted%20image%2020251204025425.png)
+
+![](../img/Pasted%20image%2020251204025445.png)
+
+![](../img/Pasted%20image%2020251204025344.png)
+
+
+![](../img/Pasted%20image%2020251204025401.png)
+
+![](../img/Pasted%20image%2020251204025939.png)
+
+![](../img/Pasted%20image%2020251204025409.png)
+
+![](../img/Pasted%20image%2020251204025836.png)
+
+
