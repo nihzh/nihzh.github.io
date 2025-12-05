@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -199,28 +199,27 @@
       "random-note:开始漫游笔记": false
     }
   },
-  "active": "b740dedf77e95a8f",
+  "active": "38d04960acb2a656",
   "lastOpenFiles": [
+    "Edinburgh/Applied Machine Learning.md",
+    "Edinburgh/Blockchans and Distributed Ledgers.md",
+    "img/Pasted image 20251205011300.png",
+    "img/Pasted image 20251205010939.png",
+    "img/Pasted image 20251205010537.png",
+    "img/Pasted image 20251205010508.png",
+    "img/Pasted image 20251204232331.png",
+    "img/Pasted image 20251204222834.png",
+    "img/Pasted image 20251204220116.png",
+    "Edinburgh/Secure Programming.md",
+    "Edinburgh/Computer Security.md",
     "img/Pasted image 20251204025939.png",
     "img/Pasted image 20251204025930.png",
     "img/Pasted image 20251204025836.png",
-    "img/Pasted image 20251204025445.png",
-    "img/Pasted image 20251204025435.png",
-    "img/Pasted image 20251204025425.png",
-    "img/Pasted image 20251204025409.png",
-    "img/Pasted image 20251204025401.png",
-    "img/Pasted image 20251204025353.png",
-    "img/Pasted image 20251204025344.png",
-    "img/IMG_20251112_123658.jpg",
-    "Edinburgh/Computer Security.md",
-    "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "Edinburgh/Applied Machine Learning.md",
     "Liverpool/315-Cloud Computing for E-Commerce.md",
     "Liverpool/310-Multi-Agent Systems.md",
     "Liverpool/328-High Performance Computing.md",
     "Liverpool/390-CyberCipher.md",
     "Liverpool/323-Introduction to Computational Game Theory.md",
-    "Edinburgh/Secure Programming.md",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
     "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",

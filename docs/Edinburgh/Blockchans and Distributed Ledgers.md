@@ -671,3 +671,37 @@ Multiple gate
 ![](../img/Pasted%20image%2020251204025836.png)
 
 
+## Blockchain Applications
+### DeFi
+Financial products and services on **decentralized** infrastructure, underlying blockchains system
+![](../img/Pasted%20image%2020251204220116.png)
+
+### Exchanges/Marketplace
+![](../img/Pasted%20image%2020251204222834.png)
+
+![](../img/Pasted%20image%2020251204232331.png)
+
+### Market Capitalization
+- 市值 = 流通量 × 当前价格。
+- 价格来自中心化交易所的“最后一笔成交价”。
+- 可以**被极少量成交 “抬高”**：
+    - 如果某币只有 1 个单位被以 1 美元成交，理论上市值就是“总量 × 1 美元”，但真正进入市场的法币可能非常少
+
+### Stable Coins
+*Fiat-backed stablecoins*: USDT, USDC, Tether
+- 声称背后有1：1的银行/等价现实资产
+- no longer stable when **trust** in system decreases
+![](../img/Pasted%20image%2020251205010508.png)
+
+*Crypto-backed stablecoins*: Dai
+- 用加密资产做超额抵押
+- Leveeraged investment
+![](../img/Pasted%20image%2020251205010537.png)
+
+*Algorithmic stablecoins*
+- 通过自动增发/回收币和“债券”来调节价格
+- 市场信心不足时，无人愿意接盘债券/新币
+![](../img/Pasted%20image%2020251205010939.png)
+
+
+![](../img/Pasted%20image%2020251205011300.png)

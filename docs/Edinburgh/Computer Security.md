@@ -514,18 +514,23 @@ OpenSSH
 ### Operating System
 Mediate between applications and harware
 
-Multi-users: isolate different users
+Multi-users: isolate different users privileges/demand
+- preventing misuse, abuse and damage
 Multi-tasks: isolate different applications running
+- time slice of CPU
+- preventing disrupt, race condition...
 
 *Unix architecture*
-- *kernel
-	- supports secure sharing of low-level resources between users/applications
+- *kernel*: base composition of OS
+	- supports secure sharing of low-level hardware resources between processes/users/applications
 	- limits how applications access computer resources
+	- OS = Kernel + Non-essential OS Applications
 - *Exucution modes*
 	- *User mode*: access to resources through syscall to kernel
-	- *Kernel mode*: direct access to resources
+	- *Kernel mode*: direct access to resources (hardwares)
 		- direct interaction with hardware
-- *System calls*: programs, C library `libc`
+- *System calls*: user mode programs for hardware resources, C library `libc`
+- *Device drivers*: each Input/Output device, only expose drivers API to apps for calling, low-level detailed instructions are operated by driver and kernel
 
 *Processes and process management*
 - an instance of a program currently executing
