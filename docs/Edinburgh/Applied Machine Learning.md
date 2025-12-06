@@ -239,7 +239,7 @@ Sensitive to *outliers*:
 ![](../img/Pasted%20image%2020251006005057.png)
 
 ##### Basis Expansion
-Transform the original features `x` non-linearly into $\color{#bd93f9}𝜙(x)$ and *perform linear regression* on the transformed features, like a set of `M` basis functions
+Transform the original features `x` non-linearly into $\color{#bd93f9}𝜙(x)$ and **perform linear regression** on the transformed features, like a set of `M` basis functions
 ![](../img/Pasted%20image%2020251006005109.png)
 
 So, the model becomes

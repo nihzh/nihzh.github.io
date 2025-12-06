@@ -520,7 +520,7 @@ Multi-tasks: isolate different applications running
 - time slice of CPU
 - preventing disrupt, race condition...
 
-*Unix architecture*
+#### Unix architecture
 - *kernel*: base composition of OS
 	- supports secure sharing of low-level hardware resources between processes/users/applications
 	- limits how applications access computer resources
@@ -532,26 +532,115 @@ Multi-tasks: isolate different applications running
 - *System calls*: user mode programs for hardware resources, C library `libc`
 - *Device drivers*: each Input/Output device, only expose drivers API to apps for calling, low-level detailed instructions are operated by driver and kernel
 
-*Processes and process management*
+#### Processes and process management
 - an instance of a program currently executing
-- unique PID for each
+- unique *PID* for each
 - loaded into RAM
 - CPU time, meory useage, program name...
-- fork: control other processes and **child process inherits context from parent process**
+- *Time Slicing*: giving each a fair share of the CPU, enable multitasking
+- `fork`: create and control another process (**child process**), inherits context from parent process
+![](../img/Pasted%20image%2020251205220645.png)
+
+##### Process Privileges
+- `uid`: `uid 0`: root account, highest privilege
+- `gid`: group
+- `euid`: effective user ID, file owner, 当前进程在euid用户权限下运行
+	- 大多数情况，`euid == uid`
+	- 单独将其设置为高权限用户id，可以令普通用户临时以更高权限执行当前程序，`setuid`
+
+`setbid`: 当程序运行时，其有效组ID会被设置为程序文件所属的组，而不是父进程的组ID （调用者）
+
+setuid: privilege escalation
+
+> 默认低权限运行，只在确有必要时短暂提升权限，完成后立即降回去
+
+##### Inter-Process Communication (IPC)
+- reading and writing files: no privacy, slow, easy to implement
+- shared memory: fast, sync, race condition
+- pipes: producer/consumer
+- sockets
+- signals
+- rermote procedure calls (RPC)
+
+##### Daemons / Services
+typically started by the `init` process and operate with varying levels of perissoins
+
+forked before the user is authenticated, they are able to run with higher perisssions than any user
+
+#### File Access Control
+Unix: Path-Based
+![](../img/Pasted%20image%2020251205223201.png)
+
+principal 主体
+permission 权限
+
+Access Control Entry (principal, type, permission)
+- `type`: allow, deny
+Access Control List: serious of ACE
+
+##### Linux Permissions
+Descretionary Access Control (DAC) 自主访问控制
+- optional ACE
+
+SELinux: Mandatory Access Control
+- no more DAC, control by system security policy administrator
+	- subject
+	- object
+	- permissions
+- Least privilege
+
+##### Windows Permissions
+ACL + allow/deny
+
+Only the ACL of the file in question is inspected before granting access
+
+*Inherited ACEs*: any ACEs applied to a folder may be set to apply to the subfolders and files within it
+
+*explicit ACEs*: SCEs are specifically set
+
+Administrtors may stop the propagation of inheritance at a particular folder
+
+- deny ACE 优先于 allow ACE
+- explicit ACE 优先于 inherited ACE
+- 在继承的 ACE 里，**越近的祖先优先级越高**
+    - 父目录的 ACE > 祖父目录的 ACE > 更上层……
+
+advanced permissions 细分权限
 
 #### RAM: 
-- code for the running program
+- 
 - input data
 - working memory
 - `%eip` to points to next instruction
 
-Stack: from higher to lower `%esp`
-Heap: from lower to higher
+For a piece of address space which allocated to a process
+- *Text*: machine code for the running program, **read-only**
+- *Data*: static variables, initialized before program start
+- *BSS*: static variables, not initialized, 0
+- *Stack*: function calling info, from higher to lower `%esp`
+	- return address, parameters, local variables
+- *Heap*: dynamic segment, variable size, from lower to higher
+	- malloc, new, object...
+
+> Processes are not allowed to acccess the address space of other processes
+
+User space / Kernel space
 
 *Virtural memory*: a section of the hard drive to emulate RAM
 - Memory Management Unit maps logical address -> physical address
+- The segments may be sparse
 
 ![](../img/Pasted%20image%2020251017173451.png)
+
+#### Virtural Machines
+*Emulation*: the host operating system sumulates virtual interfaces that the guest operating system interacts with
+
+*Virtualization*: the virtual interfaces within the VM must be matched with the actual hardware on the host machine
+
+- Heardware Efficiency: resource allocation, better utilization
+- Portability: guestOS == a big file
+- Security: sandbox
+- Management Convenience: snapshot
 
 ### Security principles
 *Defence-in-depth*: build multiple layers of the system, if one machanism fails, other steps up immediately
