@@ -180,14 +180,14 @@ ipconfig /displaydns    # view caches
 ipconfig /flushdns      # clear caches
 ```
 
-*DNS Cache Poisonoing*
+*DNS Cache Poisoning*
 Give a DNS server a false address record and get it cached
 - UDP on port 53
-- 16-bit requeist identifier in payload to match answers
+- 16-bit request identifier in payload to match answers
 - Pharming & Fishing
 - when a resolver
 	- query has **predictable** identifiers and return ports
-	- attacker **answers begore** authoriative name server
+	- attacker **answers begore** authoritative name server
 	- ignore identifier, accepts unsolicited DNS records
 - defences
 	- Query randomization
@@ -289,7 +289,7 @@ UDP scans
 - payload design
 
 *Idle scanning*
-relies on finding a third-party maching as a "zombie", taht has predictable TCP sequence numbers
+relies on finding a third-party machine as a "zombie", that has predictable TCP sequence numbers
 ![](../img/Pasted%20image%2020251202024221.png)
 
 ### Network Security 
@@ -346,7 +346,7 @@ OTP is mellable
 > given the ciphertext 𝑐 = 𝐸(𝑘, 𝑚) with 𝑚 = 𝑡𝑜 𝑏𝑜𝑏 ∶ 𝑚0, it is possible to compute the ciphertext 𝑐′ = 𝐸(𝑘, 𝑚′) with 𝑚′ = 𝑡𝑜 𝑒𝑣𝑒 ∶ 𝑚0 
 > 𝑐′ ∶= 𝑐 ⊕ "𝑡𝑜 𝑏𝑜𝑏 ∶ 00 ... 00" ⊕ "𝑡𝑜 𝑒𝑣𝑒 ∶ 00 ... 00"
 #### Stream Ciphers
-Use a pseudooramdom key rather than a really rondom key
+Use a pseudo-random key rather than a really random key
 *Pseudo-Random Number Gernerator*
 ![](../img/Pasted%20image%2020251001174638.png)
 
@@ -364,7 +364,7 @@ DES
 - 2^56 to do an exhaustive search over the key space, 1997
 - affine approximations to DES, total attack time 2^43
 
-3DES: 3keys, 3 time slow than DES
+3DES: 3keys, enc-dec-enc, 3 time slow than DES
 2DES: meet-in-the-middle attack
 
 Encrypt `𝑀` using a block cipher operating on blocks of length `ℓ` when `|𝑀| ≠ ℓ`
@@ -395,7 +395,7 @@ Same input in each block, same output
 - successor function
 - multiplication of large primes
 
-Hash funciton: arbitrary length and returns a fixed-seze bit string
+Hash function: arbitrary length and returns a fixed-size bit string
 ![](../img/Pasted%20image%2020251006171705.png)
 
 The birthday attack: why large cipher space
@@ -438,6 +438,7 @@ Public-key encryption
 *Diffie-Hellman protocol*: good for ephemeral encrypt, key exchange
 ![](../img/Pasted%20image%2020251010171318.png)
 
+![](../img/Pasted%20image%2020251208052402.png)
 raw RSA ==> Man In The Middle
 
 ![](../img/Pasted%20image%2020251010174757.png)
@@ -638,7 +639,7 @@ User space / Kernel space
 ![](../img/Pasted%20image%2020251017173451.png)
 
 #### Virtural Machines
-*Emulation*: the host operating system sumulates virtual interfaces that the guest operating system interacts with
+*Emulation*: the host operating system simulates virtual interfaces that the guest operating system interacts with
 
 *Virtualization*: the virtual interfaces within the VM must be matched with the actual hardware on the host machine
 
@@ -650,7 +651,7 @@ User space / Kernel space
 ### Security principles
 *Defence-in-depth*: build multiple layers of the system, if one machanism fails, other steps up immediately
 - Firewalls
-- instusion detection and protection systems
+- intuision detection and protection systems
 - network segmentation
 - anti-virus, least privilege
 - strong passwords
@@ -832,7 +833,7 @@ printf("%08x.%08x.%08x.%08x.%08x|%s|");
 safe programming
 ensure that the progrm does not copy more data than the buffer can hold
 
-> OSes may have efeatures to reduce the risks of BOs, but the best way to guarantee safety is to remove these vulnerabilities fro application code
+> OSes may have features to reduce the risks of BOs, but the best way to guarantee safety is to remove these vulnerabilities for application code
 
 ## Zero Knowledge
 NP statements Arbitrary polynominal time computable checks
@@ -896,7 +897,7 @@ Routing information can reveal who you are
 *Anonymity*: A user may use a service or resource without disclosing the user's identity
 
 ![](../img/Pasted%20image%2020251105182027.png)
-- required pair-wise shared secret keys between teh participants
+- required pair-wise shared secret keys between the participants
 - requires large amounts of randomness
 - DoS
 
@@ -925,7 +926,7 @@ the Tor still reveal
 - Direction of travel pattern
 
 Decreasing accuracy at scale raising
-Base Rate Neglect
+Base Rate Neglect 
 
 ### Public Key Transparency
 authentication of the key
@@ -972,7 +973,7 @@ origin: protocol://domain:port
 *window*
 cross-origin scrpt will execute with parent frame/window's origin
 
-no inspectng it, able to call functions
+no inspecting it, able to call functions
 
 `postMessage` interface allows windows to talk to each other no matter which origin they are from
 
@@ -984,7 +985,7 @@ prevents a script from accessing the cookies
 `Set-Cookie`
 
 Cookie policy shares the same main domain
-SOP different sub-somain shoule be viewed as different origins and isolated
+SOP different sub-domain should be viewed as different origins and isolated
 
 `HTTPOnly`: if enabled scripting languages cannot accessing or manipulating the cookie, can prevent GA from accessing cookies set by `example.com`
 
