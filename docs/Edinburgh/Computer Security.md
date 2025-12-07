@@ -49,10 +49,11 @@ Concerns individuals and their expectations on how their data behaviours, and in
 - *Compromise recording*
 
 *Threat Modelling*
-- Who is the adversary
-- What are they allowed to do / What cant we prevent them from doing
-- What we want to prevent the adversary from doing or learning
-- The set of threats we want to protect against given this adversary
+- Who is the adversary and what abilities and access they have
+- Where are they in relation to the objects we are trying to secure
+- What is the aim of the adversary, what re we trying to prevent them from doing at the high-level
+- What particular threats are we trying to prevent that, if successfully taken advatage of , will lead tothe adversary achieving thir goals
+- Are there more than one type of adversary and can they collude
 
 Assets: Hardware, software, information
 Vulnerabilities
@@ -84,7 +85,7 @@ Each packet transported independently through network, handled on a best efforts
 **Media Access Control Address**
 The first three octets of any MAC address are IEEE-assigned  
 Organizationally Unique Identifiers
-- E.g., Cisco 00-1A-A1, D-Link 00-1B-11, ASUSTek 00-1A-92, 00-0a-95 ??????
+- E.g., Cisco 00-1A-A1, D-Link 00-1B-11, ASUSTek 00-1A-92, 00-0a-95 
 
 **Internet Control Message Protocol**
 Network layer protocol, for network testing and debugging
@@ -189,7 +190,7 @@ Give a DNS server a false address record and get it cached
 	- attacker **answers begore** authoriative name server
 	- ignore identifier, accepts unsolicited DNS records
 - defences
-	- Query rendomization
+	- Query randomization
 		- request identifier: 16 bits
 		- return port: 16 bits
 	- DNSSEC
@@ -511,6 +512,11 @@ Given 𝐹: $\color{#b293f6}{0, 1}^𝑛 → {0, 1}$, Grover's algorithm makes $�
 OpenSSH
 
 ## OS Security
+The core issue is **insecure coding**, always
+- check variable bounds
+- check types
+- use secure lib / secure language
+
 ### Operating System
 Mediate between applications and harware
 
@@ -783,6 +789,9 @@ Unsave libc functions: `strcpy`, `strcat`, `gets`, `scanf`
 
 Safe function: `fgets`
 
+恶意代码必须在统一进程的地址空间内
+要准确猜到返回地址应该改成什么
+
 #### Arithmetic overflow
 variables wrapping around
 ![](../img/Pasted%20image%2020251027185052.png)
@@ -873,6 +882,13 @@ Revocation: private key compromised
 - post on CA's site
 
 简化握手
+
+1. 选择加密算法和哈希函数
+2. 验证服务端证书
+3. 双方生成共享会话密钥 shared secret keys
+	1. client生成随机数，用服务端pk加密发送
+	2. 配合握手参数，推导shared secret key
+4. 包中附带MAC，消息完整性认证
 ### Anonymous Communication
 Routing information can reveal who you are
 - Your IP address is Your ID
@@ -978,6 +994,10 @@ A cookie with the Secure attribute is sent to the server only with an encrypted 
 *SameSite Cookies*
 Prevent the cookies go anywhere except the given domain
 Browser will not send them
+
+Domain: 仅在相同域/上层域中共享
+Path: only available on specifig path
+Secure sign
 
 ### Session Hijacking
 Attacker get a valid session ID
