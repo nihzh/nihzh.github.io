@@ -23,21 +23,6 @@
             }
           },
           {
-            "id": "b392d7288f03f771",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Edinburgh/Computer Security.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Computer Security"
-            }
-          },
-          {
             "id": "b740dedf77e95a8f",
             "type": "leaf",
             "state": {
@@ -66,9 +51,24 @@
               "icon": "lucide-file",
               "title": "Applied Machine Learning"
             }
+          },
+          {
+            "id": "c53585dea1a4feb4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Edinburgh/25圣诞-德国闪击波兰.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "25圣诞-德国闪击波兰"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -181,8 +181,7 @@
               "title": "All properties"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -191,18 +190,24 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "publish:发布更改": false,
+      "bases:创建新数据库": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "templates:插入模板": false,
       "markdown-importer:打开 Markdown 格式转换器": false,
-      "random-note:开始漫游笔记": false,
-      "publish:发布更改": false,
-      "bases:创建新数据库": false
+      "random-note:开始漫游笔记": false
     }
   },
-  "active": "b392d7288f03f771",
+  "active": "c53585dea1a4feb4",
   "lastOpenFiles": [
+    "Edinburgh/Applied Machine Learning.md",
+    "Edinburgh/25圣诞-德国闪击波兰.md",
+    "Edinburgh/Computer Security.md",
     "img/Pasted image 20251208052402.png",
+    "img/Pasted image 20250919175136.png",
+    "Edinburgh/Blockchans and Distributed Ledgers.md",
+    "Liverpool/305-Biocomputation.md",
     "img/Pasted image 20251205223201.png",
     "img/Pasted image 20251205220645.png",
     "img/Pasted image 20251205220537.png",
@@ -211,13 +216,12 @@
     "img/Pasted image 20251205010537.png",
     "img/Pasted image 20251205010508.png",
     "img/Pasted image 20251204232331.png",
-    "img/Pasted image 20251204222834.png",
-    "img/Pasted image 20251204220116.png",
-    "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Secure Programming.md",
-    "Edinburgh/Computer Security.md",
-    "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "Edinburgh/Untitled.base",
+    "Liverpool/315-Cloud Computing for E-Commerce.md",
+    "Liverpool/310-Multi-Agent Systems.md",
+    "Liverpool/328-High Performance Computing.md",
+    "Liverpool/390-CyberCipher.md",
+    "Liverpool/323-Introduction to Computational Game Theory.md",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
     "网安/渗透测试--蚁景网安/4.7 渗透测试权限维持.md",
@@ -230,16 +234,10 @@
     "网安/渗透测试--蚁景网安/1.7 未授权访问.md",
     "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
     "网安/渗透测试--蚁景网安/1.0 信息收集.md",
-    "Liverpool/328-High Performance Computing.md",
-    "Liverpool/315-Cloud Computing for E-Commerce.md",
     "网安/渗透测试--蚁景网安/1.6 Web漏洞扫描.md",
     "网安/渗透测试--蚁景网安/1.5 弱口令密码破解.md",
-    "Liverpool/310-Multi-Agent Systems.md",
     "网安/渗透测试--蚁景网安/3.3 CobaltStrike渗透框架.md",
-    "Liverpool/390-CyberCipher.md",
     "网安/渗透测试--蚁景网安/3.1 Matasploit渗透框架.md",
-    "网安/渗透测试--蚁景网安/2.5 其它中间件漏洞.md",
-    "网安/渗透测试--蚁景网安/2.2 JBoss漏洞.md",
     "GRE",
     "Liverpool",
     "未命名 1.canvas",
@@ -253,6 +251,7 @@
     "indexthemeable.html",
     "index - not themeable.html",
     "index - 副本.html",
-    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip"
+    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 3.zip",
+    "img/PTE_远程连接工具_WindTerm_2.6.0_Prerelease_1_Windows_Portable_x86_64 2.zip"
   ]
 }
