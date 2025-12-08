@@ -44,7 +44,7 @@ Concerns individuals and their expectations on how their data behaviours, and in
 - *Psycological acceptability*: 
 	- UI should be well designed and intuitive
 	- security-related settings should adhere to ordinary user might expect
-- *Work factor*: cost, compaired with attacker resources
+- *Work factor*: cost, compared with attacker resources
 	- NONONO
 - *Compromise recording*
 
@@ -52,7 +52,7 @@ Concerns individuals and their expectations on how their data behaviours, and in
 - Who is the adversary and what abilities and access they have
 - Where are they in relation to the objects we are trying to secure
 - What is the aim of the adversary, what re we trying to prevent them from doing at the high-level
-- What particular threats are we trying to prevent that, if successfully taken advatage of , will lead tothe adversary achieving thir goals
+- What particular threats are we trying to prevent that, if successfully taken advantage of, will lead to the adversary achieving their goals
 - Are there more than one type of adversary and can they collude
 
 Assets: Hardware, software, information
