@@ -498,7 +498,7 @@ Represent data using a "few" variables
 - transformation of original: linear F =⇒ e = Fx
 
 ##### Principal Components Analysis
-Define printcipal commponents
+Define principal commponents
 - 1st PC: direction of **greatest** variation in the data
 - 2nd PC: ⊥ 1st PC; **greatest remaining** variation
 - ... until D, for $\color{#b293f6}x\in\mathrm{R}^D$
@@ -815,6 +815,9 @@ Image X with K\*K weight matrix W
 Multiple weight matrices can be used to produce multiple feature maps
 ![](../img/Pasted%20image%2020251129030455.png)
 
+- **learnable** convolutional filters
+- **non-learnable** pooling layers
+	- reduce the spatial dimensionality of the feature maps
 ### Recurrent Neural Networks (RNN)
 For sequence data (time series)
 Each input is processed sequentially, one item at a time, past information is retained through past hidden states
