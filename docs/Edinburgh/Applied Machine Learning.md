@@ -670,6 +670,22 @@ Formally examine two opposing conjectures (hypothesis): $H_0$ and $H_1$, Analyse
 ![](../img/Pasted%20image%2020251028004126.png)
 
 ![](../img/Pasted%20image%2020251028004140.png)
+二者命题应该完全相反, Null是可证明的, 对Null证伪以证明Alternative
+
+单样本检验
+- Null: 总体均值等于某固定值
+- Alternative: 总体均值不等于某固定值
+双样本检验
+- 独立样本
+	- Null: 两个样本均值相等
+	- Alter：两个样本不相等 / 大于 / 小于
+- 配对样本
+	- Null: 差异等于0
+	- Alter: 差异不等于0
+方差分析检验
+- Null: 所有总体均值相等
+- Alter: 至少有两个, 总体的均值不相等
+
 
 
 ![](../img/Pasted%20image%2020251028004054.png)
