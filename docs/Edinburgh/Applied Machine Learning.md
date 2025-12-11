@@ -8,10 +8,10 @@ Pattern Recognition and Machine Learning
 
 ![](../img/Pasted%20image%2020250918203215.png)
 model `f`
-input `x` : features or oberservations or measurements about the real-parameters $\color{#b293f6}\theta$: things going to learn from data
+input `x` : features or observations or measurements about the real-parameters $\color{#b293f6}\theta$: things going to learn from data
 output `y`
 
-*Manually defining exhaustivev rules for a given task can be very challenging, as it is difficult to account for all possibilities.*
+*Manually defining exhaustive rules for a given task can be very challenging, as it is difficult to account for all possibilities.*
 
 predefined rules
 measure a given real y-value and prediction from model
@@ -40,13 +40,13 @@ predicting some continuous quantity
 ## Classification
 given an input feature vector x, predicting an output vector y
 
-- binary classivication: two possibilities
+- binary classification: two possibilities
 - multiclass classification: C possible options
 
 ### Generative Classification
 **Making Predictions**
 通过高斯分布确定特征
-- Assumption: conditined on the class, Data is Gaussian distributed\
+- Assumption: conditioned on the class, Data is Gaussian distributed\
 ![](../img/Pasted%20image%2020250918222504.png)
 
 How likely it is that a test datapoint is from a given class
