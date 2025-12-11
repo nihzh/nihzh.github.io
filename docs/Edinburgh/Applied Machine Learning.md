@@ -77,7 +77,7 @@ model fitting / model training
 - 对标签的NLL, $\color{#b293f6}\theta_b$​：控制标签分布（先验，Bernoulli 分布）
 - 对特征的NLL, $\color{#b293f6}\theta_g$​：控制特征分布（条件分布，Gaussian 分布）
 
-#### Mernoulli Distribution
+#### Bernoulli Distribution
 ![](../img/Pasted%20image%2020250919205721.png)
 NLL
 ![](../img/Pasted%20image%2020250919225000.png)
@@ -108,8 +108,8 @@ The main diagnal contains *variances*, i.e. the *covariance* of each dimension w
 
 ![](../img/Pasted%20image%2020250923234808.png)
 
-- **LDA (Linear Discriminant Analysis)**：假设所有类别共享同一个协方差矩阵 Σ\SigmaΣ。 → 决策边界是线性的。
-- **QDA (Quadratic Discriminant Analysis)**：每个类别都有自己的协方差矩阵 Σc\Sigma_cΣc​。 → 决策边界是二次曲线。
+- **LDA (Linear Discriminant Analysis)**：假设所有类别共享同一个协方差矩阵$\Sigma$。 → 决策边界是线性的。
+- **QDA (Quadratic Discriminant Analysis)**：每个类别都有自己的协方差矩阵 $\Sigma_c$。 → 决策边界是二次曲线。
 
 ![](../img/Pasted%20image%2020250923194233.png)
 
@@ -167,7 +167,7 @@ If we can find a hyperplane to separate the data based on the class labels, the 
 #### Logistic Regression
 Model predictionos need be in range `[0, 1]`
 
-*Logistic function*
+*Logistic function*: sigmoid
 
 ![](../img/Pasted%20image%2020251003000434.png)
 As `z` goes from $\color{#bd93f9}-\infty$ to $\color{#bd93f9}\infty$, $\color{#bd93f9}\sigma(z)$ goes from 0 to 1, has a **sigmoid** shape
@@ -652,7 +652,7 @@ For a set of samples $\color{#b293f6}x_1$, ..., $\color{#b293f6}x_N$, ... from a
 *Student's-t Distribution*
 For **smaller N**, not Gaussian
 **Unknown population finate variance $\color{#b293f6}\sigma^2$**
-estimate sample variance $\color{#b293f6}s^2=\frac{1}{N-1}\sum_{i=1}^{N}(x_i-\bar{x}_N)^2$
+estimate sample variance 样本方差 $\color{#b293f6}s^2=\frac{1}{N-1}\sum_{i=1}^{N}(x_i-\bar{x}_N)^2$
 - `n-1`: Bessel's correction
 ![](../img/Pasted%20image%2020251027230547.png)
 uses $\color{#b293f6}s=\sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i-\bar{x}_N)^2}$ , the precision changes along the sample size
@@ -685,8 +685,6 @@ Formally examine two opposing conjectures (hypothesis): $H_0$ and $H_1$, Analyse
 方差分析检验
 - Null: 所有总体均值相等
 - Alter: 至少有两个, 总体的均值不相等
-
-
 
 ![](../img/Pasted%20image%2020251028004054.png)
 
