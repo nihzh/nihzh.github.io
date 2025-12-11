@@ -1,10 +1,9 @@
-* **plugins**
-  * **obsidian-git**
-    * [data.json](plugins/obsidian-git/data.json)
-    * [main.js](plugins/obsidian-git/main.js)
-    * [manifest.json](plugins/obsidian-git/manifest.json)
-    * [obsidian_askpass.sh](plugins/obsidian-git/obsidian_askpass.sh)
-    * [styles.css](plugins/obsidian-git/styles.css)
+* **obsidian-git**
+  * [data.json](obsidian-git/data.json)
+  * [main.js](obsidian-git/main.js)
+  * [manifest.json](obsidian-git/manifest.json)
+  * [obsidian_askpass.sh](obsidian-git/obsidian_askpass.sh)
+  * [styles.css](obsidian-git/styles.css)
 * **Edinburgh**
   * [25圣诞-德国闪击波兰](Edinburgh/25圣诞-德国闪击波兰)
   * [Applied_Machine_Learning](Edinburgh/Applied%20Machine%20Learning)
