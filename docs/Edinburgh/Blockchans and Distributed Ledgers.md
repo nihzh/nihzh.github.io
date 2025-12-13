@@ -10,10 +10,21 @@ One-way functions: P != NP
 
 Digital Signatures, producesd by one specified entity
 - depend on the file signing
+- RSA
 Algos
 - KeyGen: input security parameter --> signing-key, verificatoin-key
 - Sign: sign the message with signing-key
 - Verify: message and signature, varification-key
+
+**Proof of Work**
+Given some data ensure that some amount of work has been invested for them
+- efficient verification
+- no computational shortcuts
+- independence for symmetry-breaking
+
+*Proof of stake* these years
+
+System run by the entities capable of issuing PoX
 
 global matching
 ![](../img/Pasted%20image%2020250917195126.png)
@@ -23,6 +34,12 @@ File transfer and cloud storage: Authenticated protocols
 - Don't trust, verify!
 
 Hash-based vs Digital signature-based
+
+cryptographyic puzzle, moderate hard to solve
+
+dice: 出块概率事件，能力越大概率越大
+
+symmetry breaking: keep the longer chain
 
 ##### Merkle Tree
 - Binary, binary full and binary complete
@@ -51,7 +68,7 @@ Client checks whether proof `π` of chunk `x` is correct w.r.t. stored `MTR`
 4. Verifier checks that computed root is equal to `MTR`
 ![](../img/Pasted%20image%2020250924185712.png)
 
-**Proof of non inclusion for x**
+**Proof of non-inclusion for x**
 Show proof-of-inclusion for previous `H<` and next `H>` element in set
 - proof-of-inclusion is correct
 - they are adjacent in tree
@@ -69,7 +86,7 @@ Initialize with empty root, two operations
 - *add(key, value)*
 - *query(key)* -> value
 
-*Patricia trie*: An isolated path, with unmarked nodes which are *only children*, is merged into single edge, the label is teh concat of the labels merged
+*Patricia trie*: An isolated path, with unmarked nodes which are *only children*, is merged into single edge, the label is the concat of the labels merged
 ![](../img/Pasted%20image%2020250924192632.png)
 
 *Merkle Patricia trie*
@@ -119,6 +136,9 @@ Proof-of-work equation, the value known as the **blockid**
 - Input: a proof of spending an existing UTxO
 - Output: a varification procedure and a value
 ![](../img/Pasted%20image%2020250924195359.png)
+Input：取钱：引用一个之前output是我的UTxO，提供我的私钥
+Output：花钱：填写解锁的 UTxO 哈希和index，设置收款者提取这笔金额的条件（一般是提供私钥）
+
 Each block contains a coinbase, only have outputs
 coinbase 的 outputs 定义了谁能拿到矿工奖励以及如何花这笔钱
 
@@ -136,7 +156,7 @@ Each node stores a list of peers (IP), when Alice connects to Bob, Bob sends Ali
 
 "Known peers" can be extra specified when running a node
 
-*gossip protocol*: peer to peer diffusion, when recieves some unfamiliar data, **broadcast** it, until whole network learns it
+*gossip protocol*: peer to peer diffusion, when recieves some **unfamiliar data**, **broadcast** it, until whole network learns it
 
 *Eclipse attacks*
 Isolate some **hosest nodes** in the network, effectively causing a network split in two partitions A and B. If peers in A and peers in B are disjoint and don't know about each other, the ntworks will remain isolated
@@ -152,20 +172,23 @@ A contract is a legally binding agreement that defines and governs the rights an
 
 *Bitcoin Script*
 - stack-based
-- Notation: <>, data in the script
+- Notation: <>, data in the script enclosed
 - Opcodes: commands for functions
 
 ![](../img/Pasted%20image%2020251001181934.png)
 
 
 ## Ethereum
-Transaction-based deterministic state machine
+**Transaction-based deterministic state machine**
+- universal replicated
 - global state
-- decentralized applications/computing infrastructure
+- decentralized computing infrastructure / applications (Dapps)
 - stack-based
 - turing-completeness
+- P2P network connects participants
 
 **Global state of Ethereum**: *accounts* which interact to each other through *transactions* (or *messages*)
+- 20 byte address
 
 ### Ethereum Accounts
 - *personal account*
@@ -182,6 +205,7 @@ Create -> Interact -> Destroy
 
 ![](../img/Pasted%20image%2020251002110018.png)
 *Signature*: sender's private key
+
 *Data*:
 - Create: *Smart contract code* + *initial arguments*
 - Interaction: Which method to call + arguments
@@ -196,7 +220,7 @@ Can only send transactions when other transactions received
 *Message*: a transaction except it is **produces by a contract**
 - Exist only in the Ethereum execution environment
 - Leads to the recipient account running its code
-- Relationship with other contracts
+- Establish relationships with other contracts
 
 Ethereum Virtual Machine
 - A quashi Turing complete machine
@@ -205,7 +229,7 @@ Types of transactions
 ![](../img/Pasted%20image%2020251002111704.png)
 
 
-*Gas*: Every computationn step has a fee, unit in gas
+*Gas*: Every computation step has a fee, unit in gas
 
 `gasLimit`: 用户愿意为这笔交易最多提供多少gas
 `gasUsed`: 实际执行过程中消耗的gas

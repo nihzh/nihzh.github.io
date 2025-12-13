@@ -1,0 +1,15 @@
+{
+  "showCLICommands": true,
+  "addExtensionsToInternalLinks": "html",
+  "injectAppCSS": "light",
+  "injectThemeCSS": false,
+  "customCSSFile": null,
+  "displayYAMLFrontmatter": false,
+  "linkStrippingBehaviour": "text",
+  "highDPIDiagrams": true,
+  "pandoc": "E:\\pandoc-3.8.3\\",
+  "pdflatex": null,
+  "outputFolder": "D:\\Downloads",
+  "extraArguments": "--resource-path=\"D:\\文档\\nihzh.github.io\\docs\\img\\\"\n",
+  "exportFrom": "html"
+}
