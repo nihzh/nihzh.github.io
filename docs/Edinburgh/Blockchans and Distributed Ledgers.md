@@ -457,7 +457,12 @@ A transaction history and/or state of the service needs to be agreed by all serv
 
 ![](../img/Pasted%20image%2020251015183440.png)
 
-Doesn't matter the parties input of the agreement: All outputs are the same
+If consensus protocol secure:  
+- Adversary corrupts A0: output of honest parties (that belong to A1) should be 1.  
+- Adversary corrupts A1: output of honest parties (that belong to A0) should be 0.  
+- Adversary corrupts no-one: output of all parties should be the same.
+
+![](../img/Pasted%20image%2020251214210645.png)
 
 Bitcoin: a < 1/2
 51% attack
@@ -503,7 +508,7 @@ $\color{#bd93f9}\text{Log}_j[t]$ is Log of party `j` at time `t`
 Broadcast the whole book --> check the chain of hashes
 
 #### Basis Properties
-##### *Common prefix*  **(Consistency)** $$\forall r_1, r_2, (r_1 \le r_2), P_1, P_2, \text{ with } C_1, C_2 : C_1^{\lfloor k \rfloor} \preceq C_2$$
+*Common prefix*  **(Consistency)** $$\forall r_1, r_2, (r_1 \le r_2), P_1, P_2, \text{ with } C_1, C_2 : C_1^{\lfloor k \rfloor} \preceq C_2$$
 > 对任意两个诚实节点 `P1`,`P2` 在任意两个时间点 `r1`≤`r2`，
 > 如果你从较早节点 `P1`​ 的区块链中去掉最后 `k` 个区块，
 > 那么得到的链一定是另一个节点 `P2` 当前区块链的前缀。
@@ -513,11 +518,16 @@ Broadcast the whole book --> check the chain of hashes
 - Confirmation depth: 6 confirmations
 - The property holds true, in a probabilistic sense, with an error that decays exponentially in `k`.
 
-##### *Chain Growth* **(Liveness)** $$Parameters\space\tau \in (0,1), \, s \in \mathbb{N}$$In any period of `s` rounds at least `τs` blocks are add to the chain of an honest party `P`. Where 
+Attack: Common prefix breaks
+
+*Chain Growth* **(Liveness)** $$Parameters\space\tau \in (0,1), \, s \in \mathbb{N}$$In any period of `s` rounds at least `τs` blocks are add to the chain of an honest party `P`. Where 
 τ≈probability that at least one honest party finds a PoW in a round.
+*Error probability exponentially decays in `s`*
 > 区块链会持续增长，不会陷入死锁，极大概率成立
 
-##### *Chain Quality* **(Liveness)** $$\mu \in (0,1), \, \ell \in \mathbb{N}$$
+Attack: abstention breaks
+
+*Chain Quality* **(Liveness)** $$\mu \in (0,1), \, \ell \in \mathbb{N}$$
 The ratio of blocks of an `ℓ-long` segment of an honest chain produced by the adversary is bounded by `(1−μ)ℓ`
 μ：链质量参数，表示诚实节点在该区段中占据的最小比例
 
@@ -532,11 +542,14 @@ The property holds true probabilistically with an error that exponentially decay
 > 只要 $t < \tfrac{n}{2}$，就有 $\mu>0$；当 $t \to \tfrac{n}{2}$​ 时，$\mu \to 0$。
 > 当$\mu >  0$, 系统才具备自愈能力
 
+Over time the adversary cannot produce blocks at the same rate as honest parties
+
 *Block Withholding Attacks*
 > Attacker mines privately and releases their block at the same time an honest party releases its own block
 > Assuming honest propagation favours the adversary, the honest block is dropped, reducing chain quality
 
-*Hash operations*: $2^{78}$ hashing operations
+Ledger Consensus: ever-going protocal
+Hash operations: $2^{78}$ hashing operations
 
 Mining pools parallelising: work together to solve PoW for the same block
 - shares
@@ -544,7 +557,7 @@ Mining pools parallelising: work together to solve PoW for the same block
 #### Dynamic Availability
 *T (PoW algorithm target)*: how difficulty of the Proof of Work algorithm (probability)
 ![](../img/Pasted%20image%2020251015195437.png)
-if T is small, the hardness increase
+if T is small, the hardness increase; 
 with the attendance increase, the hardness raise
 ![](../img/Pasted%20image%2020251016022441.png)
 
@@ -608,10 +621,10 @@ pk <- miner's VRF public key
 ![](../img/Pasted%20image%2020251023021438.png)
 Time slot into VRF, for next lottery randomness $$VRF(sk_n, s || ts) < T \cdot stake\_factor_n$$
 *Key Grinding Attack*: attacker play multiple possible VRF calculations prior to committing to a particular key
+- commit keys, randomness to VRF
 
 *epoch* : each associated with a random string, to randomness the lottery `R`
 - each epoch has its own stakeholder distribution and randomness
-
 
 *Long-range attack*: a branch from an old block, increasing stake and get majority
 - costless: the attacker can create an arbitrarily long chain
@@ -654,11 +667,60 @@ Binary consensus protocol
 PoW 依赖算力市场恢复信任；  
 PoS 则可以让系统**经济地惩罚攻击并自修复**。
 
+## Cryptocurrency Economics
+*Absolute Rewards*
+- Each block of the adopted chain gives to its producer
+- Obtain a unique outcome of the protocol
+The utility of a coalition is equal to the number of BTC that it has obtained at the end of the execution
+
+*Relative Rewards*
+The utility of a coalition in Bitcoin is equal to the amount of BTC that it earns, divided by the total amount of BTC that all participants receive at the end of the execution $$U_i=<\text{sum rewards of }P_i>/<\text{sum rewards of all parties}>$$
+### Selfish Mining
+A will be capable of censoring blocks, if  
+- A's chain gets two blocks ahead of the public chain  
+- A manages to deliver its block to the other parties first  
+挖到块之后不公布，等到其它矿工浪费算力生成新块后公布
+
+In principle, when an honest party receives two chains of the same length, it chooses the first that it received
+
+censoring blocks
+
+During the attack, the total (expected) number of blocks in the public ledger is **less than the expected** number of blocks when A follows the protocol
+
+![](../img/Pasted%20image%2020251215000248.png)
+相对收益的分母变小 ==> 相对收益提高
+- 让**别人挖到的块更大比例白费**
+降低增长速度，难度下调，出块变快，绝对收益也有可能提高
+
+#### Block Reward Zero Attack
+当区块奖励变成0，攻击者可以通过构造**交易费更少**/**剩下更多未领取交易费**的新区块，吸引矿工加入
+
+#### Bribery Attack
+向愿意加入新分叉的矿工支付贿赂
+钱可以在公共链上双花，当新分支没有胜出，攻击者不必花费
+
+### Mining Pools
+多成员，按比例分配奖励
+$$T_{pool}<H(B)<T_{bitcoin}$$
+成员将coinbase 支付地址写成矿池领队地址，证明工作
+按算力贡献比例分配奖励
+
+A 用一部分算力渗透到 B 的矿池里，照常提交 shares 领取分成，但一旦挖到真正可出块的解就不提交，从而让 B 的真实出块数下降、B 内部分成被稀释，而 A 的“相对收益份额”上升。
+
+Pool A will produce (α-α’)\*n blocks.  
+Pool B will produce β\*n blocks (same as before)
+
 ## Anonymity
-*Pseudonyms*
+*Eponymous*: 实名，可归因
+*Pseudonyms*：化名，标签, bitcoin
+*Anonymous*：匿名, hide in public
+
 Fungibility: coins are interchangeable
 
 ### Transaction Anonymization
+Trusted party mixer
+CoinJoin: multiple-input transaction
+
 ![](../img/Pasted%20image%2020251105194423.png)
 shuffle
 
@@ -667,15 +729,16 @@ shuffle
 ![](../img/Pasted%20image%2020251105201001.png)
 
 ![](../img/Pasted%20image%2020251105201254.png)
-
 ![](../img/Pasted%20image%2020251105201740.png)
 *Fair Swaps*: A and B exchange secrets, either none of them gets their output, or both do
-- resort to a trustedn third party
-- with penalties
+- resort to a trusted third party
+- either both parties get their output, offending party with penalties
 
 ![](../img/Pasted%20image%2020251105201819.png)
 
-Ring signature
+*Group signatures*: 群体中有人签名，不知道是谁
+*Traceable signatures*: tracing authority，关联成员行为
+*Ring signature*: 签名者从一个子集（ring）里临时选人拼成匿名集，验证者只知道“这个子集中有人签了”无需管理者
 
 ### Zero-Knowledge
 #### ZK-SNARK
@@ -694,6 +757,8 @@ The size of the proof 𝜋 and the complexity of its verification are **independ
 #### Zerocash
 ![](../img/Pasted%20image%2020251112191711.png)
 ![](../img/Pasted%20image%2020251112191707.png)
+Pour 时公开 sn（防双花），生成 ψ1, ψ2，并证明：新币格式正确、旧币承诺在 Merkle tree 中、sn/vk 与密钥关系正确、金额守恒 v1+v2=v，且把必要随机数加密给接收方。
+
 ### Network Security
 Bitcoin: P2P network
 Peers address book: how to maintain
