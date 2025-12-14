@@ -222,14 +222,18 @@ Can only send transactions when other transactions received
 - Leads to the recipient account running its code
 - Establish relationships with other contracts
 
-Ethereum Virtual Machine
-- A quashi Turing complete machine
-
 Types of transactions
 ![](../img/Pasted%20image%2020251002111704.png)
 
+`selfdestruct`
+
+Ethereum Virtual Machine
+- bytecode instructions, represents an operation (opcode)
+- A quashi Turing complete machine
+- crypto primitives
 
 *Gas*: Every computation step has a fee, unit in gas
+- measure coputations
 
 `gasLimit`: 用户愿意为这笔交易最多提供多少gas
 `gasUsed`: 实际执行过程中消耗的gas
@@ -239,10 +243,15 @@ Types of transactions
 	- `baseFee`: 由协议自动调整的底价, 随网络拥堵程度波动
 $$gasUsed*(baseFee+priorityFee)$$
 
+Gas Limit
+Out of gas transactions are not refundable
+
+$$\text{Gas limit}*\text{Gas Price}=\text{Max transaction fee (Gwei)}$$
+
 ![](../img/Pasted%20image%2020251001193138.png)
 startgas & gasprice block
 - all unused gas is refunded
-- gas (price) raised determines how quickly a transaction will be included in a block
+- gas (price) raised determines how quickly a transaction will be included in a block, higher gas price makes transaction more appealing to miners
 
 ### Ethereum Block
 Contain: transaction list and most recent state
@@ -256,12 +265,18 @@ A high level programming language for writeing smart contracts on Ethereum, comp
 
 `pragma solidity ^0.8.1`enable certain compiler (version) features or checks
 
+`address payable`
+- an Ethereum address (20 byte)
+- enables to send Ether to the address
+
 ```solidity
 contract <ContractName> {
 	constructor (uint x, ...) { ... }
 	
 	address owner;
 	address payable anotherAddress;
+	
+	bytes32 salt;
 	
 	enum State {Created, Locked, Inactive}
 	
@@ -271,29 +286,41 @@ contract <ContractName> {
 		bool voted;
 		...
 	}
+	
+	// Reference types
+	uint[2][] flags;
+	
+	function create() public{
+		uint[] memory a = new uint[](7);
+		flags.push([0,1])
+	}
+	
+	// key => value
+	mapping(address => uint256) balances;
 }
 ```
+`bytes` similar to `byte[]` but less gas
+
+**Visibility**
+- `public`: can be called
+	- contracts
+	- internally
+	- personal accounts
+- `external`: can be called **only externally**, variables cannot be decleared as external
+- `internal`: can be called **only internally**, accessible by child contract (inherit)
+- `private`: can be called only from the contract, no derived
+
+**Declarations**  
+- View: They promise not to modify the state  
+- Pure: They promise not to read from or modify the state.  
+- Payable: Must be used to accept Ether
 
 State variables
 Local variables
 
-##### Types
-
-- 2 Category
-	- Value types
-	- Reference types
-- Undefined or NULL not exist
-- Uninitialised variables always have a default value (zero-state)
-- C99
-
-address
-static and dynamic arrays
-mappings: key => value
-##### Visibility
-public
-external
-internal
-*private*: can be called only by the contract in which they are defined and not by a derived contract
+Undefined or NULL not exist
+Uninitialised variables always have a default value (zero-state)
+C99
 
 ##### Inheritance
 interface
@@ -305,11 +332,21 @@ contract Bank is Regulator {}
 ```
 
 ##### Data location
-**Reference type**: storage and memory
+Reference type
+storage / memory
+calldata: specitallocation for function's arguments
+- read only
+- cheaper than memory
+- used for dynamic params of an external function
 
 ##### Events, Modifiers and Global variables
-EVM logging machanism, stored arguments
-listeners
+EVM logging machanism
+stored arguments in the transaction log
+listeners to events
+
+Ether units, Time units
+
+![](../img/Pasted%20image%2020251214034251.png)
 
 ### Potential Attacks
 #### Denial-of-Service
@@ -331,7 +368,7 @@ Design pattern: *pull over push*
 #### Reentrancy
 ![](../img/Pasted%20image%2020251008183526.png)
 ![](../img/Pasted%20image%2020251008183530.png)
-
+攻击者（接收方）仅修改自己的代码
 ##### solutions
 Design pattern *Checks-Effects-Interactions*
 - Perform checks on outputs, sender, value etc.
@@ -339,28 +376,35 @@ Design pattern *Checks-Effects-Interactions*
 - Interact with other accounts via external calls or send/transfer
 
 Finish all **internal work** (state changes) and then call **external** functions
-
-Mutexes
+*Mutex*: reentrancy lock, exclusive running the function
+Pull over push
 
 #### Solidity specific hazards
 ##### Forcibly Sending Ether to a Contract
 misuse of `this.balance`
-Send ether with `selfdestruct(victimContractAddress)` will not trigger contact's fallback
+Send Ether with `selfdestruct(victimContractAddress)` will not trigger contact's fallback
+set contracts address as recipient of block rewards
 **Avoid strict equality checks with the contract's balance**
 
 `delegatecall` forwards calls from one contract to another
+- `msg.sender` and `msg.value` keep their original values
+- Storage, current address and balance still refer to the calling contract
+
+`Library`直接调用别人的代码
 
 tx.origin ==> `msg.sender`   onlyOwner
 
 keep `fallback` and `receive` logically minimise
 - only `emit event` in `fallback`
+- only checking and record in `recieve`
 
 #### Default values
 Solidity sign empty/zero value automatically for every uninitialised variable
+- Sparse Merkle Trees: non-inclusion: prove **empty value** in leaf for corresponding key
 
 *Nomad Bridge Hack*
 
-Always check user input
+Always check user input thorughly
 Even never accessed before, it has zero value
 
 Keep simple
@@ -377,17 +421,16 @@ Cryptographic *Commitment scheme*
 - Hiding: a commitment reveals no information about its committed value
 
 Possible **DoS** and **forced gas cost**
-User is forced to spend extra gas for new `tx` that posts new commitment
-Attacker can continue front-running until they run out of money (to pay gas)
+User is forced to spend extra gas for new `tx` that posts new commitment. Attacker can continue front-running until they run out of money (to pay gas)
 
 ##### Generating Randomness
-Insecure, can be manipulated by a **malicious miner**
+**Insecure**, can be manipulated by a **malicious miner**
 ![](../img/Pasted%20image%2020251008192842.png)
 
 Intra-transaction information leak
-If same-block `txs` share randomness source, attacker can check whether conditions are favourable **before acting**
+If same-block `txs` **share randomness source**, attacker can check whether conditions are favourable **before acting**
 
-*validate block's age*
+*validate block's age*, future block as source of randomness
 miner is still able to keep newly-minded blocks hidden
 
 ##### Solutions
@@ -400,6 +443,7 @@ miner is still able to keep newly-minded blocks hidden
 ![](../img/Pasted%20image%2020251008193930.png)
 
 #### Overflow/Underflow: number
+重入导致0-1数值下溢
 `uint256` overflow/underflow in *Solidity* < 0.8
 
 #### Gas Fairness
