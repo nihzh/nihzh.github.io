@@ -760,13 +760,25 @@ The size of the proof 𝜋 and the complexity of its verification are **independ
 Pour 时公开 sn（防双花），生成 ψ1, ψ2，并证明：新币格式正确、旧币承诺在 Merkle tree 中、sn/vk 与密钥关系正确、金额守恒 v1+v2=v，且把必要随机数加密给接收方。
 
 ### Network Security
-Bitcoin: P2P network
+Bitcoin: P2P network, diffuse mesages
 Peers address book: how to maintain
 
-Eclipse Attack
+new / tried table
+节点间用ADDR交换地址
 
-ban ADDR
-validate incoming connections
+Eclipse Attack
+> 攻击者用大量恶意节点向受害者建立入站连接，把 tried 塞满“新鲜的恶意 IP”；再用 ADDR 往 new 塞垃圾 IP；等待受害者重启（或用 DoS 促使重启），从而让其重连时几乎只能连到攻击者控制的邻居，达到 eclipse。
+
+- ban ADDR
+- validate incoming connections
+
+*Full nodes*: 187GB, the whold UTxO set
+*Simple Payment Varification(SPV)*: 
+- keeps only the block headers from genesis till today
+- connects to multiple **untrusted** servers which full node to prove the SPV wallet each claim
+- Bloom Filter: 客户端验证 PoW 与祖先关系、交易签名与守恒，并验证交易属于某区块的 Merkle root
+
+*HD wallet*：从单个 master private key 派生无限私钥序列（BIP-32）；私钥可编码为可读 seed phrase，seed 足以恢复整个钱包私钥集合，常用纸备份，可选密码加密。
 
 Hot wallet: keys on an internet-connected computer
 Cold wallet: private keys offline
