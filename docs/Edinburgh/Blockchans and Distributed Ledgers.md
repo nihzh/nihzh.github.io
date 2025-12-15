@@ -35,7 +35,7 @@ File transfer and cloud storage: Authenticated protocols
 
 Hash-based vs Digital signature-based
 
-cryptographyic puzzle, moderate hard to solve
+cryptographic puzzle, moderate hard to solve
 
 dice: 出块概率事件，能力越大概率越大
 
