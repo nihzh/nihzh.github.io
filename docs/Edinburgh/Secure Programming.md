@@ -5,99 +5,108 @@ Hardware flawed
 
 what do i do for only paper work?
 
-*Safety* is concerned with ensuring bad things don't happen **accidently** e.g., maintanace checks
-
+*Safety* is concerned with ensuring bad things don't happen **accidently** e.g., maintenance checks
 *Security* is concerned with ensuring that bad thins don't happen because of **malicious actions by others** e.g., terrorists
 
+Software security
 *Design flaws* are likely
 *Bugs* seem inevitable
-They lead to vulnerabilities which are exploited by attackers
-A security risk assessment for a system should consider different attackers and motives
+They lead to vulnerabilities which exploitable by attackers
+A security risk assessment for a system should consider **different attackers and motives**
 
 Privacy, Regulations --> Awareness
 
 Attackers have the advantage
-- viable attack route
-- anticipate all
+- attacker: one viable attack route
+- defenders: anticipate all
 
 Frontiers
 - Mobile
-- Cloud
+- Cloud: XaaS
 - Repeating same mistakes
-- Cyber resilience
+- Cyber resilience: speedy, automatic recovery
 - Datasharing: privacy
 
 ## Landscape
 *Threat*: should be robust against local and remote attackers
-Security advisors
+*Vulnerability*: A mistake that can be used by a hacker to violate a "reasonable" security policy for a system 系统漏洞
+- security review ==> dedicated review in high value situations
+- *Security Advisory*: affected versions
+- Vulnerability code
+- Fix
+*Defences*
+*Processes*
+- *Common Vulnerability Enumeration* Identifiers: standardise common vulnerability or exposure
+*Methods*
 
-CVE Identifiers: vulnerability or exposure
+![](../img/Pasted%20image%2020251215235633.png)
 
-*Vulnerability*: A mistake that canbe used by a hacker to violate a "reasonable" security policy for a system 系统漏洞
-*Exposure*: S system configuration issue or mistake in software that can be used by a hack as a stepping-stone into a system or network 信息收集，暴露信息
+*Vulnerability*: A mistake can be used by a hacker to **violate** a "reasonable" security policy for a system 核心逻辑漏洞，导致不符合系统预期的事件
+*Exposure*: A system configuration issue or mistake in software that can be used by a hack as a stepping-stone into a system or network 信息收集，暴露点
 
 #### BSIMM
-- Inform risk management decisions
-- Clarigy "right thing todo" for those involved
+Maturity Model, degree of formality/rigour off process
+Examines *Software Security Initiatives* (SSIs), state-of-the-art
+- inform risk management decisions
+- Clarify "right thing todo" for those involved
 - Reduce costs via standard, repeatable process
 - Improve code quality
 
 *SSI*
-- 4 domains covering 12 practices, each practices involves numerous activities
-	- Goverance
+- 4 domains covering 12 practices, 126 activities
+	- Governance
 	- Intelligence
-- maturity levels 1-3
-- 126 activities
+- maturity levels 1 (most mature) to 3 (least mature, emerging activity)
 
 ## Memory Corruption
 "Coding" stage
 Exploits is means to "Fix" and "Learn"
+
+1. Design: requirements, architecture
+2. Implementation: coding, tests
+3. Deployment: configuration, feedback
 
 Unconstrained read/writing of memories, lead to arbitrary execution, remote command execution
 - stack overflows
 - heap overflows
 - type confusion
 - pointer arithmetic
-- out-by-one
+- out-by-one, arithmetic errors
 
 Low-level programs manipulate memory directly: C or assembler
 - pointer, null pointer
 
 ### Memory safety
-A programming language or analysis tool is said to enforce *memory safety* if it ensures that reads and whites stay within cleaerly defined memory areas, belonging to different parts of the program.
-
-> A programming language enforces *memory safety* if it ensures that reads and writes stary within clearly defined meory areas.
+> A programming language enforces *memory safety* if it ensures that reads and writes stay within clearly defined memory areas, belonging to different parts of the program.
 
 **Memory areas**
-*Code* (compiled program, lib)
+*Code* (compiled program, shared lib)
 *Data*: non-local program variables, **global** or **static**, program **heap** for dynamically allocated data
-*Stack*: dyamically allocated data for each of the currently executing functions/methods, **local**, **current object** reference and **return** address
+*Stack*: records dynamically allocated data for each of the currently executing functions/methods, **local**, **current object** reference and **return** address
 
 ![](../img/Pasted%20image%2020250923195401.png)
 
-*Stack overflows* mainly relevant for C, C++ and other unsave languages with raw memory access
+*Stack overflows* mainly relevant for C, C++ and other unsafe languages with **raw memory access**
 
-> The malicious argument overwrites all of the space allocated for the buffer, all the way to the return address location. The return address is altered to point back into the stack, somewhere before the attack code. Typically, the attack code executes a shell.
+> The malicious argument overwrites all of the space allocated for the buffer, all the way to the **return address location**. The return address is altered to point back into the stack, somewhere before the attack code. Typically, the attack code executes a shell.
 
-*Stack* => Abstract Data Type
+*Stack* => Abstract Data Type, only stacks built via operations can be constructed
 
-Frame pointer may be used to help locate argumetns and local variables
+Frame pointer may be used to help locate arguments and local variables
 ![](../img/Pasted%20image%2020250925192724.png)
 
-*Spatial memory errors*: memory access goes outside the region of memory that a date item is intended to occupy
-*Temporal memory errors*: memory access happens in some regions of memory that the program ought not currently have access to
-
 ### Buffer overflow
+*Spatial memory errors* 空间错误: memory access goes outside the region of memory that a date item is intended to occupy
+*Temporal memory errors* 时间错误: memory access happens in some regions of memory that the program ought not currently have access to
+
 #### Stack overflows
-*Stack variable corrption*
+*Stack variable corruption*
 Local variables are put close together on the stack
 - If a stray write goes beyond the size of one variable, it can corrupt another
-- putting m bytes into a buffer of size n, for m > n
-- corrupts the surrounding memory
+- putting m bytes into a buffer of size n, for `m > n`, corrupts the surrounding memory
 
 By *overwriting the return address*, set it to points
-- known piece of application code
-- shared library
+- known piece of application code / shared library
 - shellcode: own attack code
 
 ##### Write code for an attacker
@@ -113,7 +122,7 @@ By *overwriting the return address*, set it to points
 	- `argv[]`: arguments to the new program, `argv[0]` as program name
 	- `envp[]`: environment variable to the new program, in `"KEY=VALUE"`
 - Only return `-1` when failed, then `errno` are set
-- 用另一个程序镜像替换当前进程的镜像，调用它的进程回丢弃当前的代码段、堆、栈等用户空间内容，启动一个新的可执行性文件，在同一个PID下运行新程序，如果成功，不会返回
+- 用另一个程序镜像替换当前进程的镜像，调用它的进程会丢弃当前的代码段、堆、栈等用户空间内容，启动一个新的可执行性文件，在同一个PID下运行新程序，如果成功，不会返回
 - A exactly to a system call
 
 **Invoking system calls**
@@ -124,7 +133,7 @@ Linux calls:
 ![](../img/Pasted%20image%2020250925233127.png)
 `$0x80` equivalent to `128`, the kernel executes the system call according to the value of `EAX`
 - `EAX = 11 (0xb)` means `execve` system call
-- relavent parameters are set to other registers
+- relevant parameters are set to other registers
 
 **Binary representations**
 Encode the hex op code of malicious input
@@ -134,22 +143,27 @@ https://www.exploit-db.com/shellcodes
 ##### Store executable code in memory & implement stack overflow
 *shellcode on stack*
 *shellcode in another part of the program data*
+定位问题
 
 The overflow uses a **NOP sled** before the shellcode, which the CPU execution "lands on", before being directed to the attack code
 
-![](../img/Pasted%20image%2020250926001729.png)
+*Return to library (ret2libc)*
+The attacker overflows a buffer causing the return instruction to jump to invoke `system()` with an argument pointing to `/bin/sh`
 
-#### Heap overfows
+*Return-oriented Programming (ROP)*
+Sequences of instructions (gadgets) from library code are **assembled together** to manipulate registers, eventually to invoke an library function or even to make a Turing-complete language
+
+#### Heap overflows
 **Dynamically allocated data** region of memory
 - The runtime OS provides *memory management*
 - library functions
 
-*Undefined bahavious*
-> A programming language specification defines the meaning of progrms. Without memory safety, the specification may say the meaning of an illegal memory access is undefined
+*Undefined behaviours*
+> A programming language specification defines the meaning of programs. Without memory safety, the specification may say the meaning of an illegal memory access is undefined
 
-`malloc(size)` & `calloc(size)`
+`malloc(size)`: uninitialized memory & `calloc(size)`: initialize to 0
 
-##### Spcific heap attacks
+##### Specific heap attacks
 ![](../img/Pasted%20image%2020250930192747.png)
 `strcpy()` function
 ![](../img/Pasted%20image%2020250930192922.png)
