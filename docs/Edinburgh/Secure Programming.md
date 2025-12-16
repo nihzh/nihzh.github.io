@@ -365,6 +365,7 @@ Check before use TOCTOU
 在检查和open之间对文件修改：恶意代码
 - 并行多个进程卡setuid程序时间差
 - slow down system, send job control signals
+- may influence thread scheduling
 - automatically schedule attack: `inofigy` API for monitoring file system
 ![](../img/Pasted%20image%2020251216062852.png)
 
@@ -388,87 +389,107 @@ Multi-threaded programs
 Heisenbug: 偶发，难以复现
 
 *No out-of-thin-air*
-Write speculation in JAVA
+Write speculation in JAVA：某些编译器或CPU优化，推测未来的写入值，在真实值出现后优化，但是猜测值被赋值给其它变量，runtime没有监视这个值，导致错误结果。
+> 程序写入的值，必须是程序某处显式写入的值。不应该读到“从来没有被写入过”的值
 
-- Ensuring atomicity: enforce mutual exclusion
-- Using locks: mutual exclusion for shared resources
+#### Solution
+- **Ensuring atomicity**: combine API function test-and-get 
+	- enforce mutual exclusion 互斥机制
+	- Using locks: mutual exclusion for shared resources
+- **transaction mechanism**: 事务回滚，并发更高
 
-Dynamic analysis: monitor every access to every memory location and see whether the access might have races with a previous access from a different thread
-- *Lockset algoorithm*: every shared variable is protected by at least one lock
+**Dynamic analysis**: monitor every access to every memory location and see whether the access might have races with a previous access from a different thread
+- *Lockset algorithm*: heuristic/expectation: every shared variable is protected by at least one lock
 ![](../img/Pasted%20image%2020251021193652.png)
 - Eraser tool
-![](../img/Pasted%20image%2020251021192935.png)
+![](../img/Pasted%20image%2020251216013349.png)
+Only report errors in the Shared-Modified state
 
 Static analysis
 GuardedBy
 
 ## Secure development
+Secure Software Development Lifecycle
 *McGraw's Three Pillars*
 ![](../img/Pasted%20image%2020251021193233.png)
 
 Run security activities alongside traditional
 
 ![](../img/Pasted%20image%2020251021193503.png)
+![](../img/Pasted%20image%2020251216014240.png)
 
 ### Code review
-- industry: economy choices, rush, no extratime
-- Manual: -> agile
-	- subtle
-	- onerous, large code bases
-- Automatic: human config, increasingly sophisticated
+Eliminate problems at source
+- industry: economy choices, rush, no extra time
+- Manual: 业务逻辑 安全假设
+	- good adopted in agile processes
+	- find subtle and unusual problems
+	- onerous for large code bases
+- Automatic: 通用bug，全范围规则检查
+	- human config and interpret
+	- increasingly sophisticated tools
+	- can never understand code perfectly
 
 ### Architectural risk analysis
-  
-- the security threats that attackers pose to assets  
-- vulnerabilities that allow threats to be realised  
-- the impact and probability of an attack  
-- hence the risk, as risk = probability × impact  
-- countermeasures that may be put into place
+Design flaws: need to be identified in the design phase
+- the security **threats** that attackers pose to **assets**
+- **vulnerabilities** that allow threats to be realised
+- the **impact** and **probability** of an attack
+- hence the **risk**, as risk = probability × impact
+- **countermeasures** that may be put into place
 ![](../img/Pasted%20image%2020251021195019.png)
 
 ![](../img/Pasted%20image%2020251021195000.png)
 
 ![](../img/Pasted%20image%2020251021195051.png)
-
-Think adversarily
+Consider each data flow, manipulation or storage
 
 ![](../img/Pasted%20image%2020251021195319.png)
 
 ### Penetration testing
-Ethical hacking: finds real problems
-Modern professional pen testing uses source
-last check before deployment, use as regression tests
+Ethical hacking: finds real problems, but no accurate sense of coverage
+> Testing shows the presence, not the absence of bugs.
+
+Modern professional pen testing uses source: white/gray box
+At unit level, automatic fault-injection with fuzzing tools
+Last check before deployment, use as regression tests
 For repairing software, not deploying work-arounds
 
 ### Security testing
+非需求，负面行为，异常恢复
 *Strategy for security testing*
 ![](../img/Pasted%20image%2020251021200146.png)
+Think like an attacker
+Specially designed white-box fuzz testing is successful at finding  
+security flaws (or, generating exploits).
 ### Abuse cases
-attack patterns
-Examine assuptions
-unexpected events
-anti-requirements
+Work through attack patterns 攻击模式
+Examine assumptions 人类的安全假设
+Unexpected events 意外事件
+Anti-requirements 系统绝不应该允许什么
 
 ### Security requirements
 Functional security requirements: 
 - cryptography
-- audit trail
+- audit trail 审计追踪记录
 - privacy: only gather essential data
 Emergent security requirements:
-- minimise sode channels
+- recover on ill-formed input 恢复畸形输入
+- minimise side channels 减少侧信道（非必要的可以推理的信息）
 
 ### Security operations
-managing the security of the deployed software
+Managing the security of the deployed software: **infosecs + devs**
+
 Information security professionals
-- Incident handling, proactive threat monitoring  
-- Range and mechanisms of vulnerabilities, cross systems  
-- Understanding and deploying desirable patches  
+- Incident handling, proactive threat monitoring  应急响应 威胁监控
+- Range and mechanisms of vulnerabilities, cross systems  漏洞机制识别
+- Understanding and deploying desirable patches  补丁和防护部署
 - Configuring firewalls, IDS, virus detectors, etc
 
-Coders: expert
+Coders: expert in
 - Software design, application architecture  
 - Programming, often single languages  
-- Build systems, overnight testing
+- Build systems, overnight testing 测试流水线
 
 ## Web Application Security
 OWASP Top 10

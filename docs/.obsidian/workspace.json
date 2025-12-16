@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b3b378bd6c015fdb",
+            "id": "c20c1095aecf8c39",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -36,6 +36,19 @@
         "type": "tabs",
         "children": [
           {
+            "id": "bafa335216136642",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
             "id": "87536496e7a98d23",
             "type": "leaf",
             "state": {
@@ -49,7 +62,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "搜索"
+              "title": "Search"
             }
           },
           {
@@ -59,24 +72,10 @@
               "type": "bookmarks",
               "state": {},
               "icon": "lucide-bookmark",
-              "title": "书签"
-            }
-          },
-          {
-            "id": "185e32409e44e9de",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical",
-                "autoReveal": false
-              },
-              "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -149,30 +148,32 @@
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "random-note:开始漫游笔记": false,
+      "publish:发布更改": false,
+      "bases:创建新数据库": false
     }
   },
-  "active": "b3b378bd6c015fdb",
+  "active": "c20c1095aecf8c39",
   "lastOpenFiles": [
+    "img/Pasted image 20251216014240.png",
+    "img/Pasted image 20251216013349.png",
+    "img/Pasted image 20251216013326.png",
+    "Edinburgh/Applied Machine Learning.md",
+    "Edinburgh/Blockchans and Distributed Ledgers.md",
     "img/Pasted image 20251216062852.png",
     "img/Pasted image 20251216061031.png",
     "img/Pasted image 20251215235633.png",
-    "Edinburgh/Blockchans and Distributed Ledgers.md",
     "img/Pasted image 20251215035142.png",
     "img/Pasted image 20251215034217.png",
     "img/Pasted image 20251215034208.png",
     "img/Pasted image 20251215012950.png",
     "img/Pasted image 20251215000248.png",
-    "img/Pasted image 20251214210645.png",
-    "Edinburgh/Secure Programming.md",
-    "Edinburgh/Applied Machine Learning.md",
-    "Edinburgh/Computer Security.md",
-    "img/Pasted image 20251214034251.png",
-    "Untitled.md",
     "Pasted.md",
     "_sidebar.md",
     "Edinburgh/25圣诞-德国闪击波兰.md",
-    "img/Pasted image 20251208052402.png",
+    "Edinburgh/Computer Security.md",
+    "Edinburgh/Secure Programming.md",
     "Edinburgh/Untitled.base",
     "网安/渗透测试--蚁景网安/5.1 日志分析和清理.md",
     "网安/渗透测试--蚁景网安/4.8 域环境权限维持.md",
@@ -192,6 +193,7 @@
     "网安/渗透测试--蚁景网安/1.5 弱口令密码破解.md",
     "Liverpool/310-Multi-Agent Systems.md",
     "网安/渗透测试--蚁景网安/3.3 CobaltStrike渗透框架.md",
+    "Liverpool/390-CyberCipher.md",
     "GRE",
     "Liverpool",
     "未命名 1.canvas",
