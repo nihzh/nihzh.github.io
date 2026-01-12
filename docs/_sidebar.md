@@ -9,6 +9,7 @@
   * [Blockchans_and_Distributed_Ledgers](Edinburgh/Blockchans%20and%20Distributed%20Ledgers)
   * [Computer_Security](Edinburgh/Computer%20Security)
   * [Secure_Programming](Edinburgh/Secure%20Programming)
+  * [Security_Engineering](Edinburgh/Security%20Engineering)
 * **GRE**
   * [写作](GRE/写作)
   * [填空](GRE/填空)
@@ -37,7 +38,7 @@
   * [Java中的Map类型和Spring_@Transaction操作数据库问题](Troubleshooting/Java中的Map类型和Spring%20@Transaction操作数据库问题)
   * [Problems_when_configuring_Git](Troubleshooting/Problems%20when%20configuring%20Git)
   * [sed_unknown_option_to_'s'报错](Troubleshooting/sed%20unknown%20option%20to%20's'报错)
-  * [sprintf函数_“%02X”问题](Troubleshooting/sprintf函数%20“%2502X”问题)
+  * [sprintf函数_“%02X”问题](Troubleshooting/sprintf函数%20“%02X”问题)
   * [Vulfocus漏洞靶场镜像无法拉取](Troubleshooting/Vulfocus漏洞靶场镜像无法拉取)
   * [WindTerm锁屏主密码问题](Troubleshooting/WindTerm锁屏主密码问题)
   * [wsl下载后报错问题](Troubleshooting/wsl下载后报错问题)
