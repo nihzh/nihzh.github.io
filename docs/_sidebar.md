@@ -8,8 +8,11 @@
   * [Applied_Machine_Learning](Edinburgh/Applied%20Machine%20Learning)
   * [Blockchans_and_Distributed_Ledgers](Edinburgh/Blockchans%20and%20Distributed%20Ledgers)
   * [Computer_Security](Edinburgh/Computer%20Security)
+  * [Informatics_Project_Proposal](Edinburgh/Informatics%20Project%20Proposal)
+  * [Privacy_and_Security_with_Machine_Learning](Edinburgh/Privacy%20and%20Security%20with%20Machine%20Learning)
   * [Secure_Programming](Edinburgh/Secure%20Programming)
   * [Security_Engineering](Edinburgh/Security%20Engineering)
+  * [Usable_Security_and_Privacy](Edinburgh/Usable%20Security%20and%20Privacy)
 * **GRE**
   * [写作](GRE/写作)
   * [填空](GRE/填空)
