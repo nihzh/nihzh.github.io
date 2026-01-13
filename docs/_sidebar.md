@@ -9,6 +9,7 @@
   * [Blockchans_and_Distributed_Ledgers](Edinburgh/Blockchans%20and%20Distributed%20Ledgers)
   * [Computer_Security](Edinburgh/Computer%20Security)
   * [Informatics_Project_Proposal](Edinburgh/Informatics%20Project%20Proposal)
+  * [Introduction_to_Modern_Cryptography](Edinburgh/Introduction%20to%20Modern%20Cryptography)
   * [Privacy_and_Security_with_Machine_Learning](Edinburgh/Privacy%20and%20Security%20with%20Machine%20Learning)
   * [Secure_Programming](Edinburgh/Secure%20Programming)
   * [Security_Engineering](Edinburgh/Security%20Engineering)
