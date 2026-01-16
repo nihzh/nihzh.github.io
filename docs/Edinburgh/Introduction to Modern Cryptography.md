@@ -34,10 +34,17 @@ Shift Cipher
 Natural English Language IC: 0.065
 Random IC: 0.038
 
+![](../img/Pasted%20image%2020260117002840.png)
+$$26L+26^2L\approx26^2L\ll26^L$$
+
 ## Secure Encryption
 *Three principles of modern cryptography*
 - Definitions: Precise, mathematical model and formal definition of what security means
 - Assumptions: Clearly stated and unambiguous
 - Proofs: Prove security and move away from design-break-patch
 
-> Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information obout the plaintext
+**Goal**: What we want to prevent the attacker from achieving
+**Threat model**: What capabilities the attacker is assumed to have
+
+> Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information about the plaintext
+> **加密后的密文不应该让攻击者在这些知识基础上得到任何新增优势**。

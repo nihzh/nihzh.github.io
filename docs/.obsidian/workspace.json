@@ -53,21 +53,6 @@
             }
           },
           {
-            "id": "65457be75df54a78",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Edinburgh/Informatics Project Proposal.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Informatics Project Proposal"
-            }
-          },
-          {
             "id": "86cd3f663aaffdcf",
             "type": "leaf",
             "state": {
@@ -81,9 +66,24 @@
               "icon": "lucide-file",
               "title": "Introduction to Modern Cryptography"
             }
+          },
+          {
+            "id": "65457be75df54a78",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Edinburgh/Informatics Project Proposal.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Informatics Project Proposal"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -215,22 +215,21 @@
   },
   "active": "86cd3f663aaffdcf",
   "lastOpenFiles": [
+    "Edinburgh/Privacy and Security with Machine Learning.md",
+    "Edinburgh/Introduction to Modern Cryptography.md",
+    "Edinburgh/Security Engineering.md",
+    "img/Pasted image 20260117002840.png",
     "img/Pasted image 20260116233716.png",
     "img/Pasted image 20260116233042.png",
     "img/Pasted image 20260116232932.png",
     "Edinburgh/Informatics Project Proposal.md",
     "Edinburgh/Usable Security and Privacy.md",
-    "Edinburgh/Privacy and Security with Machine Learning.md",
-    "Edinburgh/Security Engineering.md",
     "img/Pasted image 20260115182253.png",
-    "Edinburgh/Introduction to Modern Cryptography.md",
     "img/Pasted image 20260113235129.png",
     "img/Pasted image 20260113235054.png",
     "img/Pasted image 20260113234130.png",
     "img/Pasted image 20260113233346.png",
     "img/Pasted image 20260113214620.png",
-    "img/Pasted image 20260113214339.png",
-    "img/Pasted image 20260113182910.png",
     "Edinburgh/Secure Programming.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
     "Edinburgh/Applied Machine Learning.md",
