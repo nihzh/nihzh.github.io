@@ -22,3 +22,22 @@ Proof something is secure
 ![](../img/Pasted%20image%2020260113235129.png)
 
 The key space must be large enough to make brute-force attacks impractical
+
+Shift Cipher
+### Vigenere Cipher
+**Index of Coincidence**
+![](../img/Pasted%20image%2020260116232932.png)
+![](../img/Pasted%20image%2020260116233042.png)
+
+**Finding the key length**
+![](../img/Pasted%20image%2020260116233716.png)
+Natural English Language IC: 0.065
+Random IC: 0.038
+
+## Secure Encryption
+*Three principles of modern cryptography*
+- Definitions: Precise, mathematical model and formal definition of what security means
+- Assumptions: Clearly stated and unambiguous
+- Proofs: Prove security and move away from design-break-patch
+
+> Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information obout the plaintext
