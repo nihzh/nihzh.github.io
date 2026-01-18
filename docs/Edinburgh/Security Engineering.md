@@ -1,6 +1,10 @@
 > Security engineering is about building systems to remain dependable in the face of malice, error and mischance
 
-Threat model --> Security policy --> Protection mechanism --> Assurance
+Threat model framework
+- *Security policy*: what you are supposed to achieve
+- *Protection mechanism* (how to implement policies)
+- *Assurance* (reliable for assessing combined mechanism)
+- *Incentives* (motives for attackers and defenders)
 
 Individual / Business risks
 
