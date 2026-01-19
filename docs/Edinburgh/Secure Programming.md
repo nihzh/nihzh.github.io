@@ -968,7 +968,7 @@ Countermeasure 攻方反制
 - After download: Antivirus/host-based IDS
 - During execution: security tools, traffic/memory monitoring, sandbox
 
-Countermeasure 攻方反制：多样化 自修改 Diversification
+Countermeasure 攻方反制： 多样化 自修改 Diversification
 - Polymorphism
 - Metamorphism: 动态更新
 
