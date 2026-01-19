@@ -61,8 +61,8 @@ Third-tier
 ### Lawful Operators: The geeks
 Good actors with technical skills and/or elevated access
 
-Employees, security researchers, competitors
-
+Employees (insider), security researchers, competitors
+ 
 Freelance hackers 雇佣安全研究者
 - sell vulnerabilities
 - sell hacking activities
@@ -73,5 +73,44 @@ Responsible Disclosure: *CERT*
 Variously motivated actors with few technical skills
 Hate crimes, Sex abuse, Bullying
 
+Online mobs: manipulate algorithms by mimicking virality, weaponizing privacy
+
 Children, Family members
 Extremists
+
+## Security policy
+Discretionary Access Control (DAC)
+Mandatory Access Control (MAC)
+
+### Multilevel Secrecy
+
+- Top Secret: compromise could cost many lives or do exceptionally grave damage to operations
+- Secret: compromise could threaten life directly
+- Confidential: compromise could damage operations
+- Official: compromise might embarrass
+
+Resources have classifications
+People (principals) have clearances
+**Information flows upwards only**
+
+*Bell-Lapadula*: a safe system stays safe
+
+### Multilateral Secrecy
+Not easy to find hierarchy, just stop data flowing down
+*The Lattice Model*: manage compartmented data by adding labels
+- BLP requires only a partial order
+- (level, categories)
+
+*Subject*: a physical person
+*Principal*
+- a person
+- equipment
+- a role
+- a complex role
+
+### Multilevel Integrity
+*Biba model*: info only down from high-integrity to low-integrity
+
+## Banking & Finances
+*Clark-Wilson Policy Model*
+Triples (subject, TP, CDI) enforce separation of duty
