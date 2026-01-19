@@ -675,6 +675,7 @@ A billion laughs
 ![](../img/Pasted%20image%2020251104204532.png)
 
 ![](../img/Pasted%20image%2020251104223142.png)
+![](../img/Pasted%20image%2020251216080123.png)
 
 Weaknesses classify Vulnerabilities
 ![](../img/Pasted%20image%2020251104204735.png)
