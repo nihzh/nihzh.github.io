@@ -2,9 +2,10 @@
 
 Threat model framework
 - *Security policy*: what you are supposed to achieve
-- *Protection mechanism* (how to implement policies)
-- *Assurance* (reliable for assessing combined mechanism)
-- *Incentives* (motives for attackers and defenders)
+	- 可判定、可执行、可审计
+- *Protection mechanism*: how to implement policies
+- *Assurance*: reliability for assessing combined mechanism
+- *Incentives*: motives for attackers and defenders
 
 Individual / Business risks
 
@@ -79,21 +80,37 @@ Children, Family members
 Extremists
 
 ## Security policy
-Discretionary Access Control (DAC)
-Mandatory Access Control (MAC)
+What are we trying to stop?
+How are we trying to stop it?
+With what mechanisms?
+![](../img/Pasted%20image%2020260119181535.png)
 
-### Multilevel Secrecy
+*Discretionary Access Control (DAC)*: regular companies
+- asset owners decide who should have access
+- public resources are public
+- VPN solves offsite work
 
-- Top Secret: compromise could cost many lives or do exceptionally grave damage to operations
-- Secret: compromise could threaten life directly
-- Confidential: compromise could damage operations
-- Official: compromise might embarrass
+*Mandatory Access Control (MAC)*: dealing with insider threat
+
+### Multilevel Secrecy (MLS)
+- *Top Secret*: compromise could cost many lives or do exceptionally grave damage to operations
+- *Secret*: compromise could threaten life directly
+- *Confidential*: compromise could damage operations
+- *Official*: compromise might embarrass
 
 Resources have classifications
 People (principals) have clearances
 **Information flows upwards only**
 
-*Bell-Lapadula*: a safe system stays safe
+#### Bell-Lapadula
+A safe system stays safe
+- simple security policy: **no read up**
+- \*-policy: **no write down**
+Minimize the Trusted Computing Base (set of hardware, software and procedures that can break the security policy) in a reference monitor
+
+Covert-channel info leak
+Too much clearance
+Classify too much
 
 ### Multilateral Secrecy
 Not easy to find hierarchy, just stop data flowing down
