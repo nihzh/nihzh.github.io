@@ -675,6 +675,7 @@ A billion laughs
 ![](../img/Pasted%20image%2020251104204532.png)
 
 ![](../img/Pasted%20image%2020251104223142.png)
+![](../img/Pasted%20image%2020251216080123.png)
 
 Weaknesses classify Vulnerabilities
 ![](../img/Pasted%20image%2020251104204735.png)
@@ -968,7 +969,7 @@ Countermeasure 攻方反制
 - After download: Antivirus/host-based IDS
 - During execution: security tools, traffic/memory monitoring, sandbox
 
-Countermeasure 攻方反制：多样化 自修改 Diversification
+Countermeasure 攻方反制： 多样化 自修改 Diversification
 - Polymorphism
 - Metamorphism: 动态更新
 
