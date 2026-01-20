@@ -42,6 +42,40 @@ misleading result for classifying result
 the accuracy high, but precision is very low
 
 **IID assumption**
-new samples are independent and follow the same underlying ???
-
+new samples are independent and follow the same underlying distribution 
+mapping from inputs (feature vectors) to outputs (classes)
 high dimensional spaces, lost useful of distances, common in su
+
+### Computer Security
+Policy -- Threat model -- Mechanism
+Try to figure out all possible actions attackers can do
+**You can never achieve perfect security**
+
+- *Confidentiality*: only *authorized* entities can access the information
+- *Integrity*: the data is **untampered** and **uncorrupted**
+- *Availability*: both the data and the system that provides access to it are there **when you need** them
+
+Cryptography:
+- ensures confidentiality -- only accessible by keys
+- authenticating users -- digital signatures
+- ensures integrity
+
+Threat modelling in communication systems
+- Passive (read) - Active (add, remove or modify)
+- Internal (control one or several system components) - External (only control communication links)
+- Local (only sees part of the system) - Global (access to the entire system)
+- Targeted (compromise a specific set of users) - Untargeted (attempts to compromise any user)
+
+Specification -> Design -> Implementation -> Assurance
+- Designed to achieve a security goal
+- Defense embedded
+- New defensive system alongside an existing, unmodified system
+
+*Trust*
+- *Assurance*: the means to know that the system is secure
+- *Reliability/Resilience*: they are robust and continue operating intact or gracefully degrade
+- *Accountability*: the means to verify that the system is operating as intended
+
+*Privacy*: Concerns individuals and their expectations on how their data, behaviours, and interactions are recorded, utilized, and spread
+
+*Anonymity*: set of individuals that share the same attributes

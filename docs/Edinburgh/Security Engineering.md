@@ -113,4 +113,4 @@ Not easy to find hierarchy, just stop data flowing down
 
 ## Banking & Finances
 *Clark-Wilson Policy Model*
-Triples (subject, TP, CDI) enforce separation of duty
+Triples (subject, TP, )
