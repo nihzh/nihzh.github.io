@@ -21,3 +21,14 @@ Gap
 - Antivirus software
 - Account security: password using
 - Mindfulness: unknown links/emails
+
+## Authentication
+![](../img/Pasted%20image%2020260120202925.png)
+
+Multifactor authentication
+
+![](../img/Pasted%20image%2020260120203613.png)
+
+![](../img/Pasted%20image%2020260120204237.png)
+
+
