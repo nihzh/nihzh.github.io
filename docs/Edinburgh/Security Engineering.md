@@ -130,4 +130,21 @@ Not easy to find hierarchy, just stop data flowing down
 
 ## Banking & Finances
 *Clark-Wilson Policy Model*
-Triples (subject, TP, )
+Triples (subject, TP, CDI) enforce separation of duty
+
+**Transferring: banks move money around**
+*Authentication*: SMS, biometric
+Geography impacts digital threats: kidnapping...
+
+**When the bank is not directly involved in the transaction**
+Contactless
+
+Of Alexa top 500 websites
+- 26 use primary account number + exp date
+- 37 use PAN + postcode (numeric digits only for some, add door number for others)
+- 291 ask for PAN + expdate + CVV
+
+- Forging signature of a physical cheque
+- Getting access to victim's banking website account/app
+- Impersonating card, stealing/bypassing PIN, manipulating terminal
+- Compromise SWIFT to manipulate interbank transfers
