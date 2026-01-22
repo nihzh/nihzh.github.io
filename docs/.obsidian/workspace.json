@@ -82,7 +82,8 @@
               "title": "Informatics Project Proposal"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -118,8 +119,8 @@
             "state": {
               "type": "bookmarks",
               "state": {},
-              "icon": "lucide-bookmark",
-              "title": "书签"
+              "icon": "lucide-ghost",
+              "title": "bookmarks"
             }
           },
           {
@@ -206,18 +207,19 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "markdown-importer:打开 Markdown 格式转换器": false,
       "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "templates:插入模板": false,
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4aeb78f1726c17b2",
+  "active": "86cd3f663aaffdcf",
   "lastOpenFiles": [
-    "img/Pasted image 20260122185440.png",
     "Edinburgh/Usable Security and Privacy.md",
-    "Edinburgh/Security Engineering.md",
     "Edinburgh/Introduction to Modern Cryptography.md",
+    "img/Pasted image 20260122204659.png",
+    "img/Pasted image 20260122203243.png",
+    "Edinburgh/Security Engineering.md",
+    "img/Pasted image 20260122185440.png",
     "img/Pasted image 20260120234752.png",
     "img/Pasted image 20260120234546.png",
     "img/Pasted image 20260120233941.png",
@@ -225,12 +227,9 @@
     "img/Pasted image 20260120231622.png",
     "img/Pasted image 20260120204237.png",
     "img/Pasted image 20260120203613.png",
-    "img/Pasted image 20260120202925.png",
     "Edinburgh/Privacy and Security with Machine Learning.md",
-    "img/Pasted image 20260119181535.png",
     "Edinburgh/Informatics Project Proposal.md",
     "Edinburgh/Secure Programming.md",
-    "img/Pasted image 20260117002840.png",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
     "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Computer Security.md",

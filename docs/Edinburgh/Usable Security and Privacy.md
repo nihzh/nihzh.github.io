@@ -41,3 +41,26 @@ Gap
 ![](../img/Pasted%20image%2020260120204237.png)
 
 怎么设计界面/反馈来改变行为
+
+### Biometry
+- Physiological: DNA, Faceprint, Heartbeat, Palmprint
+- Behavioural: Gait, Keystroke, Voiceprint, Signature
+
+Emerging: Earable, Teeth Interface, Bone Conduction
+
+![](../img/Pasted%20image%2020260122203243.png)
+
+*Fingerprint*
+1. Image acquisition
+2. Image processing
+3. Minutiae extraction
+![](../img/Pasted%20image%2020260122204659.png)
+
+- Vascular pattern
+- Face recognition
+- Voice Biometrics
+- Hand geometry
+- Dynamic signature
+- Iris recognition
+- Retina recognition
+
