@@ -148,3 +148,5 @@ Of Alexa top 500 websites
 - Getting access to victim's banking website account/app
 - Impersonating card, stealing/bypassing PIN, manipulating terminal
 - Compromise SWIFT to manipulate interbank transfers
+
+![](../img/Pasted%20image%2020260122185440.png)
