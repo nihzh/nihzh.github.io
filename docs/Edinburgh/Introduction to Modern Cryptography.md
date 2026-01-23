@@ -43,11 +43,37 @@ $$26L+26^2L\approx26^2L\ll26^L$$
 - Assumptions: Clearly stated and unambiguous
 - Proofs: Prove security and move away from design-break-patch
 
-**Goal**: What we want to prevent the attacker from achieving
+**Goal (Security guarantee)**: What we want to prevent the attacker from achieving
 **Threat model**: What capabilities the attacker is assumed to have
+- Ciphertext-only attack (COA), 仅密文攻击
+- Known-plaintext attack (KPA), 已知明文攻击
+- Chosen-plaintext attack (CPA), 选择明文攻击
+	- API接口
+- Chosen-ciphertext attack (CCA), 选择密文攻击
 
 > Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information about the plaintext
 > **加密后的密文不应该让攻击者在这些知识基础上得到任何新增优势**。
+
+*Modern Cryptography*:
+- Formal definition: evaluation & modularity
+- Precise Assumptions
+	- explicit
+	- mathematically precise
+- Proof of security, under two principles above
+
+> A proof of security is always relative to the definition being considered and the assumption(s) being used.
+
+The proof is irrelevant
+- If the security guarantee does not match what is needed
+- If the threat model does not capture the adversary's true abilities
+- If the assumption that is relied upon turns out to be false
+
+> Provable security of a scheme does not necessarily imply security of that scheme in the real world
+> 可证明安全不必然等价于现实安全
+
+要攻击一个“可证明安全”的方案，现实攻击者通常只能从两条路入手：
+1. 针对**定义与现实环境的差距**（理想化模型遗漏了什么现实因素）
+2. 针对**底层假设是否真的成立**（假设在实践中是否被打破或被削弱）
 
 ### Perfect Secrecy
 *Random variable (RV)*: variable that takes on discrete values with certain probabilities
@@ -66,7 +92,7 @@ Shift cipher 拥有固定的密文模式，从Chosen Ciphertext攻击中反推�
 
 *Perfect Secrecy*
 ![](../img/Pasted%20image%2020260120233941.png)
-每个加密后字符拥有同样的概率对应明文的每个字符
+每个加密后字符拥有同样的概率对应明文的每个字符, 即对密文的观察不会泄露任何关于明文的信息，在看到密文 c 的条件下，每个消息 m 都是可能的
 
 *Bayes's theorem*
 $$Pr[A|B]=\frac{Pr[B|A]Pr[A]}{Pr[B]}$$
@@ -77,3 +103,21 @@ $$Pr[A|B]=\frac{Pr[B|A]Pr[A]}{Pr[B]}$$
 **The One-time Pad satisfies perfect secrecy**
 - Any observed ciphertext can correspond to any message
 - Having observed a ciphertext, the attacker cannot conclude for certain which message was sent
+
+![](../img/Pasted%20image%2020260123234002.png)
+![](../img/Pasted%20image%2020260123234016.png)
+![](../img/Pasted%20image%2020260123234030.png)
+
+#### Brute-force Attack Resisting
+![](../img/Pasted%20image%2020260124035425.png)
+
+#### Use the same key twice
+![](../img/Pasted%20image%2020260123234110.png)
+
+#### Optimality of the One-time Pad
+> If `(Gen, Enc, Dec)` with message space M is perfectly secret, then $|\mathrm{K}|\ge\mathrm|M|$ 
+> 
+> 对于指定的密文c, 令$S_c=Dec_k(c),k\in\mathcal{K}$ (key space) ，其必须与$\mathcal{M}$相等，即令每一条可能的密文都对应所有可能的明文。如$|\mathcal{K}|<|\mathcal{M}|$，则可以通过穷举$\mathcal{K}$得到$|S_c|=|\mathcal{K}|$的完整消息空间，找到$\mathcal{M}$中没有对应的消息m\*，以排除指定消息。这不符合无多余信息泄露的标准。
+
+![](../img/Pasted%20image%2020260124021245.png)
+![](../img/Pasted%20image%2020260124021218.png)
