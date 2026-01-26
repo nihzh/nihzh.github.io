@@ -150,3 +150,26 @@ Of Alexa top 500 websites
 - Compromise SWIFT to manipulate interbank transfers
 
 ![](../img/Pasted%20image%2020260122185440.png)
+
+> If Alice guards a system bug Bob pays the cost of failure, you can expect trouble!
+
+*Principal-Agent problem*
+- Principal: pay the cost of the risk
+- Agent: actual control, decision and execute the system
+
+### Externalities
+A public good: 
+- non-rivalrous
+- non-excludable
+
+*Information Asymmetries*
+
+*Market Power*
+- **Low marginal costs**: reproducing information is close to zero
+- **Switching costs**: the net present value of your customer base of the total cost of switching
+- **Network externalities**: the value of a network is proportional to the square of the number of users
+
+*Dominance impacts*: 
+- 抢占市场资源 + 安全反馈缓慢昂贵且暴露缺陷 = agile，优先发布，security debit
+
+*Monopoly*: 垄断带来的市场生态单一，一处漏洞影响大量主体
