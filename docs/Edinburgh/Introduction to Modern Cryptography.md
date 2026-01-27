@@ -121,3 +121,49 @@ $$Pr[A|B]=\frac{Pr[B|A]Pr[A]}{Pr[B]}$$
 
 ![](../img/Pasted%20image%2020260124021245.png)
 ![](../img/Pasted%20image%2020260124021218.png)
+## Perfect Indistinguishability
+Randomized experiment, equivalent with PS
+*Perfect Indistinguishability (PI)*
+![](../img/Pasted%20image%2020260127231738.png)
+$D_m$: 明文空间m和密钥空间k对应的密文空间
+
+![](../img/Pasted%20image%2020260127232012.png)
+![](../img/Pasted%20image%2020260127232028.png)
+![](../img/Pasted%20image%2020260127232443.png)
+对手通过观察加密后的内容得到的信息与没加密前一致
+For all attacker a, no matter what he does
+
+### Computational Secrecy
+*Relax perfect indistinguishability*
+#### Computational Indistinguishability (Concrete security)
+Security may fail with probability $\le\varepsilon$
+Restrict attention to attackers running in time/CPU cycles $\le$ t
+
+**$(t,\varepsilon)$-indistinguishable** $$Pr[\textsf{Priv}K_{A,\pi}=1]\le \frac{1}{2}+\varepsilon$$
+#### Asymptotic security
+Security parameter $\color{#b293f6}n$
+- chosen by honest parties when they generate/share keys
+- **known by adversary**
+
+Security may fail with probability **negligible** in n
+Restrict attention to attackers running in time **polynomial** in n
+
+*Polynomial function*
+![](../img/Pasted%20image%2020260128025903.png)
+
+*Negligible function*
+![](../img/Pasted%20image%2020260128025918.png)
+当n大过一个阈值之后，$f(n)$小于任何多项式$p(n)$
+
+$2^{-n}$, $2^{-\sqrt n}$, $\frac{1}{n^{\log n}}$
+
+![](../img/Pasted%20image%2020260128032305.png)
+
+efficient = *probabilistic polynomial-time (PPT)*
+
+![](../img/Pasted%20image%2020260128032819.png)
+$1^n=\underbrace{11\cdots1}_{\text{n times}}$, denotes the algorithm is polynomial in n
+
+When computer get faster, a tiny increase of n could compensate the gap, the scheme still remain secure
+
+![](../img/Pasted%20image%2020260128033155.png)
