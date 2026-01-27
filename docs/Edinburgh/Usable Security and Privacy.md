@@ -64,3 +64,27 @@ Emerging: Earable, Teeth Interface, Bone Conduction
 - Iris recognition
 - Retina recognition
 
+## Cookies
+*Third party cookie*: large company and public visible, to constrain
+
+Tracked too many things
+
+*User study*
+Assess needs
+Examine trade-offs
+Evaluate
+Finding root causes
+
+*Project lifecycle*
+![](../img/Pasted%20image%2020260127203243.png)
+
+*Usability testing*
+![](../img/Pasted%20image%2020260127205544.png)
+
+![](../img/Pasted%20image%2020260127205159.png)
+*Behavioral* –  measures how people actually behave, what they do.  
+*Attitudinal* –  measures what people say they think or how they say they behave
+*Qualitative* – unstructured data such as natural language.  
+*Quantitative* – numerical data. Anything that can be counted or measured with numbers.
+
+Behavioral & Attitudinal question each
