@@ -82,8 +82,7 @@
               "title": "Informatics Project Proposal"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -212,8 +211,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6ed94d9ab02dada2",
+  "active": "4aeb78f1726c17b2",
   "lastOpenFiles": [
+    "img/Pasted image 20260130010550.png",
+    "Edinburgh/Usable Security and Privacy.md",
     "img/Pasted image 20260129231220.png",
     "img/Pasted image 20260129204553.png",
     "img/Pasted image 20260129203246.png",
@@ -226,8 +227,6 @@
     "img/Pasted image 20260128032305.png",
     "img/Pasted image 20260128025918.png",
     "img/Pasted image 20260128025903.png",
-    "img/Pasted image 20260127232443.png",
-    "Edinburgh/Usable Security and Privacy.md",
     "Edinburgh/Privacy and Security with Machine Learning.md",
     "Edinburgh/Informatics Project Proposal.md",
     "Edinburgh/Secure Programming.md",

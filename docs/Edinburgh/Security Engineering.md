@@ -175,7 +175,7 @@ A public good:
 *Monopoly*: 垄断带来的市场生态单一，一处漏洞影响大量主体
 
 ## Psychology and Usability
-Largest compromise: Human errors, often authorized by the victim
+Largest compromise: **Human errors**, often authorized by the victim
 
 People make errors in not following the rules
 
@@ -208,8 +208,29 @@ Big brains track more relationships
 
 ### Behavioural economics
 ![](../img/Pasted%20image%2020260129172936.png)
+*Risk aversion*
+*Loss aversion*: loss domain risk-seeking
+- People facing losses take more risks
 
+### Defenses with security in mind
+*Training*
+- often annually with a compliance requirement
+- after 8 months, failure rose from 10% to over half of users
+- only avoid common cyber risks, threats is correlated with lower incidents
+
+**perimeterisation** is a bad mental model
 People are more likely to follow security advice consistent with their mental model
+Changing defaults: 安全沟通不是堆知识点，而是**先纠正模型/用用户能接受的类比重建模型**。
 
-Changing defaults
+*User authentication*
+- Something you know: password, knowledge, passphrase
+- Something you are: face, fingerprint, retina
+- Something you have: phone, token, key
+
+*Warnings Habituation*
+Warning: conscious reasoning --> automated reactions
+click through often rapid --> skill based (attack)
+security should be so normal
 learning from flaws
+
+![](../img/Pasted%20image%2020260130010550.png)
