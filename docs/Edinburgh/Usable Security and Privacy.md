@@ -123,5 +123,30 @@ Show that two things are related or one thing causes the other thing
 - *Causation*: when one thing changes it causes the other ting to change
 
 #### Dependent or Independent
-*Dependent*: outcome variable, measures the usability goal
-*Independent*
+Does X work in Y situation?
+- *Dependent* 因变量: outcome variable, the usability goal
+- *Independent* 自变量: anything directly manipulating, pre-existing feature of the participant
+
+![](../img/Pasted%20image%2020260129231220.png)
+
+#### Between / Within Subjects
+- *Between subjects*: only shows one interface to one person
+	- Lots of variability between participants -> more samples needed
+	- 随机使用不同的单个样本，对比随机群体的差别
+	- 适合强“暴露不可逆”场景
+- *Within subjects*: shows all interfaces to all people
+	- Less variability but more learning effects and priming
+	- *counterbalancing* 顺序平衡
+	- 每人使用所有样本，个人视角比较
+
+#### Numeric / Categorical data
+*Numeric*
+- Continuous: including decimal
+- Discrete: only certain values possible
+- Interval: only certain values possible and each has distance
+	- Likert
+
+*Categorical*
+- Binary: true/false
+- Ordinal: ordering values
+- Nominal: non-ordering values
