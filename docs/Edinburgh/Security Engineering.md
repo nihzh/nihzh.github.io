@@ -173,3 +173,43 @@ A public good:
 - 抢占市场资源 + 安全反馈缓慢昂贵且暴露缺陷 = agile，优先发布，security debit
 
 *Monopoly*: 垄断带来的市场生态单一，一处漏洞影响大量主体
+
+## Psychology and Usability
+Largest compromise: Human errors, often authorized by the victim
+
+People make errors in not following the rules
+
+![](../img/Pasted%20image%2020260129170934.png)
+
+Attacking knowledge-based behaviors
+- advance payment fraud: present mark with an opportunity
+- CEO fraud
+
+Attacking rule-based behaviors
+- Tell finance department that their vendor's bank details have changed
+- Malware in app store
+
+Attacking skill-based behaviors
+- Motor skill slips: URL typo
+- Visual recognition limitations: foreign characters, subdomain manipulation
+- Habituation: ads with X
+
+### Safety & Security
+Under pressure, humans regress from knowledge -> rule -> skill based control
+- safety: stress is an unfortunate byproduct
+- security: stress is manufactured
+	- time pressure
+	- authority
+
+curiosity
+
+Big brains track more relationships
+> Machiavellian aspect: if you’re better at deception, and at detecting deception in others, you’re more likely to have descendants
+
+### Behavioural economics
+![](../img/Pasted%20image%2020260129172936.png)
+
+People are more likely to follow security advice consistent with their mental model
+
+Changing defaults
+learning from flaws
