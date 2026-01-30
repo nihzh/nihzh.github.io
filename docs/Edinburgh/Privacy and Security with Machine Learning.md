@@ -79,3 +79,37 @@ Specification -> Design -> Implementation -> Assurance
 *Privacy*: Concerns individuals and their expectations on how their data, behaviours, and interactions are recorded, utilized, and spread
 
 *Anonymity*: set of individuals that share the same attributes
+
+## Application of ML to Traffic Analysis
+*Tor* 
+Website / Protocol Fingerprinting (WF)
+training a dataset for predict content and routs, driven by ML
+![](../img/Pasted%20image%2020260130204141.png)
+
+Closed world/ Open world
+
+The base rate fallacy
+![](../img/Pasted%20image%2020260130203423.png)
+
+Defences:
+- generate some dummy random package, encrypt and send as normal
+- delay the sending
+- escape from the pattern
+
+![](../img/Pasted%20image%2020260130204455.png)
+
+## Malware
+Intrusive programs, for gaining profit
+- cause damage
+- steal information
+- ransom
+- take control of devices
+
+Extract the signature and do blocking: hash, specific bytes...
+- Can be overpass by just modify the malware program a little bit
+
+ML classifier: selecting appropriate features
+
+Characteristics of the malware
+- Static analysis: source code without execute
+- Dynamic analysis: program while running
