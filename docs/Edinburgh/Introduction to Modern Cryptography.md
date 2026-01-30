@@ -170,16 +170,32 @@ When computer get faster, a tiny increase of n could compensate the gap, the sch
 ![](../img/Pasted%20image%2020260128033155.png)
 
 ## Pseudorandomness
-![](../img/Pasted%20image%2020260130231252.png)
+*Random*
+Sample a random element according to **some distribution**
 
+*Uniform*
+Sample an element uniformly at random means to sample according to the uniform distribution
+![](../img/Pasted%20image%2020260131010825.png)
+If we generate a uniform 16-bit string, each of the above occurs with probability $2^{-16}$
+
+*Uniformity*
 ![](../img/Pasted%20image%2020260130234817.png)
 
-One-time pad: the massage carry info
-> Pseudorandomness is a property of a distribution, not a string
-
-![](../img/Pasted%20image%2020260130232738.png)
+*Pseudorandom*: cannot be distinguished from uniform
+- Pseudorandomness is a property of a **distribution**
+- looks like random
 
 > $D$ is pseudorandom if it passes all efficient statistical tests
+
+![](../img/Pasted%20image%2020260131012622.png)
+
+> 任何“算力不超过t” 的攻击者 A，都几乎分不清样本来自 D 还是来自真正均匀随机$U_p$，概率差最多$\epsilon$
+
+### Asymptotic Pseudorandomness
+- parameter $n$, polynomial $p$
+- Let $D_n$ be a distribution over $p(n)$-bit strings
+- Pseudorandomness is a property of a sequence of distributions $${D_n}=\{D_1,D_2,\cdots\}$$
+![](../img/Pasted%20image%2020260131014747.png)
 
 ### Pseudorandom Generators (PRG)
 > $G$ is a deterministic, poly-time algorithm that is expanding $$|G(x)|=p(|x|)>|x|$$
