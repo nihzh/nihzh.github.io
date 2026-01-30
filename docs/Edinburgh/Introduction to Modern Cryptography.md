@@ -135,6 +135,7 @@ For all attacker a, no matter what he does
 
 ### Computational Secrecy
 *Relax perfect indistinguishability*
+Little weaker
 #### Computational Indistinguishability (Concrete security)
 Security may fail with probability $\le\varepsilon$
 Restrict attention to attackers running in time/CPU cycles $\le$ t
@@ -167,3 +168,23 @@ $1^n=\underbrace{11\cdots1}_{\text{n times}}$, denotes the algorithm is polynomi
 When computer get faster, a tiny increase of n could compensate the gap, the scheme still remain secure
 
 ![](../img/Pasted%20image%2020260128033155.png)
+
+## Pseudorandomness
+![](../img/Pasted%20image%2020260130231252.png)
+
+![](../img/Pasted%20image%2020260130234817.png)
+
+One-time pad: the massage carry info
+> Pseudorandomness is a property of a distribution, not a string
+
+![](../img/Pasted%20image%2020260130232738.png)
+
+> $D$ is pseudorandom if it passes all efficient statistical tests
+
+### Pseudorandom Generators (PRG)
+> $G$ is a deterministic, poly-time algorithm that is expanding $$|G(x)|=p(|x|)>|x|$$
+
+![](../img/Pasted%20image%2020260130235807.png)
+![](../img/Pasted%20image%2020260130233914.png)
+
+Assume certain algorithms are PRGs
