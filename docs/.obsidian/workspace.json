@@ -83,7 +83,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -211,22 +211,23 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6ed94d9ab02dada2",
+  "active": "86cd3f663aaffdcf",
   "lastOpenFiles": [
+    "img/IMG_20260203_155548_edit_1510111022340134.jpg",
+    "img/IMG_20260203_155215.jpg",
+    "img/Pasted image 20260204021635.png",
+    "img/Pasted image 20260204021625.png",
+    "img/Pasted image 20260204021402.png",
+    "img/Pasted image 20260204021346.png",
+    "img/Pasted image 20260204014426.png",
+    "img/Pasted image 20260204014303.png",
+    "img/Pasted image 20260204011447.png",
+    "img/Pasted image 20260203234717.png",
+    "img/Pasted image 20260203233614.png",
+    "Edinburgh/Usable Security and Privacy.md",
     "Edinburgh/Introduction to Modern Cryptography.md",
     "Edinburgh/Informatics Project Proposal.md",
-    "Edinburgh/Usable Security and Privacy.md",
-    "img/Pasted image 20260203213025.png",
-    "img/Pasted image 20260203205849.png",
     "Edinburgh/Security Engineering.md",
-    "img/Pasted image 20260131014747.png",
-    "img/Pasted image 20260131012622.png",
-    "img/Pasted image 20260131010825.png",
-    "img/Pasted image 20260131010747.png",
-    "img/Pasted image 20260130235807.png",
-    "img/Pasted image 20260130235753.png",
-    "img/Pasted image 20260130234817.png",
-    "img/Pasted image 20260130233914.png",
     "Edinburgh/Privacy and Security with Machine Learning.md",
     "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Secure Programming.md",

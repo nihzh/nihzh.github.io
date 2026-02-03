@@ -203,4 +203,40 @@ If we generate a uniform 16-bit string, each of the above occurs with probabilit
 ![](../img/Pasted%20image%2020260130235807.png)
 ![](../img/Pasted%20image%2020260130233914.png)
 
-Assume certain algorithms are PRGs
+![](../img/Pasted%20image%2020260203232337.png)
+
+The PRGs exist requires the unproven assumption $\mathcal{P}\ne\mathcal{NP}$ 
+**We assume certain algorithms are PRGs**
+
+## Pseudo One-Time Pad (POTP)
+![](../img/Pasted%20image%2020260203231531.png)
+
+Secure: prove under definition of indistinguishability
+
+### Proof by Reduction
+**Modern Crypto = Definitions + Proofs + Assumptions**
+
+> If G is a pseudorandom generator, then the pseudo one-time pad $\Pi$ is EAV-secure (computationally indistinguishable)
+
+Assume G is a pseudorandom generator
+Use A as a subroutine to build an efficient D attacking G
+Relate the distinguishing gap of D to the success probability of A
+- By assumption, the distinguishing gap of D must be negligible
+![](../img/Pasted%20image%2020260204011447.png)
+
+Reduce the security of the POTP to the security of the underlying G
+
+![](../img/Pasted%20image%2020260204021402.png)
+![](../img/Pasted%20image%2020260204014303.png)
+
+![](../img/Pasted%20image%2020260204014426.png)
+POTP 的破解优势不会比你能破解 PRG 的优势更大
+
+The POTP has a key shorter than the message:
+- n bit vs p(n) bits
+
+![](../img/IMG_20260203_155548_edit_1510111022340134.jpg)
+![](../img/IMG_20260203_155215.jpg)
+
+More problem
+small key, same key many encryption problem
