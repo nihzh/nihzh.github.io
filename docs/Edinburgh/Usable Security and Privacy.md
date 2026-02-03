@@ -171,3 +171,28 @@ Reliability
 Frameworks help researchers structure their thinking around problems. Frameworks are proposed by experts in the field and represent how those people think about and break up certain types of problems.
 
 ![](../img/Pasted%20image%2020260203205849.png)
+
+#### Communication
+安全系统和人的交互
+- *Warnings*: alert users to avoid a hazard
+- *Notices*: inform users about characteristics
+- *Status indicators*: inform users about system info
+- *Training*: teaches users about threats and mitigation
+- *Policy*: informs users about what they are expected to comply with
+
+#### Communication Impediments
+- **Environmental stimuli** may divert users' attention away
+- **Interference** prevents communication from being received as intended
+	- can be malicious
+
+#### Human Receiver
+*Personal Variables*: ability to comprehend and apply communications
+*Intentions*: decision of whether to pay attention on a communication
+- Attitudes and Beliefs
+- Motivation
+*Capabilities*: to take proper actions
+*Communication delivery*: should pay attention long enough to process it
+*Communication processing*: comprehend and acquire knowledge
+*Application*: retent the knowledge and knows when it's applicable and to apply it
+
+Users have complex decision making processes around security
