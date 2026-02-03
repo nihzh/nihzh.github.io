@@ -83,7 +83,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -102,7 +102,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "detect",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -136,8 +136,7 @@
               "title": "文件列表"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -212,12 +211,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "86cd3f663aaffdcf",
+  "active": "6ed94d9ab02dada2",
   "lastOpenFiles": [
-    "img/Pasted image 20260131014747.png",
-    "img/Pasted image 20260131012622.png",
+    "img/Pasted image 20260203205849.png",
     "Edinburgh/Security Engineering.md",
     "Edinburgh/Introduction to Modern Cryptography.md",
+    "img/Pasted image 20260131014747.png",
+    "img/Pasted image 20260131012622.png",
     "Edinburgh/Usable Security and Privacy.md",
     "img/Pasted image 20260131010825.png",
     "img/Pasted image 20260131010747.png",
@@ -228,7 +228,6 @@
     "img/Pasted image 20260130232738.png",
     "img/Pasted image 20260130231252.png",
     "Edinburgh/Privacy and Security with Machine Learning.md",
-    "img/Pasted image 20260130204455.png",
     "Edinburgh/Informatics Project Proposal.md",
     "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Secure Programming.md",

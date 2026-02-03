@@ -150,3 +150,24 @@ Does X work in Y situation?
 - Binary: true/false
 - Ordinal: ordering values
 - Nominal: non-ordering values
+
+### Statistical tests
+t-test: 
+- Independent variable: categorical binary
+- Dependent variable: numeric
+- Data must be normally distributed
+
+Within subjects, one person gave a confidence answer for both Code Sample A and Code Sample B
+
+## Research Framework
+*Inductive coding*: look for any ideas that interest you from different aspects
+*Deductive coding*: start with some hypothesis
+
+Reliability
+- *Stability* (intra-rater reliability): whether the same coder codes the data in a consistent way throughout the process
+- *Reproducibility* (inter-coder reliability): whether different coders code the same piece of data consistently (Cohen's Kappa)
+
+### Frameworks
+Frameworks help researchers structure their thinking around problems. Frameworks are proposed by experts in the field and represent how those people think about and break up certain types of problems.
+
+![](../img/Pasted%20image%2020260203205849.png)
