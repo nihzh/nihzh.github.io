@@ -204,16 +204,21 @@ Attitudinal, Behavioral, Qualitative, Quantitative
 ## Privacy Overview and Privacy by Design
 Privacy: The right to control one's own data
 
-### Privacy
+### A Taxonomy of Privacy
+![](../img/Pasted%20image%2020260206024457.png)
+
 #### Information Processing
 - *Aggregation*: 信息收集 combining of various pieces of personal information
+	- analyzed, aggregated information can reveal new facts about a person
 - *Secondary Use*: 信息二次利用 Using personal information for a purpose other than the purpose for which it was collected
 - *Exclusion*: 信息使用不知情 Failing to let an individual know about the information that others have about them and participate in its handling or use
-- *Insecurity*: Failing to protect information
+- *Insecurity*: Failing to protect information, potential future harms
 - *Identification*: Linking of information to an individual
+	- Anonymity and pseudonymity
 
 #### Collection
 *Surveillance*: 监视 Watching, listening to or recording of a person's activities
+- Continuous monitoring, persistent gawking
 *Interrogation*: 审问 Questioning or probing for personal information
 
 #### Invasion
@@ -224,13 +229,42 @@ Privacy: The right to control one's own data
 *Disclosure*: 披露 Revealing truthful information about a person that impacts their security or the way others judge their character
 *Exposure*: 暴露/曝光 Revealing a person's nudity, grief, or bodily functions
 *Breach of confidentiality*: 违反保密 Breaking a promise to keep a person's information confidential
+- trust issues
 *Increased accessibility*: 扩大能见度 Amplifying accessibility of personal information
 *Appropriation*: 身份挪用（获取利益） Using an individual's identity to serve the aims and interests of another
 *Distortion*: 假信息 Disseminating false of misleading information about a person
 
+### Privacy by Design
+- Proactive not Reactive, Preventative, not Remedial
+- Privacy as the Default
+- Privacy Embedded into Design
+- Full Functionality: positive-sum, not zero-sum 隐私$\ne$功能减半
+- Lifecycle Protection: End-to-end security
+- Visibility and Transparency
+- Respect for User Privacy
 
+#### Strategies
+![](../img/Pasted%20image%2020260206025232.png)
 
-Privacy by design
-- Minimize
-- Separate
-- Abstract
+*Minimize*: Limit as much as possible the processing of personal data
+- Select only relevant people and relevant attributes for processing
+- Exclude people or attributes in advance of processing it, or better delete it
+- Strip away (auto-delete) data as soon as it is no longer needed, complete-destruction system.
+
+*Separate*: Separate the collection and processing of personal data as much as possible
+- Isolate: distribute different databases of applications
+- Use the equipment of the user
+
+*Abstract*: Limit as much as possible the detail in which personal details processed
+- Summarise detailed attributes into more coarse
+- Group aggregate information instead of processing individually, present as averages
+- Perturb data values to create an approx., e.g. adding random noise
+
+*Hide*: Protect personal data or make it **unlinkable** or **unobservable**, make sure it does not become public or known
+- restrict access to personal data, control policy
+- obfuscate: encryption, hashes, pseudonym
+- Dissociate: break between events, persons and data
+- Mix data into larger sets
+
+*Inform*: Inform data subjects about the processing of their personal data in a timely and adequate manner
+- 
