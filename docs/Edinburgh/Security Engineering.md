@@ -234,3 +234,7 @@ security should be so normal
 learning from flaws
 
 ![](../img/Pasted%20image%2020260130010550.png)
+
+## Feedforward
+specific about capabilities
+enforcement
