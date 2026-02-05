@@ -82,7 +82,8 @@
               "title": "Informatics Project Proposal"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -210,11 +211,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4aeb78f1726c17b2",
+  "active": "6ed94d9ab02dada2",
   "lastOpenFiles": [
+    "img/Pasted image 20260205202012.png",
+    "Edinburgh/Security Engineering.md",
     "Edinburgh/Usable Security and Privacy.md",
     "Edinburgh/Privacy and Security with Machine Learning.md",
-    "Edinburgh/Security Engineering.md",
     "Edinburgh/Introduction to Modern Cryptography.md",
     "img/IMG_20260203_155548_edit_1510111022340134.jpg",
     "img/IMG_20260203_155215.jpg",

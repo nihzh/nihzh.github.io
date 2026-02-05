@@ -196,3 +196,41 @@ Frameworks help researchers structure their thinking around problems. Frameworks
 *Application*: retent the knowledge and knows when it's applicable and to apply it
 
 Users have complex decision making processes around security
+
+### Variables
+Attitudinal, Behavioral, Qualitative, Quantitative
+![](../img/Pasted%20image%2020260205202012.png)
+
+## Privacy Overview and Privacy by Design
+Privacy: The right to control one's own data
+
+### Privacy
+#### Information Processing
+- *Aggregation*: 信息收集 combining of various pieces of personal information
+- *Secondary Use*: 信息二次利用 Using personal information for a purpose other than the purpose for which it was collected
+- *Exclusion*: 信息使用不知情 Failing to let an individual know about the information that others have about them and participate in its handling or use
+- *Insecurity*: Failing to protect information
+- *Identification*: Linking of information to an individual
+
+#### Collection
+*Surveillance*: 监视 Watching, listening to or recording of a person's activities
+*Interrogation*: 审问 Questioning or probing for personal information
+
+#### Invasion
+*Intrusion*: 扰人清静 Disturbing a person's tranquility or solitude
+*Decisional interference*: 左右决策 Intruding into a person's decision making regarding their private affairs
+
+#### Information Dissemination
+*Disclosure*: 披露 Revealing truthful information about a person that impacts their security or the way others judge their character
+*Exposure*: 暴露/曝光 Revealing a person's nudity, grief, or bodily functions
+*Breach of confidentiality*: 违反保密 Breaking a promise to keep a person's information confidential
+*Increased accessibility*: 扩大能见度 Amplifying accessibility of personal information
+*Appropriation*: 身份挪用（获取利益） Using an individual's identity to serve the aims and interests of another
+*Distortion*: 假信息 Disseminating false of misleading information about a person
+
+
+
+Privacy by design
+- Minimize
+- Separate
+- Abstract
