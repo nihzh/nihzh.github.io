@@ -267,4 +267,26 @@ Privacy: The right to control one's own data
 - Mix data into larger sets
 
 *Inform*: Inform data subjects about the processing of their personal data in a timely and adequate manner
-- 
+- Supply resources on the processing of personal data including polices, processes and risks. Provide information about which personal data, how processed, and why processed
+- **Notify users** when their data is being processed, shared with third parties or after a data leak
+
+*Control*: Provide data subjects adequate control over the processing of their personal data, offer a real choice
+- User **explicit consent** to data processing
+- Offer basic functionality available for those who opt-out
+- Offer means to review and update their personal data
+- All users to retract their personal information
+
+*Enforce*: Commit to processing personal data in a privacy-friendly way, and adequately enforce this
+- Make and uphold a policy, assign resources to execute, ensure all technical and org. controls
+- Verify policy regularly and adjust implementation
+
+*Demonstrate*: Demonstrate you are processing personal data in a privacy-friendly way
+- Document all, record decisions and motivate them
+- Regularly audit and review processes and how personal data is processed, provide report to Data Protection Authority
+
+![](../img/Pasted%20image%2020260206064436.png)
+
+### Contextual Integrity
+Information flow is appropriate when it conforms with contextual privacy norms
+
+![](../img/Pasted%20image%2020260206070643.png)
