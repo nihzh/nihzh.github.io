@@ -81,12 +81,19 @@ Specification -> Design -> Implementation -> Assurance
 *Anonymity*: set of individuals that share the same attributes
 
 ## Application of ML to Traffic Analysis
+Traffic analysis: Passively analyze communication metadata to extract information
+
 *Tor* 
 Website / Protocol Fingerprinting (WF)
-training a dataset for predict content and routs, driven by ML
+- attacks can be deployed by a low-resource adversary
+- some Tor users are especially vulnerable
+
+Training a model by datasets of fingerprinting, for predict content and routs, driven by ML innovation
 ![](../img/Pasted%20image%2020260130204141.png)
 
 Closed world/ Open world
+![](../img/Pasted%20image%2020260207054832.png)
+现实世界很多unmonitored，模型需要先判断是否monitored
 
 The base rate fallacy
 ![](../img/Pasted%20image%2020260130203423.png)
@@ -109,7 +116,64 @@ Extract the signature and do blocking: hash, specific bytes...
 - Can be overpass by just modify the malware program a little bit
 
 ML classifier: selecting appropriate features
+Find efficient representations automatically
 
 Characteristics of the malware
 - Static analysis: source code without execute
 - Dynamic analysis: program while running
+- Hybrid
+
+### Static Analysis
+**Drebin**: xml file, disassembled code
+Access to hardware components
+Permissions
+App components: interfaces, activities, services, content providers and broadcast receivers
+- suspicious API calls
+- used permissions
+Network address
+Intent filters
+
+Embedding binary features in vector space
+- Linear SVM: test is the inner product between point and hyper-plane
+
+### Dynamic malware detection
+- **Traces of execution**: malicious behaviour
+- **Features to extract**: APIs, IP address connecting, services interacting
+- **End-to-end learning**: action sequence -> list of tokens to apply NLP
+
+*Gradient Descent* to find an approximate solution
+Find perturbation 𝜹 s.t. perturbed input 𝒙𝟎 + 𝜹 is misclassified
+![](../img/Pasted%20image%2020260207061245.png)
+
+*Evasion*: modify input such that it preserves malicious intent but is detected as benign
+- The 𝜹 is 'noise' added to the input, but not random
+- crafted to maximize the error of the classifier $$\delta^*=\arg\underset{\delta\in\mathcal{C}}{\min}s_{mal}(x+\delta)$$
+![](../img/Pasted%20image%2020260207064340.png)
+
+### Modeling assumptions
+#### Access to model parameters (unrealistic)
+Threat model in ML security/privacy
+![](../img/Pasted%20image%2020260207063807.png)
+
+#### Feature mapping is invertible (semantic gap)
+*Features space representation*: the abstract representation of software applications as vectors of descriptive features used to train and test machine learning based malware classifiers
+
+*Problem space representation*: the original, unprocessed form of the software application from which features are extracted
+
+Semantic gap: Problem imposes constraints on possible perturbations
+在feature space找到$\delta$不代表能在problem space实现
+- legit?
+- which semantics?
+- how to verify automatically
+- preprocessing?
+
+#### IID assumption (adversarial drift)
+dataset shift, distribution shift, concept drift...
+  
+The noise is not stochastic but adversarial: The adversary adapts to stay under the radar -- shifting the concept of malware over time
+![](../img/Pasted%20image%2020260207070251.png)
+
+![](../img/Pasted%20image%2020260207070440.png)
+
+**Experimental bias**
+Temporal Inconsistency in Train/Test Sets
