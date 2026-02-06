@@ -238,5 +238,62 @@ The POTP has a key shorter than the message:
 ![](../img/IMG_20260203_155548_edit_1510111022340134.jpg)
 ![](../img/IMG_20260203_155215.jpg)
 
-More problem
-small key, same key many encryption problem
+More problem: small key, same key many encryption problem
+
+## Security Against Chosen-Plaintext Attacks (CPA)
+*Multiple-message Secrecy (MMS)*: Parties share $k$; multiple $m_i$; encrypted under $k$
+- Threat model: attacker observes multiple ciphertexts $c_i$
+- Security goal: given $c_i$ attacker can not derive any information on any $m_i$
+![](../img/Pasted%20image%2020260207005753.png)
+
+![](../img/Pasted%20image%2020260207005828.png)
+
+构建vector0 两条相同的内容，vector1 两条不同的内容
+![](../img/Pasted%20image%2020260207010842.png)
+
+> CPA is the minimal notion of security an encryption scheme should satisfy
+> If $\Pi$ is CPA-secure ==> $\Pi$ is multiple-message indistinguishability
+
+![](../img/Pasted%20image%2020260207012425.png)
+![](../img/Pasted%20image%2020260206232303.png)
+
+> No deterministic encryption scheme can be CPA-secure
+> Consider randomized scheme
+
+## Pseudorandom functions (PRF)
+Choosing $f$ uniformly at random, interacting with oracle $f$
+is equivalent to
+For each $x \in \{0,1\}^n$, choose $f(x)$ uniformly in ${0,1}^n$
+
+随机选f一直用 和 为每个x随机选择一个f
+
+$\mathcal{F_n}$ = all functions mapping $\{0,1\}^n$ to $\{0,1\}^n$
+- $2^{n\cdot 2^{n}}$ functions in total
+
+*Keyed functions*
+![](../img/Pasted%20image%2020260207021258.png)
+**Length-preserving**: $|k|=|x|=|F(k,x)|$, inputs and output of equal size
+
+$F_k$ naturally induces a distribution on functions from $\mathcal{F_n}$
+But only a tiny fraction of $\mathcal{F_n}$, with at most $2^n$
+![](../img/Pasted%20image%2020260207030405.png)
+
+定义n长度uniform key的函数F，与从函数群选择一个uniform函数，产生的结果概率相等
+![](../img/Pasted%20image%2020260207031654.png)
+D can query $f$ (resp. $F_k$) on any input $x$ at most poly times
+**The key must be unknown by D**
+
+
+### Pseudorandom permutations (PRP)
+![](../img/Pasted%20image%2020260207034423.png)
+
+*Keyed Permutations*
+![](../img/Pasted%20image%2020260207035758.png)
+
+*Pseudorandom Permutation*
+![](../img/Pasted%20image%2020260207035914.png)
+
+> A random permutation is indistinguishable from a random function for large enough n
+- In practice PRPs are also good PRFs
+
+## CPA-secure encryption using PRF/PRP

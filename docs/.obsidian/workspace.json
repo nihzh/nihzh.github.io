@@ -83,7 +83,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -102,7 +102,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "detect",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -136,7 +136,8 @@
               "title": "文件列表"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -211,24 +212,26 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6ed94d9ab02dada2",
+  "active": "86cd3f663aaffdcf",
   "lastOpenFiles": [
-    "img/Pasted image 20260206070643.png",
-    "img/Pasted image 20260206064436.png",
-    "img/Pasted image 20260206064418.png",
-    "img/Pasted image 20260206025232.png",
-    "img/Pasted image 20260206024457.png",
-    "img/Pasted image 20260205202012.png",
-    "Edinburgh/Security Engineering.md",
+    "img/Pasted image 20260207035914.png",
+    "img/Pasted image 20260207035758.png",
+    "img/Pasted image 20260207034423.png",
+    "img/Pasted image 20260207031654.png",
+    "img/Pasted image 20260207031414.png",
+    "img/Pasted image 20260207030405.png",
+    "img/Pasted image 20260207021258.png",
+    "img/Pasted image 20260207012425.png",
+    "img/Pasted image 20260207010842.png",
+    "img/Pasted image 20260207005828.png",
+    "img/Pasted image 20260207005753.png",
+    "Edinburgh/Informatics Project Proposal.md",
+    "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
+    "Troubleshooting/Vulfocus漏洞靶场镜像无法拉取.md",
     "Edinburgh/Usable Security and Privacy.md",
+    "Edinburgh/Security Engineering.md",
     "Edinburgh/Privacy and Security with Machine Learning.md",
     "Edinburgh/Introduction to Modern Cryptography.md",
-    "img/IMG_20260203_155548_edit_1510111022340134.jpg",
-    "img/IMG_20260203_155215.jpg",
-    "img/Pasted image 20260204021635.png",
-    "img/Pasted image 20260204021625.png",
-    "img/Pasted image 20260204021402.png",
-    "Edinburgh/Informatics Project Proposal.md",
     "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Secure Programming.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
@@ -249,8 +252,6 @@
     "网安/渗透测试--蚁景网安/2.1 Weblogic漏洞.md",
     "网安/渗透测试--蚁景网安/1.7 未授权访问.md",
     "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
-    "网安/渗透测试--蚁景网安/1.0 信息收集.md",
-    "Liverpool/328-High Performance Computing.md",
     "GRE",
     "Liverpool",
     "未命名 1.canvas",
