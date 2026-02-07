@@ -177,3 +177,30 @@ The noise is not stochastic but adversarial: The adversary adapts to stay under 
 
 **Experimental bias**
 Temporal Inconsistency in Train/Test Sets
+
+## Privacy and Anonymization
+Sharing data & protect privacy
+
+After anonymized, the interception of multiple datasets acts as a *quasi-identifier* 准识别符，组合后高度可识别
+
+*Personality Identifiable Information (PII)*: any information that can uniquely identify a specific person
+
+Bigdata analysis
+Data protection regulation does not apply to anonymized data
+
+> There is no perfect mechanism to fully protect privacy of data
+
+Third parties / public can always have auxiliary information
+![](../img/Pasted%20image%2020260207011426.png)
+
+*K-anonymity (Sweeny)*: A dataset satisfies k-anonymity of the records associated with each individual in the dataset cannot be distinguished from at least k-1 other individuals in the dataset
+- suppression and generalization such that quasi-identifiers map to k or more people 一个准标识符映射到至少k个个体
+- enables a trade-off between utility and privacy
+![](../img/Pasted%20image%2020260207011926.png)
+
+**Homogeneity attack**: all k-records have the same sensitive value
+**Background knowledge attack**: e.g., low incidence of disease for a demographic
+
+Sparse data: sparsity means that rows are more likely to be unique
+
+> In general, we cannot know the adversary’s background knowledge: we cannot bound it!
