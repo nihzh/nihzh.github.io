@@ -290,3 +290,33 @@ Privacy: The right to control one's own data
 Information flow is appropriate when it conforms with contextual privacy norms
 
 ![](../img/Pasted%20image%2020260206070643.png)
+
+## Phishing and Fraud
+- Automated
+- Impersonation
+- Direction to a website
+- Contain an attachment
+- Authentication info request
+
+**Solving phishing**
+UI indicators
+training emotional emails
+run tech distributary
+Auto scan
+- attachments
+- urls
+- address from
+
+### Training users
+Up-front training
+- games
+- advice web pages
+- training videos
+Embedded training
+- information provided in websites
+- feedback given by help desk to phishing reports
+Evaluate impact of training
+- send out fake phishing emails to test staff
+- measure reporting behaviours
+
+Pig butchering scam

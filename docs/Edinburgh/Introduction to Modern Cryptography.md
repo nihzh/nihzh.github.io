@@ -111,8 +111,13 @@ $$Pr[A|B]=\frac{Pr[B|A]Pr[A]}{Pr[B]}$$
 #### Brute-force Attack Resisting
 ![](../img/Pasted%20image%2020260124035425.png)
 
-#### Use the same key twice
+#### Limitations of OTP
+1. **The key is as long as the message**
+2. **A key must be used only once**
+
+Only Secure if each key is used to encrypt a single message
 ![](../img/Pasted%20image%2020260123234110.png)
+Parties must share keys of (total) length equal to the (total) length of all the message they might ever send
 
 #### Optimality of the One-time Pad
 > If `(Gen, Enc, Dec)` with message space M is perfectly secret, then $|\mathrm{K}|\ge\mathrm|M|$ 
@@ -244,6 +249,9 @@ More problem: small key, same key many encryption problem
 *Multiple-message Secrecy (MMS)*: Parties share $k$; multiple $m_i$; encrypted under $k$
 - Threat model: attacker observes multiple ciphertexts $c_i$
 - Security goal: given $c_i$ attacker can not derive any information on any $m_i$
+
+多次查询，定制m1m2，返回正确结果
+
 ![](../img/Pasted%20image%2020260207005753.png)
 
 ![](../img/Pasted%20image%2020260207005828.png)
@@ -283,7 +291,6 @@ But only a tiny fraction of $\mathcal{F_n}$, with at most $2^n$
 D can query $f$ (resp. $F_k$) on any input $x$ at most poly times
 **The key must be unknown by D**
 
-
 ### Pseudorandom permutations (PRP)
 ![](../img/Pasted%20image%2020260207034423.png)
 
@@ -297,3 +304,50 @@ D can query $f$ (resp. $F_k$) on any input $x$ at most poly times
 - In practice PRPs are also good PRFs
 
 ## CPA-secure encryption using PRF/PRP
+![](../img/Pasted%20image%2020260210231858.png)
+将随机数r引入，使掩码每次都不同，又使用相同的$F_k$使其可复原
+r被同样发送，只有正确的k可以复原，解决重复加密问题
+PRG生成的均匀随机
+
+i.e. If encrypt multiple messages with same key, output
+$$\forall m, m'\space\space Enc(k,m)\ne Enc(k,m')$$
+
+> If $F$ is a pseudorandom function then $\Pi$ is CPA-secure
+
+**Proof**
+Distinguisher D that uses A as a subroutine to attack the PRF $F$
+D simulates to A the steps in the $PrivK^{cpa}_{A,\Pi}(n)$ experiment for $F$ and for a RF
+![](../img/Pasted%20image%2020260210234250.png)
+$A$ succeeds ==> $D$ succeeds ==> $F\ne$ PRF
+$$P_{k\leftarrow\{0,1\}}[D^{F(k,\cdot)}=1]=P[PrivK_{A,\Pi}^{CPA}(1^m)=1]$$
+Contradicts $F$ PRF ==> A can not succeed ==> $\Pi$ CPA-secure
+
+**World 0: Truly Random Function $f$**
+Security assuming $f$ (a random function) is never evaluated on the same input twice, except with negligible probability
+- Clarification PDF: cpa-secure-encryption.pdf
+
+重用r问题: the encryption is deterministic
+A can make at most $q(n)$ polynomial number or queries
+As $r_c$ is chosen uniformly, it follows
+$$Pr[\mathtt{Repeat}]=\frac{q(n)}{2^n}$$
+$$Pr[\mathtt{\lnot Repeat}]=1-\frac{q(n)}{2^n}=1-negl\approx1$$
+
+![](../img/Pasted%20image%2020260211025447.png)
+![](../img/Pasted%20image%2020260211025459.png)
+
+When $r$ is a uniform, n-bit string, the probability of a repeat is negligible
+
+**Attacks**
+- Nonce $r$ not used correctly
+	- repeats
+	- too short
+	- chosen from another distribution
+- $F$ not used correctly
+	- plaintext leaked $\langle m,F_k(m)\rangle$
+	- wrong key $\langle r,F_r(m)\rangle$
+
+**Problems**
+- 1-block plaintext ==> 2-block ciphertext
+- OTP limitation 1: same length of encryption
+
+![](../img/Pasted%20image%2020260211025557.png)

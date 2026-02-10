@@ -82,7 +82,8 @@
               "title": "Informatics Project Proposal"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -210,13 +211,18 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4aeb78f1726c17b2",
+  "active": "86cd3f663aaffdcf",
   "lastOpenFiles": [
-    "Edinburgh/Privacy and Security with Machine Learning.md",
+    "img/Pasted image 20260211025557.png",
+    "img/Pasted image 20260211025459.png",
+    "img/Pasted image 20260211025447.png",
+    "img/Pasted image 20260210234250.png",
+    "img/Pasted image 20260210231858.png",
     "Edinburgh/Usable Security and Privacy.md",
-    "Edinburgh/Introduction to Modern Cryptography.md",
     "Edinburgh/Informatics Project Proposal.md",
+    "Edinburgh/Privacy and Security with Machine Learning.md",
     "Edinburgh/Security Engineering.md",
+    "Edinburgh/Introduction to Modern Cryptography.md",
     "Edinburgh/Secure Programming.md",
     "img/Pasted image 20260207011926.png",
     "img/Pasted image 20260207011426.png",
@@ -224,10 +230,6 @@
     "img/Pasted image 20260207070251.png",
     "img/Pasted image 20260207064340.png",
     "img/Pasted image 20260207063807.png",
-    "img/Pasted image 20260207061245.png",
-    "img/Pasted image 20260207054832.png",
-    "img/Pasted image 20260207035914.png",
-    "img/Pasted image 20260207035758.png",
     "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
     "Troubleshooting/Vulfocus漏洞靶场镜像无法拉取.md",
     "Edinburgh/Applied Machine Learning.md",

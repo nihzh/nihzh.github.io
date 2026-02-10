@@ -12,3 +12,7 @@ Specific questions or points for discussion
 
 Think about what your reader expected to know
 Writer's voice
+
+Problem -> Importance -> Idea -> Approach -> Plan -> Success
+
+Primary users
