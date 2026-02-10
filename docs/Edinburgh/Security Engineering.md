@@ -238,3 +238,15 @@ learning from flaws
 ## Feedforward
 specific about capabilities
 enforcement
+
+## Network Security
+*Perimeterisation* ==> *Zero-trust Networking*
+
+BGP attacks
+Denial of Service
+- amplifier attacks 
+- synchronisation cookie
+Malware
+
+Firewalls
+Intrusion Detection System

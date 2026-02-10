@@ -203,4 +203,4 @@ Third parties / public can always have auxiliary information
 
 Sparse data: sparsity means that rows are more likely to be unique
 
-> In general, we cannot know the adversary’s background knowledge: we cannot bound it!
+> In general, we cannot know the adversary's background knowledge: we cannot bound it!
