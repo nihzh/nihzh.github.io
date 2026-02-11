@@ -293,21 +293,27 @@ Information flow is appropriate when it conforms with contextual privacy norms
 
 ## Phishing and Fraud
 - Automated
-- Impersonation
-- Direction to a website
-- Contain an attachment
-- Authentication info request
+- Impersonation: claims to be from someone trusted
+- Direction to a website: look like go to somewhere legitimate
+- Contain an attachment: asks for information to be send back / malicious
+- Authentication info request: aims to get authentication information
 
-**Solving phishing**
-UI indicators
-training emotional emails
-run tech distributary
-Auto scan
+![](../img/Pasted%20image%2020260211003248.png)
+
+### Solutions of Phishing
+#### Automatically filter blocks
+scan all incoming emails or features
 - attachments
-- urls
+- URLs
 - address from
 
-### Training users
+Low tolerance for errors, low delay
+Encryption + Automation: **Encryption also makes scanning for phishing more challenging**
+
+#### Training users
+Sophisticated person surprisingly aware of phishing
+- likely due to life experience
+
 Up-front training
 - games
 - advice web pages
@@ -319,4 +325,22 @@ Evaluate impact of training
 - send out fake phishing emails to test staff
 - measure reporting behaviours
 
+- Supports
+	- UI indicators: "passive indicators"
+	- feedback when phishing is reported or blocked
+
+- Improve protection of authentication credentials
+
+training emotional emails
+run tech distributary
+
 Pig butchering scam
+
+### Stanford Fraud Taxonomy (Overview)
+- Consumer Investment Fraud（投资/证券）：虚假信息误导投资者
+- Consumer Products and Services Fraud（商品与服务：付了钱没得到承诺的东西
+- Employment Fraud（招聘/培训类）：虚假就业机会/虚假回报价值
+- Prize and Grant Fraud（奖品/补助骗局）：预付款、手续费、税费
+- Phantom Debt Collection Fraud（假催收、威胁恐吓）
+- Charity Fraud（假慈善募捐）
+- Relationship and Trust Fraud： 利用与受害者的个人关系，并且不期望从互动中获得产品或服务。从受害者的角度看，预期的结果式培养个人关系
