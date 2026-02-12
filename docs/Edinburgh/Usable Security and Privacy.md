@@ -320,3 +320,25 @@ Evaluate impact of training
 - measure reporting behaviours
 
 Pig butchering scam
+
+## Human-Centric Access Control
+Subjects: who in control, users
+Objects
+
+*Access Control Matrix*
+![](../img/Pasted%20image%2020260212201915.png)
+
+*Policies*
+- *Discretionary Access Control*: based on identity alone, any propagation of information is allowed
+- *Mandatory Access Control*: based on identity and the sensitivity of the object, sharing or any operation on the resource is restricted by security policies
+	- Bell-LaPadula: No reads up, no write down
+- *Role-based Access Control*: user assigned to groups
+	- Mix of DAC and MAC
+![](../img/Pasted%20image%2020260212204157.png)
+
+### Permission model
+![](../img/Pasted%20image%2020260212204318.png)
+Least privilege principle: A system should only have the minimal privileges (i.e., resource access) needed for its intended purposes
+
+hard to read?
+how long the permission granted after permitted?

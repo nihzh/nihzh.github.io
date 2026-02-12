@@ -250,3 +250,14 @@ Malware
 
 Firewalls
 Intrusion Detection System
+
+## Hardware Security
+Temper resistance: 
+- no way to know the physical system has been attacked
+- moving to the digital world
+
+physical form of watermark
+blockchain for digital currency
+
+Side channels: ultrasound also captured by devices
+tracing
