@@ -70,7 +70,7 @@ Freelance hackers 雇佣安全研究者
 
 Responsible Disclosure: *CERT*
 
-### The swamp
+### The Swamp
 Variously motivated actors with few technical skills
 Hate crimes, Sex abuse, Bullying
 
