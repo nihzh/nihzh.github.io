@@ -329,6 +329,7 @@ Security assuming $f$ (a random function) is never evaluated on the same input t
 重用r问题: the encryption is deterministic
 A can make at most $q(n)$ polynomial number or queries
 As $r_c$ is chosen uniformly, it follows
+在uniform随机下出现重复r的几率
 $$Pr[\mathtt{Repeat}]=\frac{q(n)}{2^n}$$
 $$Pr[\mathtt{\lnot Repeat}]=1-\frac{q(n)}{2^n}=1-negl\approx1$$
 
@@ -351,3 +352,7 @@ When $r$ is a uniform, n-bit string, the probability of a repeat is negligible
 - OTP limitation 1: same length of encryption
 
 ![](../img/Pasted%20image%2020260211025557.png)
+
+## Security Against Chosen-Ciphertext Attacks (CCA)
+Active attackers
+adv wins

@@ -193,10 +193,15 @@ Data protection regulation does not apply to anonymized data
 Third parties / public can always have auxiliary information
 ![](../img/Pasted%20image%2020260207011426.png)
 
-*K-anonymity (Sweeny)*: A dataset satisfies k-anonymity of the records associated with each individual in the dataset cannot be distinguished from at least k-1 other individuals in the dataset
+### K-anonymity (Sweeny)
+A dataset satisfies k-anonymity of the records associated with each individual in the dataset cannot be distinguished from at least k-1 other individuals in the dataset
 - suppression and generalization such that quasi-identifiers map to k or more people 一个准标识符映射到至少k个个体
-- enables a trade-off between utility and privacy
+- enables a **trade-off** between utility and privacy
 ![](../img/Pasted%20image%2020260207011926.png)
+- assumes that auxiliary knowledge is bounded (fixed)
+- *l-diversity*, *t-closeness*
+
+> It is unreasonable to expect that a privacy mechanism will provide **utility** and at the same time **prevent all individual inference** for **arbitrary auxiliary knowledge**
 
 **Homogeneity attack**: all k-records have the same sensitive value
 **Background knowledge attack**: e.g., low incidence of disease for a demographic
@@ -205,6 +210,39 @@ Sparse data: sparsity means that rows are more likely to be unique
 
 > In general, we cannot know the adversary's background knowledge: we cannot bound it!
 
-## Differential Privacy
+### Statistical Disclosure Control (SDC)
+> nothing about an individual should be learnable from the database that cannot be learned without access to the database
 
-$$Pr[\mathcal{M}(D)\in\mathcal{S}]\le e^\epsilon Pr[\mathcal{M}(D')\in\mathcal{S}]$$
+Aux. info: “Alice is 8cm shorter than average”
+
+## Differential Privacy
+A randomized algorithm $\mathcal{M}$ is $\varepsilon$-differentially private if for all adjacent datasets $D,D'$ and for all $S\subseteq Range(\mathcal{M})$
+$$Pr[\mathcal{M}(D)\in\mathcal{S}]\le e^\varepsilon Pr[\mathcal{M}(D')\in\mathcal{S}]$$
+where $\varepsilon$ is a parameter called the *'privacy budget'*
+
+"Distance between output distributions is at most $\varepsilon$"
+个体层面被随机化（噪声）保护，但总体统计仍可恢复
+
+*Local DP: Randomized Response*
+Parameter `p` (randomizing) adjusts privacy-utility trade-off
+以p概率说真话：
+- 1: no privacy
+- 1/2: perfect privacy
+
+以概率 p 说真话，以概率 1-p 说假话
+观测到“回答 Yes 的比例” γ，可反推总体真实比例 x $$\gamma=px+(1-p)(1-x)\Rightarrow x=\frac{\gamma+p-1}{2p-1}$$
+
+**Continuous values f(x)**: add noise sampled from a probability distribution cantered around 0 $$f(x)+Y~where~Y\sim Lap(0,\sigma)$$
+
+**Sensitivity**: 换掉一个人的数据，统计量最多能变多少
+$$\Delta f=\underset{D\sim D'}{\max}|f(D)-f(D')|$$
+
+*Local DP*: 数据提供者发送前加噪 (1 query)
+*Global DP*: 可信数据库管理者提供查询接口 (n queries)
+- n的数量受限于privacy budget
+
+$(\varepsilon,\delta)$-DP
+$$Pr[\mathcal{M}(D)\in\mathcal{S}]\le e^\varepsilon Pr[\mathcal{M}(D')\in\mathcal{S}]+\delta$$
+where $\delta$ is Failure probability, $M$ is $\varepsilon$-DP with probability $1-\delta$
+
+
