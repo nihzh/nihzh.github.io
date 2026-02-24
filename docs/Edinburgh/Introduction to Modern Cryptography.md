@@ -353,6 +353,59 @@ When $r$ is a uniform, n-bit string, the probability of a repeat is negligible
 
 ![](../img/Pasted%20image%2020260211025557.png)
 
+## Block Ciphers and Stream Ciphers
+Problem of encrypting long messages: ciphertext expansion by a factor of 2
+
+*Mode of Operation (MO)*
+PRP/PRF ==> block cipher
+PRG ==> stream cipher
+### Block Cipher MO
+![](../img/Pasted%20image%2020260225004753.png)
+AES: 128，192，256 bits key length and 128 bits block length
+密钥不等长的加密
+$\mathrm{P}_m$空间里的随机置换模式，c=2也无法确认$F_k$
+
+*ECB Mode*
+![](../img/Pasted%20image%2020260224232519.png)
+Deterministic ==> not CPA-secure
+
+*CTR Mode*
+![](../img/Pasted%20image%2020260224232741.png)
+If $F$ is a PRF, then CTR mode is CPA-secure
+
+*CBC Mode*
+![](../img/Pasted%20image%2020260224233443.png)
+If $F$ is a PRP, then CBC mode is a CPA-secure
+难以Dec，需要$F^{-1}(c_3)$逆运算
+
+*OFB Mode*
+![](../img/Pasted%20image%2020260224233551.png)
+![](../img/Pasted%20image%2020260225013133.png)
+### Stream Cipher MO
+Practical realization of PRGs
+Producing an infinite stream of pseudorandom bits
+![](../img/Pasted%20image%2020260224233730.png)
+
 ## Security Against Chosen-Ciphertext Attacks (CCA)
-Active attackers
-adv wins
+Active attackers, corrupted, injecting traffic on the channel
+No more assume that the ciphertext can reach the receiver **unchanged**
+
+detecting the modification
+
+*Malleability*: A scheme is malleable if it is possible modify a ciphertext cause **a predictable change to the plaintext**
+- a perfectly secret scheme may still be malleable
+
+*Chosen-ciphertext Attacks (CCA)*
+Models settings in which the attacker can influence what gets decrypted, and observe the effects
+
+A is allowed to interfering and **modify** c to c', and forward c' to the receiver
+- has access to both encryption and decryption oracle
+- obtain the decryption of **any ciphertext of its choice**, beside the challenge ciphertext
+
+![](../img/Pasted%20image%2020260225022146.png)
+![](../img/Pasted%20image%2020260225022335.png)
+
+CCA-security implies non-malleability
+- modification of c to c′ predictably modifies m to m′
+
+As much as secure

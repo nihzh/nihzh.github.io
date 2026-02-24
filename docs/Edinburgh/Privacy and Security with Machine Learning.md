@@ -245,4 +245,56 @@ $(\varepsilon,\delta)$-DP
 $$Pr[\mathcal{M}(D)\in\mathcal{S}]\le e^\varepsilon Pr[\mathcal{M}(D')\in\mathcal{S}]+\delta$$
 where $\delta$ is Failure probability, $M$ is $\varepsilon$-DP with probability $1-\delta$
 
+Mechanisms
+- **Robustness to post-processing**: it is safe to apply arbitrary functions on output
+- **Composition**: if we run a $(\varepsilon,\delta)$-DP mechanism $k$ times, the resulting mechanism is $(k\varepsilon,k\delta)$-DP
+- **Advanced composition**: if $k\lt\frac{1}{\varepsilon^2}$, the resulting mechanism is $(\mathcal{O}(\sqrt{k~log(\frac{1}{\delta'})})\varepsilon,k\delta+\delta')$-DP for all $\delta'\gt0$ 
+- **Amplification**: if we sample a fraction $q$ of the data, our mechanism becomes $(q\varepsilon,q\delta)$-DP
 
+A rigorous "worst-case" mathematical definition of privacy, independent of background knowledge of auxiliary data
+
+Hard to interpret, hard to pick Epsilon, privacy budget
+
+*DP-ERM*
+- Output perturbation: minimize then perturb
+- Objective perturbation: perturb then minimize
+
+*DP-SGD*: calculate gradient over sample iteratively, apply DP at that level
+### Private Learning
+DP mechanism sits within the learning algorithm, Once the model has been trained, it can be safely released
+![](../img/Pasted%20image%2020260224225939.png)
+
+## ML for Intrusion Detection Systems
+Intrusion Detection: sensing and analysing system events for the purpose of noticing attempts to access system resources in an unauthorized manner
+
+IDS ??
+
+**Host-based IDS**: run directly on the hosts
+**Network-based IDS (NIDS) ??
+
+### Signature detection
+look for patterns (signatures of intrusion)
+**Rule-based**: 
+- network (headers, payloads)
+- host (events)
+
+### Anomaly detection
+Data point or pattern that does not conform to normal behaviour
+- outliers
+- abnormalities
+- deviations
+
+Classification discriminative
+
+Positive unlabeled: intrusion are positive
+
+![](../img/Pasted%20image%2020260224184057.png)
+
+LUCID
+- features: 10 features from the first n packets of a flow
+- model: CNN
+
+baseline not reflect real-world settings
+
+label inaccuracy
+noise exists, mitigate

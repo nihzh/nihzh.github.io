@@ -366,3 +366,4 @@ Least privilege principle: A system should only have the minimal privileges (i.e
 hard to read?
 how long the permission granted after permitted?
 
+## IoT Security and Privacy
