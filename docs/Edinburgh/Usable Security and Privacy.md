@@ -367,3 +367,51 @@ hard to read?
 how long the permission granted after permitted?
 
 ## IoT Security and Privacy
+Internet of Things
+- ubiquitous computing
+- ambient computing
+
+Why don't people protect themselves
+- people are not **aware** of the risks or protection mechanisms
+- people cannot **use** the available protection mechanisms
+- people do not **care** about security and privacy
+
+Lemon markets: people with purchasing power cannot differentiate between a "good" device and a "bad" one
+
+user awareness == secure behavior
+- S&P perception
+- S&P attitudes
+- Smart home adoption
+
+How do users develop them organically
+1. Reddit online discussion
+	- how user think of S&P issues
+	- how users react to
+	- how online discussion influences: idea interaction
+2. NLP-assisted sampling: build a NLP classifier to identify relevant threads, sampled and coded threats until data saturation
+3. Qualitative content analysis: qualitative coding and thematic analysis
+
+Contextual Factors Related
+
+S&P Considerations: users develop S&P concerns and protective strategies overtime and reflectively
+![](../img/Pasted%20image%2020260225050118.png)
+- Insufficient understanding may lead to overestimation or underestimation of the threat
+- Assumptions regarding stakeholders behaviors result in different role assignments
+- Users' attitudes are contextual and evolve, despite preconception
+- Users may not have a complete understanding of the contextual factors
+- 价格、时间、技术投入决定“成本感”
+
+![](../img/Pasted%20image%2020260225052308.png)
+
+Influences of Online S&P Discussion
+- **Resolving ambiguity**: Users helped each other through iterations of discussion
+- **Developing attitudes**: Users benefit from the online discussion in making decisions
+- **Influencing environment**: 同理心能跨态度共振 S&P information in discussion can be difficult to access and assess
+
+Design and Practice
+Incorporate users' diverse considerations: 
+- make S&P protective strategies available and flexible for products
+- accommodate different users and use cases
+Support attitude development in real life: 
+- nudge users S&P attitudes with physical metaphors
+Improve access credible S&P info. online: Wiki, mediate in discussion

@@ -265,28 +265,48 @@ DP mechanism sits within the learning algorithm, Once the model has been trained
 ![](../img/Pasted%20image%2020260224225939.png)
 
 ## ML for Intrusion Detection Systems
-Intrusion Detection: sensing and analysing system events for the purpose of noticing attempts to access system resources in an unauthorized manner
+*Intrusion Detection*: sensing and analysing system events for the purpose of noticing attempts to access system resources in an unauthorized manner
 
-IDS ??
+*Intrusion Detection System*: a service implemented in software or hardware, that automates the task of intrusion detection
+
+Servers, Endpoints, Network Infrastructure, authentication and backup systems, the IDS
 
 **Host-based IDS**: run directly on the hosts
-**Network-based IDS (NIDS) ??
+- An agent runs on each host
+- deep but narrow
+**Network-based IDS (NIDS)**: sensors are placed on subnetwork components, and analysis components run either on those components or hosts
+- Analyze the correct execution of protocols
+- Traffic analysis: capture more complex network behaviors
+- broad but shallow
+
+Should rely on both approaches
 
 ### Signature detection
 look for patterns (signatures of intrusion)
 **Rule-based**: 
 - network (headers, payloads)
 - host (events)
+Limitation: Low detection rate for unknown attacks
 
 ### Anomaly detection
-Data point or pattern that does not conform to normal behaviour
+Intrusion behavior will look different from benign behaviour
+Anomaly: Data point or pattern that does not conform to normal behaviour
 - outliers
 - abnormalities
 - deviations
 
-Classification discriminative
+Model "normal" behavior and raise alarms for behaviors that significantly deviate from it
 
-Positive unlabeled: intrusion are positive
+Limitation: Base rate fallacy 
+
+Classification discriminative (supervised): use labeled data to train a model for the positive/negative classes
+- Positive unlabeled: models the malign class
+- may limit the discovery of new threats
+
+**One-class SVM** (Semi-supervised): model only the benign class, more robust to new attacks, can be improved by giving negative examples to model the positive class boundary 
+- intrusions are positive
+
+![](../img/Pasted%20image%2020260225031948.png)
 
 ![](../img/Pasted%20image%2020260224184057.png)
 
@@ -294,7 +314,19 @@ LUCID
 - features: 10 features from the first n packets of a flow
 - model: CNN
 
-baseline not reflect real-world settings
-
+Spurious correlations
+lab-only evaluation
+- baseline not reflect real-world settings
+- biased parameter selection
 label inaccuracy
-noise exists, mitigate
+- noise exists
+- labelling errors common in IDS, unreliable
+- mitigate: verify labels, actively model label noise
+Base rate fallacy
+- A: alarm event
+- I: intrusion event
+![](../img/Pasted%20image%2020260225040113.png)
+$$\thickapprox\frac{TPR}{FPR}BR$$
+Denominator is dominated by the factor governing FPR
+当基率极低时，Precision 主要靠把 FPR 压到极低来救
+NOT FEASIBLE IN PRACTICE!

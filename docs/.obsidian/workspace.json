@@ -83,7 +83,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -102,7 +102,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "CIA",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -136,7 +136,8 @@
               "title": "文件列表"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -211,8 +212,16 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "86cd3f663aaffdcf",
+  "active": "6ed94d9ab02dada2",
   "lastOpenFiles": [
+    "img/Pasted image 20260225052308.png",
+    "img/Pasted image 20260225050118.png",
+    "Edinburgh/Privacy and Security with Machine Learning.md",
+    "Edinburgh/Informatics Project Proposal.md",
+    "Edinburgh/Applied Machine Learning.md",
+    "img/Pasted image 20260225040113.png",
+    "img/Pasted image 20260225031948.png",
+    "Edinburgh/Introduction to Modern Cryptography.md",
     "img/Pasted image 20260225022335.png",
     "img/Pasted image 20260225022146.png",
     "img/Pasted image 20260225013133.png",
@@ -220,19 +229,11 @@
     "img/Pasted image 20260225004750.png",
     "img/Pasted image 20260224233730.png",
     "img/Pasted image 20260224233551.png",
-    "img/Pasted image 20260224233443.png",
-    "img/Pasted image 20260224232833.png",
-    "img/Pasted image 20260224232741.png",
-    "img/Pasted image 20260224232519.png",
-    "Edinburgh/Privacy and Security with Machine Learning.md",
     "Edinburgh/Usable Security and Privacy.md",
-    "Edinburgh/Introduction to Modern Cryptography.md",
-    "Edinburgh/Informatics Project Proposal.md",
     "Edinburgh/Security Engineering.md",
     "Edinburgh/Secure Programming.md",
     "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
     "Troubleshooting/Vulfocus漏洞靶场镜像无法拉取.md",
-    "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
     "Edinburgh/Computer Security.md",
     "Untitled.md",
