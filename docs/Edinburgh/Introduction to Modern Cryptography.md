@@ -409,3 +409,47 @@ CCA-security implies non-malleability
 - modification of c to c′ predictably modifies m to m′
 
 As much as secure
+
+## Message Integrity
+*Integrity*
+- originated from the intended sender and
+- was not modified
+
+**Not concerned with secrecy, message m transmitted in the clear**
+Passive Attacks ==> Active Attacks
+Adaptive chosen-message attack
+
+*Message Authentication Code (MAC)*
+![](../img/Pasted%20image%2020260227232051.png)
+
+![](../img/Pasted%20image%2020260227232620.png)
+![](../img/Pasted%20image%2020260227232706.png)
+
+Secure MAC ==> infeasible to forage even a single message
+
+MACs **do not prevent replay attacks**
+No stateless mechanism can prevent replay attacks
+
+### Fixed-length MAC
+![](../img/Pasted%20image%2020260228022020.png)
+
+Let Mac be a PRF, set $Mac_k\equiv F_k$
+F is a PRF ==> $\Pi$ is a secure MAC
+
+![](../img/Pasted%20image%2020260227234028.png)
+
+![](../img/Pasted%20image%2020260228024344.png)
+
+![](../img/Pasted%20image%2020260228024752.png)
+![](../img/Pasted%20image%2020260228024608.png)
+![](../img/Pasted%20image%2020260228024738.png)
+
+### Variable-length MAC
+Break a long message into multiple fixed length string and do fixed-length MAC respectively
+
+*CBC-MAC*
+![](../img/Pasted%20image%2020260228025313.png)
+不需要逆运算，**需要提前确定l的数量**
+> If F is a length-preserving PRF with input length $n$, then for any fixed $l$ basic CBC-MAC is a secure mac for messages of length $ln$
+
+![](../img/Pasted%20image%2020260228032147.png)
