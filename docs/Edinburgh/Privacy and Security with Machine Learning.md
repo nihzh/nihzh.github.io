@@ -357,7 +357,31 @@ Attacker capabilities
 - Some constrains on problem space
 	- PDF documents: only add, no remove content
 
-Szedegy: Intriguing properties of neural network
+$g(x)$ is the model prediction on $x$
+- $g(x)\lt0$, ~ -1 == Benign
+- $g(x)\gt0$, ~1 == Malicious
+- Pr\[y = Malicious | x\] (confidence score)
+
+Add a second term to maximize the probability density around benign training samples
+- Pr\[x | y = Benign\] ==> KDE
+- $\frac{1}{n}\sum^n_{i=1}k(\frac{x-x_i}{h})$ k: kernel function; h: smoothing parameter bandwidth
+
+**Gradient descent attack**
+- gradient of classifier
+- gradient of density
+
+现实约束下（problem space + 特征约束），evasion 依然可行
+
+#### Szedegy: Intriguing properties of neural network
+对抗样本 ==> 最小扰动
+- 分类器 $f:[0,1]^m\to\{1,\dots,k\}$
+- 有连续损失$\ell_f(x,l)$
+- 给定原始 x 和目标标签 l，找扰动 r
+分类约束作为损失项
+$$\min_r \; c\|r\| + \ell_f(x+r,l)\quad \text{s.t.}\; x+r\in[0,1]^m$$
 
 ### One-step attack
-Fast gradient sign method (FGSM)
+**Fast gradient sign method (FGSM)**
+$$x_{\text{adv}} = x + \epsilon\cdot \text{sign}\big(\nabla_x \ell(\theta,x,y_{\text{true}})\big)$$
+对输入求梯度，每个维度都向“最增加损失”移动相同步长
+这样天然保证 $\|x-x_{\text{adv}}\|_\infty \le \epsilon$

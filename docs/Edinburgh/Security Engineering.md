@@ -262,7 +262,45 @@ blockchain for digital currency
 Side channels: ultrasound also captured by devices
 tracing
 
-???
+Rowhammer: 内存单元行间干涉
+- corrupt files
+- change privilege and secret data
+
+Speculative Side Channel Attacks in Computer Architecture
+
+Meltdown
+OS 用虚拟内存共享物理内存资源；内核空间映射到进程地址空间中，通过权限检查隔离内核态
+cache 里有 microarchitectural traces (分支预测回滚之后剩下的）；访问 cache hit/miss 的时间差能暴露信息；共享页可让攻击者做 Flush+Reload
+
+- serialize permission check and register fetch
+- split user and kernel spaces
+- KAISER 
+
+Meltdown 更像“绕过权限检查的实现缺陷/时序窗口”，直接读到本不该读的特权数据，再用 cache 外带。
+
+Spectre 更像“诱导推测执行走到错误路径”，利用**程序中本来就合法的代码片段**在瞬态窗口做越界/泄漏
+
+Measured and correctness verified at every load
+![](../img/Pasted%20image%2020260228064539.png)
+
+Enclaves
+在不可信 OS 上做“受保护计算”, enclave 不是“万能保险箱”，它把威胁模型从 OS 转移到固件/微码/认证链与侧信道上。
+- losing visibility into malicious program
+
+MTE: memory tagging extension
+- 分别tag指针和对应的内存块，解引用时检查tag是否匹配
+- 检测use after free
+- 不是1-1映射，概率性缓解
+
+CHERI：指针携带capabilities（权限和访问边界）
+- 存储tag位保证valid
+
+![](../img/Pasted%20image%2020260228065154.png)
+
+
+PUF：利用制造过程中的微小差异，使同一电路在挑战下产生独特响应
+- device fingerprinting
+- binding secret with hardware: key gen
 
 ## Operating System Security
 Discretionary Access Control (DAC)

@@ -174,6 +174,7 @@ When computer get faster, a tiny increase of n could compensate the gap, the sch
 
 ![](../img/Pasted%20image%2020260128033155.png)
 
+![](../img/Pasted%20image%2020260228062334.png)
 ## Pseudorandomness
 *Random*
 Sample a random element according to **some distribution**
