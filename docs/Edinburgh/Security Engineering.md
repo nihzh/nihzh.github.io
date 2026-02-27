@@ -261,3 +261,35 @@ blockchain for digital currency
 
 Side channels: ultrasound also captured by devices
 tracing
+
+???
+
+## Operating System Security
+Discretionary Access Control (DAC)
+- Access control list: store permissions with file
+- Capabilities: store per user
+
+Mandatory Access Control (MAC): sysadmin no longer the boss, control with security policy
+- Bell Labadula: No read up, No write down
+- BIBA: No write up, No read down
+	- Integrity of an object
+
+System have responsibility to check out the system
+Android allow and encourage vendors to manage privileges
+IOS manages everything
+Windows
+
+**Isolation**: 
+- Processes and Memory Management: File-system isolation 虚拟地址页表
+![](../img/Pasted%20image%2020260226174536.png)
+- Page-Table Walk 四次访问寻址
+![](../img/Pasted%20image%2020260226185643.png)
+
+- sandboxing
+- chrome
+- virtualization: virtual machine, guest OS
+	- cloud computing
+- container
+
+secure boot: verify then execute, check signatures
+measure boot: measure then report, hashing and report

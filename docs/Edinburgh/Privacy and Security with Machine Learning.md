@@ -330,3 +330,34 @@ $$\thickapprox\frac{TPR}{FPR}BR$$
 Denominator is dominated by the factor governing FPR
 当基率极低时，Precision 主要靠把 FPR 压到极低来救
 NOT FEASIBLE IN PRACTICE!
+
+## Evasion attacks
+Undermining integrity, models failed to detect/classify
+![](../img/Pasted%20image%2020260227212120.png)
+
+![](../img/Pasted%20image%2020260227215217.png)
+$L_\infty$ norm = $\underset{i}{\max}|x_i|$
+
+Continuous domain and white box inference model, knows architecture and parameters
+
+**Gradient-based**
+![](../img/Pasted%20image%2020260227203403.png)
+
+*Targeted*: Objective is to maximize misclassification confidence
+*Untargeted*: Objective is to minimize and distance of evasion
+
+### Iterative attacks
+#### Evasion attacks against machine learning at test time (Biggio et al.)
+Attacker scenarios:
+- Perfect knowledge (PK): knows model and training data
+- Limited knowledge (LK): unknown model but can sample training data distribution
+
+Attacker capabilities
+- Modification of features (at test time)
+- Some constrains on problem space
+	- PDF documents: only add, no remove content
+
+Szedegy: Intriguing properties of neural network
+
+### One-step attack
+Fast gradient sign method (FGSM)
