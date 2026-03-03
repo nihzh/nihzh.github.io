@@ -338,6 +338,8 @@ Undermining integrity, models failed to detect/classify
 ![](../img/Pasted%20image%2020260227215217.png)
 $L_\infty$ norm = $\underset{i}{\max}|x_i|$
 
+![](../img/Pasted%20image%2020260303183411.png)
+
 Continuous domain and white box inference model, knows architecture and parameters
 
 **Gradient-based**
@@ -385,3 +387,23 @@ $$\min_r \; c\|r\| + \ell_f(x+r,l)\quad \text{s.t.}\; x+r\in[0,1]^m$$
 $$x_{\text{adv}} = x + \epsilon\cdot \text{sign}\big(\nabla_x \ell(\theta,x,y_{\text{true}})\big)$$
 对输入求梯度，每个维度都向“最增加损失”移动相同步长
 这样天然保证 $\|x-x_{\text{adv}}\|_\infty \le \epsilon$
+
+### Reasons adv examples happen
+**Overfitting**: complex decision boundary, easy to find inputs that result in unexpected outputs
+
+Different models to have very different adversarial examples, can transfer across different models and architectures and obtained with different learning algorithms
+
+**Linearity**: neural networks tend to be **local linear**, tend to be over-confident on points far from the decision boundary
+
+"**High-dimensionality in inputs**", can be somewhat counterintuitive ways when moving away from the data
+![](../img/Pasted%20image%2020260303182257.png)
+
+### Black-box evasion attacks
+Query very lot of times, incur significant cost on both time and money
+
+![](../img/Pasted%20image%2020260303183700.png)
+Perturb inputs and observe changes in output
+- label, conditional prob., distribution over classes
+- find decision boundary
+
+for each training example, provide an adversarial example to increase the probability of the right label

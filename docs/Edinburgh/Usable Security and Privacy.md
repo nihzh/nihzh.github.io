@@ -170,7 +170,8 @@ Reliability
 ### Frameworks
 Frameworks help researchers structure their thinking around problems. Frameworks are proposed by experts in the field and represent how those people think about and break up certain types of problems.
 
-![](../img/Pasted%20image%2020260203205849.png)
+Human in the Loop
+![](../img/Pasted%20image%2020260203205849.png) ^3c5557
 
 #### Communication
 安全系统和人的交互
@@ -415,3 +416,56 @@ Incorporate users' diverse considerations:
 Support attitude development in real life: 
 - nudge users S&P attitudes with physical metaphors
 Improve access credible S&P info. online: Wiki, mediate in discussion
+
+## Advice and Warning
+用户如何做决定，如何提示用户做正确的决定
+**Externality**: the costs or benefits of an activity effect other groups or people
+**Internality**: the costs or benefits of an activity effect the user themselves
+
+Costs, potential benefits, actual benefits
+成本（时间/麻烦/打断工作流） vs 收益（概率×损失）
+
+### Human in the Loop
+[Human in the Loop](#^3c5557) by Cranor, L.F., 2008
+
+**Communication Impediments**
+- Environmental stimuli: divert users' attention away 注意转移
+- Interference prevents communication from being received as intended (can be malicious) 误解/曲解
+
+**Human Receiver**
+- Communication delivery: should **pay attention long enough** to process it 重要性足够，用户会看
+- Communication processing: comprehend and acquire knowledge 看懂并且可执行
+- Application: retent the knowledge and knows when it's applicable and to apply it 可复用，能复用
+
+- Personal variables: demographics, personal characteristics, knowledge -- ability to comprehend and apply communications
+- Intention: attitudes of impacting, whether pay attention
+- Capabilities to take proper actions
+
+如果一个空间里到处贴“请这样做”的牌子，往往说明系统本身不够自解释（self-explanatory）或设计有坑。
+Maybe the tool is too confusing to use without explanation
+"Common problems" people in a space are experiencing
+Intention – tradeoff happens here, but not always in a very rational way
+
+https, browser security
+- The communication between is confidential and untampered 
+- Knowing who is communicating with
+
+*NEAT*
+*Necessary*: Can you change the architecture to **eliminate or defer** this user decision?
+*Explained*: Does your user experience present **all the information** the user needs to make this decision?
+*Actionable*: Have you **determined a set of steps** the user will realistically be able to take to make the decision correctly
+*Tested*: Have you checked that your user experience is **NEAT for all scenarios**, both benign and malicious? Have you **tested it on a human** who is not a member of your team
+
+*SPRUCE*
+*Source*:  **who or what** is asking the user to make a decision
+*Process*: give the user **actionable steps** to follow to make a good decision
+*Risk*: explain **what bad thing could happen** if they user makes the wrong decision
+*Unique*: knowledge the user has -- tell the user **what information** they bring to the decision
+*Choices*: list **available options** and **clearly recommend one**
+*Evidence*: highlight information the user **should factor in or exclude in** making a decision
+
+consequence mentioned: lost, risks
+google: own apps, phone and phone system
+raise the degree of user awareness
+warning and training
+![](../img/Pasted%20image%2020260304054226.png)

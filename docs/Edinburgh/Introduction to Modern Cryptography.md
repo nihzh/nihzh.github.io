@@ -448,9 +448,80 @@ F is a PRF ==> $\Pi$ is a secure MAC
 ### Variable-length MAC
 Break a long message into multiple fixed length string and do fixed-length MAC respectively
 
-*CBC-MAC*
+Prevent: 
+- Block reordering
+- Truncation
+- Mixing-and-matching blocks from multiple messages
+
+*Basic CBC-MAC*
 ![](../img/Pasted%20image%2020260228025313.png)
-不需要逆运算，**需要提前确定l的数量**
-> If F is a length-preserving PRF with input length $n$, then for any fixed $l$ basic CBC-MAC is a secure mac for messages of length $ln$
+不需要逆运算, Deterministic, verification done by re-computing the result
+
+> If F is a length-preserving PRF with input length $n$, then for any fixed $l$ basic CBC-MAC is a secure MAC for messages of length $ln$
+
+  
+The sender and receiver must agree on the length parameter $l$ in advance, **Basic CBC-MAC is not secure if this is not done**!
+分组数不符会导致长度扩展攻击，构造一个相同tag的内容
 
 ![](../img/Pasted%20image%2020260228032147.png)
+
+## Hash Functions
+> Deterministic function mapping arbitrary length inputs to a short, fixed-length output (a digest)
+
+*Collision-resistance*
+![](../img/Pasted%20image%2020260303233128.png)
+
+Collisions are guaranteed to exist
+**Generic collision attack** on a hash function ==> brute force
+
+*Birthday attack*
+The collision probability is $\mathcal{O}(k^2/N)$
+- N is the enumeration space
+- take k samples (k time hashes)
+When $k\approx \sqrt{N}$, probability of a collision is $\approx 50\%$
+**$k\approx\sqrt{2^l}$ hash-function evaluations**
+
+> 攻击者通常只需要找到**任意两个**能产生相同哈希值的输入即可伪造签名或破坏完整性。
+> To protect against attackers running in time 2n we need the output of our hash function to be l = 2n
+
+**The birthday bound $k\approx2^{n/2}$**
+- CTR-mode IV reuse
+
+### Hash function building
+Fixed-length inputs hash $h$
+Hash function $H$
+
+> Prove that collision resistance of $h$ implies collision resistance of $H$
+
+*Merkle-Damg ̊ard Transform*
+![](../img/Pasted%20image%2020260304071835.png)
+（长度扩展攻击问题）
+
+![](../img/Pasted%20image%2020260303234852.png)
+
+SHA-2 (use Merkle-Damgard transform), SHA-3
+- 224, 256, 384, 512-bit outputs
+
+### Hash-and-MAC
+MAC a reliable short messages channel
+![](../img/Pasted%20image%2020260304073446.png)
+Not necessary to transmit h as B can recompute it from M
+![](../img/Pasted%20image%2020260304074116.png)
+
+*HMAC*
+For matching block-length, need to implement two crypto primitives
+- block cipher and hash function
+
+A practical instantiation of the hash-and-MAC paradigm, Follows the hash-and-MAC approach with (part of) the hash function being used as a PRF
+
+![](../img/Pasted%20image%2020260304074555.png)
+
+## Authenticated Encryption
+Combined secrecy and integrity
+- Secrecy: PRF/block cipher in a mode of operation
+- Integrity: message authentication code
+
+- Encrypt-and-Authenticate (E-and-A)
+- Authenticate-then-Encrypt (A-then-E)
+- Encrypt-then-Authenticate (E-then-A)
+

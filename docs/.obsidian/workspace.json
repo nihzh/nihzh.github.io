@@ -82,7 +82,8 @@
               "title": "Informatics Project Proposal"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -211,30 +212,30 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4aeb78f1726c17b2",
+  "active": "86cd3f663aaffdcf",
   "lastOpenFiles": [
-    "img/Pasted image 20260303015900.png",
-    "img/Pasted image 20260228065154.png",
-    "img/Pasted image 20260228064539.png",
+    "img/Pasted image 20260304074555.png",
+    "img/Pasted image 20260304074116.png",
+    "Edinburgh/Privacy and Security with Machine Learning.md",
     "Edinburgh/Usable Security and Privacy.md",
     "Edinburgh/Introduction to Modern Cryptography.md",
-    "img/Pasted image 20260228062334.png",
-    "Edinburgh/Privacy and Security with Machine Learning.md",
-    "img/Pasted image 20260228032147.png",
-    "img/Pasted image 20260228025313.png",
-    "img/Pasted image 20260228024752.png",
-    "img/Pasted image 20260228024738.png",
-    "img/Pasted image 20260228024608.png",
-    "img/Pasted image 20260228024344.png",
-    "img/Pasted image 20260228022020.png",
     "Edinburgh/Security Engineering.md",
     "Edinburgh/Informatics Project Proposal.md",
     "Edinburgh/Applied Machine Learning.md",
+    "Edinburgh/Computer Security.md",
     "Edinburgh/Secure Programming.md",
+    "Edinburgh/Blockchans and Distributed Ledgers.md",
+    "img/Pasted image 20260304073446.png",
+    "img/Pasted image 20260304071835.png",
+    "img/Pasted image 20260304054226.png",
+    "img/Pasted image 20260303235636.png",
+    "img/Pasted image 20260303234852.png",
+    "img/Pasted image 20260303233128.png",
+    "img/Pasted image 20260303183700.png",
+    "img/Pasted image 20260303183411.png",
+    "img/Pasted image 20260303182257.png",
     "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
     "Troubleshooting/Vulfocus漏洞靶场镜像无法拉取.md",
-    "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "Edinburgh/Computer Security.md",
     "Untitled.md",
     "Pasted.md",
     "_sidebar.md",
