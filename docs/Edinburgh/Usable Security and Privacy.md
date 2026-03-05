@@ -469,3 +469,20 @@ google: own apps, phone and phone system
 raise the degree of user awareness
 warning and training
 ![](../img/Pasted%20image%2020260304054226.png)
+
+## AI S&P
+**Data collection**
+Consent and compliance issue
+Ethics and fairness in labour-intense data labeling
+
+**Data processing**
+Cleaning, Anonymization
+Against reidentification
+
+**Model training**
+Inherit data bias
+How to verify the model integrity
+
+How the AI output can be manipulated by input
+
+misuse in coding

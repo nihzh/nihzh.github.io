@@ -517,6 +517,7 @@ A practical instantiation of the hash-and-MAC paradigm, Follows the hash-and-MAC
 ![](../img/Pasted%20image%2020260304074555.png)
 $$HMAC_K(M) = H((K \oplus \text{opad}) \parallel H((K \oplus \text{ipad}) \parallel M))$$
 
+**randomness should never be reused or correlated**
 ## Authenticated Encryption
 Combined secrecy and integrity
 - Secrecy: PRF/block cipher in a mode of operation
