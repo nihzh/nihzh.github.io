@@ -340,3 +340,25 @@ Windows
 
 secure boot: verify then execute, check signatures
 measure boot: measure then report, hashing and report
+
+## Ecosystems Security
+Silicon chips: global manufacturing, segmented in supply chain and ecosystems
+
+Schematic -> PCB layout -> PCB
+Designers don't have full visibility into the manufacturing process
+- bugs and vulnerabilities hard to find
+- hardware torjan
+
+*Accessory control*
+Digital right management
+Law enforcement
+
+ethics
+
+The reason of android being free
+
+App stores: 
+- google play: sandbox sanitise and protecting
+- OEM and update
+
+lower level security policies

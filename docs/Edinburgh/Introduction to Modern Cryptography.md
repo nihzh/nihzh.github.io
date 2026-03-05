@@ -515,6 +515,7 @@ For matching block-length, need to implement two crypto primitives
 A practical instantiation of the hash-and-MAC paradigm, Follows the hash-and-MAC approach with (part of) the hash function being used as a PRF
 
 ![](../img/Pasted%20image%2020260304074555.png)
+$$HMAC_K(M) = H((K \oplus \text{opad}) \parallel H((K \oplus \text{ipad}) \parallel M))$$
 
 ## Authenticated Encryption
 Combined secrecy and integrity
