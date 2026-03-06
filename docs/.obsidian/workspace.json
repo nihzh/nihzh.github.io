@@ -83,7 +83,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -212,27 +212,28 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6ed94d9ab02dada2",
+  "active": "86cd3f663aaffdcf",
   "lastOpenFiles": [
+    "img/Pasted image 20260307042736.png",
+    "img/Pasted image 20260307031018.png",
+    "img/Pasted image 20260307031008.png",
+    "img/Pasted image 20260307024250.png",
+    "img/Pasted image 20260307021848.png",
+    "img/Pasted image 20260307014536.png",
+    "img/Pasted image 20260307012344.png",
+    "img/Pasted image 20260307012325.png",
+    "img/Pasted image 20260307011359.png",
+    "img/Pasted image 20260307010900.png",
     "Edinburgh/Privacy and Security with Machine Learning.md",
+    "img/Pasted image 20260306204324.png",
+    "Edinburgh/Usable Security and Privacy.md",
     "Edinburgh/Introduction to Modern Cryptography.md",
     "Edinburgh/Security Engineering.md",
-    "img/Pasted image 20260304074555.png",
-    "img/Pasted image 20260304074116.png",
-    "Edinburgh/Usable Security and Privacy.md",
     "Edinburgh/Informatics Project Proposal.md",
     "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Computer Security.md",
     "Edinburgh/Secure Programming.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
-    "img/Pasted image 20260304073446.png",
-    "img/Pasted image 20260304071835.png",
-    "img/Pasted image 20260304054226.png",
-    "img/Pasted image 20260303235636.png",
-    "img/Pasted image 20260303234852.png",
-    "img/Pasted image 20260303233128.png",
-    "img/Pasted image 20260303183700.png",
-    "img/Pasted image 20260303183411.png",
     "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
     "Troubleshooting/Vulfocus漏洞靶场镜像无法拉取.md",
     "Untitled.md",

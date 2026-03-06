@@ -407,3 +407,35 @@ Perturb inputs and observe changes in output
 - find decision boundary
 
 for each training example, provide an adversarial example to increase the probability of the right label
+
+## Evasion defenses
+attacker: adaptive attacks: threat model must assume adversary is aware of defense
+### Adversarial example detection
+在模型内部表示或某些统计量上可能有规律可抓
+**training time**: validation set error
+
+**statistics**
+difference noise of input, the models are varied
+some adversarial model may less robust to perturbation: use random noise as probing instrument
+
+**feature squeezing**
+![](../img/Pasted%20image%2020260306204324.png)
+squeezers are correlated: achieve independent robustness
+正常样本经过轻微简化后，模型预测不该变太多；对抗样本可能很依赖那些细微脆弱特征，一压缩就露馅。
+
+
+**"obfuscated" masked gradients**
+通过让通向对抗样本的方向变得不清楚，从而误导攻击者。
+
+**Stochastic Activation Pruning**
+按照单元激活绝对值加权的概率去丢弃神经元。
+drop out units for classification
+add noise in weight
+
+LFGS attack
+
+make adversaries harder
+
+Randomized smoothing]
+
+$g(x)$ stays stable

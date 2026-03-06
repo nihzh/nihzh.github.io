@@ -37,6 +37,7 @@ Random IC: 0.038
 ![](../img/Pasted%20image%2020260117002840.png)
 $$26L+26^2L\approx26^2L\ll26^L$$
 
+# Symmetric Cryptography
 ## Secure Encryption
 *Three principles of modern cryptography*
 - Definitions: Precise, mathematical model and formal definition of what security means
@@ -519,11 +520,75 @@ $$HMAC_K(M) = H((K \oplus \text{opad}) \parallel H((K \oplus \text{ipad}) \paral
 
 **randomness should never be reused or correlated**
 ## Authenticated Encryption
-Combined secrecy and integrity
+**Combined secrecy and integrity**
 - Secrecy: PRF/block cipher in a mode of operation
 - Integrity: message authentication code
 
-- Encrypt-and-Authenticate (E-and-A)
-- Authenticate-then-Encrypt (A-then-E)
-- Encrypt-then-Authenticate (E-then-A)
+### Encrypt-and-Authenticate (E-and-A)
+![](../img/Pasted%20image%2020260307010900.png)
+- 使用的MAC是deterministic，则**不CPA-secure**，相同的明文生成的tag会完全相同，与加密算法无关
+- MAC使用直接暴露明文的scheme，则**不EVA-secure**
+	- $MAC’_k(m)=(m,MAC(m))$ 依然是安全MAC
 
+### Authenticate-then-Encrypt (A-then-E)
+![](../img/Pasted%20image%2020260307011359.png)
+没有指定使用的MAC和Enc scheme
+受到*Oracle Padding Attack*，则**不CCA-secure**
+![](../img/Pasted%20image%2020260307012325.png)
+![](../img/Pasted%20image%2020260307012344.png)
+![](../img/Pasted%20image%2020260307024250.png)
+流密码允许攻击者通过翻转密文位来精准改变解密后的结果，Oracle需要先解密再验证MAC，攻击方通过Oracle解密时的Padding错误返回信息，**直接获取明文**
+padding：有冗余位，多携带了信息，将其利用作为错误返回的指示
+authenticate没有起作用，直接获取了明文
+### Encrypt-then-Authenticate (E-then-A)
+![](../img/Pasted%20image%2020260307014536.png)
+E和A二者相互独立，互不影响
+- CPA-secure encryption scheme to encrypt the message
+- MAC to prevent the ciphertext from being modified
+
+Stronger notion than CCA
+- The MAC is applied on the ciphertext produced by the sender
+- CCA-security中adversary可以使用chosen ciphertexts访问decryption oracle的特性失去作用，因为**接收方会先验证MAC**，一切修改c为c'再询问oracle的操作无法通过authentication，无法返回有效的结果
+- 直接隔离oracle padding attack的可能性
+- **Authenticated Encryption (AE) scheme**
+
+> If the underlying encryption scheme is CPA-secure and the MAC is secure (i.e. existentially unforgeable) then the E-then-A combination is a AE scheme
+
+Using any CPA-secure scheme + any secure MAC to construct an AE scheme
+- OCB, CCM, GCM
+
+![](../img/Pasted%20image%2020260307031008.png)
+![](../img/Pasted%20image%2020260307031018.png)
+
+# Public Key Cryptography
+## Number Theory and Cryptographic Hardness Assumptions
+### Modular Arithmetic
+![](../img/Pasted%20image%2020260307042736.png)
+
+If for a given integer `b` there exists an integer `c` such that $\color{#b293f6}bc = 1~mod~N$, we say that `b` is *invertible modulo* `N` and call `c` a *multiplicative inverse* of `b` modulo `N`.
+
+`c` is *unique multiplicative inverse* of `b` that lies in the range $\{1,\dots,N-1\}$ and denoted $\color{#b293f6}b^{-1}$, also the division by `b`
+唯一逆元
+
+If $ab = cb$ mod N and b is invertible, then we have that 
+$$(ab) \cdot b^{−1} = (cb) \cdot b^{−1}~mod~N ⇒ a = c~mod~N$$
+
+> Let b, N integers with $b \ge 1$ and $N \gt 1$. Then b is invertible module N if and only if $gcd(b, N)=1$ 
+
+### Groups
+A group is a set $\mathrm{G}$ along with a binary operation $\circ$ for which the following conditions hold:
+- *Closure*: For all $g, h \in \mathrm{G}$, $g\circ h\in \mathrm{G}$
+- *Existence of identity*: There exists an **identity** element $e\in\mathrm{G}$ such that for all $g\in\mathrm{G}$, $e\circ g=g=g\circ e$
+- *Existence of inverse*: For all $g\in\mathrm{G}$ there exists an element $h\in\mathrm{G}$ such that $g\circ h=e=h\circ g$. Such an $h$ is called an **inverse** of $g$
+- *Associativity*: For all $g_1, g_2, g_3 \in\mathrm{G}$, $(g_1\circ g_2)\circ g_3=g_1\circ(g_2\circ g_3)$
+
+A group $\mathrm{G}$ with operation $\circ$ is *abelian* if the following holds:
+- *Commutativity*: For all $g, h\in\mathrm{G}$, $g\circ h=h\circ g$
+
+
+
+
+for prime p, it holds that  
+Z∗  p = {1, 2, . . . , p − 1}
+
+$g\cdot g_i\ne g\cdot g_j$
