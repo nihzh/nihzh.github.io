@@ -571,7 +571,7 @@ If for a given integer `b` there exists an integer `c` such that $\color{#b293f6
 唯一逆元
 
 If $ab = cb$ mod N and b is invertible, then we have that 
-$$(ab) \cdot b^{−1} = (cb) \cdot b^{−1}~mod~N ⇒ a = c~mod~N$$
+$$(ab) \cdot b^{−1} = (cb) \cdot b^{−1}\bmod N ⇒ a = c\bmod N$$
 
 > Let b, N integers with $b \ge 1$ and $N \gt 1$. Then b is invertible module N if and only if $gcd(b, N)=1$ 
 
@@ -579,16 +579,35 @@ $$(ab) \cdot b^{−1} = (cb) \cdot b^{−1}~mod~N ⇒ a = c~mod~N$$
 A group is a set $\mathrm{G}$ along with a binary operation $\circ$ for which the following conditions hold:
 - *Closure*: For all $g, h \in \mathrm{G}$, $g\circ h\in \mathrm{G}$
 - *Existence of identity*: There exists an **identity** element $e\in\mathrm{G}$ such that for all $g\in\mathrm{G}$, $e\circ g=g=g\circ e$
+	- 单位元 基础元素 中心元素
 - *Existence of inverse*: For all $g\in\mathrm{G}$ there exists an element $h\in\mathrm{G}$ such that $g\circ h=e=h\circ g$. Such an $h$ is called an **inverse** of $g$
+	- the inverse $h$ of $g\in\mathrm{G}$ is unique
 - *Associativity*: For all $g_1, g_2, g_3 \in\mathrm{G}$, $(g_1\circ g_2)\circ g_3=g_1\circ(g_2\circ g_3)$
 
 A group $\mathrm{G}$ with operation $\circ$ is *abelian* if the following holds:
 - *Commutativity*: For all $g, h\in\mathrm{G}$, $g\circ h=h\circ g$
 
+A set $\mathrm{H}\subseteq\mathrm{G}$ is a **subgroup** of $\mathrm{G}$ if itself forms a group under the same operation associated with $\mathrm{G}$
 
+If $\mathrm{G}$ is **finite** if it has finite number of elements.
+The number of elements is the **order** of $\mathrm{G}$, denoted by $|\mathrm{G}|$
 
+#### Examples
+The set {0, . . . , N − 1} with respect to addition modulo N is an abelian group of order N with identity 0. The inverse of a is $(N − a)\bmod N$. We denote this group by $\mathrm{Z}_N.$
 
-for prime p, it holds that  
-Z∗  p = {1, 2, . . . , p − 1}
+The set of **invertible elements** modulo N is an abelian group under multiplication with identity 1. Namely, $$\mathrm{Z}_n^*\overset{def}{=}\{b\in\{1,\dots,N-1\}|gcd(b,N=1)\}$$模N下所有**可逆元素**组成的集合
+- Inverse of $b$: use **extended Euclidean algorithm** to find $x,y$ such that $bx+Ny=gcd(b,N)=1$. Then $x\bmod N$ is the inverse of b modulo N.
+- Closure: let $a,b\in\mathrm{Z}_N^*$. Then $(ab)\bmod N$ has inverse $(b^{-1},a{-1})\bmod N$ so $ab\in\mathrm{Z}_N^*$
+
+Special case: for prime p, it holds that $$\mathrm{Z}_p^*=\{1,2,\dots,p-1\}$$
+Let $\mathrm{G}$ be a finite group with $m=|\mathrm{G}|$. Then for every element $g\in\mathrm{G},m^m=1$
+
+Let $\mathrm{G}$ be a finite group with $m=|\mathrm{G}|\gt1$. Then for every element $g\in\mathrm{G}$and every integer $x$, we have $g^x = g^{x \bmod m}$
+在指数运算中，指数是可以用群的阶 $m$ 来取模的，即 $g^x = g^{x \bmod m}$
+![](../img/Pasted%20image%2020260307074637.png)
+
+![](../img/Pasted%20image%2020260307074337.png)
+
+![](../img/Pasted%20image%2020260307074656.png)
 
 $g\cdot g_i\ne g\cdot g_j$
