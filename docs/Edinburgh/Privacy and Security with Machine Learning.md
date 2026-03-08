@@ -409,33 +409,103 @@ Perturb inputs and observe changes in output
 for each training example, provide an adversarial example to increase the probability of the right label
 
 ## Evasion defenses
-attacker: adaptive attacks: threat model must assume adversary is aware of defense
+### Defensive primitives
+**Adversarial example detection**: distinguish between adversarial and genuine
+- dimensionality reduction: feature squeezing, PCA, etc.
+- 只要检测器本身可微、可模拟、可近似，攻击者就可以把“骗过分类器”和“骗过检测器”一起作为优化目标。
+
+**Reduce model sensitivity**: model outputs shouldn't change much on small input perturbations
+- data augmentation: add random perturbations to training examples
+- 普通随机增强不一定覆盖到**最坏方向**的扰动，最致命的方向
+
+**Limit information** to attacker
+- gradient smoothing / hiding / masking: reduce information provided by the gradients
+- 让梯度“看起来没用”不等于模型真的鲁棒。
+
+**Reduce overfitting and model complexity**: early attempts were focused on reducing the model complexity although Goodfellow show evidence that these are not sufficient 模型复杂或过拟合导致对抗样本脆弱
+- regularization: smoothness penalty
+- 高维空间里，小扰动沿着很多维度积累，最终能带来很大 logit 变化
+
+**Reduce the size of the input space**
+- Low-pass filters
+- Feature squeezing
+
+**Blocking transferability**
+- defences often defeated by training a surrogate model that implements the defense and exploiting the transferability of adversarial examples across models
+
+When designing and evaluating a defense, we should not underestimate the attacker  
+Defense design should consider **adaptive attacks**
+### Adversarial training
+For each training example, provide an adversarial example to increase the probability of the right label
+同时使用对抗样本训练模型，专门使用让模型出错的扰动，并要求它仍然输出正确标签，最成功的防御手段之一
+![](../img/Pasted%20image%2020260308030447.png)
+
+*Min-max optimization* problem  直接选择最大化损失的攻击
+![](../img/Pasted%20image%2020260308030633.png)
+Not depend on a specific attack, but **maximizes the model's loss** instead,, regardless of the attack or adversary's strategy
+内层max：在每个训练样本上在半径$\epsilon$内找到最坏的扰动$\delta$
+外层min：找到模型参数$\theta$使总体损失尽可能小
+复杂且昂贵：对于每个训练样本，都要先攻击一次模型，且会牺牲accuracy
+会过拟合某类攻击
+
 ### Adversarial example detection
-在模型内部表示或某些统计量上可能有规律可抓
+真实样本和对抗样本在模型内部表示或某些统计量上可能有规律可抓
+新增一个第N+1类，专门代表adversarial examples
 **training time**: validation set error
 
 **statistics**
-difference noise of input, the models are varied
-some adversarial model may less robust to perturbation: use random noise as probing instrument
+“The odds are odd”
+Hypothesis: Robustness to noise statistics are different between adversarial and legitimate examples
+- difference noise of input, the models are varied
+- some adversarial model may less robust to perturbation: **use random noise as probing instrument**
 
-**feature squeezing**
+![](../img/Pasted%20image%2020260308040233.png)
+![](../img/Pasted%20image%2020260308040344.png)
+可以被adaptive attakcs绕过，或针对softmax分布设计攻击
+“只要你的检测依据是某种可观测统计量，攻击者就可以把“伪装出正常统计量”也纳入目标。”
+
+#### feature squeezing
+同时对输入做一个或多个squeezing变换，分别进模型得到多个prediction，比较差异，差异太大则为adversarial
 ![](../img/Pasted%20image%2020260306204324.png)
 squeezers are correlated: achieve independent robustness
 正常样本经过轻微简化后，模型预测不该变太多；对抗样本可能很依赖那些细微脆弱特征，一压缩就露馅。
+- 压缩颜色精度 / 彩色=> 灰度
+- 梯度平滑/增加噪声： **obfuscated/masked  gradients** 通过让通向对抗样本的方向变得不清楚，从而误导攻击者。
+- JPEG compression
 
+![](../img/Pasted%20image%2020260308041233.png)
+![](../img/Pasted%20image%2020260308041246.png)
+梯度可以被恢复
 
-**"obfuscated" masked gradients**
-通过让通向对抗样本的方向变得不清楚，从而误导攻击者。
-
-**Stochastic Activation Pruning**
+#### Stochastic Activation Pruning (SAP)
 按照单元激活绝对值加权的概率去丢弃神经元。
-drop out units for classification
+推理时网络的某些激活会随机被裁剪掉。
+drop out units randomly for classification
 add noise in weight
+平均重复采样可以估计真实梯度
+- LFGS attack
 
-LFGS attack
+#### Distillation
+student model gives **smooth gradients**, act as **surrogate**
+find adversarial examples in student model
+check that adversarial examples are also adversarial in the target model
+- soft probabilities gives information about class boundaries
 
-make adversaries harder
+**soft probabilities** 指的是模型输出的那一整组**“软”的类别概率分布**，而不是只给一个最终类别。
 
-Randomized smoothing]
+![](../img/Pasted%20image%2020260308041735.png)
 
-$g(x)$ stays stable
+![](../img/Pasted%20image%2020260308042224.png)
+- adaptive attacker 威胁模型必须假设攻击者知道防御存在
+- all approaches
+- “Anyone, from the most clueless amateur to the best cryptographer, can create an algorithm that she herself can’t break”
+- We need to know how to break defenses before building new ones
+
+#### Certified Defenses
+Randomized smoothing：分类器在某点 x 周围某个集合内的预测是可验证地不变的。
+Given a soft classifier $f$, smoothed prediction $g(x)$is the class that 𝑓 is most likely to assign to the random variable
+$$X \sim \mathcal{N}(x,\sigma^2 I)$$
+$g(x)$是给 x 加高斯噪声后，f 最可能输出的类别。
+![](../img/Pasted%20image%2020260308042608.png)
+
+![](../img/Pasted%20image%2020260308042737.png)
