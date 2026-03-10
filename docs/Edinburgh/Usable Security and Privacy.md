@@ -486,3 +486,22 @@ How to verify the model integrity
 How the AI output can be manipulated by input
 
 misuse in coding
+
+## Human Factors of Security-Sensitive People
+anomymous
+exposure to public
+
+**Hackers** -- Vulnerability Research
+Black hat
+White hat: aim to improve the security
+Grey hat
+Ethical hackers
+
+Full disclosure question
+||
+v
+Responsible disclosure: reporting to the affected company
+
+Bug Bounty: third person
+
+security needs

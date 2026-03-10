@@ -618,4 +618,58 @@ $g^x\in\mathbb{G}$
 ![](../img/Pasted%20image%2020260307163647.png)
 
 Group with prime order $p$ is cyclic group, all elements are generators
+素数阶群一定是循环群
 ![](../img/Pasted%20image%2020260307174643.png)
+
+### The discrete logarithm problem
+Let $\mathcal{G}$ denote a generic PPT group generation algorithm
+- input $1^n$ outputs a description of a cyclic group $\mathbb{G}$
+- order $q$
+- generator $g\in\mathbb{G}$
+For every $h\in\mathbb{G}$ there is a **unique** $x\in\mathbb{Z}_q$ such that $g^x=h$, we call $x$ the *discrete logarithm* of $h$ with respect to $g$ 离散对数
+- $g^x=h$ ==> $log_g~h$
+
+![](../img/Pasted%20image%2020260311011625.png)
+
+> We say that discrete logarithm problem is hard relative to $\mathcal{G}$, if for all PPT adversaries $\mathcal{A}$, it holds that $$Pr[\mathsf{DLog}_{\mathcal{A,G}}(n)=1]\le negl(n)$$
+
+### The computational Diffie-Hellman problem
+![](../img/Pasted%20image%2020260311011640.png)
+
+> We say that the CDH problem is hard relative to $\mathcal{G}$, if for all PPT adversaries $\mathcal{A}$, it holds that $$Pr[\mathsf{CDH}_\mathcal{A,G}(n)=1]\le negl(n)$$
+
+### The decisional Diffie-Hellman problem
+![](../img/Pasted%20image%2020260311012418.png)
+
+> We say that the DDH problem is hard relative to $\mathcal{G}$ if for every PPT adversary $mathcal{A}$, it holds that $$|Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^z)=1]-Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]|\le negl(n)$$, where in each case the probabilities are taken over the experiment $\mathsf{DDH}_\mathcal{A,G}(n)$
+
+
+> ***Large prime order subgroups of $\mathbb Z_p^*$, where $p$ prime, are believed to be safe.
+
+![](../img/Pasted%20image%2020260311013918.png)
+选$\mathbb Z_p^*$里的**大素数阶子群**。
+![](../img/Pasted%20image%2020260311035134.png)
+$r$ 必须是 $p-1$ 的因数
+当$p=2q+1$ (r=2)时, 会得到一个阶正好为q的子群
+![](../img/Pasted%20image%2020260311060215.png)
+## Key Exchange and the Diffie-Hellman Protocol
+**An interactive protocol**
+![](../img/Pasted%20image%2020260311070248.png)
+
+> A key-exchange protocol $\Pi$ is secure in the presence of an eavesdropper if for every PPT adversary $\mathcal A$, it holds that $$Pr[\mathsf{KE}_{\mathcal A,\Pi}^{\mathsf{eav}}(n)=1]\le\frac{1}{2}+negl(n)$$
+
+### The Diffie-Hellman key-exchange protocol
+![](../img/Pasted%20image%2020260311071025.png)
+
+![](../img/Pasted%20image%2020260311071039.png)
+
+**Proof**
+Considering the experiment $\widehat{\mathsf{KE}}_{\mathcal A,\Pi}^{\mathsf{eav}}$, where if $b = 1$, the adversary is given $\hat k$ chosen uniformly from $\mathbb G$ instead from a uniform n-bit string
+需要A区分的随机元素(b=1)是随机从群中选择的而不是$\{0,1\}^n$
+
+> If the DDH problem is hard relative to $\mathcal G$, then the Diffie-Hellman key-exchange protocol is secure in the presence of an eavesdropper
+
+![](../img/Pasted%20image%2020260311073351.png)
+
+Active attacks: man-in-the-middle attack
+- able to modifying messages

@@ -509,3 +509,55 @@ $g(x)$是给 x 加高斯噪声后，f 最可能输出的类别。
 ![](../img/Pasted%20image%2020260308042608.png)
 
 ![](../img/Pasted%20image%2020260308042737.png)
+
+## Poisoning attack
+Inject malicious data in training samples
+攻击者不直接改模型参数，也不一定在测试时改输入，而是在训练数据或训练流程中“下毒”
+
+Transfer learning 迁移学习
+外部(不可信数据来源 Collaborative (federated) learning: to train the larger model, share data across models ==> malicious co-worker
+
+Evasion 在测试和部署时定制输入样本绕过模型检查
+Poisoning 在训练阶段对数据投毒, 破坏模型
+![](../img/Pasted%20image%2020260310180622.png)
+*Availability poisoning*: attacker not for specific inputs of class, untargeted, just lower the performance and generalization ability
+*Integrity poisoning*: targeted, making some specific inputs fail
+
+malware/intrusion detection
+
+
+![](../img/Pasted%20image%2020260310183906.png)
+双层优化问题，共同使用$\hat{w}$变量
+- 外层：使攻击效果最大
+	- $\theta\in\Theta$ 攻击者知识: 训练数据结构, 模型结构, 学习算法, 超参等
+	- $\mathcal{D}_c$ 攻击者可操作的基础样本集合
+	- $\mathcal{D}_c'\in\Phi(\mathcal{D}_c)$ 被修改后的投毒样本集合
+	- $\mathcal{A(D_c',\theta)}\in\mathbb{R}$ 攻击目标函数, 攻击效果=模型在验证集上的损失
+- 内层：优化模型参数，最小化损失
+	- 防御者（或者学习算法）会在“干净代理训练集 + 投毒样本”上训练模型，找到使训练损失最小的参数 $\hat{w}$
+
+### Threat model: clean-label attack
+Not modifying the labels
+The dataset is audited or created manually
+Transfer learning and end-to-end retraining
+
+Misclassification of a single target sample as a target class, while keeping the same performance on untargeted points
+
+**Feature collision** to crafting poison data
+Given a target 𝒕 and a base 𝒃, generate a point 𝒑 such that is close to 𝒕 in the model 𝑓’s output, but close to 𝒃 in its input
+![](../img/Pasted%20image%2020260310225706.png)
+- 用梯度下降最小化与 target 的 L2 距离（在输出 / 特征空间）；
+- 用 proximal update 最小化与 base 的 Frobenius 距离（在输入空间）
+
+**Evaluation**
+![](../img/Pasted%20image%2020260310225856.png)
+
+- One-shot attack, only good at transferred
+- multi-shot attack, good at both
+
+### Backdoor attacks: conceptual model
+![](../img/Pasted%20image%2020260310230115.png)
+
+Adversaries also inject perturbations to inputs
+
+目标和非目标
