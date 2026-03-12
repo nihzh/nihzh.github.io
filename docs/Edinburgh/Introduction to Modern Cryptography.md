@@ -673,3 +673,7 @@ Considering the experiment $\widehat{\mathsf{KE}}_{\mathcal A,\Pi}^{\mathsf{eav}
 
 Active attacks: man-in-the-middle attack
 - able to modifying messages
+
+## Hybrid proof
+![](../img/Pasted%20image%2020260312031514.png)
+![](../img/Pasted%20image%2020260312031657.png)
