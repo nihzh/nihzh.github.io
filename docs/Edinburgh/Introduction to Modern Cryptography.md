@@ -677,3 +677,25 @@ Active attacks: man-in-the-middle attack
 ## Hybrid proof
 ![](../img/Pasted%20image%2020260312031514.png)
 ![](../img/Pasted%20image%2020260312031657.png)
+
+## Public-key Encryption and the El Gamal and RSA Encryption Schemes
+Parties can communicate securely without having agreed on any secret information in advance
+
+Every one who know key public key can encrypt
+
+Against Chosen-Plaintext attacks
+![](../img/Pasted%20image%2020260313234146.png)
+
+![](../img/Pasted%20image%2020260313234231.png)
+
+### El Gamal encryption
+you can encrypt a message, 
+![](../img/Pasted%20image%2020260313234747.png)
+![](../img/Pasted%20image%2020260313234757.png)
+
+![](../img/Pasted%20image%2020260314014557.png)
+虽然 $M$ 是固定的，但因为 $k$ 是完全随机的，所以乘出来的结果 **$k'$ 也会在整个群 $\mathbb{G}$ 中呈现绝对的均匀随机分布**
+![](../img/Pasted%20image%2020260314014853.png)
+在群中，随机选一个k等于一个固定值的概率就是$\frac{1}{|\mathbb G|}$
+群论one-time pad
+

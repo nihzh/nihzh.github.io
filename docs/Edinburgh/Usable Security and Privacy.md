@@ -520,7 +520,8 @@ Bug Bounty: third person
 - vendor: security team, developer
 - end user
 
-外部研究者的不同角度和技术栈经验多样性
+外部研究者的不同角度和技术栈经验多样性，更加经济
+
 ![](../img/Pasted%20image%2020260313022702.png)
 
 ![](../img/Pasted%20image%2020260313075110.png)
@@ -530,5 +531,12 @@ Bug Bounty: third person
 ![](../img/Pasted%20image%2020260313075250.png)
 ![](../img/Pasted%20image%2020260313075259.png)
 
+hackers' participation
+- benefits: rewards, opportunities
+- challenges
+- platform features
+- Gig-work: flexibility, stress and uncertainty
+- communication/negotiating with vendors
 
+![](../img/Pasted%20image%2020260313230421.png)
 security needs

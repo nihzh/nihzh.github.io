@@ -217,7 +217,7 @@ Aux. info: “Alice is 8cm shorter than average”
 
 ## Differential Privacy
 A randomized algorithm $\mathcal{M}$ is $\varepsilon$-differentially private if for all adjacent datasets $D,D'$ and for all $S\subseteq Range(\mathcal{M})$
-$$Pr[\mathcal{M}(D)\in\mathcal{S}]\le e^\varepsilon Pr[\mathcal{M}(D')\in\mathcal{S}]$$
+$$\Pr[\mathcal{M}(D)\in\mathcal{S}]\le e^\varepsilon \Pr[\mathcal{M}(D')\in\mathcal{S}]$$
 where $\varepsilon$ is a parameter called the *'privacy budget'*
 
 "Distance between output distributions is at most $\varepsilon$"
@@ -557,7 +557,72 @@ Given a target 𝒕 and a base 𝒃, generate a point 𝒑 such that is close to
 
 ### Backdoor attacks: conceptual model
 ![](../img/Pasted%20image%2020260310230115.png)
-
 Adversaries also inject perturbations to inputs
 
-目标和非目标
+Poisoning the training data: adding samples with a trigger feature
+Manipulating model parameters
+Neural Trojans: modifying the model architecture, **only activates in the presence of a trigger**
+
+Malicious behavior is only activated by inputs stamped within "torjan" trigger
+1. **Poison the training dataset** with backdoor trigger-stamped inputs
+2. Retain the target model to compute new weights ==> BadNet
+
+Triggers can seems natural
+
+MNIST: Single-pixel backdoor, Pattern backdoor
+
+*Invisible Sample-Specific Backdoor Attack (ISSBA)*: trigger specifically **designed for each image**, more effective
+
+**Triggers**：
+- blended image with the trigger
+- distributed/spread trigger: yellow square, image of flower...
+- accessory: glasses...
+- facial characteristic: arched eyebrows, narrowed eyes
+	- natural demographic: skin color, face feature, disability aid
+
+Invisible trigger & clean-label backdoors: very small perturbation
+
+100 success with 10% of poisoning
+
+![](../img/Pasted%20image%2020260313203009.png)
+
+![](../img/Pasted%20image%2020260313203247.png)
+attacker cannot perturb more than certain fraction of dataset
+
+## Privacy and Confidentiality risks in ML
+*Confidentiality*: preventing unauthorized access to data
+- architecture
+- model parameters
+
+*Privacy*: individuals
+
+Membership's personal data involved into the dataset training, lot of sensitive info
+- Membership inference
+
+### Black-box & White-box MIA
+Adversary can query the target model, return the model's output (prediction, vector probability)
+- Oracle access: **black-box**
+- Full access: **white-box**, learning algorithm, architecture
+
+**Black-box**
+May have some **auxiliary knowledge** about the population
+- The learning algorithm (𝐴) and the distribution of the training dataset (𝒟) from which training dataset S was drawn.
+
+**Goal**: determine whether a data point $z$ is a part of the training set $S$ of a model $h_S=A(S)$, by querying the model (knowing algorithm 𝐴 and distribution 𝐷)
+
+**White-box**: 
+在overfitting白盒下，用一个z很容易得到它是否在S内
+The attack can be implemented with a meta-classifier (shadow models)
+- sample from the training dataset 模拟目标模型的行为模式
+- training model k with target's learning algorithm 观察in/out行为差异
+- repeats for many samples, average behaviour will closer to the target model 训练attack model
+overfit => better on more classes
+memorizing all data in the dataset
+![](../img/Pasted%20image%2020260314033631.png)
+攻击者在学习“目标模型对见过的数据和没见过（在不在训练集中）的数据，输出行为有什么统计差异”。
+拥有更多类别的模型，攻击精度更高：模型为了区别类型，需要学习更细力度，学习到尖锐的特征
+
+Adversary relax the assumption of having access to D
+- Model-based synthesis
+- Statistics-based synthesis
+- Noisy real data
