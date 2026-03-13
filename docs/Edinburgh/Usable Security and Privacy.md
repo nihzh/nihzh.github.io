@@ -490,18 +490,45 @@ misuse in coding
 ## Human Factors of Security-Sensitive People
 anomymous
 exposure to public
+unique security and safety requirements and cost-benifit tradeoffs
 
-**Hackers** -- Vulnerability Research
+### Hackers
 Black hat
 White hat: aim to improve the security
 Grey hat
 Ethical hackers
 
-Full disclosure question
+Vulnerability Research
+- attack
+- sell it
+- disclosure
+
+Full disclosure question: trade-off problem
+- 知识扩散会降低攻击者门槛
+- hackers之间有信息互通，真正收到信息的群体是防御者和普通用户，它们应该对于风险有所认知
 ||
 v
-Responsible disclosure: reporting to the affected company
+Responsible disclosure: 
+- reporting to the affected company
+- give period to fix, disclosure after embargo exceeded
 
+**Vulnerability market**
+Underground forum & Exploit broker
 Bug Bounty: third person
+- bug hunter
+- platform: operator/mediator
+- vendor: security team, developer
+- end user
+
+外部研究者的不同角度和技术栈经验多样性
+![](../img/Pasted%20image%2020260313022702.png)
+
+![](../img/Pasted%20image%2020260313075110.png)
+
+![](../img/Pasted%20image%2020260313075231.png)
+![](../img/Pasted%20image%2020260313075240.png)
+![](../img/Pasted%20image%2020260313075250.png)
+![](../img/Pasted%20image%2020260313075259.png)
+
 
 security needs

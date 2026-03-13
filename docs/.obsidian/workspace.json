@@ -4,26 +4,26 @@
     "type": "split",
     "children": [
       {
-        "id": "cf09a9338b6dc96d",
+        "id": "88e15de2b4bc8583",
         "type": "tabs",
         "children": [
           {
-            "id": "a9144240d6aba72b",
+            "id": "4aeb78f1726c17b2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Edinburgh/Usable Security and Privacy.md",
+                "file": "Edinburgh/Security Engineering.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Usable Security and Privacy"
+              "title": "Security Engineering"
             }
           },
           {
-            "id": "fc3c44183f7fa6b2",
+            "id": "38162205aa3309f7",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -38,7 +38,22 @@
             }
           },
           {
-            "id": "44d3b0f7152ec911",
+            "id": "6ed94d9ab02dada2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Edinburgh/Usable Security and Privacy.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Usable Security and Privacy"
+            }
+          },
+          {
+            "id": "86cd3f663aaffdcf",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -50,6 +65,21 @@
               },
               "icon": "lucide-file",
               "title": "Introduction to Modern Cryptography"
+            }
+          },
+          {
+            "id": "65457be75df54a78",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Edinburgh/Informatics Project Proposal.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Informatics Project Proposal"
             }
           }
         ],
@@ -67,19 +97,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "bafa335216136642",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical",
-                "autoReveal": false
-              },
-              "icon": "lucide-folder-closed",
-              "title": "文件列表"
-            }
-          },
-          {
             "id": "87536496e7a98d23",
             "type": "leaf",
             "state": {
@@ -95,8 +112,32 @@
               "icon": "lucide-search",
               "title": "搜索"
             }
+          },
+          {
+            "id": "38d77e1ac7e4134c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "bookmarks"
+            }
+          },
+          {
+            "id": "185e32409e44e9de",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -153,7 +194,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-archive",
-              "title": "All properties"
+              "title": "添加笔记属性"
             }
           }
         ],
@@ -166,36 +207,37 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "graph:查看关系图谱": false,
       "markdown-importer:打开 Markdown 格式转换器": false,
+      "graph:查看关系图谱": false,
       "command-palette:打开命令面板": false
     }
   },
-  "active": "44d3b0f7152ec911",
+  "active": "6ed94d9ab02dada2",
   "lastOpenFiles": [
+    "img/Pasted image 20260313075259.png",
+    "img/Pasted image 20260313075250.png",
+    "img/Pasted image 20260313075240.png",
+    "img/Pasted image 20260313075231.png",
+    "img/Pasted image 20260313075110.png",
+    "img/Pasted image 20260313022702.png",
+    "Edinburgh/Introduction to Modern Cryptography.md",
     "img/Pasted image 20260312031657.png",
     "img/Pasted image 20260312031514.png",
-    "Edinburgh/Usable Security and Privacy.md",
     "img/Pasted image 20260311073351.png",
     "img/Pasted image 20260311071039.png",
     "img/Pasted image 20260311071025.png",
-    "img/Pasted image 20260311070248.png",
-    "img/Pasted image 20260311060215.png",
-    "img/Pasted image 20260311035134.png",
-    "img/Pasted image 20260311013918.png",
-    "img/Pasted image 20260311012418.png",
-    "img/Pasted image 20260311011640.png",
-    "Edinburgh/Security Engineering.md",
+    "Edinburgh/Usable Security and Privacy.md",
     "Edinburgh/Privacy and Security with Machine Learning.md",
-    "Edinburgh/Introduction to Modern Cryptography.md",
-    "Edinburgh/Applied Machine Learning.md",
-    "Edinburgh/Secure Programming.md",
+    "Edinburgh/Security Engineering.md",
     "Edinburgh/Informatics Project Proposal.md",
-    "README.md",
-    "Pasted.md",
-    "Untitled.md",
+    "Edinburgh/Applied Machine Learning.md",
     "Edinburgh/Computer Security.md",
+    "Edinburgh/Secure Programming.md",
     "Edinburgh/Blockchans and Distributed Ledgers.md",
+    "Troubleshooting/灯塔（ARL）报错 timeout of 12000ms exceeded.md",
+    "Troubleshooting/Vulfocus漏洞靶场镜像无法拉取.md",
+    "Untitled.md",
+    "Pasted.md",
     "_sidebar.md",
     "Edinburgh/25圣诞-德国闪击波兰.md",
     "Edinburgh/Untitled.base",
@@ -210,7 +252,6 @@
     "网安/渗透测试--蚁景网安/2.1 Weblogic漏洞.md",
     "网安/渗透测试--蚁景网安/1.7 未授权访问.md",
     "网安/渗透测试--蚁景网安/3.6 Powershell渗透框架.md",
-    "网安/渗透测试--蚁景网安/1.0 信息收集.md",
     "GRE",
     "Liverpool",
     "未命名 1.canvas",
