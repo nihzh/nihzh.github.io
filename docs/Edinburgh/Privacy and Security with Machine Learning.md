@@ -593,14 +593,17 @@ attacker cannot perturb more than certain fraction of dataset
 *Confidentiality*: preventing unauthorized access to data
 - architecture
 - model parameters
+- 防止未授权访问: 数据, 模型, 流程
 
 *Privacy*: individuals
+- 个人相关信息是否暴露
 
 Membership's personal data involved into the dataset training, lot of sensitive info
-- Membership inference
+- **Membership inference**
+- 推断某数据点是否参与训练
 
 ### Black-box & White-box MIA
-Adversary can query the target model, return the model's output (prediction, vector probability)
+Adversary can **query the target model**, return the model's output (prediction, vector probability)
 - Oracle access: **black-box**
 - Full access: **white-box**, learning algorithm, architecture
 
@@ -609,6 +612,8 @@ May have some **auxiliary knowledge** about the population
 - The learning algorithm (𝐴) and the distribution of the training dataset (𝒟) from which training dataset S was drawn.
 
 **Goal**: determine whether a data point $z$ is a part of the training set $S$ of a model $h_S=A(S)$, by querying the model (knowing algorithm 𝐴 and distribution 𝐷)
+
+差分隐私（DP）的标准威胁模型其实更强，通常是假设攻击者除了“这个点到底在不在训练集里”之外，其他都知道。也就是说，DP 是按最坏情况来设防的。
 
 **White-box**: 
 在overfitting白盒下，用一个z很容易得到它是否在S内
@@ -623,14 +628,22 @@ memorizing all data in the dataset
 拥有更多类别的模型，攻击精度更高：模型为了区别类型，需要学习更细力度，学习到尖锐的特征
 
 Adversary relax the assumption of having access to D
-- Model-based synthesis: No assumption of access to any data or any statistics
+攻击者没有对输入数据分布D的访问
+- *Model-based synthesis*: No assumption of access to any data or any statistics 攻击者没有任何真实数据或统计信息
+	- 如果某个伪造样本被目标模型以很高置信度分类，那么它可能在统计上更像训练分布。阈值 **threshold-base MIA**
 	- we try to find record, assuming model overfitted and close to the target
-- Statistics-based synthesis
-- Noisy real data
+- *Statistics-based synthesis*: adversary has statistical information about the population 攻击者知道一些总体统计
+	- use this information to sample independently for each value
+- *Noisy real data*: adversary doesn't synthesize the data but uses some existing dataset and assumes that it will follow a similar distribution
+
+不是只有“训练集准确率高、测试集准确率低”的明显过拟合模型才会泄露。有些模型表面上泛化不错，依然可能泄露成员信息。
 
 ![](../img/Pasted%20image%2020260317182128.png)
+![](../img/Pasted%20image%2020260318072212.png)
 
-Model inversion: auxiliary information
+模型本身就是一个可被查询的信息接口，它可能通过输出把训练数据相关信息泄露出去。
+
+**Model inversion**: auxiliary information
 - Warfarin dosage
 ![](../img/Pasted%20image%2020260317183050.png)
 
@@ -640,11 +653,21 @@ Model inversion: auxiliary information
 
 Learning from the population is not a privacy issue
 Lear certain attribute in the certain dataset
-DP: change the framing, make hard to mining statistics
 
+**Model Extraction**
+Linear regression model $f(x)=ax+b$
 If model is a polynomial of degree $n$, attacker needs $n+1$ queries!
+只要模型回答查询，它就在泄露关于自己结构的信息。
+- confidence scores
+- vector of soft probabilities
+To extract a model that “closely matches” the target model
+- Objective is to approximate the model’s behavior!
+
+![](../img/Pasted%20image%2020260318073703.png)
 
 Equation solving attacks
 - Logistic regression
 - Multiplayer perceptron
+- ![](../img/Pasted%20image%2020260318074707.png)
+Successful and require few resources: 模型相似度高, 查询时间, 短查询数量级低
 ![](../img/Pasted%20image%2020260317185726.png)
