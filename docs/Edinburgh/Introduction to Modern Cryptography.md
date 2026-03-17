@@ -641,7 +641,7 @@ For every $h\in\mathbb{G}$ there is a **unique** $x\in\mathbb{Z}_q$ such that $g
 ### The decisional Diffie-Hellman problem
 ![](../img/Pasted%20image%2020260311012418.png)
 
-> We say that the DDH problem is hard relative to $\mathcal{G}$ if for every PPT adversary $mathcal{A}$, it holds that $$|Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^z)=1]-Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]|\le negl(n)$$, where in each case the probabilities are taken over the experiment $\mathsf{DDH}_\mathcal{A,G}(n)$
+> We say that the DDH problem is hard relative to $\mathcal{G}$ if for every PPT adversary $mathcal{A}$, it holds that $$|\Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^z)=1]-\Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]|\le negl(n)$$, where in each case the probabilities are taken over the experiment $\mathsf{DDH}_\mathcal{A,G}(n)$
 
 
 > ***Large prime order subgroups of $\mathbb Z_p^*$, where $p$ prime, are believed to be safe.
@@ -689,7 +689,6 @@ Against Chosen-Plaintext attacks
 ![](../img/Pasted%20image%2020260313234231.png)
 
 ### El Gamal encryption
-you can encrypt a message, 
 ![](../img/Pasted%20image%2020260313234747.png)
 ![](../img/Pasted%20image%2020260313234757.png)
 
@@ -699,3 +698,21 @@ you can encrypt a message,
 在群中，随机选一个k等于一个固定值的概率就是$\frac{1}{|\mathbb G|}$
 群论one-time pad
 
+在Enc中使用$<g^y,g^z\cdot m>$, 则结果m是完全随机的内容 $$\Pr[\mathsf{PubK}_{\mathcal A,\tilde\Pi}^{\mathsf{eav}}(n)=1]=\frac{1}{2}$$又, 正常Enc$<g^y,g^{xy}\cdot m>$ $$\Pr[\mathsf{PubK}_{\mathcal A,\Pi}^{\mathsf{eav}}(n)=1]=\Pr[\mathcal{D}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]$$所以 $$\Pr[\mathsf{PubK}_{\mathcal A,\Pi}^{\mathsf{eav}}(n)=1]\le\frac{1}{2}+\mathsf{negl}(n)$$
+
+**Malleability of El Gamal**
+you can do operation with different calculation
+![](../img/Pasted%20image%2020260318023701.png)
+When the adversary is able to access the decryption oracle
+Not CCA secure
+### RSA
+![](../img/Pasted%20image%2020260318024825.png)
+
+![](../img/Pasted%20image%2020260318025530.png)
+找到与$\phi(N)$互质的元素e
+- 对于$x\in\mathbb Z_N^*$, $x^e$是随机的元素permutation
+- 一定存在逆元$d=e^{-1}\bmod \phi(N)$, 可以用于恢复密文
+
+*Euler's Theorem*: if $M$ and $N$ are coprime, then $$M^{\phi(N)}=1\bmod N$$
+N是质数, 其空间$\mathbb Z_N^*$下所有数即都和它互质, 包括信息$M$
+RSA is deterministic, therefore it **not CPA-secure**

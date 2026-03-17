@@ -623,6 +623,28 @@ memorizing all data in the dataset
 拥有更多类别的模型，攻击精度更高：模型为了区别类型，需要学习更细力度，学习到尖锐的特征
 
 Adversary relax the assumption of having access to D
-- Model-based synthesis
+- Model-based synthesis: No assumption of access to any data or any statistics
+	- we try to find record, assuming model overfitted and close to the target
 - Statistics-based synthesis
 - Noisy real data
+
+![](../img/Pasted%20image%2020260317182128.png)
+
+Model inversion: auxiliary information
+- Warfarin dosage
+![](../img/Pasted%20image%2020260317183050.png)
+
+1. duplicate values that agree with to create hypothesis on unknown feature
+2. compute and compare the attributes with "dosage" value
+3. incorporation error information and marker
+
+Learning from the population is not a privacy issue
+Lear certain attribute in the certain dataset
+DP: change the framing, make hard to mining statistics
+
+If model is a polynomial of degree $n$, attacker needs $n+1$ queries!
+
+Equation solving attacks
+- Logistic regression
+- Multiplayer perceptron
+![](../img/Pasted%20image%2020260317185726.png)

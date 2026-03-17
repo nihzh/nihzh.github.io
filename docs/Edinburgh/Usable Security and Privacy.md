@@ -540,3 +540,14 @@ hackers' participation
 
 ![](../img/Pasted%20image%2020260313230421.png)
 security needs
+
+## Ethics in Security and Privacy
+
+???
+???
+
+Stakeholder-based ethics analysis:
+- how to be impacted by the research procedures; how to be impacted by the publication
+- detail the steps taken to mitigate harms
+
+live system without informed consent
