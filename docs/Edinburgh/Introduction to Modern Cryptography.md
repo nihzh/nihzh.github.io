@@ -716,3 +716,75 @@ Not CCA secure
 *Euler's Theorem*: if $M$ and $N$ are coprime, then $$M^{\phi(N)}=1\bmod N$$
 N是质数, 其空间$\mathbb Z_N^*$下所有数即都和它互质, 包括信息$M$
 RSA is deterministic, therefore it **not CPA-secure**
+
+## Digital Signatures
+### Random Oracles
+Take some input, it outputs looking random
+$$H:\{0,1\}^*\rightarrow Y$$
+*Consistent*: if a question is repeated, the random oracle must return the same answer
+> If a scheme is secure assuming the adversary views some hash function as a random oracle, it is said to be secure in the **Random Oracle Model**
+
+$(M,t)\in\mathsf{History}$ for $t\xleftarrow{\$} Y$
+
+Not available in the real world
+![](../img/Pasted%20image%2020260321013701.png)
+
+
+Oracle: Adversary cannot really access except input and output
+
+Reduction can observe the scheme, and fully control its distribution of output
+
+Better in formal justification than no proof
+
+### Digital signature
+- A *signer* S has a unique private signing key and publishes the corresponding public verification key
+- S signs a message M and everyone who knows the public key can verify that M originated form the signer S
+
+$\mathsf{Gen}(1^n)\gets(sk, vk)$ 
+$\mathsf{Sign}(sk,M)=\sigma$
+$\mathsf{Verify}(vk,M,\sigma) = 1$ if signature is valid, 0 otherwise
+
+![](../img/Pasted%20image%2020260321015052.png)
+![](../img/Pasted%20image%2020260321015038.png)
+The digital signature scheme(Gen,Sign,Verify) has **existential unforgeability under adaptive chosen message attacks** (EUF-CMA) if for every PPT adversary0 $\mathcal A$, it holds $$\Pr[\text{Game}_{EUF-CMA}^{\mathcal A^{\mathsf{Sign}}}(1^n)=1]\le\mathsf{negl}(n)$$
+A无法得知oracle内部的工作方式
+
+**Trapdoor One-way Function (TOWF)**
+- Easy to compute
+- Hard to invert
+- Easy to invert *with trapdoor*
+Only success if having trapdoor $z$
+![](../img/Pasted%20image%2020260321015705.png)
+
+![](../img/Pasted%20image%2020260321020619.png)
+
+**Correctness**
+![](../img/Pasted%20image%2020260321021130.png)
+
+**Unforgeability**
+![](../img/Pasted%20image%2020260321021847.png)
+> 任何“会伪造签名的人”，都能被改造成“会求 $f_e$​ 原像的人”。所以如果 $f_e$​ 真的是 one-way function，那么伪造签名的人就不该存在。
+
+![](../img/Pasted%20image%2020260325002721.png)
+B 来对A伪装Sign和H
+
+![](../img/Pasted%20image%2020260321024041.png)
+> 伪造签名，本质上就是给某个哈希值找原像；而 random oracle 允许 reduction 把这个哈希值编程成 one-way challenge，因此签名伪造者就能被转化成 one-way inverter。
+
+creates a forgery
+A: adversary of signature scheme
+B: forgery of OWF scheme
+
+**Conditional Independency**
+$$\Pr[A\land B|C]=\Pr[A|C]\Pr[B|C]$$
+
+adversary is success and B guess the index correctly
+adversary never query the signing oracle
+$$f_e(\sigma')=H(m')$$
+whenever adverar query the G
+
+![](../img/Pasted%20image%2020260325005506.png)
+B用random oracle模拟A对H的查询
+B选中一个j来将A的查询模拟成$H(M^*)=y$
+如果A最终问了Sign(M, y)，则模拟失败，因为A不能问正确的y
+通过猜中A最终伪造消息对应的那次哈希查询，把伪造签名转化为y的preimage

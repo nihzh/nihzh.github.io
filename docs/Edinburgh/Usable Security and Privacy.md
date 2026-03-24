@@ -551,3 +551,5 @@ Stakeholder-based ethics analysis:
 - detail the steps taken to mitigate harms
 
 live system without informed consent
+
+one case cannot solve everything

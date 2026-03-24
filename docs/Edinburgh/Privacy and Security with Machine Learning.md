@@ -671,3 +671,19 @@ Equation solving attacks
 - ![](../img/Pasted%20image%2020260318074707.png)
 Successful and require few resources: 模型相似度高, 查询时间, 短查询数量级低
 ![](../img/Pasted%20image%2020260317185726.png)
+
+## image provenance
+Hard binding: C2PA only work with unforged file
+
+:post-generation: Synth-id watermark 
+- pixel
+- frame
+
+in-generation: signature, intrinsic to content, more robust
+
+Soft marking can be unreliable
+
+binding to be a multilayer system
+
+passive inference
+fingerprints can be stripped easily

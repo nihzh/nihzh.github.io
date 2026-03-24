@@ -185,6 +185,8 @@ Attacking knowledge-based behaviors
 - advance payment fraud: present mark with an opportunity
 - CEO fraud
 
+- new scenario
+
 Attacking rule-based behaviors
 - Tell finance department that their vendor's bank details have changed
 - Malware in app store
@@ -363,3 +365,24 @@ App stores:
 
 lower level security policies
 
+## ass
+
+## com
+
+## rm
+
+## 
+vulnerabilities in student record system
+exposed to public network
+compromised first
+逻辑链条,真实情景
+- patch management -- reliable , limitations, establish pattern
+
+SRK model
+Skill based
+Rule based
+Knowledge based
+
+detailed answer
+
+what it requires
