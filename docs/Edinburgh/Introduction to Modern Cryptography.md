@@ -781,10 +781,13 @@ $$\Pr[A\land B|C]=\Pr[A|C]\Pr[B|C]$$
 adversary is success and B guess the index correctly
 adversary never query the signing oracle
 $$f_e(\sigma')=H(m')$$
-whenever adverar query the G
+whenever adversary query the G
 
 ![](../img/Pasted%20image%2020260325005506.png)
+
+B有一个来自挑战者的y
 B用random oracle模拟A对H的查询
 B选中一个j来将A的查询模拟成$H(M^*)=y$
 如果A最终问了Sign(M, y)，则模拟失败，因为A不能问正确的y
 通过猜中A最终伪造消息对应的那次哈希查询，把伪造签名转化为y的preimage
+![](../img/Pasted%20image%2020260325010515.png)
