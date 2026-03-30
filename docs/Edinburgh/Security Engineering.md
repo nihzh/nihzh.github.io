@@ -365,13 +365,27 @@ App stores:
 
 lower level security policies
 
-## ass
+## Assurance
+Whether a system is secure and **how you're sure of this**
+What leadership interested in -- goverance
+- security change over time
 
-## com
+**Building systems**
+build people confidence on each of the stages
+formal method: system requirements ==> specification (high-level representation of the system) ==> formal logic ==> proof
+- TLS
+- Too complex: Load of user dynamic interacting different access privileges
+
+**Operating (managing) systems**
+
+## Sustainability
+How long will it work for
+## Compliance
+How you can satisfy other people of this
 
 ## rm
 
-## 
+## Revision
 vulnerabilities in student record system
 exposed to public network
 compromised first
@@ -386,3 +400,23 @@ Knowledge based
 detailed answer
 
 what it requires
+
+
+adversary and stakeholders
+
+deperimetrised
+端点和可信身份认证，zero trust降低可用性，access policies
+
+物联网漏洞
+网络信息配置错误，开放全部搜索
+网关设备有0day漏洞，被发掘后可以控制所有家居， thief
+
+charging strategy ==> using the phone
+cryptography computation have various power usage
+malware charger
+over privilege app, malware behaviour
+
+VM hypervisor
+
+app-in-app miniapp
+guarantee party

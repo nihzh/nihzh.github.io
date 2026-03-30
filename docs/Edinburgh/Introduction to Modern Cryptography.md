@@ -791,3 +791,44 @@ B选中一个j来将A的查询模拟成$H(M^*)=y$
 如果A最终问了Sign(M, y)，则模拟失败，因为A不能问正确的y
 通过猜中A最终伪造消息对应的那次哈希查询，把伪造签名转化为y的preimage
 ![](../img/Pasted%20image%2020260325010515.png)
+
+## Zero-Knowledge Interactive Proofs
+**Two parties proof**
+- *prover* (Merlin): has unbounded resources
+- *verifier* (Arthur): has limited resources
+![](../img/Pasted%20image%2020260327231407.png)
+$x$ is an NP statement and $\pi$ is its certificate/witness/proof
+
+*Graph Isomorphism*
+![](../img/Pasted%20image%2020260328021149.png)
+
+*Interactive Prove*: 
+A proof is described as as a game between a *prover* and a *verifier*
+- the theorem is true if and only if the prover wins the game always
+- if the theorem is false then the prover loses the game with 50% probability
+
+两支笔的颜色不相同：prover回答verifier的是否交换（做随机挑战） == > 如果颜色相同则prover获胜的概率一定小于50%
+
+*Graph Non-Isomorphism*
+![](../img/Pasted%20image%2020260328024022.png)
+![](../img/Pasted%20image%2020260328023841.png)
+![](../img/Pasted%20image%2020260328025720.png)
+![](../img/Pasted%20image%2020260328025733.png)
+
+*Zero-Knowledge*: leakage only one bit ==> 1 if the theorem is true and 0 otherwise, **not disclose the witness**
+
+**ZK Graph Isomorphism** 证明同构的同时不泄漏映射
+![](../img/Pasted%20image%2020260328041221.png)
+verifier只看到C，一个随机同构副本，不是G也不是H
+挑战只让prover证明，其中之一
+- C和G同构
+- C和H同构
+
+
+$P(x,w)\rightarrow S(x)$ with no leakage of $w$
+simulator & process ideally same
+
+CCA-encryption scheme
+Multi-party computation
+Identification schemes
+Privacy-preserving blockchains

@@ -672,7 +672,8 @@ Equation solving attacks
 Successful and require few resources: 模型相似度高, 查询时间, 短查询数量级低
 ![](../img/Pasted%20image%2020260317185726.png)
 
-## image provenance
+## Guest lectures
+### Image Provenance
 Hard binding: C2PA only work with unforged file
 
 :post-generation: Synth-id watermark 
@@ -687,3 +688,20 @@ binding to be a multilayer system
 
 passive inference
 fingerprints can be stripped easily
+
+### LLM Security & Privacy
+LLM: next words completion ==> Attacking in-context learning
+
+Privacy-Preserving In-Context DP Few-Shot Generation
+
+Injecting to commands to chatbot
+- model hijacking
+- misrepresentation
+- Jailbreaking
+
+Retrieval Augment Generation: user contact the LLM directly, malicious user easily attack
+- defending: Highlighting, Summarization (discard what user input)
+
+indirect command injection attack
+
+instructions and data are in same block, LLMs have no idea to distinguish
