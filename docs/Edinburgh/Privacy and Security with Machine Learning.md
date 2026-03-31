@@ -245,7 +245,7 @@ $(\varepsilon,\delta)$-DP
 $$Pr[\mathcal{M}(D)\in\mathcal{S}]\le e^\varepsilon Pr[\mathcal{M}(D')\in\mathcal{S}]+\delta$$
 where $\delta$ is Failure probability, $M$ is $\varepsilon$-DP with probability $1-\delta$
 
-Mechanisms
+Properties of DP Mechanisms
 - **Robustness to post-processing**: it is safe to apply arbitrary functions on output
 - **Composition**: if we run a $(\varepsilon,\delta)$-DP mechanism $k$ times, the resulting mechanism is $(k\varepsilon,k\delta)$-DP
 - **Advanced composition**: if $k\lt\frac{1}{\varepsilon^2}$, the resulting mechanism is $(\mathcal{O}(\sqrt{k~log(\frac{1}{\delta'})})\varepsilon,k\delta+\delta')$-DP for all $\delta'\gt0$ 
@@ -258,8 +258,12 @@ Hard to interpret, hard to pick Epsilon, privacy budget
 *DP-ERM*
 - Output perturbation: minimize then perturb
 - Objective perturbation: perturb then minimize
+need to know the sensitivity, then add noise, limit the sensitivity
 
 *DP-SGD*: calculate gradient over sample iteratively, apply DP at that level
+clip gradient, not larger than bounding C
+- moments accountant -> tight bound
+- good for membership inference attack
 ### Private Learning
 DP mechanism sits within the learning algorithm, Once the model has been trained, it can be safely released
 ![](../img/Pasted%20image%2020260224225939.png)
@@ -672,6 +676,17 @@ Equation solving attacks
 Successful and require few resources: 模型相似度高, 查询时间, 短查询数量级低
 ![](../img/Pasted%20image%2020260317185726.png)
 
+## Privacy attacks: mitigations
+Membership inference countermeasures
+- restrict prediction vector to top-k classes
+- round up probabilities to $d$ digits
+- increase entropy of prediction vector: apply a temperature variable to Softmax layer
+- regularization
+
+### Privacy expectations for ML models
+"nothing about an individual should be learnable by querying the model that cannot be learned without the model"
+
+
 ## Guest lectures
 ### Image Provenance
 Hard binding: C2PA only work with unforged file
@@ -705,3 +720,5 @@ Retrieval Augment Generation: user contact the LLM directly, malicious user easi
 indirect command injection attack
 
 instructions and data are in same block, LLMs have no idea to distinguish
+
+better epsilon, get tighter sample

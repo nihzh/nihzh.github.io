@@ -824,9 +824,26 @@ verifier只看到C，一个随机同构副本，不是G也不是H
 - C和G同构
 - C和H同构
 
-
+*Simulator* 在没有witness的情况下，为造出看起来像真实交互的transcript
 $P(x,w)\rightarrow S(x)$ with no leakage of $w$
-simulator & process ideally same
+- knows only that theorem x is true
+- is efficient
+- generates a transcript that is distributed similarly to the real one (when the verifier is honest), simulator & process ideally same
+- has black-box access to the adversary
+
+**Honest-Verifier Zero-Knowledge (HVZK)** 诚实验证者零知识
+- 不考虑恶意偏离协议的verifier
+- verifier看到的东西，可被模拟
+- 真实执行和模拟执行都只围绕 C which a random permutation of G
+
+### Sigma protocols
+1. prover发送commitment/首消息 $a$
+2. verifier发送random challenge $c$
+3. prover发送response $z$
+
+**Completeness**: 如果prover确实知道witness $w$, 那它总能生成让verifier 接受的$(a,c,z)$
+**HVZK**: 存在simulator $HVZK_{Sim}(x)$ 或更强的 $SHVZK_{Sim}(x,c)$ (special), 能在不知道witness 的情况下, 生成与真实transcript 相似的三元组
+**Special Soundness**: 
 
 CCA-encryption scheme
 Multi-party computation
