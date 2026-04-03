@@ -625,11 +625,11 @@ The attack can be implemented with a meta-classifier (shadow models)
 - sample from the training dataset 模拟目标模型的行为模式
 - training model k with target's learning algorithm 观察in/out行为差异
 - repeats for many samples, average behaviour will closer to the target model 训练attack model
-overfit => better on more classes
+overfit => better on more classes sufficient, not necessary
 memorizing all data in the dataset
 ![](../img/Pasted%20image%2020260314033631.png)
 攻击者在学习“目标模型对见过的数据和没见过（在不在训练集中）的数据，输出行为有什么统计差异”。
-拥有更多类别的模型，攻击精度更高：模型为了区别类型，需要学习更细力度，学习到尖锐的特征
+拥有更多类别的模型，攻击精度更高：模型为了区别类型，需要学习更细粒度，学习到尖锐的特征
 
 Adversary relax the assumption of having access to D
 攻击者没有对输入数据分布D的访问
@@ -722,3 +722,29 @@ indirect command injection attack
 instructions and data are in same block, LLMs have no idea to distinguish
 
 better epsilon, get tighter sample
+
+## Review
+scenario ==> pitfalls
+
+fingerprinting attack, 70 training, 30 testing
+- typical threat model
+	- eavesdropping, cannot modifying
+- 95% accuracy, 4 potential evaluation flaw
+	- popular websites different from normal 
+	- testing on same dataset, ideally on more realistic
+	- homepage, detail page losses nuance
+	- arbitrary user
+	- close world, classifier likely to fail in open world
+	- base rate very low?
+- +precision 90%
+	- base rate different at testing and deployment
+	- 1000 websites not realistic
+- attacker doesnt know the defence
+
+
+architecture, parameters, training data
+模型模拟
+- model stealing
+
+go through attacks at second part of the course
+black/white box, capabilities, threat model
