@@ -1,11 +1,13 @@
 Proof something is secure
 > The art of making and breaking secret codes
 
-## Introduction
-*Private-key (SK)*: Message authentication codes
-*Public-key (PK)*: Digital signatures
+> Design, analysis, and implementation of mathematical techniques for securing information, systems, and distributed computations against adversarial attack
 
-**Private-key (symmetric-key) encryption**
+Data integrity & authentication
+## Introduction
+![](../img/Pasted%20image%2020260505231624.png)
+
+**Private-key (symmetric-key) encryption**: single user / multiple parties
 ![](../img/Pasted%20image%2020260113233346.png)
 
 *Kerckhoffs's principle*: The encryption scheme is not secret
@@ -13,29 +15,66 @@ Proof something is secure
 - The only secret is the key
 - The key must be chosen at random; to kept secret
 
+- easier to keep key secret than algorithm
+- easier to change key than to change algorithm
+- standardisation: ease of deployment, public scrutiny
+
+### Shift Cipher
 *Modular arithmetic*  同余&取模运算
 ![](../img/Pasted%20image%2020260113234130.png)
+$c_i=[m_i+k\mod 26]$;  $m_i=[c_i-k\mod 26]$
+26 possible keys => easy brute-force
 
 *Byte-wise Shift Cipher*
-- Alphabet of bytes rather than English letters
-- Use XOR instead of modular addition (reversible)
-![](../img/Pasted%20image%2020260113235129.png)
+- Alphabet of bytes rather than English letters 用一字节编码
+	- $k\in\mathcal{K}=\{\text{0x00}\dots\text{0xFF}\}$, 256 possible keys
+	- printable? 
+- Use XOR instead of modular addition (reversible) 用可逆XOR
+	- $c_i=m_i\oplus k$;  $m_i=c_i\oplus k$
 
-The key space must be large enough to make brute-force attacks impractical
-
-Shift Cipher
+> The key space must be large enough to make brute-force attacks impractical
 ### Vigenere Cipher
-**Index of Coincidence**
+分片成n个stream，统计字符频率，尝试最常见字符为e
+**Index of Coincidence** 算总体符合概率
 ![](../img/Pasted%20image%2020260116232932.png)
 ![](../img/Pasted%20image%2020260116233042.png)
 
 **Finding the key length**
-![](../img/Pasted%20image%2020260116233716.png)
-Natural English Language IC: 0.065
-Random IC: 0.038
+用正确的key长度解密的文本应该拥有合理的$\sum_i {q_i}^2=0.065$, 即无论密钥都拥有相同的分布, 但长度猜测错误时内容完全混乱趋近于$\sum_i {q_i}^2=0.038$
+- 对每个候选长度N的每个stream (通常一个stream确定) 计算$\sum_i {q_i}^2$, 并选取最大的N
+- Natural English Language IC: 0.065
+- Random distribution IC: 0.038
+- 总体时间
 
-![](../img/Pasted%20image%2020260117002840.png)
+**Attack Time**
+1. 确认key length: 对于最长L的密钥, 分别计算26个字母的频率
+	- $L\cdot\sum_{i=0}^{25}{q_i}^2$
+2. 确认key: 
+	1. 对于第i个stream (第i位密钥): 对于26个候选值B(a-z), 分别计算频率$q_i$, 取值最接近0.065 ==> $26^2$
+	2. 总用时$\le26^2L$
+Brute-force: $26^L$
 $$26L+26^2L\approx26^2L\ll26^L$$
+
+> Large key space is a necessary, but not efficient condition for a secure encryption scheme
+
+### Modern Cryptography
+- Formal **definition**: evaluation & modularity
+- Precise **Assumptions**: explicit, mathematically precise
+- Proof of security, under two principles above
+
+> A proof of security is always relative to the definition being considered and the assumption(s) being used.
+
+The proof is irrelevant
+- If the security guarantee does not match what is needed 安全保证不符合需求
+- If the threat model does not capture the adversary's true abilities 威胁模型不符合真实能力
+- If the assumption that is relied upon turns out to be false 所依赖的假设是错误的
+
+> Provable security of a scheme does not necessarily imply security of that scheme in the real world
+> 可证明安全不必然等价于现实安全
+
+要攻击一个“可证明安全”的方案，现实攻击者通常只能从两条路入手：
+1. 针对**定义与现实环境的差距**（理想化模型遗漏了什么现实因素）
+2. 针对**底层假设是否真的成立**（假设在实践中是否被打破或被削弱）
 
 # Symmetric Cryptography
 ## Secure Encryption
@@ -51,45 +90,33 @@ $$26L+26^2L\approx26^2L\ll26^L$$
 - Chosen-plaintext attack (CPA), 选择明文攻击
 	- API接口
 - Chosen-ciphertext attack (CCA), 选择密文攻击
+**Secure Encryption**: How would you define what it means for encryption scheme $\mathsf{(Gen,Enc,Dec)}$ over message space $\mathcal M$ to be **secure**
 
 > Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information about the plaintext
 > **加密后的密文不应该让攻击者在这些知识基础上得到任何新增优势**。
 
-*Modern Cryptography*:
-- Formal definition: evaluation & modularity
-- Precise Assumptions
-	- explicit
-	- mathematically precise
-- Proof of security, under two principles above
+## Perfect Secrecy
+*Random variable (RV)*: variable that takes on discrete values with certain probabilities 以特定概率取离散值
 
-> A proof of security is always relative to the definition being considered and the assumption(s) being used.
-
-The proof is irrelevant
-- If the security guarantee does not match what is needed
-- If the threat model does not capture the adversary's true abilities
-- If the assumption that is relied upon turns out to be false
-
-> Provable security of a scheme does not necessarily imply security of that scheme in the real world
-> 可证明安全不必然等价于现实安全
-
-要攻击一个“可证明安全”的方案，现实攻击者通常只能从两条路入手：
-1. 针对**定义与现实环境的差距**（理想化模型遗漏了什么现实因素）
-2. 针对**底层假设是否真的成立**（假设在实践中是否被打破或被削弱）
-
-### Perfect Secrecy
-*Random variable (RV)*: variable that takes on discrete values with certain probabilities
-
-*Probability distribution (PD)*: A PD for a RV specifies the probabilities with which the variable takes on each possible value
-- Each between 0 and 1
+*Probability distribution (PD)*: A PD for a RV specifies the probabilities with which the variable takes on each possible value 取值的概率分布
+- Each probability between 0 and 1
 - Probabilities sum to 1
 
-![](../img/Pasted%20image%2020260120231622.png)
-![](../img/Pasted%20image%2020260120231644.png)
+*Event*: a particular occurrence of event E in some experiment => $\Pr[E]$
+*Conditional probability*: one event occurs, given that some other event occurred: $\Pr[A|B]=\frac{\Pr[A\land B]}{\Pr[B]}\equiv\frac{\Pr[AB]}{\Pr[B]}$
+*Independence*: Two RV X, Y are independent if: $\forall x,y:\Pr[X=x|Y=y]=\Pr[X=x]$  y是否加入的概率相同
 
-$$\sum_iP[A|E_i]\cdot P[E_i]=P[A]=\sum_i[E_i\land a]$$
-$$P[A|B]=\frac{P[A\land B]}{P[B]}$$
+*Law of total probability*: Let $E_1\dots E_n$ are a partition of all possibilities, then $\forall A$: $$Pr[A]=\sum_i\Pr[A\land E_i]=\sum_i\Pr[A|E_i]\Pr[E_i]$$
+事件A发生时必定伴随着一个$E_i$发生
+$$\Pr[A|B]=\Pr[A\land B]/\Pr[B]\Longrightarrow\Pr[A\land B]=\Pr[A|B]\Pr[B]$$
+
 
 Shift cipher 拥有固定的密文模式，从Chosen Ciphertext攻击中反推明文
+
+RV M and K are independent
+Pr\[M = attack today\] = 0.7     Pr\[M = don′t attack\] = 0.3
+Pr\[K = k\] = Pr\[Gen outputs key k\]
+C be a RV denoting the value of the ciphertext in this experiment
 
 *Perfect Secrecy*
 ![](../img/Pasted%20image%2020260120233941.png)
@@ -101,7 +128,7 @@ $$Pr[A|B]=\frac{Pr[B|A]Pr[A]}{Pr[B]}$$
 
 ### One-time Pad
 ![](../img/Pasted%20image%2020260120234752.png)
-**The One-time Pad satisfies perfect secrecy**
+**The One-time Pad satisfies perfect secrecy**   掩码
 - Any observed ciphertext can correspond to any message
 - Having observed a ciphertext, the attacker cannot conclude for certain which message was sent
 
@@ -112,43 +139,40 @@ $$Pr[A|B]=\frac{Pr[B|A]Pr[A]}{Pr[B]}$$
 #### Brute-force Attack Resisting
 ![](../img/Pasted%20image%2020260124035425.png)
 
-#### Limitations of OTP
-1. **The key is as long as the message**
-2. **A key must be used only once**
-
-Only Secure if each key is used to encrypt a single message
-![](../img/Pasted%20image%2020260123234110.png)
-Parties must share keys of (total) length equal to the (total) length of all the message they might ever send
+#### Limitations of OTP (all schemes for PS)
+1. **The key is as long as the message**: parties must share keys of (total) length equal to the (total) length of all the message they might ever send  需要与消息等长的密钥
+2. **A key must be used only once**: only secure if each key is used to encrypt a single message, such that 密钥仅限一次性使用$$c_1\oplus c_2=(k\oplus m_1)\oplus(k\oplus m_2)=m_1\oplus m_2$$leaks information about m1, m2 (differ between) 泄露二者差异
+	- XOR with a letter(01...) and a space(00...), results 01..., whereas 00... if they are both letters
+3. Trivially broken by a known-plaintext attack
 
 #### Optimality of the One-time Pad
 > If `(Gen, Enc, Dec)` with message space M is perfectly secret, then $|\mathrm{K}|\ge\mathrm|M|$ 
 > 
-> 对于指定的密文c, 令$S_c=Dec_k(c),k\in\mathcal{K}$ (key space) ，其必须与$\mathcal{M}$相等，即令每一条可能的密文都对应所有可能的明文。如$|\mathcal{K}|<|\mathcal{M}|$，则可以通过穷举$\mathcal{K}$得到$|S_c|=|\mathcal{K}|$的完整消息空间，找到$\mathcal{M}$中没有对应的消息m\*，以排除指定消息。这不符合无多余信息泄露的标准。
+> 对于指定的密文c, 令集合$S_c=\{Dec_k(c)\},k\in\mathcal{K}$ (key space) ，其必须与$\mathcal{M}$相等，即令每一条可能的密文都对应所有可能的明文。如$|\mathcal{K}|<|\mathcal{M}|$，则可以通过穷举$\mathcal{K}$得到$|S_c|=|\mathcal{K}|$的完整消息空间，找到$\mathcal{M}$中没有对应的消息m\*，以排除指定消息。这不符合无多余信息泄露的标准。
 
 ![](../img/Pasted%20image%2020260124021245.png)
 ![](../img/Pasted%20image%2020260124021218.png)
 ## Perfect Indistinguishability
-Randomized experiment, equivalent with PS
-*Perfect Indistinguishability (PI)*
+*Perfect Indistinguishability (PI)*: Randomized experiment, equivalent with PS
 ![](../img/Pasted%20image%2020260127231738.png)
-$D_m$: 明文空间m和密钥空间k对应的密文空间
+$D_m$: 固定明文m和密钥空间中$k\in\mathcal K$对应的 密文空间概率分布, 即**两个不同明文输出的密文空间概率分布相等**
 
 ![](../img/Pasted%20image%2020260127232012.png)
 ![](../img/Pasted%20image%2020260127232028.png)
 ![](../img/Pasted%20image%2020260127232443.png)
 对手通过观察加密后的内容得到的信息与没加密前一致
-For all attacker a, no matter what he does
+For all attacker a, no matter what he does, he have fixed 1/2 for winning this game
 
 ### Computational Secrecy
-*Relax perfect indistinguishability*
+**Relax perfect indistinguishability**, allowing "fail" with tiny probability
 Little weaker
 #### Computational Indistinguishability (Concrete security)
 Security may fail with probability $\le\varepsilon$
 Restrict attention to attackers running in time/CPU cycles $\le$ t
-
+在攻击者能力t下, 存在失败率小于$\varepsilon$ 
 **$(t,\varepsilon)$-indistinguishable** $$Pr[\textsf{Priv}K_{A,\pi}=1]\le \frac{1}{2}+\varepsilon$$
 #### Asymptotic security
-Security parameter $\color{#b293f6}n$
+Security parameter $\color{#b293f6}n$ (key length)
 - chosen by honest parties when they generate/share keys
 - **known by adversary**
 
@@ -161,7 +185,6 @@ Restrict attention to attackers running in time **polynomial** in n
 *Negligible function*
 ![](../img/Pasted%20image%2020260128025918.png)
 当n大过一个阈值之后，$f(n)$小于任何多项式$p(n)$
-
 $2^{-n}$, $2^{-\sqrt n}$, $\frac{1}{n^{\log n}}$
 
 ![](../img/Pasted%20image%2020260128032305.png)
