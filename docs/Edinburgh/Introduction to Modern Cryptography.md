@@ -185,11 +185,12 @@ Restrict attention to attackers running in time **polynomial** in n
 *Negligible function*
 ![](../img/Pasted%20image%2020260128025918.png)
 当n大过一个阈值之后，$f(n)$小于任何多项式$p(n)$
-$2^{-n}$, $2^{-\sqrt n}$, $\frac{1}{n^{\log n}}$
+$2^{-n}$, $2^{-\sqrt n}$, $n^{-\log n}$, 
 
 ![](../img/Pasted%20image%2020260128032305.png)
 
 efficient = *probabilistic polynomial-time (PPT)*
+poly · negl = negl
 
 ![](../img/Pasted%20image%2020260128032819.png)
 $1^n=\underbrace{11\cdots1}_{\text{n times}}$, denotes the algorithm is polynomial in n
@@ -200,26 +201,23 @@ When computer get faster, a tiny increase of n could compensate the gap, the sch
 
 ![](../img/Pasted%20image%2020260228062334.png)
 ## Pseudorandomness
-*Random*
-Sample a random element according to **some distribution**
+*Random*: sample a random element according to **some distribution**
 
-*Uniform*
-Sample an element uniformly at random means to sample according to the uniform distribution
-![](../img/Pasted%20image%2020260131010825.png)
-If we generate a uniform 16-bit string, each of the above occurs with probability $2^{-16}$
+*Uniform*: sample an element uniformly at random means to sample according to the uniform distribution
+- If we generate a uniform 16-bit string, each of the above occurs with probability $2^{-16}$
 
-*Uniformity*
-![](../img/Pasted%20image%2020260130234817.png)
+*Uniformity*: a property of a distribution
+- $D: \{0,1\}^n\rightarrow[0,1]$ such that $\sum_xD(x)=1$
+*Uniform distribution*: 一个分布函数$U_n$, 每个$x\in\{0,1\}^n$ 分配概率$2^{-n}$
 
-*Pseudorandom*: cannot be distinguished from uniform
+*Pseudorandom*: cannot be distinguished from uniform (random)
 - Pseudorandomness is a property of a **distribution**
 - looks like random
 
 > $D$ is pseudorandom if it passes all efficient statistical tests
 
 ![](../img/Pasted%20image%2020260131012622.png)
-
-> 任何“算力不超过t” 的攻击者 A，都几乎分不清样本来自 D 还是来自真正均匀随机$U_p$，概率差最多$\epsilon$
+任何“算力不超过t” 的攻击者 A，都几乎分不清样本来自 D 还是来自真正均匀随机$U_p$，概率差最多$\epsilon$
 
 ### Asymptotic Pseudorandomness
 - parameter $n$, polynomial $p$
@@ -228,11 +226,12 @@ If we generate a uniform 16-bit string, each of the above occurs with probabilit
 ![](../img/Pasted%20image%2020260131014747.png)
 
 ### Pseudorandom Generators (PRG)
-> $G$ is a deterministic, poly-time algorithm that is expanding $$|G(x)|=p(|x|)>|x|$$
+> $G$ is a deterministic, poly-time algorithm that is **expanding** $$|G(x)|=p(|x|)>|x|$$输出长度由某个固定多项式p决定, 只依赖于输入长度; 一定比输入长度长
 
 ![](../img/Pasted%20image%2020260130235807.png)
+G能产生的串只占整个输出空间的$2^{-n}$, 其余在$D_n$中出现的概率严格为0
 ![](../img/Pasted%20image%2020260130233914.png)
-
+对于所有PPT adversary不可区分, 除非枚举所有可能种子, 消耗$2^n$不是PPT
 ![](../img/Pasted%20image%2020260203232337.png)
 
 The PRGs exist requires the unproven assumption $\mathcal{P}\ne\mathcal{NP}$ 
@@ -249,9 +248,14 @@ Secure: prove under definition of indistinguishability
 > If G is a pseudorandom generator, then the pseudo one-time pad $\Pi$ is EAV-secure (computationally indistinguishable)
 
 Assume G is a pseudorandom generator
-Use A as a subroutine to build an efficient D attacking G
-Relate the distinguishing gap of D to the success probability of A
-- By assumption, the distinguishing gap of D must be negligible
+Assume toward a contradiction that there is an efficient *attacker A* who breaks POTP, use A as a subroutine to build an efficient *distinguisher D* that breaks pseudorandomness of G   用D模拟PrivK给A
+- If A runs in polynomial time, then so does D
+- By assumption, not such D exists ==> No such A can exists
+![](../img/Pasted%20image%2020260508032908.png)
+Relate the *distinguishing gap of D* to the *success probability of A*
+- By assumption, the distinguishing gap of D must be negligible ==> bound the success probability of A
+
+> If G is a pseudorandom generator, then pseudo one-time pad $\Pi$ is EAV-secure (computationally indistinguishable)
 ![](../img/Pasted%20image%2020260204011447.png)
 
 Reduce the security of the POTP to the security of the underlying G
@@ -268,32 +272,37 @@ The POTP has a key shorter than the message:
 ![](../img/IMG_20260203_155548_edit_1510111022340134.jpg)
 ![](../img/IMG_20260203_155215.jpg)
 
-More problem: small key, same key many encryption problem
-
+More problem: smaller key, same key multiple encryption problem
 ## Security Against Chosen-Plaintext Attacks (CPA)
-*Multiple-message Secrecy (MMS)*: Parties share $k$; multiple $m_i$; encrypted under $k$
+### Multiple-message Secrecy (MMS)
+Parties share $k$; multiple $m_i$; encrypted under $k$
 - Threat model: attacker observes multiple ciphertexts $c_i$
 - Security goal: given $c_i$ attacker can not derive any information on any $m_i$
 
-多次查询，定制m1m2，返回正确结果
-
 ![](../img/Pasted%20image%2020260207005753.png)
-
+在多条内容上使用相同的k加密
 ![](../img/Pasted%20image%2020260207005828.png)
 
-构建vector0 两条相同的内容，vector1 两条不同的内容
+构建vector0 两条相同的内容, vector1 两条不同的内容, 根据结果是否相同决定
 ![](../img/Pasted%20image%2020260207010842.png)
+No **deterministic** encryption scheme is multiple-message indistinguishable
 
+### CPA-security
 > CPA is the minimal notion of security an encryption scheme should satisfy
 > If $\Pi$ is CPA-secure ==> $\Pi$ is multiple-message indistinguishability
 
+**Threat model**: attacker A can request encryption of any $m_i$ of his choice
+- A is given access to an encryption oracle $E_k$
+- A submits $m_i$ ==> obtains $c_i=E_k(m_i):i=1,2,\dots$
+**Security goal**: given $c$ attacker cannot derive any information on $m$
+
 ![](../img/Pasted%20image%2020260207012425.png)
 ![](../img/Pasted%20image%2020260206232303.png)
-
+A直接询问oracle m0和m1
 > No deterministic encryption scheme can be CPA-secure
 > Consider randomized scheme
 
-## Pseudorandom functions (PRF)
+### Pseudorandom functions (PRF)
 Choosing $f$ uniformly at random, interacting with oracle $f$
 is equivalent to
 For each $x \in \{0,1\}^n$, choose $f(x)$ uniformly in ${0,1}^n$
@@ -328,7 +337,7 @@ D can query $f$ (resp. $F_k$) on any input $x$ at most poly times
 > A random permutation is indistinguishable from a random function for large enough n
 - In practice PRPs are also good PRFs
 
-## CPA-secure encryption using PRF/PRP
+### CPA-secure encryption using PRF/PRP
 ![](../img/Pasted%20image%2020260210231858.png)
 将随机数r引入，使掩码每次都不同，又使用相同的$F_k$使其可复原
 r被同样发送，只有正确的k可以复原，解决重复加密问题
