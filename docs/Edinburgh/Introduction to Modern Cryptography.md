@@ -475,7 +475,7 @@ Security and integrity are orthogonal concerns
 在Integrity条件下可以用明文传输
 Passive Attacks (eavesdropping) ==> Active Attacks: attacker has full control over the channel
 
-*Message Authentication Code (MAC)*
+### Message Authentication Code (MAC)
 ![](../img/Pasted%20image%2020260227232051.png)
 **Threat model**: *adaptive chosen-message attack*: assume the attacker can induce the sender to authenticate messages of the attacker's choice 攻击者可以使发送方认证任意消息, 除了挑战消息
 **Security goal**: *existential unforgeability*: attacker should not be able to forge a valid tag on any message not previously authenticated by the sender 攻击者不能伪造任何发送方没有认证的消息认证
@@ -489,7 +489,7 @@ Secure MAC ==> infeasible to forage even a single message
 - No stateless mechanism can prevent replay attacks
 - application-dependent
 
-### Fixed-length MAC
+#### Fixed-length MAC
 ![](../img/Pasted%20image%2020260228022020.png)
 **Let Mac be a PRF**, set $Mac_k\equiv F_k$
 
@@ -506,7 +506,7 @@ Secure MAC ==> infeasible to forage even a single message
 ![](../img/Pasted%20image%2020260228024608.png)
 ![](../img/Pasted%20image%2020260228024738.png)
 
-### Variable-length MAC
+#### Variable-length MAC
 Break a long message into multiple fixed length string and do fixed-length MAC respectively
 
 Prevent: 
@@ -528,7 +528,7 @@ Adversary query $T_A=E_k(A)$ and $T_B=E_k(B)$ then **forge** $M_{forge}=A|(B\opl
 
 ![](../img/Pasted%20image%2020260228032147.png)
 
-## Hash Functions
+### Hash Functions
 > Deterministic function mapping arbitrary length inputs to a short, fixed-length output (a digest)
 
 *Collision-resistance*
@@ -551,25 +551,37 @@ When $k\approx \sqrt{N}$, probability of a collision is $\approx 50\%$
 **The birthday bound $k\approx2^{n/2}$**  $2^n$密钥空间下理论最多支持k次查询满足collision-resistance
 - CTR-mode IV reuse
 
-### Hash function building
-Fixed-length inputs hash $h$
-Hash function $H$
+#### Hash function building
+Fixed-length inputs hash $h$, a *compression function* 定长哈希函数h
+Hash function $H$, arbitrary length inputs based on $h$ 基于h的变长哈希函数H
 
-> Prove that collision resistance of $h$ implies collision resistance of $H$
+> If $h$ is collision-resistance, then so is $H$
 
 *Merkle-Damg ̊ard Transform*
 ![](../img/Pasted%20image%2020260304071835.png)
+当$H$中发生碰撞时$H(m_1\dots m_B)=H(m_1'\dots m_B')$
+- 两条消息长度不同, 则最后一个块$m_{B+1}=|M|$绝对不相等, 则在最后一个在$h$是collision-resistance情况下, 最后一个$h$的输入不相等而输出相等是不存在的
+- 两条消息长度相同, 则寻找最大的索引$i$位置的$h$, 满足输入不同$(z_{i-1},m_i)\ne(z_{i-1}',m_i')$但输出相同, 在$h$ is collision-resistance的情况下同样不存在
+
 （长度扩展攻击问题）
 
+*Compression function*
 ![](../img/Pasted%20image%2020260303234852.png)
+用消息块作为密钥, 内部状态作为被加密的明文
+使用feedforward来完成哈希函数**单向不可逆**的特性, (分组密码是可逆的), 就算明文是已知的也uninvertable 
 
-SHA-2 (use Merkle-Damgard transform), SHA-3
+SHA-256: Merkle-Damgard + Davis-Meyer + Block cipher (SHACAL-2)
+- $H_i$:256 bits; $M_i$: 512 bits
+SHA-1, MD5: broken
+SHA-2 (use M-D transform), SHA-3/Keccak (not use M-D transform)
 - 224, 256, 384, 512-bit outputs
 
 ### Hash-and-MAC
-MAC a reliable short messages channel
-![](../img/Pasted%20image%2020260304073446.png)
-Not necessary to transmit h as B can recompute it from M
+Use hash functions to construct a secure MAC for arbitrary-length messages
+- MAC: a reliable short messages channel
+- 通过MAC传输hash value, 是可信的且长度固定的
+![](../img/Pasted%20image%2020260509064735.png)
+
 ![](../img/Pasted%20image%2020260304074116.png)
 
 *HMAC*
