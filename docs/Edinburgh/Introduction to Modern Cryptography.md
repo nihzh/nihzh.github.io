@@ -273,6 +273,7 @@ The POTP has a key shorter than the message:
 ![](../img/IMG_20260203_155215.jpg)
 
 More problem: smaller key, same key multiple encryption problem
+
 ## Security Against Chosen-Plaintext Attacks (CPA)
 ### Multiple-message Secrecy (MMS)
 Parties share $k$; multiple $m_i$; encrypted under $k$
@@ -294,7 +295,7 @@ No **deterministic** encryption scheme is multiple-message indistinguishable
 **Threat model**: attacker A can request encryption of any $m_i$ of his choice
 - A is given access to an encryption oracle $E_k$
 - A submits $m_i$ ==> obtains $c_i=E_k(m_i):i=1,2,\dots$
-**Security goal**: given $c$ attacker cannot derive any information on $m$
+**Security goal**: given $c_i$ attacker cannot derive any information on $m_i$
 
 ![](../img/Pasted%20image%2020260207012425.png)
 ![](../img/Pasted%20image%2020260206232303.png)
@@ -303,28 +304,30 @@ A直接询问oracle m0和m1
 > Consider randomized scheme
 
 ### Pseudorandom functions (PRF)
-Choosing $f$ uniformly at random, interacting with oracle $f$
-is equivalent to
-For each $x \in \{0,1\}^n$, choose $f(x)$ uniformly in ${0,1}^n$
+Choosing $f$ uniformly at random **or** interacting with oracle $f$
 
-随机选f一直用 和 为每个x随机选择一个f
-
-$\mathcal{F_n}$ = all functions mapping $\{0,1\}^n$ to $\{0,1\}^n$
-- $2^{n\cdot 2^{n}}$ functions in total
+For each $x\in\{0,1\}^n$, choose $f(x)$ uniformly in $\{0,1\}^n$
+为每个需要的x: 
+- 如果x已存在在表T中, 返回表T中对应的值$y$
+- 如果x不存在, 返回一个均匀采样的$y\leftarrow\{0,1\}^n$并记录到T
+- $|\mathcal F_n|=2^{n2^n}$
 
 *Keyed functions*
 ![](../img/Pasted%20image%2020260207021258.png)
 **Length-preserving**: $|k|=|x|=|F(k,x)|$, inputs and output of equal size
 
-$F_k$ naturally induces a distribution on functions from $\mathcal{F_n}$
-But only a tiny fraction of $\mathcal{F_n}$, with at most $2^n$
+Choosing a uniform $k\in\{0,1\}^n$ is equivalent to choosing the function $F_k:\{0,1\}^n\rightarrow\{0,1\}^n$, naturally induces a distribution on functions from $\mathcal{F_n}$
 ![](../img/Pasted%20image%2020260207030405.png)
+F是一族函数$\{F_k\}_{k \in \{0,1\}^n}​$, 每个k指向一个具体函数, 所以在完整的$\mathcal{F_n}$中选中的概率只有$2^{-n}$, 也就是最多$2^n$(取决于k长度), only a tiny fraction
 
 定义n长度uniform key的函数F，与从函数群选择一个uniform函数，产生的结果概率相等
-![](../img/Pasted%20image%2020260207031654.png)
-D can query $f$ (resp. $F_k$) on any input $x$ at most poly times
-**The key must be unknown by D**
 
+![](../img/Pasted%20image%2020260207031654.png)
+D can query $f$ and $F_k$ respectively on any input $x$ at most poly times
+**The k must be unknown by D**
+
+PRF is a PRG with random access to exponentially long output
+- the function $F_k$ can be viewed as the $n2^n$-bit string
 ### Pseudorandom permutations (PRP)
 ![](../img/Pasted%20image%2020260207034423.png)
 
@@ -349,11 +352,13 @@ $$\forall m, m'\space\space Enc(k,m)\ne Enc(k,m')$$
 > If $F$ is a pseudorandom function then $\Pi$ is CPA-secure
 
 **Proof**
-Distinguisher D that uses A as a subroutine to attack the PRF $F$
-D simulates to A the steps in the $PrivK^{cpa}_{A,\Pi}(n)$ experiment for $F$ and for a RF
+*Distinguisher D* that uses *attacker A* (towards $\Pi$) as a subroutine to attack the PRF $F$: 
+- D tries to distinguish F from a random function
+- D simulates to A the steps in the $PrivK^{cpa}_{A,\Pi}(n)$ experiment **for $\color{#f6fa99}\mathbf F$** and **for a RF**
+
 ![](../img/Pasted%20image%2020260210234250.png)
 $A$ succeeds ==> $D$ succeeds ==> $F\ne$ PRF
-$$P_{k\leftarrow\{0,1\}}[D^{F(k,\cdot)}=1]=P[PrivK_{A,\Pi}^{CPA}(1^m)=1]$$
+$$\Pr_{k\leftarrow\{0,1\}}[D^{F_k(\cdot)}=1]=\Pr[PrivK_{A,\Pi}^{CPA}(1^n)=1]$$
 Contradicts $F$ PRF ==> A can not succeed ==> $\Pi$ CPA-secure
 
 **World 0: Truly Random Function $f$**
@@ -361,11 +366,17 @@ Security assuming $f$ (a random function) is never evaluated on the same input t
 - Clarification PDF: cpa-secure-encryption.pdf
 
 重用r问题: the encryption is deterministic
-A can make at most $q(n)$ polynomial number or queries
+![](../img/Pasted%20image%2020260508101735.png)
+![](../img/Pasted%20image%2020260508101759.png)
+A is PPT: can make at most $q(n)$ polynomial number or queries
 As $r_c$ is chosen uniformly, it follows
 在uniform随机下出现重复r的几率
 $$Pr[\mathtt{Repeat}]=\frac{q(n)}{2^n}$$
 $$Pr[\mathtt{\lnot Repeat}]=1-\frac{q(n)}{2^n}=1-negl\approx1$$
+![](../img/Pasted%20image%2020260508102149.png)
+
+**World 1: Pseudorandom Function**
+![](../img/Pasted%20image%2020260508102651.png)
 
 ![](../img/Pasted%20image%2020260211025447.png)
 ![](../img/Pasted%20image%2020260211025459.png)
@@ -374,12 +385,12 @@ When $r$ is a uniform, n-bit string, the probability of a repeat is negligible
 
 **Attacks**
 - Nonce $r$ not used correctly
-	- repeats
+	- repeats, same with OTP multiple encryptions
 	- too short
-	- chosen from another distribution
+	- chosen from another distribution, repeats may happen
 - $F$ not used correctly
-	- plaintext leaked $\langle m,F_k(m)\rangle$
-	- wrong key $\langle r,F_r(m)\rangle$
+	- plaintext leaked in ciphertext $\langle m,F_k(m)\rangle$
+	- not used with a random, unknown key $\langle r,F_r(m)\rangle$
 
 **Problems**
 - 1-block plaintext ==> 2-block ciphertext
@@ -387,89 +398,106 @@ When $r$ is a uniform, n-bit string, the probability of a repeat is negligible
 
 ![](../img/Pasted%20image%2020260211025557.png)
 
-## Block Ciphers and Stream Ciphers
+#### Block Ciphers and Stream Ciphers
 Problem of encrypting long messages: ciphertext expansion by a factor of 2
 
-*Mode of Operation (MO)*
+*Mode of Operation (MO)*: Efficient mechanisms for encrypting arbitrary length messages
 PRP/PRF ==> block cipher
 PRG ==> stream cipher
-### Block Cipher MO
+##### Block Cipher MO
 ![](../img/Pasted%20image%2020260225004753.png)
 AES: 128，192，256 bits key length and 128 bits block length
-密钥不等长的加密
-$\mathrm{P}_m$空间里的随机置换模式，c=2也无法确认$F_k$
+密钥不等长的加密: 实际部署中没有渐进的概念
+$\mathcal{P}_m$空间里的随机置换(permutation)模式 $\{0,1\}^m\rightarrow\{0,1\}^m$, 双射可逆
+能力十分接近$2^n$的对手(差$2^c$), 区分$F_k$和真随机置换的优势negligible
 
 *ECB Mode*
 ![](../img/Pasted%20image%2020260224232519.png)
-Deterministic ==> not CPA-secure
+Deterministic ==> not CPA-secure, can tell whether $m_i=m_j$
+仅改变了原本的值, 没有隐藏关系等side channel
 
 *CTR Mode*
 ![](../img/Pasted%20image%2020260224232741.png)
 If $F$ is a PRF, then CTR mode is CPA-secure
+Ciphertext expansion: 1 block, the $ctr$ value 密文膨胀
+![](../img/Pasted%20image%2020260508105333.png)
 
 *CBC Mode*
 ![](../img/Pasted%20image%2020260224233443.png)
 If $F$ is a PRP, then CBC mode is a CPA-secure
 难以Dec，需要$F^{-1}(c_3)$逆运算
+密文膨胀1 block, the IV value
 
 *OFB Mode*
 ![](../img/Pasted%20image%2020260224233551.png)
 ![](../img/Pasted%20image%2020260225013133.png)
-### Stream Cipher MO
-Practical realization of PRGs
+If $\mathbf F$ is a PRF, then OFB mode is CPA-secure
+##### Stream Cipher MO
+Practical realization of PRGs: expand $n$ to $p(n)$, produce all output at once
 Producing an infinite stream of pseudorandom bits
 ![](../img/Pasted%20image%2020260224233730.png)
+A5/3, Aslsa20 http://www.ecrypt.eu.org/stream/
 
 ## Security Against Chosen-Ciphertext Attacks (CCA)
-Active attackers, corrupted, injecting traffic on the channel
+Active attackers: interfering, modifying, injecting traffic on the channel
 No more assume that the ciphertext can reach the receiver **unchanged**
+- Receiver decrypts c' to m'$\ne$m and has no way of detecting the modification
 
-detecting the modification
+*Malleability*: A scheme is malleable if it is possible modify a ciphertext cause **a predictable change to the plaintext** 在修改密文c后可以预测解密后的m如何变化, 修改成另一个"有意义"的密文
+- a perfectly secret scheme may still be malleable: OTP flip last bit
 
-*Malleability*: A scheme is malleable if it is possible modify a ciphertext cause **a predictable change to the plaintext**
-- a perfectly secret scheme may still be malleable
+*Injecting*: A impersonates the sender and injects its own ciphertext c', by forcing the receiver to decrypt c', A may learn something about m'
 
 *Chosen-ciphertext Attacks (CCA)*
 Models settings in which the attacker can influence what gets decrypted, and observe the effects
 
 A is allowed to interfering and **modify** c to c', and forward c' to the receiver
-- has access to both encryption and decryption oracle
+- has access to both encryption and decryption oracle (sender and receiver)
 - obtain the decryption of **any ciphertext of its choice**, beside the challenge ciphertext
 
 ![](../img/Pasted%20image%2020260225022146.png)
 ![](../img/Pasted%20image%2020260225022335.png)
 
-CCA-security implies non-malleability
-- modification of c to c′ predictably modifies m to m′
+CCA-security implies non-malleability: 对于目标密文c, 提交可预测的修改c'获得修改版明文m', 对m'反向应用修改获得c对应的m
+![](../img/Pasted%20image%2020260508233236.png)
 
-As much as secure
+Scenario: one bit about decrypted ciphertexts is leaked, can be exploited to learn the entire plaintext
 
-## Message Integrity
-*Integrity*
+Padding oracle attack: 利用服务器返回的padding正确性报错, 
+
+### Message Integrity
+*Integrity*: ensures that a received message 来源&完整
 - originated from the intended sender and
 - was not modified
+Security and integrity are orthogonal concerns
 
 **Not concerned with secrecy, message m transmitted in the clear**
-Passive Attacks ==> Active Attacks
-Adaptive chosen-message attack
+在Integrity条件下可以用明文传输
+Passive Attacks (eavesdropping) ==> Active Attacks: attacker has full control over the channel
 
 *Message Authentication Code (MAC)*
 ![](../img/Pasted%20image%2020260227232051.png)
+**Threat model**: *adaptive chosen-message attack*: assume the attacker can induce the sender to authenticate messages of the attacker's choice 攻击者可以使发送方认证任意消息, 除了挑战消息
+**Security goal**: *existential unforgeability*: attacker should not be able to forge a valid tag on any message not previously authenticated by the sender 攻击者不能伪造任何发送方没有认证的消息认证
 
 ![](../img/Pasted%20image%2020260227232620.png)
 ![](../img/Pasted%20image%2020260227232706.png)
-
 Secure MAC ==> infeasible to forage even a single message
 
-MACs **do not prevent replay attacks**
-No stateless mechanism can prevent replay attacks
+*Replay attack*: A message from previous communication is captured and re-transmitted (replayed) at a later point in time 重新发送相同的内容
+- MACs **do not prevent replay attacks**
+- No stateless mechanism can prevent replay attacks
+- application-dependent
 
 ### Fixed-length MAC
 ![](../img/Pasted%20image%2020260228022020.png)
+**Let Mac be a PRF**, set $Mac_k\equiv F_k$
 
-Let Mac be a PRF, set $Mac_k\equiv F_k$
-F is a PRF ==> $\Pi$ is a secure MAC
+> F is a PRF ==> $\Pi$ is a secure MAC
 
+**Proof by Reduction**: Design distinguisher D, simulates to A the steps in the $\mathsf{Forge}_{A,\Pi}(n)$ experiment for F and for a RF
+- relate the success Pr of A to the success Pr of D
+- Contradicts F PRF ==> A cannot succeed ==> $\Pi$ is a secure MAC
 ![](../img/Pasted%20image%2020260227234028.png)
 
 ![](../img/Pasted%20image%2020260228024344.png)
@@ -488,13 +516,15 @@ Prevent:
 
 *Basic CBC-MAC*
 ![](../img/Pasted%20image%2020260228025313.png)
-不需要逆运算, Deterministic, verification done by re-computing the result
+No IV (no need randomized to be secured), 不需要逆运算, Deterministic, verification done by re-computing the result (only output)
 
 > If F is a length-preserving PRF with input length $n$, then for any fixed $l$ basic CBC-MAC is a secure MAC for messages of length $ln$
 
-  
-The sender and receiver must agree on the length parameter $l$ in advance, **Basic CBC-MAC is not secure if this is not done**!
+The sender and receiver must agree on the length parameter $l$ in advance, **Basic CBC-MAC is not secure if this is not done**! 需要提前确定分组数$l$
 分组数不符会导致长度扩展攻击，构造一个相同tag的内容
+
+Adversary query $T_A=E_k(A)$ and $T_B=E_k(B)$ then **forge** $M_{forge}=A|(B\oplus T_A)$
+![](../img/Pasted%20image%2020260509022936.png)
 
 ![](../img/Pasted%20image%2020260228032147.png)
 
@@ -504,10 +534,10 @@ The sender and receiver must agree on the length parameter $l$ in advance, **Bas
 *Collision-resistance*
 ![](../img/Pasted%20image%2020260303233128.png)
 
-Collisions are guaranteed to exist
-**Generic collision attack** on a hash function ==> brute force
+**Collisions are guaranteed to exist**
+Best **Generic collision attack** on a hash function $H:\{0,1\}^*\rightarrow\{0,1\}^l$ ==> brute force
 
-*Birthday attack*
+*Birthday attack*: compute $H(x_1)\dots H(x_k)$, what is the probability of a collision (function of k)
 The collision probability is $\mathcal{O}(k^2/N)$
 - N is the enumeration space
 - take k samples (k time hashes)
@@ -515,9 +545,10 @@ When $k\approx \sqrt{N}$, probability of a collision is $\approx 50\%$
 **$k\approx\sqrt{2^l}$ hash-function evaluations**
 
 > 攻击者通常只需要找到**任意两个**能产生相同哈希值的输入即可伪造签名或破坏完整性。
-> To protect against attackers running in time 2n we need the output of our hash function to be l = 2n
+> To protect against attackers running in time $2^n$ we need the output of our hash function to be l = 2n  需要两倍密钥长度来保证安全
+- To ensure 128 bit security we need a block cipher with 128 bit key and a hash function with 256 bit output
 
-**The birthday bound $k\approx2^{n/2}$**
+**The birthday bound $k\approx2^{n/2}$**  $2^n$密钥空间下理论最多支持k次查询满足collision-resistance
 - CTR-mode IV reuse
 
 ### Hash function building
@@ -569,7 +600,7 @@ $$HMAC_K(M) = H((K \oplus \text{opad}) \parallel H((K \oplus \text{ipad}) \paral
 ![](../img/Pasted%20image%2020260307012325.png)
 ![](../img/Pasted%20image%2020260307012344.png)
 ![](../img/Pasted%20image%2020260307024250.png)
-流密码允许攻击者通过翻转密文位来精准改变解密后的结果，Oracle需要先解密再验证MAC，攻击方通过Oracle解密时的Padding错误返回信息，**直接获取明文**
+流式密码允许攻击者通过翻转密文位来精准改变解密后的结果，Oracle需要先解密再验证MAC，攻击方通过Oracle解密时的Padding错误返回信息，**直接获取明文**
 padding：有冗余位，多携带了信息，将其利用作为错误返回的指示
 authenticate没有起作用，直接获取了明文
 ### Encrypt-then-Authenticate (E-then-A)
