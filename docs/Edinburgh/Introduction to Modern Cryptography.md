@@ -820,39 +820,38 @@ $$H:\{0,1\}^*\rightarrow Y$$
 *Consistent*: if a question is repeated, the random oracle must return the same answer
 > If a scheme is secure assuming the adversary views some hash function as a random oracle, it is said to be secure in the **Random Oracle Model**
 
+![](../img/Pasted%20image%2020260510145326.png)
 $(M,t)\in\mathsf{History}$ for $t\xleftarrow{\$} Y$
+In real world: Hash function $\hat H$, cannot really random
 
-Not available in the real world
 ![](../img/Pasted%20image%2020260321013701.png)
 
-
 Oracle: Adversary cannot really access except input and output
-
 Reduction can observe the scheme, and fully control its distribution of output
 
-Better in formal justification than no proof
+Better in formal justification than no proof 把问题缩小到hash不够好的问题
 
 ### Digital signature
-- A *signer* S has a unique private signing key and publishes the corresponding public verification key
+- A *signer* S has a **unique private signing key** and publishes the corresponding **public verification key**
 - S signs a message M and everyone who knows the public key can verify that M originated form the signer S
 
-$\mathsf{Gen}(1^n)\gets(sk, vk)$ 
+$\mathsf{Gen}(1^n)\rightarrow(sk, vk)$ 
 $\mathsf{Sign}(sk,M)=\sigma$
 $\mathsf{Verify}(vk,M,\sigma) = 1$ if signature is valid, 0 otherwise
 
 ![](../img/Pasted%20image%2020260321015052.png)
 ![](../img/Pasted%20image%2020260321015038.png)
-The digital signature scheme(Gen,Sign,Verify) has **existential unforgeability under adaptive chosen message attacks** (EUF-CMA) if for every PPT adversary0 $\mathcal A$, it holds $$\Pr[\text{Game}_{EUF-CMA}^{\mathcal A^{\mathsf{Sign}}}(1^n)=1]\le\mathsf{negl}(n)$$
-A无法得知oracle内部的工作方式
+The digital signature scheme(Gen,Sign,Verify) has **existential unforgeability under adaptive chosen message attacks** (EUF-CMA) if for every PPT adversary0 $\mathcal A$, it holds $$\Pr[\text{Game}_{EUF-CMA}^{\mathcal A^{\mathsf{Sign}}}(1^n)=1]\le\mathsf{negl}(n)$$A无法得知oracle内部的工作方式
 
-**Trapdoor One-way Function (TOWF)**
+#### Trapdoor One-way Function (TOWF)
 - Easy to compute
 - Hard to invert
 - Easy to invert *with trapdoor*
-Only success if having trapdoor $z$
+Only success if having the trapdoor $z$
 ![](../img/Pasted%20image%2020260321015705.png)
 
 ![](../img/Pasted%20image%2020260321020619.png)
+只有z能将M对应的Y转回到X，验证者验证转回的X对应的Y和M对应的Y是否一致，即两个通过H和$f_e$在Y空间中等价的X空间元素
 
 **Correctness**
 ![](../img/Pasted%20image%2020260321021130.png)
@@ -861,6 +860,7 @@ Only success if having trapdoor $z$
 ![](../img/Pasted%20image%2020260321021847.png)
 > 任何“会伪造签名的人”，都能被改造成“会求 $f_e$​ 原像的人”。所以如果 $f_e$​ 真的是 one-way function，那么伪造签名的人就不该存在。
 
+![](../img/Pasted%20image%2020260510155848.png)
 ![](../img/Pasted%20image%2020260325002721.png)
 B 来对A伪装Sign和H
 
@@ -877,7 +877,7 @@ $$\Pr[A\land B|C]=\Pr[A|C]\Pr[B|C]$$
 adversary is success and B guess the index correctly
 adversary never query the signing oracle
 $$f_e(\sigma')=H(m')$$
-whenever adversary query the G
+whenever adversary query the GD
 
 ![](../img/Pasted%20image%2020260325005506.png)
 
@@ -888,6 +888,7 @@ B选中一个j来将A的查询模拟成$H(M^*)=y$
 通过猜中A最终伪造消息对应的那次哈希查询，把伪造签名转化为y的preimage
 ![](../img/Pasted%20image%2020260325010515.png)
 
+![](../img/Pasted%20image%2020260510154944.png)
 ## Zero-Knowledge Interactive Proofs
 **Two parties proof**
 - *prover* (Merlin): has unbounded resources
@@ -939,7 +940,7 @@ $P(x,w)\rightarrow S(x)$ with no leakage of $w$
 
 **Completeness**: 如果prover确实知道witness $w$, 那它总能生成让verifier 接受的$(a,c,z)$
 **HVZK**: 存在simulator $HVZK_{Sim}(x)$ 或更强的 $SHVZK_{Sim}(x,c)$ (special), 能在不知道witness 的情况下, 生成与真实transcript 相似的三元组
-**Special Soundness**: 
+**Special Soundness**
 
 CCA-encryption scheme
 Multi-party computation
