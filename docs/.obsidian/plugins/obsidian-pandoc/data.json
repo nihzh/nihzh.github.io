@@ -10,6 +10,6 @@
   "pandoc": "E:\\pandoc-3.8.3\\",
   "pdflatex": null,
   "outputFolder": "D:\\Downloads",
-  "extraArguments": "--resource-path=\"D:\\文档\\nihzh.github.io\\docs\\img\\\"\n",
-  "exportFrom": "html"
+  "extraArguments": "--resource-path=\"D:\\文档\\nihzh.github.io\\docs\\img\\\" --pdf-engine=xelatex -V CJKmainfont=\"SimSun\"",
+  "exportFrom": "md"
 }

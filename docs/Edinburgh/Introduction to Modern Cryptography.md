@@ -4,6 +4,7 @@ Proof something is secure
 > Design, analysis, and implementation of mathematical techniques for securing information, systems, and distributed computations against adversarial attack
 
 Data integrity & authentication
+
 ## Introduction
 ![](../img/Pasted%20image%2020260505231624.png)
 
@@ -150,8 +151,9 @@ $$Pr[A|B]=\frac{Pr[B|A]Pr[A]}{Pr[B]}$$
 > 
 > 对于指定的密文c, 令集合$S_c=\{Dec_k(c)\},k\in\mathcal{K}$ (key space) ，其必须与$\mathcal{M}$相等，即令每一条可能的密文都对应所有可能的明文。如$|\mathcal{K}|<|\mathcal{M}|$，则可以通过穷举$\mathcal{K}$得到$|S_c|=|\mathcal{K}|$的完整消息空间，找到$\mathcal{M}$中没有对应的消息m\*，以排除指定消息。这不符合无多余信息泄露的标准。
 
-![](../img/Pasted%20image%2020260124021245.png)
+![697](../img/Pasted%20image%2020260124021245.png)
 ![](../img/Pasted%20image%2020260124021218.png)
+
 ## Perfect Indistinguishability
 *Perfect Indistinguishability (PI)*: Randomized experiment, equivalent with PS
 ![](../img/Pasted%20image%2020260127231738.png)
@@ -166,11 +168,13 @@ For all attacker a, no matter what he does, he have fixed 1/2 for winning this g
 ### Computational Secrecy
 **Relax perfect indistinguishability**, allowing "fail" with tiny probability
 Little weaker
+
 #### Computational Indistinguishability (Concrete security)
 Security may fail with probability $\le\varepsilon$
 Restrict attention to attackers running in time/CPU cycles $\le$ t
 在攻击者能力t下, 存在失败率小于$\varepsilon$ 
 **$(t,\varepsilon)$-indistinguishable** $$Pr[\textsf{Priv}K_{A,\pi}=1]\le \frac{1}{2}+\varepsilon$$
+
 #### Asymptotic security
 Security parameter $\color{#b293f6}n$ (key length)
 - chosen by honest parties when they generate/share keys
@@ -725,7 +729,7 @@ For every $h\in\mathbb{G}$ there is a **unique** $x\in\mathbb{Z}_q$ such that $g
 ### The decisional Diffie-Hellman problem
 ![](../img/Pasted%20image%2020260311012418.png)
 
-> We say that the DDH problem is hard relative to $\mathcal{G}$ if for every PPT adversary $mathcal{A}$, it holds that $$|\Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^z)=1]-\Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]|\le negl(n)$$, where in each case the probabilities are taken over the experiment $\mathsf{DDH}_\mathcal{A,G}(n)$
+> We say that the DDH problem is hard relative to $\mathcal{G}$ if for every PPT adversary $\mathcal{A}$, it holds that $$|\Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^z)=1]-\Pr[\mathcal{A}(\mathbb{G},q,g,g^x,g^y,g^{xy})=1]|\le negl(n)$$, where in each case the probabilities are taken over the experiment $\mathsf{DDH}_\mathcal{A,G}(n)$
 
 > ***Large prime order subgroups of $\mathbb Z_p^*$, where $p$ prime, are believed to be safe.
 
@@ -735,6 +739,7 @@ For every $h\in\mathbb{G}$ there is a **unique** $x\in\mathbb{Z}_q$ such that $g
 $r$ 必须是 $p-1$ 的因数
 当$p=2q+1$ (r=2)时, 会得到一个阶正好为q的子群
 ![](../img/Pasted%20image%2020260311060215.png)
+
 ## Key Exchange and the Diffie-Hellman Protocol
 **An interactive protocol**: $k_A=k_B=k$
 ![](../img/Pasted%20image%2020260311070248.png)
@@ -801,6 +806,7 @@ you can do operation with different calculation
 ![](../img/Pasted%20image%2020260318023701.png)
 When the adversary is able to access the decryption oracle
 **Not CCA-secure**
+
 ### RSA
 ![](../img/Pasted%20image%2020260318024825.png)
 

@@ -36,13 +36,15 @@
   * [328-High_Performance_Computing](Liverpool/328-High%20Performance%20Computing)
   * [390-CyberCipher](Liverpool/390-CyberCipher)
   * [720北京](Liverpool/720北京)
+* **Mumu**
+  * [网络安全法_+_工具安装](Mumu/网络安全法%20+%20工具安装)
 * **Troubleshooting**
   * [docsify代码块闭合问题](Troubleshooting/docsify代码块闭合问题)
   * [docsify的homepage问题](Troubleshooting/docsify的homepage问题)
   * [Java中的Map类型和Spring_@Transaction操作数据库问题](Troubleshooting/Java中的Map类型和Spring%20@Transaction操作数据库问题)
   * [Problems_when_configuring_Git](Troubleshooting/Problems%20when%20configuring%20Git)
   * [sed_unknown_option_to_'s'报错](Troubleshooting/sed%20unknown%20option%20to%20's'报错)
-  * [sprintf函数_“%02X”问题](Troubleshooting/sprintf函数%20“%2502X”问题)
+  * [sprintf函数_“%02X”问题](Troubleshooting/sprintf函数%20“%02X”问题)
   * [Vulfocus漏洞靶场镜像无法拉取](Troubleshooting/Vulfocus漏洞靶场镜像无法拉取)
   * [WindTerm锁屏主密码问题](Troubleshooting/WindTerm锁屏主密码问题)
   * [wsl下载后报错问题](Troubleshooting/wsl下载后报错问题)
