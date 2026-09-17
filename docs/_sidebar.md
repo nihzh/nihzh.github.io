@@ -36,8 +36,6 @@
   * [328-High_Performance_Computing](Liverpool/328-High%20Performance%20Computing)
   * [390-CyberCipher](Liverpool/390-CyberCipher)
   * [720北京](Liverpool/720北京)
-* **Mumu**
-  * [网络安全法_+_工具安装](Mumu/网络安全法%20+%20工具安装)
 * **Troubleshooting**
   * [docsify代码块闭合问题](Troubleshooting/docsify代码块闭合问题)
   * [docsify的homepage问题](Troubleshooting/docsify的homepage问题)

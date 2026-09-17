@@ -8,21 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "86cd3f663aaffdcf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mumu/网络安全法 + 工具安装.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "网络安全法 + 工具安装"
-            }
-          },
-          {
             "id": "6114b6910ea16abe",
             "type": "leaf",
             "state": {
@@ -157,7 +142,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "86cd3f663aaffdcf",
+  "active": "185e32409e44e9de",
   "lastOpenFiles": [
     "img/ca3097010a583dc3fe80833eeaa9e2d4.jpg",
     "Untitled.md",
