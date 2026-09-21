@@ -32,6 +32,8 @@
   * [390-CyberCipher](Liverpool/390-CyberCipher.md)
   * [720北京](Liverpool/720%E5%8C%97%E4%BA%AC.md)
 * **Mumu**
+  * [Web安全基础](Mumu/Web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80.md)
+  * [漏洞的定义](Mumu/%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AE%9A%E4%B9%89.md)
   * [网络安全法 + 工具安装](Mumu/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%B3%95%20+%20%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85.md)
 * **Troubleshooting**
   * [docsify代码块闭合问题](Troubleshooting/docsify%E4%BB%A3%E7%A0%81%E5%9D%97%E9%97%AD%E5%90%88%E9%97%AE%E9%A2%98.md)
